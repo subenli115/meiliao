@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@mipmap/wallet_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_goal"
+            android:text="金币"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tv_wallet_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            tools:text="9999.99"/>
+    </LinearLayout>
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/igv_wallet_recharge"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        app:itemView_leftText="充值"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/wallet_icon_recharge"
+        app:showRightArrow="true"/>
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/igv_wallet_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        app:itemView_leftText="赚取金币"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/wallet_icon_earn"
+        app:showRightArrow="true"/>
+</LinearLayout>

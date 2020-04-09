@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/gray_fb"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<View
+    android:layout_marginBottom="24px"
+    android:layout_width="match_parent"
+    android:layout_height="10px"
+android:background="@color/gray_fb"
+    />
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:background="@drawable/normal_bg_white"
+    android:weightSum="2"
+    android:layout_marginLeft="32px"
+    android:layout_marginBottom="30px"
+    android:layout_marginRight="32px"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/all_yxs"
+        android:orientation="horizontal"
+        android:layout_marginTop="38px"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="92px"
+            android:gravity="center"
+            android:layout_height="92px">
+
+            <ImageView
+                android:layout_width="92px"
+                android:layout_height="92px"
+                android:src="@mipmap/home_book"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:orientation="vertical"
+            android:layout_marginLeft="17px"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:layout_marginBottom="5px"
+                android:text="@string/training_club"
+                android:textColor="@color/textColor_444"
+                android:textSize="28px"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正念冥想学院"
+                android:textSize="20px"
+                android:textColor="@color/textColor_444"
+                />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+    <View
+        android:layout_width="0px"
+        android:layout_height="65px"
+        android:layout_weight="0.01"
+        android:layout_gravity="center_vertical"
+        android:background="@color/gray"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/all_zztj"
+        android:orientation="horizontal"
+        android:layout_marginTop="38px"
+        android:layout_marginBottom="38px"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="92px"
+            android:gravity="center"
+            android:layout_height="92px">
+
+            <ImageView
+                android:layout_width="92px"
+                android:layout_height="92px"
+                android:src="@mipmap/home_house"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="17px"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:text="@string/party_build"
+                android:textStyle="bold"
+                android:textSize="28px"
+                android:layout_marginBottom="5px"
+                android:textColor="@color/textColor_444"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组织机构课程"
+
+                android:textSize="20px"
+                android:textColor="@color/textColor_444"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/afl_banner"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.cy.rollpagerview.CYRollPagerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="240px"
+        android:layout_marginLeft="33px"
+        android:layout_marginTop="30px"
+        android:layout_marginRight="33px"
+        android:layout_marginBottom="30px">
+
+    </com.cy.rollpagerview.CYRollPagerView>
+    <ImageView
+        android:id="@+id/iv_banner_close"
+        android:layout_alignTop="@+id/vp"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="25px"
+        android:layout_alignRight="@+id/vp"
+        android:layout_marginRight="20px"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/home_banne_close"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        android:background="@color/gray"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>

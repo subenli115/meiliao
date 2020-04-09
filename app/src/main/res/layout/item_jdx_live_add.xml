@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/tv_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/set_time"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="90px"
+                    android:textSize="32px"
+
+                    />
+                <TextView
+                    android:id="@+id/tv_delete"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@mipmap/jdx_item_delete"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="79px"
+                    />
+                <View
+                    android:layout_marginLeft="90px"
+                    android:layout_marginRight="79px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="46px"
+                    android:layout_below="@+id/tv_delete"
+                    />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>

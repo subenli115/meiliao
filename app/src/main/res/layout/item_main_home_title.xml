@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_top"
+        style="@style/hor_match_line"
+        android:layout_height="6dp"
+        android:background="@color/divider1"
+        android:visibility="gone"
+        />
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:layout_gravity="bottom"
+        android:background="@color/gray_fb"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+
+        >
+
+        <TextView
+            android:id="@+id/tv_item_main_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35px"
+            android:layout_marginTop="47px"
+            android:layout_marginBottom="28px"
+            android:text="身心净化水元素"
+            android:textColor="@color/textColor_333"
+            android:textSize="38px"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_item_main_home_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_item_main_home_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30px"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="更多"
+            android:textColor="@color/textColor_999"
+            android:textSize="13sp" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

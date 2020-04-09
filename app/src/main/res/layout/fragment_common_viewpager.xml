@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ntb"
+        app:ntb_title_text="我的活动"
+        app:ntb_tv_left="showAndFinish"
+        />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/textColor_teshe"
+        android:background="@color/white"
+        app:tabIndicatorHeight="1dp"
+        app:tabSelectedTextColor="@color/textColor_teshe"
+        app:tabTextColor="@color/textColor_666"
+        />
+
+    <com.ziran.meiliao.common.commonwidget.ViewPagerFixed
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

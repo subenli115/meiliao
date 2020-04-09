@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/transparent_helf"
+              android:id="@id/background"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/course_bg_ticket1"/>
+
+        <ImageView
+            android:id="@+id/iv_popuw_has_tick_cover"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="16dp"
+            />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/course_bg_ticket2"/>
+
+        <TextView
+            android:id="@+id/tv_popuw_has_tick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:text="温宗堃"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_popuw_has_tick_single"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_popuw_has_tick_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="企业职场的正念运用"
+            android:textColor="@color/textColor_333"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_popuw_has_tick_used"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@mipmap/btn_bg"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:text="立即使用"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+</LinearLayout>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <com.ziran.meiliao.widget.ObservableScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/rl_me_main_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/bg_my"
+                >
+                <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+                    android:id="@+id/ntb"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15px"
+                    android:layout_height="wrap_content"/>
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="83px"
+                    android:id="@+id/rl_me_level"
+                    android:background="@drawable/bg_roundrect"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/tv_main_me_new_username"
+                    >
+
+                    <ImageView
+                        android:id="@+id/iv_me_level"
+                        android:layout_marginLeft="28px"
+                        android:layout_width="45px"
+                        android:layout_height="45px"
+                        android:layout_marginRight="28px"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_checked_green"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_me_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/iv_me_level"
+                        android:text="会员等级"
+                        android:textColor="@color/white"
+                        android:layout_toRightOf="@+id/iv_me_level"
+                        android:textSize="20px" />
+                    <ProgressBar
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/progressbar"
+                        android:id="@+id/progressBarHorizontal"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_alignBottom="@+id/iv_me_level"
+                        android:layout_alignLeft="@+id/tv_me_level"
+                        android:layout_width="120px"
+                        android:layout_height="10px"/>
+
+                    <TextView
+                        android:id="@+id/tv_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20px"
+                        android:layout_marginRight="17px"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="9px"
+                        android:lines="1"
+                        android:layout_toRightOf="@+id/progressBarHorizontal"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="12px"
+                        />
+
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+
+                <FrameLayout
+                    android:id="@+id/fl_main_me"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="90px"
+                    android:layout_marginBottom="45px"
+                    android:layout_below="@+id/ntb"
+                    android:layout_marginStart="12dp"
+                    >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                    <ImageView
+                        android:id="@+id/iv_me_main_isvip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:visibility="gone"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/ic_me_icon_vip"/>
+
+                    <ImageView
+                        android:id="@+id/iv_me_main_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/ic_user_pic" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_main_me_new_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:maxEms="6"
+                    android:ellipsize="end"
+                    android:layout_toRightOf="@+id/fl_main_me"
+                    android:layout_alignTop="@+id/fl_main_me"
+                    android:text="Ariel"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/iv_main_me_new_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="30dp"
+                    android:background="@mipmap/me_bg_vip"
+                    android:gravity="center"
+                    android:text="成为VIP"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_main_me_new_message_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fl_main_me"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="24dp"
+                    android:drawableRight="@mipmap/ic_arrow_gray"
+                    android:gravity="center_vertical"
+                    android:text="消息"
+                    android:visibility="gone"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tv_main_me_new_message_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_main_me_new_message_bar"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/shape_message_empty"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:text="暂无消息"/>
+
+                <com.ziran.meiliao.common.commonwidget.ViewPagerFixed
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/tv_main_me_new_message_bar"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingLeft="48dp"
+                    android:paddingRight="48dp"
+                    android:visibility="gone"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                style="@style/hor_match_line_8dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@color/white"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tv_main_me_new_wallet_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="我的钱包"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_main_me_new_recharge_or_balance_query"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_main_me_new_wallet_title"
+                    android:drawableLeft="@mipmap/me_recharge"
+                    android:drawablePadding="8dp"
+                    android:text="充值及余额查询"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_main_me_new_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_alignBaseline="@+id/tv_main_me_new_recharge_or_balance_query"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:drawableLeft="@mipmap/me_coupon"
+                    android:drawablePadding="8dp"
+                    android:text="优惠券"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+
+
+            <com.ziran.meiliao.widget.MainMeItemView
+                android:id="@+id/mmiv_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/white"
+                app:main_me_item_default_data="friends"
+                />
+
+            <View style="@style/hor_match_line_8dp"/>
+
+            <com.ziran.meiliao.widget.ItemGroupView
+                android:id="@+id/tv_me_main_new_live_room"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:itemView_leftText="@string/live_room"
+                app:itemView_leftText_color="@color/textColor_333"
+                app:leftIcon="@mipmap/me_radioroom"/>
+
+            <com.ziran.meiliao.widget.ItemGroupView
+                android:id="@+id/tv_me_main_new_message"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:itemView_leftText="@string/my_message"
+                app:itemView_leftText_color="@color/textColor_333"
+                app:leftIcon="@mipmap/ic_main_me_message_one"/>
+            <com.ziran.meiliao.widget.ItemGroupView
+                android:id="@+id/tv_me_main_new_follow"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:itemView_leftText="@string/myfavorites"
+                app:itemView_leftText_color="@color/textColor_333"
+                app:leftIcon="@mipmap/ic_main_me_collect"/>
+
+            <com.ziran.meiliao.widget.ItemGroupView
+                android:id="@+id/tv_me_main_new_download"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:itemView_leftText="@string/me_download"
+                app:itemView_leftText_color="@color/textColor_333"
+                app:leftIcon="@mipmap/ic_main_me_download"/>
+            <com.ziran.meiliao.widget.ItemGroupView
+                android:id="@+id/itemView_medal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:leftIcon="@mipmap/my_medal"
+                app:itemView_rightTextSize="11sp"
+                app:itemView_rightText_color="@color/red"
+                app:itemView_leftText_color="@color/textColor_333"
+                app:itemView_leftText="@string/settings_my_medal"
+                app:showRightArrow="true"/>
+            <com.ziran.meiliao.widget.ItemGroupView
+                android:id="@+id/itemView_push"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:leftIcon="@mipmap/me_ic_share"
+                app:itemView_rightTextSize="11sp"
+                app:itemView_rightText="推荐给好友可得200金币"
+                app:itemView_rightText_color="@color/red"
+                app:itemView_leftText_color="@color/textColor_333"
+                app:itemView_leftText="@string/settings_title_recommend_to_friend"
+                app:showRightArrow="true"/>
+
+            <com.ziran.meiliao.widget.ItemGroupView
+                android:id="@+id/tv_me_main__new_feek_back"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:itemView_leftText="@string/feek_back"
+                app:itemView_leftText_color="@color/textColor_333"
+                app:leftIcon="@mipmap/ic_main_me_suggest"/>
+
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="200dp"
+                />
+        </LinearLayout>
+    </com.ziran.meiliao.widget.ObservableScrollView>
+
+
+</LinearLayout>

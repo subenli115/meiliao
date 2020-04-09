@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_headview_crowd_funding_preview_ban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:roundimageview_borderRadius="0dp"
+        app:roundimageview_height_ratio="0.473"
+        android:src="@mipmap/ic_loading_square_big"
+        />
+
+    <TextView
+        android:id="@+id/tv_headview_crowd_funding_preview_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="8dp"
+        android:text="报名 | 医学及心理学中的正念——正念减压四日工作坊"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_headview_crowd_funding_preview_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
+        android:drawableLeft="@mipmap/ic_time"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:text="2017／11／16 - 2017 / 11／19"
+        android:textColor="@color/textColor_666"
+        />
+
+    <TextView
+        android:id="@+id/tv_headview_crowd_funding_preview_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
+        android:drawableLeft="@mipmap/course_icon_add"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:text="南京市江宁府东路万达广场"
+        android:textColor="@color/textColor_666"
+        />
+
+    <com.ziran.meiliao.ui.workshops.widget.ProgressTipsView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressTipsView"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:drawableLeft="@mipmap/ic_checked_yellow"
+            android:text="众筹不成功退款"
+            android:textSize="12dp"
+            android:drawablePadding="6dp"
+            android:textColor="@color/textColor_999"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:drawablePadding="6dp"
+            android:drawableLeft="@mipmap/ic_checked_yellow"
+            android:text="支持开课前一周退款"
+            android:textColor="@color/textColor_999"
+            />
+    </LinearLayout>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        />
+</LinearLayout>

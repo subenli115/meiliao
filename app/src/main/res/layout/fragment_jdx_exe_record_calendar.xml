@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.haibin.calendarview.CalendarLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    app:default_status="shrink"
+    app:calendar_show_mode="only_week_view"
+    app:calendar_content_view_id="@+id/recyclerView"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.haibin.calendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:month_view="com.ziran.meiliao.widget.IndexMonthView"
+        app:lunar_text_size="12dp"
+        app:calendar_height="50dp"
+        app:min_year="2004"
+        app:scheme_text="假"
+        app:day_text_size="10dp"
+        app:scheme_text_color="#333"
+        app:scheme_theme_color="#333"
+        app:current_day_lunar_text_color="#666666"
+        app:selected_text_color="#fff"
+        app:selected_lunar_text_color="@color/white"
+        app:selected_theme_color="#333"
+        app:week_start_with="mon"
+        app:current_month_lunar_text_color="#999999"
+        app:week_background="#fff"
+        app:month_view_show_mode="mode_only_current"
+        app:month_view_scrollable="true"
+        app:week_text_color="#111" />
+
+</com.haibin.calendarview.CalendarLayout>

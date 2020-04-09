@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30px"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<com.zhy.autolayout.AutoFrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="157px"
+        android:layout_gravity="center"
+        android:id="@+id/iv_voice1"
+        android:layout_height="157px"
+        android:src="@mipmap/ic_launcher"
+        />
+    <ImageView
+        android:id="@+id/view_yuan"
+        android:layout_width="158px"
+        android:layout_height="158px"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/round_corners_layout_tran_music_gray"
+        >
+
+
+    </ImageView>
+</com.zhy.autolayout.AutoFrameLayout>
+        <TextView
+            android:text="音乐"
+            android:id="@+id/tv_music_name1"
+            android:layout_marginTop="10px"
+            android:textSize="28px"
+            android:textColor="#999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>

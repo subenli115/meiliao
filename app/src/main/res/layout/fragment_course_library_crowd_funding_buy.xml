@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_course_library_crowd_funding_buy_bottom"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.ziran.meiliao.ui.me.widget.CourseDetailView
+                android:id="@+id/courseDetailView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:text="完善一下信息，方便活动助手及时与您沟通"
+                android:textSize="12sp"
+                />
+
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_name"
+                style="@style/BaseItemView"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                app:biv_content_must_need="true"
+                app:biv_content_type="edit"
+                app:biv_forword_show="false"
+                app:biv_title="姓名"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_phone"
+                style="@style/BaseItemView"
+                android:visibility="gone"
+                app:biv_content_input_type="phone"
+                app:biv_content_must_need="true"
+                app:biv_content_type="edit"
+                app:biv_forword_show="false"
+                app:biv_title="手机"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_small_height"
+                android:background="@color/white"
+                android:id="@+id/fl_sex_container"
+                android:visibility="gone"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="性别"
+                    android:textColor="@color/textColor_666"
+                    />
+
+                <com.ziran.meiliao.widget.MyCheckBox
+                    android:layout_width="wrap_content"
+                    android:id="@+id/checkboxMan"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    app:mcb_extra_text="男"
+                    app:mcb_extra_text_color="@color/textColor_666"
+                    app:mcb_extra_text_size="16sp"
+                    app:mcb_scb_checked="true"
+                    />
+
+                <com.ziran.meiliao.widget.MyCheckBox
+                    android:layout_width="wrap_content"
+                    android:id="@+id/checkboxNv"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    app:mcb_extra_text="女"
+                    app:mcb_extra_text_color="@color/textColor_666"
+                    app:mcb_extra_text_size="16sp"
+                    />
+            </LinearLayout>
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_sex"
+                style="@style/BaseItemView"
+                android:visibility="gone"
+                app:biv_content_must_need="true"
+                app:biv_content_type="sex"
+                app:biv_forword_show="false"
+                app:biv_title="性别"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_age"
+                style="@style/BaseItemView"
+                android:visibility="gone"
+                app:biv_click_id="@integer/id_age"
+                app:biv_content_must_need="true"
+                app:biv_title="年龄"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_email"
+                style="@style/BaseItemView"
+                android:visibility="gone"
+                app:biv_content_must_need="true"
+                app:biv_content_type="edit"
+                app:biv_forword_show="false"
+                app:biv_title="邮箱"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_demo"
+                style="@style/BaseItemViewWrap"
+                android:visibility="gone"
+                app:biv_content_max_line="4"
+                app:biv_content_type="edit"
+                app:biv_forword_show="false"
+                app:biv_title="备注"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="支持人数"
+                    />
+
+                <com.ziran.meiliao.ui.workshops.widget.NumberAddView
+                    android:id="@+id/numberAddView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_course_library_crowd_funding_buy_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="right"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_course_library_crowd_funding_buy_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="12dp"
+            android:textSize="16sp"
+            tools:text="合计：9999元"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.FilterTextView
+            android:id="@+id/tv_course_library_crowd_funding_buy_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="确认支付"
+            app:cs_bg_style="yellow"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/item_common_small_height"
+    >
+
+    <TextView
+        android:id="@+id/tv_footer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawablePadding="6dp"
+        android:drawableRight="@mipmap/ic_jyg_player_nav_down"
+        android:gravity="center"
+        android:text="收起"
+        android:textColor="@color/textColor_666"
+        android:textSize="16sp"
+        />
+</FrameLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <com.example.wmz.sw.weigdt.SwipeLayout
+        android:id="@+id/sideslipview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="#f00"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="#fff"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                >
+                <TextView
+                    android:id="@+id/tv_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/set_time"
+                    android:layout_marginLeft="90px"
+                    android:layout_marginBottom="47px"
+                    android:layout_marginTop="47px"
+                    android:textSize="32px"
+
+                    />
+                <TextView
+                    android:id="@+id/tv_add"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@mipmap/jdx_no_select"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="79px"
+                    />
+                <View
+                    android:layout_marginLeft="90px"
+                    android:layout_marginRight="79px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#E0E0E0"
+                    android:layout_alignParentBottom="true"
+                    />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </LinearLayout>
+    </com.example.wmz.sw.weigdt.SwipeLayout>
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ntb_bg="@color/transparent"
+            app:ntb_img_padding="9dp"
+            app:ntb_right_img1="@drawable/selector_select_like"
+            app:ntb_right_img2="@drawable/selector_select_collect"
+            app:ntb_right_img3="@mipmap/btn_share_black"
+            app:ntb_tv_left="showAndFinish"
+            />
+
+        <com.ziran.meiliao.widget.MyCoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/myCoordinatorLayout"
+            app:used_default_title="false"
+            />
+
+        <include
+            layout="@layout/include_music_panel"
+            android:visibility="gone"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.FilterTextView
+            android:id="@+id/tv_subscribe_audio_dingyue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:gravity="center"
+            android:text="订阅   ¥99/年"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:cs_normal_bg_color="@color/textColor_teshe"
+            />
+    </LinearLayout>
+
+<!--
+
+    -->
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</FrameLayout>

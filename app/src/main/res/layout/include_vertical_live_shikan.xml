@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_sjk_fulllive_shikan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="试看已结束,请购买课程继续观看"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="72dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/iv_sjk_vertical_live_buyvip"
+            style="@style/SJKFullLiveBtn"
+            android:visibility="gone"
+            android:layout_marginRight="48dp"
+            android:background="@drawable/selector_btn_buy_vip"
+            android:text="购买会员"
+            />
+
+        <Button
+            android:id="@+id/iv_sjk_fulllive_buycourse"
+            style="@style/SJKFullLiveBtn"
+            android:layout_width="wrap_content"
+            android:background="@drawable/selector_btn_buy_course"
+            android:text="购买课程"
+            />
+    </LinearLayout>
+</FrameLayout>

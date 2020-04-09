@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_item_sjk_zhuanlan_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:maxLines="1"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@+id/fl_tag"
+        android:text="音频 | 拥有专注、清明的心智，生活和工作才有效率和创意"
+        android:textColor="@color/textColor_666"
+        android:textSize="16sp"
+        />
+
+    <FrameLayout
+        android:id="@+id/fl_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_free"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_tv_jyg_vip_bg"
+            android:paddingBottom="3dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:textSize="12sp"
+            android:textColor="@color/textColor_teshe"
+            android:paddingTop="3dp"
+            android:text="限免"
+            />
+
+        <ImageView
+            android:id="@+id/iv_study_finish"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:src="@mipmap/course_ic_learned"
+            android:layout_height="wrap_content"
+            />
+    </FrameLayout>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/tv_item_sjk_zhuanlan_title"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        />
+</RelativeLayout>

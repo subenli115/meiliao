@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_sjk_live_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/textColor_333"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_sjk_live_detail_expert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/textColor_9f"
+        android:textSize="15sp" />
+
+    <com.ziran.meiliao.widget.ExpandableTextView
+        android:id="@+id/tv_sjk_live_detail_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColor_9f"
+        android:textSize="16sp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="3dp"/>
+
+    <com.ziran.meiliao.widget.SimpleTextView
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="12dp"
+        app:text="课程目录"
+        app:textSize="18sp" />
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="48dp"
+    android:layout_height="48dp">
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:roundimageview_type="circle"
+        android:layout_margin="8dp"
+        android:src="@mipmap/ic_jyg_nva_player" />
+
+    <com.ziran.meiliao.ui.settings.widget.DonutProgress
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="6dp"
+        app:donut_finished_color="@color/textColor_teshe"
+        app:donut_text_size="9sp"
+        app:donut_show_text="false"
+        app:donut_unfinished_color="@color/transparent" />
+</FrameLayout>

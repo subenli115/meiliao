@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:paddingTop="12dp"
+              android:paddingBottom="12dp"
+             >
+
+    <TextView
+        android:id="@+id/tv_item_sjk_live_profile_calender_mouth"
+        android:layout_width="40dp"
+        android:layout_height="18dp"
+        android:gravity="center"
+        android:textColor="@color/textColor_teshe"
+        android:textSize="14sp"
+        tools:text="7月"/>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_live_profile_calender_date"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        tools:text="31"
+        android:textColor="@color/textColor_999"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/iv_item_sjk_live_profile_calender_study"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/course_icon_start"/>
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="6dp"
+    android:background="@drawable/selector_tran_gray"
+    >
+
+
+    <FrameLayout
+        android:id="@+id/fl_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tv_item_sjk_history_course_name"
+        android:background="@color/white_alpha_half">
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_sjk_history_course_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_loading_square_big"
+            app:roundimageview_borderRadius="6dp"
+            app:roundimageview_type="round"/>
+
+        <ImageView
+            android:id="@+id/iv_item_sjk_history_course_lable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:src="@mipmap/ic_main_jyg_lab_playing"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_item_sjk_history_course_limit_time"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shape_main_sjk_nowlive_limit"
+            android:drawableLeft="@mipmap/course_icon_sandglass"
+            android:drawablePadding="5dp"
+            android:layout_marginLeft="1dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            tools:text="9天9小时9分9秒"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_history_course_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_item_sjk_history_course_listerCount"
+        android:paddingLeft="12dp"
+        android:paddingTop="8dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_history_course_listerCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:drawableLeft="@mipmap/ic_sjk_list_eye_gray"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="12dp"
+        android:textColor="@color/textColor_9f"
+        android:textSize="14dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_item_sjk_live_course_lable"
+        style="@style/TextViewLabelStyleRight"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        />
+
+</RelativeLayout>

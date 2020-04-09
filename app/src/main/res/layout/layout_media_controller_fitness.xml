@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_media_contorller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tv_contorller_toast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/ic_live_video_bg"
+            android:gravity="center"
+            android:text="购买以后才能观看"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            />
+
+    </FrameLayout>
+    <com.ziran.meiliao.widget.FitnessPlayPauseView
+        android:id="@+id/playPauseView"
+        android:layout_width="53dp"
+        android:layout_centerInParent="true"
+        android:layout_height="53dp" />
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/media_contorller_item_height"
+        android:background="@color/contorller_bar_bg"
+        >
+
+        <ImageView
+            android:id="@+id/iv_contorller_back"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="26dp"
+            android:background="@mipmap/ic_close"
+            />
+
+        <TextView
+            android:id="@+id/tv_controller_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toLeftOf="@+id/ll_controller_right"
+            android:layout_toRightOf="@+id/iv_contorller_back"
+            android:ellipsize="middle"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_controller_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_contorller_lister"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/contorller_child_height"
+                android:layout_marginEnd="12dp"
+                android:visibility="gone"
+                android:layout_marginRight="12dp"
+                android:drawableLeft="@mipmap/ic_sjk_live_list_eye"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_contorller_like"
+                    android:layout_width="@dimen/contorller_child_height"
+                    android:layout_height="@dimen/contorller_child_height"
+                    android:visibility="gone"
+                    android:src="@mipmap/ic_sjk_live_list_like"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_contorller_like_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="6dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/iv_contorller_collect"
+                android:layout_width="@dimen/contorller_child_height"
+                android:visibility="gone"
+                android:layout_height="@dimen/contorller_child_height"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/selector_select_collect_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_contorller_gz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="12dp"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/iv_contorller_share"
+                android:layout_width="@dimen/contorller_child_height"
+                android:visibility="gone"
+                android:layout_height="@dimen/contorller_child_height"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/ic_sjk_live_list_share"
+                />
+
+            <TextView
+                android:id="@+id/iv_contorller_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:text="购买课程"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:visibility="gone"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textSize="11sp"
+                android:background="@drawable/normal_bg_yellow"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+<TextView
+    android:id="@+id/tv_list"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="分解练习"
+    android:layout_alignParentRight="true"
+    android:background="@drawable/normal_bg_white_tran"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:layout_marginRight="20dp"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="80dp"
+    android:textColor="@color/white"
+    android:paddingTop="6dp"
+    android:textSize="12sp"
+    android:paddingBottom="6dp"
+    />
+<TextView
+    android:id="@+id/tv_left"
+    android:layout_width="wrap_content"
+    android:drawableLeft="@mipmap/fitness_player_left"
+    android:layout_centerVertical="true"
+    android:padding="20dp"
+    android:layout_height="wrap_content"
+    />
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="20dp"
+        android:layout_alignParentRight="true"
+        android:drawableLeft="@mipmap/fitness_player_right"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9999"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="80dp"
+        android:layout_alignBottom="@+id/rl_bottom"
+        android:textSize="17sp"
+        />
+    <RelativeLayout
+        android:id="@+id/rl_bottom_two"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="232323"
+            android:textSize="17sp"
+            android:layout_marginBottom="23dp"
+            android:layout_marginLeft="25dp"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/tv_play_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="232323"
+            android:layout_marginRight="28dp"
+            android:layout_alignParentRight="true"
+            android:textSize="17sp"
+            android:layout_marginBottom="23dp"
+            android:textColor="@color/white"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/media_contorller_item_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/contorller_bar_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        >
+
+
+        <com.ziran.meiliao.widget.MyProgressView
+            android:id="@+id/myProgressView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/rl_bottom"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            app:MyProgressView_textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/iv_contorller_full"
+            android:layout_width="@dimen/contorller_child_height"
+            android:visibility="gone"
+            android:layout_height="@dimen/contorller_child_height"
+            android:src="@mipmap/ic_sjk_live_list_full"
+            />
+    </LinearLayout>
+
+<RelativeLayout
+    android:id="@+id/rl_hint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:background="#E61e1429"
+    >
+    <ImageView
+        android:id="@+id/iv_contorller_back2"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="32dp"
+        android:src="@mipmap/ic_close"
+        />
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="114dp"
+        android:layout_centerHorizontal="true"
+        android:text="试学结束了哦，现在就去购买课程吧"
+        />
+
+    <TextView
+        android:id="@+id/tv_hint_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:text="购买课程"
+        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_hint"
+        android:paddingBottom="11dp"
+        android:paddingTop="11dp"
+        android:paddingLeft="42dp"
+        android:textColor="@color/white"
+        android:paddingRight="42dp"
+        android:textSize="14sp"
+        android:background="@drawable/normal_bg_orange_44"
+        />
+
+    <TextView
+        android:id="@+id/tv_replay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重新试学"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_below="@+id/tv_hint_buy"
+        />
+
+</RelativeLayout>
+
+
+        <com.ziran.meiliao.widget.CustomGridView
+            android:id="@+id/gridView"
+            android:gravity="center"
+            android:columnWidth="217dp"
+            android:paddingLeft="44dp"
+            android:paddingRight="44dp"
+            android:paddingTop="44dp"
+            android:visibility="gone"
+            android:paddingBottom="22dp"
+            android:horizontalSpacing="55dp"
+            android:numColumns="2"
+            android:verticalSpacing="22dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99868684"
+            >
+
+
+        </com.ziran.meiliao.widget.CustomGridView>
+
+</RelativeLayout>

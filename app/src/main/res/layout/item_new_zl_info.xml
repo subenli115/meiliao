@@ -1,0 +1,81 @@
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/all_child"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/all_left"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="0px"
+        android:layout_weight="1.5"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        >
+        <com.ziran.meiliao.widget.PlayPauseViewOne
+            android:id="@+id/playPauseView"
+            android:layout_width="68px"
+            android:layout_marginBottom="26px"
+            android:layout_marginTop="26px"
+            android:layout_height="68px"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="26px"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/playPauseView"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/iv_item_jump_detail"
+            android:text="gdgkldfsdgdfggertgde"
+            android:layout_centerVertical="true"
+            android:textColor="@color/textColor_333"
+            android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/tv_item_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_below="@+id/tv_item_title"
+            android:layout_toRightOf="@+id/playPauseView"
+            android:text="10:30"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:textColor="@color/textColor_999"
+            />
+
+
+        <View
+            style="@style/hor_match_line"
+            android:layout_below="@+id/playPauseView"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="0dp"
+        android:layout_centerVertical="true"
+        android:layout_weight="0.5"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_item_jump_detail"
+            android:layout_width="31px"
+            android:layout_height="37px"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_item_more"
+            android:src="@mipmap/ic_audio_detail" />
+        <ImageView
+            android:id="@+id/iv_item_more"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/ic_autdio_more" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

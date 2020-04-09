@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F9FA"
+    android:orientation="vertical"
+    >
+<com.ziran.meiliao.common.commonwidget.NormalTitleBar
+    android:layout_width="match_parent"
+    android:layout_marginTop="20px"
+    android:id="@+id/ntb_title"
+    android:layout_height="wrap_content">
+
+</com.ziran.meiliao.common.commonwidget.NormalTitleBar>
+    <ScrollView
+        android:layout_marginTop="60px"
+        android:layout_below="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerView"
+        android:layout_height="wrap_content">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_marginBottom="83px"
+        android:layout_marginRight="35px"
+        android:textSize="32px"
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_act_edit"
+        />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </ScrollView>
+
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@id/background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_set_time_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_set_time_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/white"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_height="0.7dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_set_time_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提醒"
+                android:textColor="@color/white"/>
+
+            <com.ziran.meiliao.widget.SwitchButton
+                xmlns:toggle="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/sb_set_time_switch"
+                android:layout_width="48dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="8dp"
+                toggle:sb_show_indicator="false"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_set_time_number"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+
+        <com.ziran.meiliao.widget.wheelpicker.WheelPicker
+            android:id="@+id/weelPicker1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:wheel_atmospheric="true"
+            app:wheel_curved="true"
+            app:wheel_data="@array/WheelArrayHour"
+            app:wheel_item_text_color="@color/textColor_333"
+            app:wheel_item_text_size="20sp"
+            app:wheel_select_item_extra_text="时"
+            app:wheel_selected_item_text_color="@color/textColor_333"
+            app:wheel_visible_item_count="5"/>
+
+
+        <com.ziran.meiliao.widget.wheelpicker.WheelPicker
+            android:id="@+id/weelPicker2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            app:wheel_item_text_size="20sp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:wheel_atmospheric="true"
+            app:wheel_curved="true"
+            app:wheel_data="@array/WheelArraySecond"
+            app:wheel_item_text_color="@color/textColor_333"
+            app:wheel_select_item_extra_text="时"
+            app:wheel_selected_item_text_color="@color/textColor_333"
+            app:wheel_visible_item_count="5"/>
+
+        <com.ziran.meiliao.widget.wheelpicker.WheelPicker
+            android:id="@+id/weelPicker3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:wheel_item_text_size="20sp"
+            app:wheel_atmospheric="true"
+            app:wheel_curved="true"
+            app:wheel_data="@array/WheelArrayPM"
+            app:wheel_item_text_color="@color/textColor_333"
+            app:wheel_select_item_extra_text="时"
+            app:wheel_selected_item_text_color="@color/textColor_333"
+            app:wheel_visible_item_count="5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_set_time_number"
+        android:id="@+id/ll_set_time_label"
+        android:background="@color/white"
+        android:paddingTop="12dp">
+
+        <TextView
+            android:id="@+id/tv_set_time_am"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="上午"
+            android:textColor="@color/textColor_333"/>
+
+        <TextView
+            android:id="@+id/tv_set_time_zw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="中午"
+            android:textColor="@color/textColor_333"/>
+
+        <TextView
+            android:id="@+id/tv_set_time_pm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="下午"
+            android:textColor="@color/textColor_333"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

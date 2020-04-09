@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_marginTop="40px"
+        android:layout_width="match_parent"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="验证码已经发送到您的手机"
+    android:layout_marginTop="74px"
+    android:layout_marginLeft="55px"
+    android:textColor="@color/textColor_999"
+    />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1323232323"
+        android:textColor="@color/textColor_f333"
+        android:textSize="40px"
+        android:layout_marginLeft="65px"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="86px"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="53px"
+            android:text="4位数字验证码。"
+            android:layout_marginRight="77px"
+            android:textColor="@color/textColor_999"
+            android:textSize="28px"
+            />
+
+    <TextView
+        android:id="@+id/tv_code"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textColor="#FBAF6B"
+        android:layout_marginRight="31px"
+        android:layout_height="wrap_content" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+        <com.jkb.vcedittext.VerificationCodeEditText
+            android:layout_width="match_parent"
+            android:id="@+id/vcet_input_code"
+            android:layout_height="wrap_content"
+            app:cursorWidth="1dp"
+            android:layout_below="@+id/tv_srzmm"
+            android:layout_marginLeft="32px"
+            android:layout_marginRight="32px"
+            android:layout_marginTop="59px"
+            android:inputType="number"
+            app:selectedBackgroundColor="@color/white"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:bottomLineHeight="2px"
+            app:figures="4"
+            app:cursorColor="@color/black"
+            app:cursorDuration="1000"
+            app:verCodeMargin="45px"
+            />
+
+
+    <TextView
+        android:id="@+id/tv_change"
+        android:layout_width="match_parent"
+        android:layout_marginTop="131px"
+        android:gravity="center"
+        android:text="@string/change_phone"
+        android:textSize="36px"
+        android:layout_marginLeft="32px"
+        android:layout_marginRight="32px"
+        android:textColor="@color/white"
+        android:padding="27px"
+        android:background="@drawable/normal_bg_green"
+        android:layout_height="wrap_content" />
+</com.zhy.autolayout.AutoLinearLayout>

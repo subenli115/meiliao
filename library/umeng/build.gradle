@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+//            // 移除无用的resource文件
+//            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api files('libs/SocialSDK_QQ_Simplify.jar')
+    api files('libs/umeng_social_api.jar')
+    api files('libs/umeng_social_net.jar')
+    api files('libs/umeng_social_tool.jar')
+    api files('libs/umeng_social_shareview.jar')
+//        compile files('libs/SocialSDK_Sina_Full.jar')
+       // compile files('libs/weiboSDKCore_3.1.4.jar')
+    api files('libs/SocialSDK_WeChat_Simplify.jar')
+        //友盟推送
+    api project(':library:Pushlib')
+//        compile files('libs/weiboSDKCore.jar')
+    api files('libs/SocialSDK_Sina_Simplify.jar')
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/normal_bg_white"
+    android:layout_height="wrap_content">
+
+<TextView
+    android:id="@+id/tv_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/share_wechat"
+    android:textColor="#444444"
+    android:textSize="28px"
+    android:layout_marginTop="50px"
+    android:layout_marginLeft="46px"
+    />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40px"
+        android:gravity="center"
+        android:layout_marginLeft="47px"
+        android:id="@+id/arl_share_friend"
+        android:orientation="vertical"
+        android:layout_below="@+id/tv_title"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_friend"
+        android:layout_width="94px"
+        android:layout_height="94px"
+        android:background="@mipmap/jdx_share_friend"
+        />
+        <TextView
+            android:layout_marginTop="12px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="朋友圈"
+            android:layout_marginBottom="50px"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40px"
+        android:layout_marginLeft="47px"
+        android:id="@+id/arl_share_wechat"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/arl_share_friend"
+        android:layout_below="@+id/tv_title"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_wechat"
+            android:layout_width="94px"
+            android:layout_height="94px"
+            android:background="@mipmap/jdx_share_wechat"
+            />
+        <TextView
+            android:layout_marginTop="12px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微信"
+            android:layout_marginBottom="50px"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#F0F0F0"
+        android:layout_below="@+id/arl_share_friend"
+        />
+
+    <TextView
+        android:paddingTop="32px"
+        android:paddingBottom="26px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="38px"
+        android:textColor="#999999"
+        android:layout_below="@+id/view_line"
+        android:text="@string/delete_act_cancel"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

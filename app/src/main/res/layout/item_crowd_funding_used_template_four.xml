@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingLeft="12dp"
+              android:paddingRight="12dp"
+              android:paddingTop="16dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_right_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:src="@mipmap/delete_red"
+        />
+
+
+    <include layout="@layout/include_template_title"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/workshops_bg_teacher"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_item_crowd_funding_used_template_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@null"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="何孟玲"
+                android:textColor="@color/textColor_666"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/et_item_crowd_funding_used_template_content"
+                style="@style/TextViewContent"
+                android:layout_marginTop="0dp"
+                android:lineSpacingMultiplier="1.2"
+                android:minLines="2"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="    为两岸最受欢迎正念教育领先机构带领五日止语静修营。"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_crowd_funding_used_template_avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_user_pic"
+            app:roundimageview_type="circle"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>

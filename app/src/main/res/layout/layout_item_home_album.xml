@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginLeft="33px"
+    android:background="@drawable/normal_bg_gray"
+    android:layout_marginRight="33px"
+    android:layout_width="match_parent"
+    android:layout_height="281px">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="推荐的专辑"
+    android:layout_marginTop="46px"
+    android:layout_marginLeft="40px"
+    android:textSize="40px"
+    android:id="@+id/tv_title"
+    android:textStyle="bold"
+    android:textColor="@color/textColor_666"
+    />
+    <TextView
+        android:id="@+id/tv_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第一节:身体少吃"
+        android:layout_alignLeft="@+id/tv_title"
+        android:layout_below="@+id/tv_title"
+        android:textSize="24px"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/tv_section"
+        android:layout_gravity="end|center_vertical"
+        android:orientation="horizontal"
+            android:layout_marginTop="35px"
+        android:layout_marginLeft="40px"
+        android:background="@drawable/normal_bg_green"
+        android:layout_height="68px">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="继续练习"
+            android:layout_marginLeft="35px"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textSize="30px"
+            android:gravity="center"
+            android:layout_marginRight="10px"
+            />
+
+        <ImageView
+            android:layout_width="15px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="16px"
+            android:layout_height="32px"
+            android:src="@mipmap/play_with_green"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

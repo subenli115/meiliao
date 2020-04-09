@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#F3456C</color>
+    <color name="colorPrimary">#f2f2f2</color>
+    <color name="colorPrimaryDark">#000</color>
+    <!--白天主题-->
+    <color name="day_backgroup_color">#FFFFFFFF</color>
+    <color name="day_one_text_color">#FF000000</color>
+    <color name="day_two_text_color">#c9000000</color>
+    <color name="day_three_text_color">#8A9599</color>
+    <!--夜间主题-->
+    <color name="night_backgroup_color">#3F3F3F</color>
+    <color name="night_one_text_color">#FFbbbbbb</color>
+    <color name="night_two_text_color">#8A9599</color>
+    <color name="night_there_text_color">#8A9599</color>
+    <!-- app主色调-->
+    <color name="main_color">#98D983</color>
+    <color name="orange">#FA8C20</color>
+    <color name="wheel_divider_line_color">#FF000000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white90">#c2FFFFFF</color>
+    <color name="white70">#b2FFFFFF</color>
+    <color name="white30">#4cFFFFFF</color>
+    <color name="black30">#4c000000</color>
+    <color name="white20">#33FFFFFF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="green">#FF00FF00</color>
+    <color name="white_alpha_half">#ccFFFFFF</color>
+    <color name="gray">#FFF0F0F0</color>
+    <color name="gray_fb">#FBFBFB</color>
+    <color name="gray70">#7bF0F0F0</color>
+    <color name="gray_deep">#c9000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_helf">#70000000</color>
+    <color name="transparent30">#28000000</color>
+    <color name="transparent60">#48000000</color>
+    <color name="transparent10">#12000000</color>
+    <color name="transparent5">#08000000</color>
+    <color name="bg_white_gray">#f2f2f2</color>
+    <color name="light_gray">#808080</color>
+    <color name="chat_tip_color">#FFcccccc</color>
+    <color name="blue">#5CA3E5</color>
+    <color name="blue_70">#4d6b96</color>
+    <color name="toast_white">#ffffff</color>
+    <color name="toast_stroke_gray">#99d4d4d4</color>
+
+
+    <color name="alpha_05_black">#0D000000</color>
+    <color name="alpha_10_black">#1A000000</color>
+    <color name="alpha_20_black">#33000000</color>
+
+
+    <color name="titleBar_bg1">#8DE0DD</color>
+    <color name="titleBar_bg">#fafafa</color>
+    <color name="bottom_bg">#fff</color>
+    <color name="titleBar">#f9f9f9</color>
+    <color name="main_jyg_head_bg">#FDFDFD</color>
+    <color name="divider">#e6e6e6</color>
+    <color name="divider1">#F7F7F5</color>
+    <color name="textcolor_2">#585858</color>
+    <color name="textcolor_1">#000</color>
+    <color name="btn_unsel">#74CFCB</color>
+    <color name="btn_sel">#84efcb</color>
+
+    <color name="textColor_selected">#fff</color>
+    <color name="textColor_unselected">#b2ffffff</color>
+    <color name="textColor_hint">#cccccc</color>
+    <color name="textColor_f333">#FF333333</color>
+    <color name="textColor_333">#333333</color>
+    <color name="textColor_9f">#9f9f9f</color>
+    <color name="textcolor5">#F0F0F0</color>
+    <color name="textcolor6">#Fff9F9</color>
+    <color name="share_album">#717272</color>
+    <color name="price_red">#EF6B5E</color>
+    <color name="textColor_999">#999999</color>
+    <color name="textColor_2A">#2A2A2A</color>
+    <color name="textColor_666">#666666</color>
+    <color name="textColor_444">#444444</color>
+    <color name="textColor_4c"> #4C4C4C</color>
+    <color name="contorller_bar_bg">#10000000</color>
+    <color name="dask_bg">#f5f5f5</color>
+    <color name="textColor_teshe">#45B000</color>
+    <color name="textColor_teshe8">#89CAA2</color>
+
+    <color name="textColor_b1">#B1B1B1</color>
+    <color name="textColor_teshe_half">#A2D77F</color>
+    <color name="textColor_teshe3">#3C9A00</color>
+    <color name="textColor_bar_me">#98D983</color>
+    <color name="textColor_teshe2">#5DA7FA</color>
+    <color name="textColor_teshe7">#FBAF6B</color>
+    <color name="textColor_teshe5">#FFA008</color>
+    <color name="textColor_teshe_pre">#7cEF8C57</color>
+    <color name="textColor_teshe_unsel">#c6cbcb</color>
+    <color name="textColor_5392CC">#5392CC</color>
+    <color name="textColor_e4">#E4E4E4</color>
+    <color name="textColor_aaa">#AAAAAA</color>
+
+    <color name="prompt_success">#31c27c</color>
+    <color name="prompt_error">#ff0000</color>
+    <color name="prompt_warning">#f0633d</color>
+    <color name="textColor_F08F55">#F08F55</color>
+</resources>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_share_exercise_layout"
+        ></com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
+        android:layout_above="@+id/arl_first"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/shape_white_corner8"
+            >
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="10px"
+    android:layout_gravity="center_horizontal"
+    >
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="《MBSR八周练习册》"
+    android:textColor="#444444"
+    android:id="@+id/tv_name"
+
+    android:layout_marginTop="58px"
+    android:textSize="32px"
+        android:layout_marginRight="10px"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第二周"
+        android:textColor="#444444"
+        android:id="@+id/tv_week"
+        android:layout_marginTop="58px"
+        android:textSize="28px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
+            <TextView
+                android:layout_marginTop="10px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系列课程中"
+                android:textSize="32px"
+                android:layout_marginBottom="10px"
+                android:textColor="#444444"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第二周"
+                android:textSize="32px"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#444444"
+                android:id="@+id/tv_exercise"
+                />
+            <view
+                android:layout_width="56px"
+                android:background="#C1C1C1"
+                android:layout_marginTop="32px"
+                android:layout_marginBottom="32px"
+                android:layout_height="1px"
+                android:layout_gravity="center_horizontal"/>
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="感受慈悲心理"
+                    android:textSize="36px"
+                    android:textColor="#999999"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <ImageView
+                android:layout_width="173px"
+                android:layout_height="208px"
+                android:id="@+id/iv_bg"
+                android:layout_marginTop="20px"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/me_doctor"
+                android:layout_marginBottom="200px"
+                />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="22px"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="75px"
+        android:id="@+id/arl_first"
+        android:layout_above="@+id/iv_share_exercise_close"
+        android:layout_marginRight="75px"
+        android:background="@drawable/shape_white_corner8"
+        >
+
+
+
+        <com.ziran.meiliao.widget.MoreImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/moreImageView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="33px"
+            android:layout_marginBottom="33px"
+            android:layout_height="48dp"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            app:moreImageView_count="2"
+            app:moreImageView_default_data="share_4"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/iv_share_exercise_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:src="@mipmap/share_jdx_close"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

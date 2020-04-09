@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingLeft="12dp"
+                android:background="@drawable/share_top_and_bottom"
+                android:paddingRight="12dp"
+                android:paddingTop="16dp">
+    <com.ziran.meiliao.widget.PlayPauseView
+        android:id="@+id/tv_custom_study_panel_play"
+        android:layout_width="28dp"
+        android:layout_centerVertical="true"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_custom_study_panel_title"
+        android:layout_width="match_parent"
+        android:layout_toLeftOf="@+id/tv_custom_study_panel_play"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        tools:text="第一课：正念如何融入一1111111111111111天的工作与生活"/>
+
+    <TextView
+        android:id="@+id/tv_custom_study_panel_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_custom_study_panel_title"
+        tools:text="00:40:13 ／ 99999人学习 ／  未学习"/>
+
+    <TextView
+        android:id="@+id/tv_custom_study_panel_st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_custom_study_panel_title"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/tv_custom_study_panel_des"
+        android:background="@drawable/shape_tag_vip_background"
+        android:text="限免"
+        android:textColor="@color/textColor_teshe"
+        android:textSize="12sp"
+        android:visibility="gone"
+        />
+
+
+</RelativeLayout>

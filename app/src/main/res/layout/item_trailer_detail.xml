@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingLeft="12dp"
+              android:paddingTop="16dp">
+
+    <RelativeLayout
+        android:id="@+id/ll_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="36dp"
+            android:layout_height="24dp"
+            android:background="@mipmap/course_catalog_lessonbg"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_position"
+            android:layout_marginLeft="6dp"
+            android:textSize="18sp"
+            tools:text="呼吸的力量_test"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_tv_jyg_vip_bg"
+                android:text="试看"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@mipmap/gap_line"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_jyg_player_nav_down"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_step1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/tv_step1"
+                android:layout_alignTop="@+id/tv_step1"
+                android:layout_marginLeft="6dp"
+                android:background="@color/diver_bar"/>
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="6dp"
+                android:src="@mipmap/course_icon_lesson_dot"/>
+
+            <TextView
+                android:id="@+id/tv_step1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                tools:text="关注呼吸，回到现在回到现在，生活在当下，相信身体的回到现在，生活在当下，相信身体的回到现在，生活在当下，相信身体的，生活在当下，相信身体的康复力量"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_step2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/tv_step2"
+                android:layout_alignTop="@+id/tv_step2"
+                android:layout_marginLeft="6dp"
+                android:background="@color/diver_bar"/>
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="6dp"
+                android:src="@mipmap/course_icon_lesson_dot"/>
+
+            <TextView
+                android:id="@+id/tv_step2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                tools:text="关注呼吸，回到现在，生活在当下，相信身体的康复力量"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_step3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/tv_step3"
+                android:layout_alignTop="@+id/tv_step3"
+                android:layout_marginLeft="6dp"
+                android:background="@color/diver_bar"/>
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="6dp"
+                android:src="@mipmap/course_icon_lesson_dot"/>
+
+            <TextView
+                android:id="@+id/tv_step3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                tools:text="关注呼吸，回到现在，生活在当下，相信身体的康复力量"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_step4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/tv_step4"
+                android:layout_alignTop="@+id/tv_step4"
+                android:layout_marginLeft="6dp"
+                android:background="@color/diver_bar"/>
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="6dp"
+                android:src="@mipmap/course_icon_lesson_dot"/>
+
+            <TextView
+                android:id="@+id/tv_step4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                tools:text="关注呼吸，回到现在，生活在当下，相信身体的康复力量"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/diver_bar"/>
+</LinearLayout>

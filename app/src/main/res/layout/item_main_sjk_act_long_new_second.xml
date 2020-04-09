@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="wrap_content"
+    >
+    <include
+        android:id="@+id/include_smooth_checkbox"
+        layout="@layout/include_smooth_checkbox"
+        android:visibility="gone"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/item_content_rl"
+        android:padding="30px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoFrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_item_sjk_act_img"
+        android:layout_width="match_parent"
+        android:layout_height="220px"
+        android:scaleType="fitXY"
+        android:background="@mipmap/ic_loading_square_big"
+        />
+
+    <TextView
+        android:id="@+id/tv_free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="免费"
+        android:textSize="11px"
+        android:paddingBottom="5px"
+        android:layout_gravity="right"
+        android:visibility="gone"
+        android:paddingTop="5px"
+        android:paddingLeft="11px"
+        android:paddingRight="11px"
+        android:layout_alignTop="@+id/iv_item_sjk_act_img"
+        android:layout_alignRight="@+id/iv_item_sjk_act_img"
+
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/normal_orange_exe"
+        />
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_below="@+id/iv_item_sjk_act_img"
+    android:background="@drawable/normal_bg_tran_half_three"
+    android:orientation="vertical"
+    android:padding="14px"
+    android:layout_marginTop="205px"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MBSR八周练习"
+
+        android:layout_marginLeft="33px"
+        android:textColor="@color/black"
+        android:textSize="32px"
+        />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="长期练习可提高身体柔韧性，缓解焦虑和抑郁"
+        android:singleLine="true"
+        android:ellipsize = "end"
+        android:maxEms="11"
+        android:layout_marginTop="13px"
+        android:layout_marginLeft="33px"
+        android:textSize="22px"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginRight="54px"
+        android:textColor="#FFC8C8C8"
+        />
+<TextView
+    android:id="@+id/tv_download"
+    android:layout_centerVertical="true"
+    android:text=""
+    android:layout_width="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="10px"
+    android:layout_height="wrap_content"
+
+    />
+
+</com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoFrameLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

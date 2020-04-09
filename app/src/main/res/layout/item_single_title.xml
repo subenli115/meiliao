@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/driver"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_item_jyg_audio_title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+            tools:text="标题很长"/>
+        <!--
+                android:drawableRight="@mipmap/ic_sjk_live_arrow_chose"
+        -->
+        <TextView
+            android:id="@+id/tv_item_jyg_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/to_expand_hint"
+            android:textColor="@color/textColor_999"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

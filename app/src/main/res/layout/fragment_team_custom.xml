@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_title_text="团建定制"
+        app:ntb_tv_left="showAndFinish"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/bivCourse"
+                style="@style/BaseItemView"
+                app:biv_click_id="@integer/id_course"
+                app:biv_content_must_need="true"
+                app:biv_title="课程"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/bivTeacher"
+                style="@style/BaseItemView"
+                app:biv_click_id="@integer/id_teacher"
+                app:biv_content_must_need="true"
+                app:biv_title="老师"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/bivGoal"
+                style="@style/BaseItemView"
+                app:biv_click_id="@integer/id_team_goal"
+                app:biv_content_must_need="true"
+                app:biv_title="目的"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/bivPrice"
+                style="@style/BaseItemView"
+                app:biv_forword_show="false"
+                app:biv_right_click_id="@integer/id_team_price_detail"
+                app:biv_right_color="@color/textColor_teshe"
+                app:biv_right_text="费用明细"
+                app:biv_title="课程费用"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/bivPeople"
+                style="@style/BaseItemView"
+                app:biv_content_must_need="true"
+                app:biv_divider_show="false"
+                app:biv_forword_show="false"
+                app:biv_right_color="@color/textColor_teshe5"
+                app:biv_right_text="¥1000/人"
+                app:biv_title="目标人数"
+                />
+
+            <com.ziran.meiliao.ui.workshops.widget.PeopleSelectView
+                android:id="@+id/peopleSelectView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="16dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                app:psv_line_width="1dp"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/bivTime"
+                style="@style/BaseItemView"
+                app:biv_click_id="@integer/id_time"
+                app:biv_content_must_need="true"
+                app:biv_title="团建时间"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_crowd_funding_user_msg_input_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:background="@mipmap/btn_bg"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+</LinearLayout>

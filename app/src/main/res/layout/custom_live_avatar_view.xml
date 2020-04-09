@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/ll_sjk_fulllive_head"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/selector_sjk_fulllive_head"
+              android:gravity="center_vertical"
+              android:minWidth="60dp"
+              android:orientation="horizontal">
+
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_sjk_fulllive_avatar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@mipmap/ic_user_pic"
+        app:roundimageview_type="circle"/>
+
+    <TextView
+        android:id="@+id/tv_sjk_fulllive_listcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="@dimen/edge_margin"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        tools:text="99999"/>
+
+</LinearLayout>

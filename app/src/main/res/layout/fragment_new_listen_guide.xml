@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="63px"
+        android:layout_height="wrap_content"
+        >
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all_emotion"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+            <com.zhy.autolayout.AutoFrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_width="100px"
+                    android:layout_gravity="center"
+                    android:id="@+id/iv_voice1"
+                    android:layout_height="100px"
+                    />
+            </com.zhy.autolayout.AutoFrameLayout>
+            <TextView
+                android:id="@+id/tv_music_name1"
+                android:layout_marginTop="10px"
+                android:textSize="28px"
+                android:textColor="@color/textColor_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/all_jy"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+            <com.zhy.autolayout.AutoFrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_width="100px"
+                    android:layout_gravity="center"
+                    android:id="@+id/iv_voice2"
+                    android:layout_height="100px"
+                    />
+            </com.zhy.autolayout.AutoFrameLayout>
+            <TextView
+                android:id="@+id/tv_music_name2"
+                android:layout_marginTop="10px"
+                android:textSize="28px"
+                android:textColor="@color/textColor_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/all_zm"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+            <com.zhy.autolayout.AutoFrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_width="100px"
+                    android:layout_gravity="center"
+                    android:id="@+id/iv_voice3"
+                    android:layout_height="100px"
+                    />
+            </com.zhy.autolayout.AutoFrameLayout>
+            <TextView
+                android:id="@+id/tv_music_name3"
+                android:layout_marginTop="10px"
+                android:textSize="28px"
+                android:textColor="@color/textColor_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="0dp"
+            android:id="@+id/all_more"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+            <com.zhy.autolayout.AutoFrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_width="100px"
+                    android:layout_gravity="center"
+                    android:id="@+id/iv_voice4"
+                    android:layout_height="100px"
+                    />
+            </com.zhy.autolayout.AutoFrameLayout>
+            <TextView
+                android:id="@+id/tv_music_name4"
+                android:layout_marginTop="10px"
+                android:textSize="28px"
+                android:textColor="@color/textColor_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="60px"
+        >
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:id="@+id/ll_main_home_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/iv_rec_bg"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="132px" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:padding="35px"
+                android:background="@color/transparent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/tv_main_home_music_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:maxWidth="522px"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_below="@+id/tv_main_home_music_title"
+                    android:id="@+id/tv_main_home_music_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:text="张芝华"
+                    android:textColor="@color/textColor_666"
+                    />
+                    <ImageView
+                        android:id="@+id/iv_share"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/share_pop_music"
+                        />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoFrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#E0E0E0"
+                android:layout_below="@+id/ll_main_home_music"
+                />
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/normal_bg_tran_half_three"
+            android:layout_below="@+id/ll_main_home_music"
+            >
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/fl_main_home_music_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="59px"
+                    >
+
+                    <com.ziran.meiliao.common.commonwidget.FilterTextView
+                        android:id="@+id/tv_main_home_music_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:text="          "
+                        android:textColor="@color/textColor_666"
+                        android:textSize="12sp"
+                        />
+
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="13sp"
+                        android:layout_toRightOf="@+id/tv_main_home_music_more"
+                        android:text=""
+
+                        />
+
+                        <com.ziran.meiliao.common.commonwidget.PlayPauseView
+                            android:id="@+id/iv_main_home_music_play_or_pause"
+                            android:layout_width="26dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_height="26dp"
+                            app:pp_bg_color="@color/transparent10"
+                            app:pp_bg_shadow_color_alpha="50"
+                            android:layout_marginRight="30dp"
+                            app:pp_bg_shadow_size="2dp"
+                            app:pp_border_show="true"
+                            app:pp_gap_width="8"
+                            android:layout_alignParentRight="true"
+                            />
+                </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoFrameLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_marginTop="80px"
+        android:layout_marginLeft="32px"
+        android:layout_marginRight="32px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:refreshEnabled="true"
+        />
+
+
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

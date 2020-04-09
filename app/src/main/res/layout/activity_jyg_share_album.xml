@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/transparent_helf"
+              android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_share_album_screenshot"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_weight="73"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/rl_share_album_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_share_album_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tv_share_album_tltle"
+                android:layout_marginBottom="20dp"
+                android:scaleType="fitXY"/>
+
+
+            <ImageView
+                android:id="@+id/tv_share_album_ewm"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="@dimen/block_width"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_share_album_ewm"
+                android:layout_alignTop="@+id/tv_share_album_ewm"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="12dp"
+                android:layout_toRightOf="@+id/tv_share_album_ewm"
+                android:orientation="vertical">
+                <!--
+                幸福越与人共享，它的价值越增加
+                分享即可领取“张芝华-音乐催眠”专辑
+                -->
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="幸福越与人共享，它的价值越增加"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_share_album_share_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="分享即可领取“张芝华-音乐催眠”专辑"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+            <!--
+                        <TextView
+                            android:id="@+id/tv_share_album_wpyx"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/tv_share_album_ewm"
+                            android:layout_marginLeft="8dp"
+                            android:layout_toRightOf="@+id/tv_share_album_ewm"
+                            android:text="5P医学App"
+                            android:textColor="@color/textColor2"/>-->
+
+            <TextView
+                android:id="@+id/tv_share_album_tltle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/tv_share_album_ewm"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="@dimen/edge_margin"
+                android:text="Ariel邀请你一起聆听"
+                android:textColor="@color/textColor_333"/>
+
+            <ImageView
+                android:id="@+id/tv_share_album_userHead"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_above="@+id/tv_share_album_tltle"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@mipmap/ic_user_pic"/>
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_share_album_share_shot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="27">
+
+        <LinearLayout
+            android:id="@+id/ll_share_album_share"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/edge_margin"
+                android:orientation="horizontal">
+
+                <View
+                    style="@style/hor_match_line"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_share_album_share_text"/>
+
+                <TextView
+                    android:id="@+id/tv_share_album_share_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:text="分享"
+                    android:textColor="@color/white"/>
+
+                <View
+                    style="@style/hor_match_line"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_share_album_share_text"/>
+            </RelativeLayout>
+
+            <com.ziran.meiliao.widget.MoreImageView
+                android:id="@+id/moreImageView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                app:moreImageView_default_data="share_white"/>
+
+            <ImageView
+                android:id="@+id/iv_share_album_close"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/ic_close"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

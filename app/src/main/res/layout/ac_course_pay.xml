@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="#F5F9FA"
+    android:layout_height="match_parent">
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_tv_left="showAndFinish"
+        />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_below="@+id/ntb_title"
+    android:id="@+id/rl"
+    android:layout_height="wrap_content">
+
+
+<TextView
+    android:id="@+id/tv_price"
+    android:layout_marginTop="53dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:textSize="25sp"
+    android:textColor="#89CAA2"
+    android:text=""
+    />
+
+    <TextView
+        android:id="@+id/tv_first_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginTop="17dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_price"
+        android:textColor="@color/textColor_999"
+        android:text=""
+        />
+
+    <TextView
+        android:id="@+id/tv_js"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="已为您节省￥"
+        android:layout_marginBottom="33dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/textColor_2A"
+            android:layout_below="@+id/tv_first_price"
+        android:textSize="15sp"
+        />
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/check_wechat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_tran_gray">
+
+        <ImageView
+            android:id="@+id/iv_wechat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            android:src="@mipmap/ic_me_pay_wechat"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_wechat"
+            android:gravity="center_vertical"
+            android:text="微信支付"
+            android:textColor="@color/textColor_333"
+            android:textSize="14sp"/>
+
+        <com.ziran.meiliao.widget.SmoothCheckBox
+            android:id="@+id/smoothCheckBox_wechat"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+            android:layout_margin="12dp"
+            app:color_checked="@color/textColor_teshe"/>
+
+        <View
+            style="@style/hor_match_line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/check_alipay"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/check_wechat"
+        android:background="@drawable/selector_tran_gray">
+
+        <ImageView
+            android:id="@+id/iv_zhifubao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            android:src="@mipmap/ic_me_pay_alipay"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_zhifubao"
+            android:gravity="center_vertical"
+            android:text="支付宝支付"
+            android:textColor="@color/textColor_333"
+            android:textSize="14sp"/>
+
+        <com.ziran.meiliao.widget.SmoothCheckBox
+            android:id="@+id/smoothCheckBox_zfb"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            app:color_checked="@color/textColor_teshe"/>
+
+        <View
+            style="@style/hor_match_line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"/>
+    </RelativeLayout>
+
+    <!--<com.ziran.meiliao.common.commonwidget.FilterImageView-->
+    <!--android:id="@+id/iv_recharge_req"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_marginBottom="16dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:src="@mipmap/wallet_btn_pay"/>-->
+<TextView
+    android:id="@+id/tv_get_point"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="14sp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="支付成功后，可获得0积分"
+    android:layout_above="@+id/iv_recharge_req"
+    />
+    <TextView
+        android:id="@+id/iv_recharge_req"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/all_sb"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="立即支付"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/background_gradient"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/check_alipay"
+        android:layout_above="@+id/iv_recharge_req"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

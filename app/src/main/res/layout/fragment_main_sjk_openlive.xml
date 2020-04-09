@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EBEBEA"
+                android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_main_sjk_openlive_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rl_main_sjk_openlive"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="48dp"
+        android:textColor="@color/textColor_333"
+        tools:text="05月06日  8:00-12:00  现场直播"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_main_sjk_openlive"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_below="@+id/tv_main_sjk_openlive_time"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:elevation="4dp"
+        android:background="@drawable/selector_openlive_bg"
+        android:padding="12dp">
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_main_sjk_openlive_cover"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            app:roundimageview_height_ratio="0.611"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:src="@mipmap/ic_loading_square"/>
+
+        <TextView
+            android:id="@+id/tv_main_sjk_openlive_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_main_sjk_openlive_cover"
+            android:maxLines="1"
+            android:textColor="@color/textColor_333"
+            tools:text="清醒的头脑不可估价"/>
+
+        <TextView
+            android:id="@+id/tv_main_sjk_openlive_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_main_sjk_openlive_subTitle"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/iv_main_sjk_openlive_cover"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"
+            tools:text="企业职场的正念运用"/>
+
+        <TextView
+            android:id="@+id/tv_main_sjk_openlive_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_main_sjk_openlive_cover"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/iv_main_sjk_openlive_cover"
+            android:textColor="@color/textColor_333"
+            android:textSize="12sp"
+            tools:text="温宗堃"/>
+
+        <TextView
+            android:id="@+id/tv_main_sjk_openlive_author_descript"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_main_sjk_openlive_cover"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/tv_main_sjk_openlive_author"
+            android:textColor="@color/textColor_333"
+            android:textSize="10sp"
+            tools:text="博士 台湾正念发展协会理事长"/>
+
+
+    </RelativeLayout>
+
+
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_main_sjk_openlive_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/moreImageView"
+        android:layout_centerHorizontal="true"
+        android:text="开启直播"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:background="@mipmap/btn_bg"
+        />
+
+    <com.ziran.meiliao.widget.MoreImageView
+        android:id="@+id/moreImageView"
+        android:layout_width="match_parent"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_height="48dp"
+        android:layout_alignLeft="@+id/tv_main_sjk_openlive_open"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/tv_main_sjk_openlive_open"
+        android:layout_marginBottom="36dp"
+        app:moreImageView_default_data="share"
+        />
+
+</RelativeLayout>

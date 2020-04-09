@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_marginTop="40px"
+        android:layout_width="wrap_content"
+        android:textSize="32px"
+        android:layout_marginLeft="30px"
+        android:textColor="#444444"
+        android:layout_height="wrap_content" />
+
+    <com.zhy.autolayout.AutoFrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="22px"
+        android:layout_marginRight="42px"
+        android:layout_marginLeft="30px"
+        android:layout_marginBottom="22px"
+
+        android:layout_height="wrap_content"
+        >
+
+
+        <com.ziran.meiliao.widget.ForbidEmojiEditText
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="180px"
+            android:textSize="28px"
+            android:gravity="start"
+            android:padding="20px"
+            android:text="222222222222"
+            android:background="@drawable/edit_bg_gray"
+            android:layout_gravity="center_vertical"
+            android:scrollbars="vertical"
+            android:textColor="#999999"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            />
+        <TextView
+            android:id="@+id/tv_voice"
+            android:layout_width="wrap_content"
+            android:paddingLeft="15px"
+            android:paddingRight="10px"
+            android:paddingBottom="8px"
+            android:paddingTop="10px"
+            android:layout_marginRight="20px"
+            android:layout_height="wrap_content"
+            android:text="试着用语音说说"
+            android:textSize="20px"
+            android:drawablePadding="10px"
+            android:textColor="#E0E0E0"
+            android:layout_gravity="end|bottom"
+            />
+
+
+
+    </com.zhy.autolayout.AutoFrameLayout>
+</com.zhy.autolayout.AutoLinearLayout>

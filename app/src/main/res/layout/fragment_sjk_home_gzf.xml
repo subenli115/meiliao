@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rootFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:id="@+id/driver"
+        android:background="#f7f7f7"/>
+
+    <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/driver"
+        android:layout_height="match_parent"
+        android:background="#FFF0F4F5"
+        app:loadMoreEnabled="true"
+        app:refreshEnabled="true"/>
+
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+</RelativeLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/fitness_medal_bg"
+    >
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:id="@+id/all_thanks"
+    android:gravity="center"
+    android:layout_marginTop="195px"
+    android:layout_height="wrap_content">
+    <View
+        android:layout_width="77px"
+        android:background="@color/white"
+        android:layout_height="4px"/>
+    <TextView
+        android:id="@+id/tv_thanks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="恭喜你"
+        android:padding="10px"
+        android:layout_centerHorizontal="true"
+        android:textSize="28px"
+        android:textColor="@color/white"
+        />
+    <View
+        android:layout_width="77px"
+        android:background="@color/white"
+        android:layout_height="4px"/>
+</com.zhy.autolayout.AutoLinearLayout>
+    
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:layout_marginTop="40px"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/all_thanks"
+        android:text="在健康养生的路上又向前迈进了一步"
+        />
+
+<TextView
+    android:id="@+id/tv_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tv_content"
+    android:textColor="@color/white"
+    android:layout_centerHorizontal="true"
+    android:text="特此给你颁发练习的勋章"
+    android:textSize="28px"
+    android:layout_marginTop="44px"
+    />
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_below="@+id/tv_title"
+        android:layout_width="301px"
+        android:layout_marginTop="68px"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/fitness_medal_icon"
+        android:layout_height="333px" />
+
+    <TextView
+        android:id="@+id/tv_share"
+        android:layout_below="@+id/iv_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="50px"
+        android:textSize="33px"
+        android:text="分享健康给好友"
+        android:padding="20px"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:background="@drawable/normal_bg_green48"
+
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="22px"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="75px"
+        android:id="@+id/arl_first"
+        android:layout_below="@+id/tv_share"
+        android:layout_above="@+id/iv_share_exercise_close"
+        android:layout_marginRight="75px"
+        android:background="@drawable/shape_white_corner8"
+        >
+
+
+
+        <com.ziran.meiliao.widget.MoreImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/moreImageView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="33px"
+            android:layout_marginBottom="33px"
+            android:layout_height="65dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            app:moreImageView_count="2"
+            app:moreImageView_default_data="share_4"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30px"
+        android:layout_below="@+id/arl_first"
+        android:id="@+id/iv_share_close"
+        android:layout_width="46px"
+        android:layout_height="46px"
+        android:background="@mipmap/fitness_share_close"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

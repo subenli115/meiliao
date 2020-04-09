@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_item_course_library_teacher_detail_team_pic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="8dp"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_course_library_teacher_detail_team_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_item_course_library_teacher_detail_team_pic"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        tools:text="正念翻转小课堂，寒假班开班啦～！"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_course_library_teacher_detail_team_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:layout_alignBottom="@+id/iv_item_course_library_teacher_detail_team_pic"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/iv_item_course_library_teacher_detail_team_pic"
+        android:drawableLeft="@mipmap/ic_time"
+        android:gravity="center"
+        android:textSize="12sp"
+        tools:text="2天1晚"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_course_library_teacher_detail_team_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_item_course_library_teacher_detail_team_date"
+        android:layout_toRightOf="@+id/iv_item_course_library_teacher_detail_team_pic"
+        android:drawableLeft="@mipmap/ic_persons"
+        android:gravity="center"
+        android:drawablePadding="4dp"
+        android:textSize="12sp"
+        tools:text="99-999"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_course_library_teacher_detail_team_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_item_course_library_teacher_detail_team_pic"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dp"
+        android:text=" ¥99"
+        android:textColor="@color/textColor_teshe5"
+        android:textSize="18sp"
+        />
+</RelativeLayout>

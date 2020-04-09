@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_tran_gray">
+
+    <ImageView
+        android:id="@+id/iv_item_group_left"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_item_group_left_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/iv_item_group_left"
+        android:drawableRight="@mipmap/ic_arrow_gray"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_item_group_right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"/>
+
+    <ViewStub
+        android:id="@+id/vs_item_group_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="48dp"
+        android:layout="@layout/viewstub_image"
+        android:padding="8dp"/>
+
+
+
+    <ViewStub
+        android:id="@+id/vs_item_group_switch"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:layout="@layout/viewstub_slide_switch"/>
+
+    <ViewStub
+        android:id="@+id/vs_item_group_container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="24dp"
+        android:layout="@layout/viewstub_item_group_container"/>
+
+
+    <View
+        android:id="@+id/view_item_group_bottom_line"
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+

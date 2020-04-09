@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingTop="16dp"
+              android:paddingLeft="12dp"
+              android:paddingRight="12dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_right_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:src="@mipmap/delete_red"
+        />
+
+    <include layout="@layout/include_template_title"/>
+    <View
+        android:id="@+id/view_item_crowd_funding_used_template_bg1"
+        android:layout_width="36dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="2dp"
+        android:background="@mipmap/workshops_content_syb1"
+        />
+
+    <EditText
+        android:id="@+id/et_item_crowd_funding_used_template_content"
+        style="@style/TextViewContent"
+        android:padding="8dp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="  参与者、日常生活"
+        />
+
+    <View
+        android:id="@+id/view_item_crowd_funding_used_template_bg2"
+        android:layout_width="36dp"
+        android:layout_height="16dp"
+        android:layout_gravity="right"
+        android:background="@mipmap/workshops_content_syb2"
+        />
+
+</LinearLayout>

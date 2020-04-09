@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:layout_margin="12dp">
+
+    <LinearLayout
+        android:id="@+id/ll_item_coupon_left"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@mipmap/ic_me_coupon_left_green"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_coupon_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item_coupon_right"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="7"
+        android:background="@mipmap/ic_me_coupon_right_green"
+        android:paddingLeft="12dp">
+
+        <TextView
+            android:id="@+id/tv_item_coupon_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_item_coupon_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/textColor_9f"
+            />
+    </RelativeLayout>
+</LinearLayout>

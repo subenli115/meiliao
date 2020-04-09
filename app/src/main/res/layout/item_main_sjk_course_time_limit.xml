@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:paddingTop="8dp"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp">
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_sjk_course_time_limit_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="200dp"
+            android:minHeight="200dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_loading_square"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/course_lab_enroll"/>
+
+        <TextView
+            android:id="@+id/tv_sjk_course_time_limit_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/transparent_helf"
+            android:drawableLeft="@mipmap/course_icon_sandglass"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            tools:text="9天9小时9分9秒 "/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_course_time_limit_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_top"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        tools:text="报名 | 医学及心理学中的正念——正念减压四日工作坊"/>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_course_time_limit_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_sjk_course_time_limit_title"
+        android:layout_marginTop="4dp"
+        android:drawableLeft="@mipmap/course_icon_time"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/textColor_9f"
+        android:textSize="12sp"
+        tools:text="2017／07／08 - 2017/07／11 "/>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_course_time_limit_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_sjk_course_time_limit_date"
+        android:layout_marginTop="4dp"
+        android:drawableLeft="@mipmap/course_icon_add"
+        android:drawablePadding="4dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textColor="@color/textColor_9f"
+        android:textSize="12sp"
+        tools:text="杭州市古墩路紫金广场福泉书院"/>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_course_time_limit_enroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_item_sjk_course_time_limit_address"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tv_item_sjk_course_time_limit_date"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/selector_btn_down"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="马上报名"
+        android:textColor="@color/white"/>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/tv_item_sjk_course_time_limit_address"
+        android:layout_marginTop="12dp"/>
+</RelativeLayout>

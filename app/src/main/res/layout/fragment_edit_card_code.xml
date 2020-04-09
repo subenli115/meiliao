@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f0f0f0"
+                android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.widget.BaseItemView
+        android:id="@+id/biv_name"
+        style="@style/BaseItemView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
+        app:biv_content_type="edit"
+        app:biv_forword_show="false"
+        app:biv_title="持卡人"
+        app:biv_title_color="@color/textColor_333"
+        app:biv_title_width="72dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_edit_card_code_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/biv_name"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/biv_name"
+        android:layout_marginRight="12dp"
+        android:src="@mipmap/btn_i"
+        />
+
+    <com.ziran.meiliao.widget.BaseItemView
+        android:id="@+id/biv_bland_card_no"
+        style="@style/BaseItemView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/biv_name"
+        app:biv_content_hint="银行卡号"
+        app:biv_content_type="edit"
+        app:biv_forword_show="false"
+        app:biv_title="卡号"
+        app:biv_title_color="@color/textColor_333"
+        app:biv_title_width="72dp"
+        />
+
+    <com.ziran.meiliao.widget.BaseItemView
+        android:id="@+id/biv_phone"
+        style="@style/BaseItemView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/biv_bland_card_no"
+        app:biv_content_hint="请填写银行预留的手机号码"
+        app:biv_content_type="edit"
+        app:biv_forword_show="false"
+        app:biv_title="手机"
+        app:biv_title_color="@color/textColor_333"
+        app:biv_title_width="72dp"
+        />
+
+    <com.ziran.meiliao.widget.BaseItemView
+        android:id="@+id/biv_bland_card_name"
+        style="@style/BaseItemView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/biv_phone"
+        app:biv_content_hint="请填写银行名字"
+        app:biv_content_type="edit"
+        app:biv_forword_show="false"
+        app:biv_title="开户银行"
+        app:biv_title_color="@color/textColor_333"
+        app:biv_title_width="72dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_add_card_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:background="@mipmap/btn_bg"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        />
+</RelativeLayout>

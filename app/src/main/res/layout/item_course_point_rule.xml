@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="507px"
+    android:layout_height="670px"
+    android:layout_gravity="center"
+    android:background="@drawable/normal_bg_white4"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="积分使用规则"
+    android:textColor="@color/textColor_2A"
+    android:layout_marginTop="26px"
+    android:layout_gravity="center"
+    android:textSize="28px"
+    />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:textColor="@color/textColor_2A"
+        android:layout_marginLeft="34px"
+        android:text="使用条件"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15px"
+        android:text="1.购买课程\n
+积分支付不得超过当前课程售价的20%（每个课程可能不同，以支付页面显示的为准）\n
+2.兑换专辑/专栏/训练营等等，如售价￥20的专栏可用20积分兑换\n
+3.兑换金币\n
+可用于兑换金币，1积分兑换10金币\n
+4.具体抵扣/兑换情况以支付页面或兑换页面为准\n
+                        "
+        android:textSize="20px"
+        android:layout_marginLeft="35px"
+        android:layout_marginRight="50px"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:layout_marginLeft="34px"
+        android:textColor="@color/textColor_2A"
+        android:text="使用数量"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="18px"
+        android:layout_marginLeft="35px"
+        android:layout_marginRight="103px"
+        android:textSize="20px"
+        android:text="1.积分大于1即可使用\n
+2.一积分可抵扣一元，或一积分兑换十金币
+                        "
+        />
+    <TextView
+        android:background="@drawable/normal_bg_zh"
+        android:layout_marginLeft="123px"
+        android:layout_marginRight="123px"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/tv_ok"
+        android:layout_width="match_parent"
+        android:text="我知道了"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="28px"
+        android:padding="20px"
+        android:layout_marginTop="63px"
+        android:layout_marginBottom="25px"
+        android:layout_height="wrap_content"
+       />
+
+
+
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/workshops_title_line1"
+        />
+
+    <EditText
+        android:id="@+id/et_item_crowd_funding_used_template_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:gravity="center"
+        android:maxWidth="200dp"
+        android:maxLines="2"
+        android:maxLength="50"
+        android:ellipsize="end"
+        android:paddingBottom="4dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="4dp"
+        android:text="贺信，对论坛的举办表示热烈的祝贺，离不开广大发展中国家共同努力，希望国际社会本着公正、公平、开放、包容的精神，尊重并反映发展中国家"
+        android:textSize="16sp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/workshops_title_line2"
+        />
+
+</LinearLayout>

@@ -1,0 +1,75 @@
+ext {
+    minifyEnabled =false
+    //true 正式环境  false 测试环境q
+    hotfix=true
+//    minifyEnabled =true
+    android = [
+            compileSdkVersion: 28
+            ,
+//            buildToolsVersion: "26.0.2",
+            minSdkVersion    : 23,
+            targetSdkVersion : 26,
+            versionCode      : 52,
+            versionName      : "3.6.0"
+    ]
+
+    dependencies = [
+            appcompatV7           : 'com.android.support:appcompat-v7:27.0.1',
+            design                : 'com.android.support:design:27.0.1',
+//            supportV4             : 'com.android.support:support-v4:27.0.1',
+            recyclerview          : 'com.android.support:recyclerview-v7:27.0.1',
+            cardview              : 'com.android.support:cardview-v7:27.0.1',
+            annotations           : 'com.android.support:support-annotations:27.0.1',
+
+            //retrofit和rxjava
+            retrofit              : 'com.squareup.retrofit2:retrofit:2.0.0-beta3',
+            okhttp3logging        : 'com.squareup.okhttp3:okhttp:3.5.0',
+            okhttp3io             : 'com.squareup.okio:okio:1.11.0',
+            //   okhttp3logging      :   'com.squareup.okhttp3:logging-interceptor:3.1.2'  ,
+//            rxjava                : 'io.reactivex.rxjava2:rxjava:2.0.7',
+//            rxandroid             : 'io.reactivex.rxjava2:rxandroid:2.0.1',
+            rxjava                : 'io.reactivex:rxjava:1.0.1',
+            rxandroid             : 'io.reactivex:rxandroid:1.0.1',
+            retrofit2gson         : 'com.squareup.retrofit2:converter-gson:2.0.0-beta4',
+            retrofit2adapterrxjava: 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4',
+            //七牛
+            qiniu                 : 'com.qiniu:happy-dns:0.2.7',
+            qiniupili             : 'com.qiniu.pili:pili-android-qos:0.8.+',
+            umeng             : 'com.umeng.analytics:analytics:latest.integration',
+            butterknife             : 'com.jakewharton:butterknife:7.0.1',
+            glide             : 'com.github.bumptech.glide:glide:3.6.1'
+
+
+    ]
+
+
+    signingDebug = [
+            keyAlias     : 'smywpyxsigned',
+            keyPassword  : 'wpyx123ljg',
+            storeFile    : file('F:/conpanyproject/wpyx.jks'),
+            storePassword: 'wpyxljg123'
+    ]
+    signing = [
+            keyAlias     : 'smywpyxsigneddebug',
+            keyPassword  : 'wpyx123ljg',
+            storeFile    : file('F:/conpanyproject/wpyxdebug.jks'),
+            storePassword: 'wpyxljg123'
+    ]
+
+    manifestPlaceholders = [
+            UMENG_APPKEY: "58c63e89c62dca7076001a6a",
+            //LINE_ENSURE: "***************"
+            UMENG_MESSAGE_SECRET  : "c802f1ca9d87419d1c9a43f788f9497e",
+            //LINE_ENSURE: "********************************"
+    ]
+    hotfix_test = [
+            id_secret:"24705175-1",
+            app_secret:"6adb0732a82164e1e08160c33d2eddcb",
+            rea_secret:"MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1wcmGbtk0dexwzH2QW5skPQnEblkE93EXOoyubzZstD7/4DgwubLtuExBESbyjMJQlMpBY4+Z/V/rV6q90qdLvGLSAT4TQ8iF+DHiZCMoazAPIeoN7NoQMNj/Zkg6JzYdByFxay5AimcQXB5OfmWzWsYiaoEePX9uPbCaUc6eTRctao1azBNk6comjZ+YvJ45EhwQSz3rPm+tbjizXsUN0Z0EdLkVOGXh/WIZ3wLvwbqnm0FridGVCoc+V8NcNQcul31hhWCjnvNxhZLYT6+N1qpWc/c6QAkyPy05O0e40VZFPtKBj5Y3C6j1mI4V0eyUGFFoelaiCkn+OIEpt7BHAgMBAAECggEAQUu1Ek6QSYBzyLIuCcZfHc2vzJm38UjTn/ywvZnGe5blaxcqGJcd6Ljk7Bs1Wr2msTxCzOrvk+qqoumDtV4QK+0pszgvDMy1JSvc/+/pkYOwaD9OzmHglSB3VIlyOTINBrChGxXeL+GI1R/C44AVGTHrLEIG0M5XEUuoPkhVahi6o56kDh1vudxOjRmpUnjxraiwlrwAuzn5Ww11QL8werqdd/uBCJCIZOxzEFZuCp+XH5jwyiwEwhWCzt+QTr8smEpGf4WPdw0Smw0ZGztQao0C2bCp0JOKkZ+5ZS8TxZ4NPjjvYBYmmsCXcQih+6nAQukpGo9yL8nERZP2i4BFAQKBgQD/N66sk+BDtW0VrfFMIdlT0JI3t0GXT5fKflnK7xvXjD6cJz+lli/FoHw7cDM+BbrIPOvE8uYuxHEWoLASFvk1g7/CvaEpXeFUV6UXHzQ2q9jNx4OdoWxPPYwTvLxkKr+2itEH9rTAdg1SyaA6NOCBdmWXHqzfFNuyY+KibJq51wKBgQC2UHJKll3fnJE6rOMQF50MOnVMefSbIlzrEOiVoDNuT8jYeWx5qR4wKJLldUoDtOeGplt0FjSnRZIqt+YoSSdXSKXP7qfFiA/OKME1yF5pbCdLkRNHwFj0cPpO7eucb7DdRJUij6p8Jf45y+/FLMEZNiAzEkytDmZ655OV2ahPEQKBgAQD1Tyjyuhlx0SLCvu+oJOf+VzlBiQiPWoTGMiHgHGgpC+Cso6hUTkTsECjIDs+jdSumKrtg0+DCaBogLyYHe2ImBCxOQLUlkHkaxV1CTY+99cs51YofvK0Lir1UiVlQsTVZDpy2B8a/FSsFVg1Er8WpLx+4AtWYappxdv2R2zbAoGAZfgCpKMLaBkaxVWTPhnm9cLwflCrteT3UWZIn/9VJLqtHB51xGoJf2gCGSKLvhz9bbs35WrSEkiAIzJuIVQhE9mHHBBgd8PNC0KSJfGmlJIwPDytKvFzD2ztIx5BLGLv6iIEw6rU8NETKuJcfcy1R9OVGNuAVT57pPxG+IYfc/ECgYEA+6Q4JvjTPOphcj3TYPrOp3fj+rWcOGjVlHxnJLF1aaZS6CKM2CiRY2Ix/eaNH7DcRoZt/rxH0hYGPZgxUYpAYfZQJ5QkPFRVRpNRwPhPW5Jlk+mq8PSu7CXwfunnv0VtOpkO8ja3Kpk2jExdb3fe+vAngFYzH0LUY+JO/WsjsSE=",
+    ]
+    hotfix_ok = [
+            id_secret:"24697110-1",
+            app_secret:"d4bc101bd6a1d0f1eaad53bb3854cc49",
+            rea_secret:"MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDAGm//JV0yeBHa+EA+H3/3YkKZqOmSAeSmIFhzY6aw9sXl5i6b318fIIHI3fBm7YoTiOiEEA83BDfH3n2/yM4MXtBwyS8b6dhPjpnRDc1p83FjAGkQHl2K/T+m1dOIXDOHSK1vogbhEefTP08qKSgVD0UwvXPKR4aaJlCf1gXGooIPt65kyRxSOSRc0LHn7f/rBVawR8eDkiTSPKLzGVbwEcEnPkwU5Iucwc1n9utGluNxM1DlvlrQWI4m2jpw2yBe2gTsoz8ginh0/2vuaUDWF3SYZ2pSsoNN8gxtuVgCh42gPFaurvlAp/9jMYceTIvGCCohjEYrxtg4nBffFUcvAgMBAAECggEAKLbxub/virzL+/7VjtUaSBI5T1vvdRSVo2gDlyEtuR/0PY+VnU+wV2aKW0o+o3IA67b+oM7OiriIIgJT4Ivsr86Amwboxx++ys3MZ/Rm7ue7xmHV4qas6MJX9UIofSQdf7S1nY1Xq+ghnDI00xi5+Ayue3AL1HloW893EwlHXBvCR/Vscbav+yivfPHhMbgxiokzfQcCXD/bH5tYhlO+vrec4qbrnP8UdxwXE9IuKOeF/9XtXj/oKmW5AY2XzyOraCcTO7xYmXBqjw/91hlyH9DZx1NIdqUzThiBJWXTQV46l/sZIOD0l7ZwK9h4YOyMKDVMHImVDE044S9Rau53IQKBgQD/aDRw32KhTwepo3/43xCHvmK74LVj+dw1OP9RqZcdW5buugxOOzyIsgch4w7IfvhcSAdYMtj1BQtB7XNxHPnKF3yf/ltVvFJIIhmmnbv8oJWy4pY4cktoTq2MdP4A7CzW2dMrKRIf+cSEQh/UjDTZl2CxqDyeu9RE5mAGTwOpmQKBgQDAjJwKVkViiiEZ5Y9rvpCEZhZ+1D53rX+wIj5Pczr9VyxaJOCiZkS3t4TZcx3Xv15DM2ulKx0DaAmFcigPiNKCQd0XnkNokOnJDHuYKJ9BT4NGhHDOnG/qia8wkx/1dQ9VdT+bbrhuOFiqFb2v5Bdhlw4DHIAru9bobQdrf8dEBwKBgQDVgUW9SXAIyqjsLWpwIACQiR2+UtUvcxKbRz9gA7X4a7UbcVmSGEC9QJ1nvYiBIGr7sZa6Kx9ki8fiX94OI5vITaP3l0jAvgHGnQL2XotkXtVlSbcsDpds5cB8Vtxy5vuAy2yUeuvU4RVfPmufYWlYsAu715h9VSTYSADjpS+5mQKBgQC/XwD3hScQ+RhNFMum2o/oB070Xx529AmklWQ4st4+TRXXwi9BOUOzFMMFHFTcyWZ2g/TJBECh0hUkfIE0b1hJ/gwwHSwCEYVKPQ3Z/QXLc6uVuqwjrXfOM2nbbV6mJuJGnXHKmhDT+0ykP1d4KcrTQ765eOoqjVbbSwHE5gq2oQKBgQDgEnHxEequoz0A7+IMDeVG7jrXkvdn+BE/3qvgEcffLoyYZ/RKR8UmRpKOZeRY1bZaJFF9HwVLkUdMdSnH/FUtjiVFhcBvIY8srDD/tfhcfKtha4lim9MfUiC4BLpAkuSAmAuAr2EBT18z+vYYLfHhGrZaxsB50Hul3p8plO14DA==",
+    ]
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+    >
+
+    <com.ziran.meiliao.widget.MyCheckBox
+        android:layout_width="wrap_content"
+        android:id="@+id/checkMan"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        app:mcb_extra_text="男"
+        app:mcb_extra_text_color="@color/textColor_666"
+        />
+
+    <com.ziran.meiliao.widget.MyCheckBox
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkNv"
+        app:mcb_extra_text_color="@color/textColor_666"
+        app:mcb_extra_text="女"
+        />
+</LinearLayout>

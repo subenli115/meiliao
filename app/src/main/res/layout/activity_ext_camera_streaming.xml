@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/intro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <SurfaceView
+        android:id="@+id/ext_camerapreview_surfaceview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tv_ext_time"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/openlive_time"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="@color/white"
+        android:textSize="40sp"/>
+
+    <com.ziran.meiliao.common.commonwidget.ViewDragHelperLayout
+        android:layout_width="match_parent"
+        android:id="@+id/view_drag_helper"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_touch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_camera_switch"
+                style="@style/EXTCameraStreamingImageView"
+                android:src="@mipmap/ic_sjk_full_living_video"
+                />
+
+
+            <ImageView
+                android:id="@+id/iv_close"
+                style="@style/EXTCameraStreamingImageView"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_sjk_full_living_close"
+                />
+
+            <com.ziran.meiliao.widget.ChatCustomView
+                android:id="@+id/chatCustomView"
+                style="@style/ChatCustomView"
+                android:layout_above="@+id/iv_close"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+    </com.ziran.meiliao.common.commonwidget.ViewDragHelperLayout>
+</RelativeLayout>

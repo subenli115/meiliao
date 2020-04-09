@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="48dp"
+              android:gravity="center_vertical"
+              android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.widget.SimpleTextView
+        android:layout_width="match_parent"
+        android:id="@+id/simpleTextView"
+        android:layout_marginTop="26dp"
+        android:layout_height="24dp"
+        app:textSize="16sp"
+        app:text="费用说明"
+        />
+
+</LinearLayout>

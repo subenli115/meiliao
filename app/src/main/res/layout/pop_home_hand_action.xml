@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#4F5D5D5D"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_likeanim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lottie_fileName="data.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        android:layout_centerInParent="true"
+
+        />
+
+
+
+    <TextView
+        android:textSize="36px"
+        android:textColor="#FCFBFC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="下滑可见【计时练习】"
+        />
+
+    <TextView
+        android:id="@+id/tv_know"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我知道了"
+        android:paddingLeft="36px"
+        android:layout_marginTop="120px"
+        android:paddingRight="36px"
+        android:textSize="36px"
+        android:background="@drawable/normal_bg_white_tran"
+        android:textColor="#FCFBFC"
+        />
+
+
+</com.zhy.autolayout.AutoLinearLayout>

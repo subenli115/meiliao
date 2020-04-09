@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="heart_anim_bezier_factor">6</integer>
+    <integer name="anim_duration">3000</integer>
+
+
+    <integer name="anim_length">500</integer>
+    <integer name="anim_length_half">250</integer>
+
+
+    <integer name="id_course">7771</integer>
+    <integer name="id_teacher">7772</integer>
+    <integer name="id_type">7773</integer>
+    <integer name="id_time">7774</integer>
+    <integer name="id_address">7775</integer>
+    <integer name="id_people">7776</integer>
+    <integer name="id_crowd_funding_crowd_funding_time">7777</integer>
+    <integer name="id_official_price">7778</integer>
+    <integer name="id_used_temple">7779</integer>
+    <integer name="id_sponsor_msg">7780</integer>
+    <integer name="id_avatar">7781</integer>
+    <integer name="id_team_goal">7801</integer>
+    <integer name="id_team_duration">7802</integer>
+    <integer name="id_team_price_detail">7805</integer>
+    <integer name="id_code">7803</integer>
+    <integer name="id_age">7804</integer>
+    <integer name="id_about_feed_back">7901</integer>
+    <integer name="id_about_text">7902</integer>
+</resources>

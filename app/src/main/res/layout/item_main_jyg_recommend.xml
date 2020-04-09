@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:background="@drawable/selector_tran_gray"
+                android:paddingTop="12dp">
+
+    <RelativeLayout
+        android:id="@+id/item_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="12dp"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_jyg_recommend_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_loading_rectangle"/>
+
+        <TextView
+            android:id="@+id/tv_jyg_recommend_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_jyg_recommend_img"
+            android:layout_toRightOf="@+id/iv_jyg_recommend_img"
+            android:layout_toEndOf="@+id/iv_jyg_recommend_img"
+            android:maxLines="1"
+            android:textColor="@color/textcolor_2"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_jyg_listen_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_jyg_recommend_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:layout_alignParentEnd="true"
+            android:maxLines="1"
+            android:textColor="@color/textColor_hint"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_jyg_recommend_anchor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_jyg_recommend_profile"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_toRightOf="@+id/iv_jyg_recommend_img"
+            android:layout_toEndOf="@+id/iv_jyg_recommend_img"
+            android:maxLines="1"
+            android:textColor="@color/textColor_9f"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_jyg_recommend_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_jyg_recommend_img"
+            android:layout_marginRight="8dp"
+            android:layout_toStartOf="@+id/tv_jyg_recommend_lable"
+            android:layout_toEndOf="@+id/iv_jyg_recommend_img"
+            android:layout_toLeftOf="@+id/tv_jyg_recommend_lable"
+            android:layout_toRightOf="@+id/iv_jyg_recommend_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_jyg_recommend_lable"
+            style="@style/TextViewLabelStyleRight"
+            android:layout_alignBottom="@+id/iv_jyg_recommend_img"
+            />
+
+
+    </RelativeLayout>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        />
+</RelativeLayout>

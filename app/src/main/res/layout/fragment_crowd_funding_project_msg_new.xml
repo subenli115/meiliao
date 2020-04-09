@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        >
+
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivCourse"
+            style="@style/BaseItemView"
+            app:biv_click_id="@integer/id_course"
+            app:biv_content_must_need="true"
+            app:biv_title="课题"
+            />
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivTeacher"
+            style="@style/BaseItemView"
+            app:biv_click_id="@integer/id_teacher"
+            app:biv_content_must_need="true"
+            app:biv_title="老师"
+            />
+        <!--
+
+                <com.ziran.meiliao.widget.BaseItemView
+                    android:id="@+id/bivType"
+                    style="@style/BaseItemView"
+                    app:biv_click_id="@integer/id_type"
+                    app:biv_content_must_need="true"
+                    app:biv_title="课程形式"
+                    />
+        -->
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivTime"
+            style="@style/BaseItemView"
+            android:visibility="gone"
+            app:biv_click_id="@integer/id_time"
+            app:biv_content_must_need="true"
+            app:biv_title="时间"
+            />
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivAddress"
+            style="@style/BaseItemView"
+            app:biv_click_id="@integer/id_address"
+            app:biv_content_must_need="true"
+            app:biv_title="地点"
+            />
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivOfficialPrice"
+            style="@style/BaseItemView"
+            app:biv_forword_show="false"
+            app:biv_right_color="@color/textColor_teshe"
+            app:biv_right_text="费用说明"
+            app:biv_title="课程费用"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="按最低开课人数预收¥1000/人，超出众筹目标金额平均返回，众筹不成功即退款。"
+            />
+
+
+        <com.ziran.meiliao.ui.workshops.widget.PriceSelectView
+            android:id="@+id/pricedSelectView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="16dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            app:psv_line_color="@color/divider1"
+            app:psv_line_width="0.7dp"
+            />
+
+
+        <!--   <com.ziran.meiliao.widget.BaseItemView
+               android:id="@+id/bivCourseContent"
+               style="@style/BaseItemView"
+               app:biv_background="@color/divider1"
+               app:biv_divider_show="false"
+               app:biv_forword_show="false"
+               app:biv_right_click_id="@integer/id_used_temple"
+               app:biv_right_color="@color/textColor_teshe"
+               app:biv_right_text="使用模版"
+
+               app:biv_title="课程内容(必填)"
+               app:biv_title_color="@color/textColor_333"
+               />
+
+           <com.ziran.meiliao.widget.BaseItemView
+               android:id="@+id/bivCourseProfile"
+               style="@style/BaseItemViewWrap"
+               app:biv_content_hint="请填写课程介绍"
+               app:biv_content_margin_left="0.5dp"
+
+               app:biv_content_max_line="4"
+               app:biv_content_type="edit"
+               app:biv_forword_show="false"
+               app:biv_right_text_size="11"
+               app:biv_title_width="0dp"
+               />
+
+           <com.ziran.meiliao.common.commonwidget.FilterTextView
+               android:id="@+id/tv_edit_template"
+               android:layout_width="match_parent"
+               android:layout_height="48dp"
+               android:gravity="center_vertical"
+               android:paddingLeft="12dp"
+               android:paddingRight="12dp"
+               android:text="编辑课程介绍"
+               android:textColor="@color/textColor_teshe"
+               android:visibility="gone"
+               />
+
+           <com.ziran.meiliao.ui.workshops.widget.TitleGridView
+               android:id="@+id/tgv_pic"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:tgv_grid_number="4"
+               app:tgv_title="上传图片"
+               app:tgv_ver_space="8dp"
+               />-->
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivSponsorMsg"
+            style="@style/BaseItemView"
+            android:layout_marginTop="8dp"
+            app:biv_background="@color/divider1"
+            app:biv_divider_show="false"
+            app:biv_forword_show="false"
+            app:biv_right_click_id="@integer/id_sponsor_msg"
+            app:biv_right_color="@color/textColor_teshe"
+            app:biv_right_text="参考模版"
+
+            app:biv_title="发起人信息"
+            app:biv_title_color="@color/textColor_333"
+            />
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivSponsorAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:biv_click_id="@integer/id_avatar"
+            app:biv_content_must_need="true"
+            app:biv_content_type="image"
+            app:biv_right_text_size="11"
+            app:biv_title="头像"
+            app:biv_title_color="@color/textColor_333"
+            />
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivSponsorName"
+            style="@style/BaseItemView"
+            app:biv_content_must_need="true"
+            app:biv_content_type="edit"
+            app:biv_forword_show="false"
+            app:biv_right_text_size="11"
+            app:biv_title="姓名"
+            />
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivSponsorProfile"
+            style="@style/BaseItemViewWrap"
+            android:layout_height="wrap_content"
+            app:biv_content_hint="请简单介绍一下自己吧…"
+            app:biv_content_max_line="2"
+            app:biv_content_type="edit"
+            app:biv_forword_show="false"
+            app:biv_right_text_size="11"
+            app:biv_title="简介"
+            />
+
+
+        <com.ziran.meiliao.widget.BaseItemView
+            android:id="@+id/bivSponsorDemo"
+            style="@style/BaseItemViewWrap"
+            app:biv_content_hint="如有需要可填写其他信息,如发起课程缘由等"
+            app:biv_content_margin_left="0.5dp"
+            app:biv_content_max_line="4"
+            app:biv_content_type="edit"
+            app:biv_forword_show="false"
+            app:biv_right_text_size="11"
+            app:biv_title_width="0dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_small_height"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <com.ziran.meiliao.widget.SmoothCheckBox
+                android:id="@+id/checkbox_service"
+                style="@style/smoothCheckBox"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                />
+
+            <EditText
+                android:id="@+id/et_service_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:hint="提供客服电话"
+                android:inputType="phone"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+
+        <View
+            style="@style/hor_match_line"/>
+
+        <com.ziran.meiliao.ui.workshops.widget.TitleGridView
+            android:id="@+id/tgv_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tgv_grid_number="3"
+            app:tgv_title="支持者需报名信息"
+            app:tgv_ver_space="8dp"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="24dp"
+            >
+
+            <com.ziran.meiliao.common.commonwidget.FilterTextView
+                android:id="@+id/tv_crowd_funding_project_msg_preview"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="预览"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cs_bg_radius="20dp"
+                app:cs_normal_bg_color="@color/textColor_teshe5"
+                />
+
+            <com.ziran.meiliao.common.commonwidget.FilterTextView
+                android:id="@+id/tv_crowd_funding_project_msg_submit"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:gravity="center"
+                android:text="提交审核"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cs_bg_radius="20dp"
+                app:cs_normal_bg_color="@color/textColor_teshe"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

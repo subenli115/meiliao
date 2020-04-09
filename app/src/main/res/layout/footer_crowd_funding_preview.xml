@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+    >
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/divider"
+        />
+
+    <com.ziran.meiliao.widget.SimpleTextView
+        android:layout_width="200dp"
+        android:layout_height="24dp"
+        android:layout_below="@+id/view_line"
+        android:layout_marginTop="8dp"
+        app:text="课程目录"
+        app:textSize="16sp"
+        />
+
+    <View
+        android:id="@+id/view_border"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/view_line"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/shape_crowd_funding_preview"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_footer_crowd_funding_preview_avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/ic_user_pic"
+            app:roundimageview_type="circle"
+            />
+
+        <TextView
+            android:id="@+id/tv_footer_crowd_funding_preview_name"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginLeft="-1dp"
+            android:background="@drawable/workshops_bg_name"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:text="胡君梅"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_footer_crowd_funding_preview_describe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/view_border"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:textColor="@color/textColor_666"
+        android:textSize="12sp"
+        tools:text="MBSR认知合格师资，美国CFM认证MBSR教师"
+        />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tv_footer_crowd_funding_preview_describe"
+        android:layout_marginTop="16dp"
+        android:background="@color/divider"
+        />
+</RelativeLayout>

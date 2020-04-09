@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <com.zhy.autolayout.AutoLinearLayout
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:text="第一天"
+        android:textColor="@color/login_text_color"
+        android:layout_height="wrap_content"
+        android:textSize="32px"
+        android:layout_marginTop="26px"
+        android:layout_marginLeft="46px"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:id="@+id/menu_title"/>
+
+    <!--内层的RecyclerView-->
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/menu_info_recyclerview"/>
+
+</com.zhy.autolayout.AutoLinearLayout>

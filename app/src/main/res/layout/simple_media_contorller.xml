@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_media_contorller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/iv_contorller_playOrPause"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center"
+            android:src="@drawable/selector_sjk_live_playing"
+            android:visibility="visible"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/media_contorller_item_height"
+        android:background="@color/contorller_bar_bg">
+
+        <ImageView
+            android:id="@+id/iv_contorller_back"
+            android:layout_width="@dimen/contorller_child_height"
+            android:layout_height="@dimen/contorller_child_height"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/back_white"/>
+
+        <TextView
+            android:id="@+id/tv_contorller_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/iv_contorller_back"
+            android:maxLines="1"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"
+
+            tools:text="我是标题"/>
+
+    </RelativeLayout>
+
+    <com.ziran.meiliao.widget.MyProgressView
+        android:layout_width="match_parent"
+        android:paddingLeft="8dp"
+        android:id="@+id/myProgressView"
+        android:paddingRight="8dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/contorller_bar_bg"
+        android:layout_height="@dimen/media_contorller_item_height"/>
+
+
+</RelativeLayout>

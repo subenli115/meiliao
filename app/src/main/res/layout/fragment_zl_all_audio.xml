@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <com.zhy.autolayout.AutoFrameLayout
+            android:id="@+id/fl_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="match_parent"
+                android:layout_height="410px"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_loading_square_big"
+                />
+            <ImageView
+                android:layout_width="68px"
+                android:layout_height="68px"
+                android:layout_marginRight="32px"
+                android:layout_gravity="center_vertical|end"
+                android:id="@+id/iv_js"
+                android:src="@mipmap/zl_into"
+                />
+        </com.zhy.autolayout.AutoFrameLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/textColor_teshe"
+            app:tabIndicatorHeight="1dp"
+            android:visibility="gone"
+            app:tabSelectedTextColor="@color/textColor_teshe"
+            app:tabTextColor="@color/textColor_999" />
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="40px"
+            android:paddingTop="40px"
+            >
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/textColor_999"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/shape_sort"
+                android:text="正序"
+                android:textColor="@color/textColor_999"
+                android:textSize="14sp" />
+        </com.zhy.autolayout.AutoFrameLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="#F4F8F9"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.15"
+                android:layout_marginTop="45px"
+                android:layout_marginLeft="24px"
+                android:layout_marginBottom="45px"
+                android:id="@+id/music_cur"
+
+                android:textColor="@color/textColor_444"
+                android:gravity="center"
+                android:textSize="24px"
+                android:text="完成进度"
+                />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="0dp"
+                android:focusable="true"
+                android:maxHeight="2.0dip"
+                android:minHeight="2.0dip"
+                android:max="100"
+                android:layout_gravity="center"
+                android:layout_weight="0.7"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_height="8px"
+
+
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_weight="0.10"
+                android:layout_marginRight="20px"
+                android:layout_height="wrap_content"
+                android:id="@+id/music_length"
+                android:textSize="24px"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/textColor_444"
+                android:text="0%"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+            <com.ziran.meiliao.common.commonwidget.ViewPagerFixed
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+    </LinearLayout>
+
+        <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ntb_right_img1="@mipmap/btn_share_black"
+            app:ntb_tv_left="showAndFinish" />
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/main"
+    android:layout_height="match_parent"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <com.ziran.meiliao.widget.CustomMusicPanelNewView
+        android:id="@+id/musicPanelView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tab_layout"
+        android:layout_gravity="bottom"
+        />
+
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        android:background="@color/bottom_bg"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        app:tl_underline_color="@color/divider"
+        app:tl_underline_gravity="TOP"
+        tl:tl_iconHeight="28dp"
+        tl:tl_iconWidth="28dp"
+        tl:tl_textSelectColor="#FF6AC8BA"
+        tl:tl_textUnselectColor="#FF999999"
+        tl:tl_textsize="12sp"
+        tl:tl_underline_height="1dp"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>

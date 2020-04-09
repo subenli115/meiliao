@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_tralier_headPic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_loading_square_big"
+            android:visibility="gone"
+            app:roundimageview_height_ratio="0.4267"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_trailer_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/textColor_666"
+            tools:text="ffffffffffffffffffff"
+            />
+
+        <TextView
+            android:id="@+id/tv_trailer_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="我是标题"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/ll_time_container"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp"
+            android:paddingTop="16dp"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tv_buy_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="9999人"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="订阅"
+                    android:textColor="@color/textColor_999"
+                    />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:background="@color/divider1"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tv_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="12.1-12.6"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="时间"
+                    android:textColor="@color/textColor_999"
+                    />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:background="@color/divider1"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tv_course_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="9999次"
+                    android:textColor="@color/textColor_333"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="课次"
+                    android:textColor="@color/textColor_999"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/fl_coupon_container"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            >
+
+            <com.ziran.meiliao.common.commonwidget.RoundImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/iv_coupon_bg"
+                android:visibility="gone"
+                app:roundimageview_height_ratio="0.21"
+                android:src="@mipmap/course_bg_coupontips"
+                app:roundimageview_borderRadius="0dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_coupon_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                tools:text="完成系列课程练习并按期打卡转发分享，系统奖励¥200，可通用于5P医学APP组织的所有正念专业课程。"
+                android:textSize="12sp"
+                />
+
+            <View
+                android:id="@+id/view_line"
+                style="@style/hor_match_line_8dp"
+                />
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:drawableLeft="@mipmap/course_icon_couese"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:text="教师简介"
+            android:textColor="@color/textColor_666"
+            />
+
+        <com.ziran.meiliao.widget.NewExpandableTextView
+            android:id="@+id/tv_trailer_teaIntro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:maxLines="4"
+            android:textColor="@color/textColor_666"
+            tools:text="ffffffffffffffffffff22222222233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333332222222222dsgsdfgergggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:drawableLeft="@mipmap/course_icon_teacher"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:text="课程介绍"
+            android:textColor="@color/textColor_666"
+            />
+
+        <com.ziran.meiliao.widget.NewExpandableTextView
+            android:id="@+id/tv_trailer_course_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:maxLines="4"
+            android:textColor="@color/textColor_666"
+            tools:text="ffffffffffffggggggggggggggggggg"
+            />
+
+        <ViewStub
+            android:id="@+id/viewStub_sub_skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="18dp"
+            android:layout="@layout/viewstub_sub_skip"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/ll_progress_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="18dp"
+            android:visibility="visible"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完成进度"
+                android:textColor="@color/textColor_666"
+                />
+
+            <com.ziran.meiliao.ui.workshops.widget.SimpleProgressView
+                android:id="@+id/simpleProgressView"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                app:spv_progress="15"
+                />
+
+
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:textColor="@color/textColor_666"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <com.ziran.meiliao.widget.SimpleTextView
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                app:text="课程目录"
+                app:textSize="16sp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_tralier_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/course_icon_list"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="60dp"
+             android:layout_marginBottom="12dp"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/shape_music_panel"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal"
+        >
+
+
+        <FrameLayout
+            android:id="@+id/fl_music_panel_play"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            >
+
+            <com.ziran.meiliao.common.commonwidget.RoundImageView
+                android:id="@+id/iv_music_panel_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:roundimageview_type="circle"
+                />
+
+            <com.ziran.meiliao.widget.PlayPauseView
+                android:id="@+id/iv_music_panel_play_state"
+                android:layout_width="24dp"
+                android:layout_gravity="center"
+                android:layout_height="24dp"
+                />
+           <!-- <com.ziran.meiliao.common.commonwidget.PlayPauseView
+                android:id="@+id/iv_music_panel_play_state"
+                android:layout_width="24dp"
+                android:visibility="gone"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:pp_bg_color="@color/textColor_teshe"
+                app:pp_bg_shadow_size="2dp"
+                app:pp_gap_width="8"
+                />-->
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:id="@+id/iv_music_panel_close"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="6dp"
+                android:paddingBottom="6dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:src="@mipmap/ic_main_jyc_close"
+                />
+
+            <TextView
+                android:id="@+id/tv_music_panel_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/iv_music_panel_close"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/textColor_333"
+                tools:text="童慧琦-穿越抑郁的正念之道"
+                />
+
+            <com.ziran.meiliao.widget.MyProgressView
+                android:id="@+id/myProgressView"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_music_panel_title"
+                android:layout_marginRight="4dp"
+                android:layout_toLeftOf="@+id/iv_music_panel_close"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.zhy.autolayout.AutoRelativeLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
+
+
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginRight="49px"
+    android:layout_marginLeft="49px"
+    android:layout_marginTop="64dp"
+    android:background="@drawable/shadow_16225"
+    >
+<TextView
+    android:id="@+id/tv_dlzh"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="登录账号"
+    android:textColor="#444444"
+    android:textSize="48px"
+    android:layout_marginTop="59px"
+    android:layout_marginLeft="56px"
+    />
+
+
+
+    <TextView
+        android:id="@+id/iv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/btn_login_close"
+        android:gravity="center"
+        android:layout_alignEnd="@+id/iv_submit"
+        android:layout_alignTop="@+id/tv_dlzh"
+        android:textSize="16sp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        />
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all_wechat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="68px"
+        android:background="#45C49D"
+    android:layout_alignLeft="@+id/tv_dlzh"
+    android:padding="12px"
+    android:layout_alignRight="@+id/iv_close"
+    android:layout_below="@+id/tv_dlzh"
+    android:orientation="horizontal"
+    android:gravity="center"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:layout_marginBottom="10px"
+        android:background="@mipmap/wechat_login"
+        />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/wechat_login"
+    android:textColor="@color/white"
+    android:layout_marginLeft="10px"
+    />
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_sjdl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all_wechat"
+            android:textSize="32px"
+        android:text="或通过手机登录"
+        android:layout_marginTop="57px"
+        android:layout_alignLeft="@+id/all_wechat"
+        android:textColor="#999999"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="14px"
+        android:layout_marginLeft="53px"
+        android:background="#DDDDDD"
+
+        android:layout_toRightOf="@+id/tv_sjdl"
+        android:layout_alignTop="@+id/tv_sjdl"
+        >
+    </View>
+
+    <TextView
+        android:id="@+id/tv_86"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_sjdl"
+        android:layout_alignTop="@+id/tv_input_phone"
+        android:layout_marginTop="10px"
+        android:text="+86"
+        android:textColor="@color/textColor_666666"
+        android:textSize="36px" />
+
+    <EditText
+        android:id="@+id/tv_input_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_sjdl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:background="@null"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:hint="@string/input_phone"
+        android:padding="10px"
+        android:textColorHint="@color/textColor_CFCFCF"
+        android:textSize="36px" />
+
+    <ImageView
+        android:layout_width="22px"
+        android:layout_height="18px"
+        android:layout_alignTop="@+id/tv_input_phone"
+        android:background="@mipmap/login_right_go"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5px"
+        android:visibility="gone"
+        android:layout_marginRight="68px"
+        />
+
+    <TextView
+        android:id="@+id/iv_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_input_phone"
+        android:drawableLeft="@mipmap/login_right_go"
+        android:layout_alignParentRight="true"
+        android:textSize="16sp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_marginRight="68px"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/textColor_8F8F8F"
+        android:layout_alignLeft="@+id/tv_sjdl"
+        android:layout_toRightOf="@+id/tv_sjdl"
+        android:layout_alignRight="@+id/tv_86"
+        android:layout_marginTop="28px"
+        android:layout_below="@+id/tv_86"
+        >
+    </View>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/textColor_8F8F8F"
+        android:layout_alignLeft="@+id/tv_input_phone"
+        android:layout_toRightOf="@+id/tv_sjdl"
+        android:layout_marginTop="28px"
+        android:layout_marginRight="137px"
+        android:layout_below="@+id/tv_86"
+        android:layout_marginBottom="80px"
+        >
+    </View>
+</com.zhy.autolayout.AutoRelativeLayout>
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal"
+    android:background="@drawable/normal_code"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_bottom"
+        android:textSize="36px"
+        android:layout_marginBottom="13px"
+        android:layout_marginTop="13px"
+        />
+<TextView
+    android:id="@+id/tv_register"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="36px"
+    android:text="@string/user_register"
+    android:textColor="@color/textColor_5392CC"
+
+    />
+
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

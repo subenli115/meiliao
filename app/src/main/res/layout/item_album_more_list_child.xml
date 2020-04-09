@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+  >
+<ImageView
+    android:adjustViewBounds="true"
+android:scaleType="fitXY"
+android:id="@+id/iv_xc"
+android:layout_width="212px"
+android:src="@drawable/shape_white_corner8"
+android:layout_height="96px"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30px"
+        android:text="223234"
+        android:textColor="@color/black"
+        />
+</com.zhy.autolayout.AutoFrameLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_detail"
+        android:gravity="center_vertical"
+        android:layout_marginTop="50px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_dot"
+            android:layout_width="9dp"
+            android:layout_height="9dp"
+            android:layout_marginRight="20px"
+            android:layout_marginLeft="50px"
+            android:layout_marginTop="53px"
+            android:background="@drawable/shape_dot_yellow"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_member1"
+            android:layout_width="65px"
+            android:layout_height="65px"
+            android:layout_marginTop="15px"
+            android:layout_alignBottom="@+id/iv_dot"
+            android:layout_toRightOf="@+id/iv_dot"
+            android:background="@mipmap/member_buy_course"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32px"
+            android:layout_toRightOf="@+id/iv_member1"
+            android:layout_marginLeft="27px"
+            android:layout_alignBottom="@+id/iv_member1"
+            android:text="购买课程"
+            />
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16px"
+            android:maxEms="12"
+            android:textSize="26px"
+            android:textColor="@color/textColor_999"
+            android:text="111111111111111111111111111111111111111"
+            android:layout_alignLeft="@+id/iv_member1"
+            android:layout_marginBottom="50px"
+            android:layout_below="@+id/iv_member1"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#F0F0F0"
+            android:layout_below="@+id/tv_detail"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <TextView
+        android:id="@+id/tv_button"
+        android:layout_width="140px"
+        android:layout_height="68px"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50px"
+        android:textColor="#FBAF6B"
+        android:layout_centerVertical="true"
+        android:textSize="32px"
+        android:layout_marginLeft="97px"
+        android:text="选课"
+        android:background="@drawable/normal_bg_red_tran_bg"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>

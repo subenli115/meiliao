@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:background="@null"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <!--由于CollapsingToolbarLayout 的 特点，应用的标题文字在收缩和展开状态是会自动过渡的。如果你想要在展开状态改变标题文字的位置，
+        你可以这样做：通过应用的 margin 的4个属性，
+        就是：app:expandedTitleMargin, app:expandedTitleMarginBottom, app:expandedTitleMarginEnd 以及 app:expandedTitleMarginStart
+        或者如果你想要在折叠和展开状态时改变文本的显示。你可以这样来简单的实现：
+        设置 TextAppearance，分别通过 app:collapsedTitleTextAppearance 和 app:expandedTitleTextAppearance 来设置。-->
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:background="@null"
+            app:expandedTitleTextAppearance="@style/textToolbarTitle"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            >
+            <!-- app:contentScrim="?attr/colorPrimary"
+             -->
+            <!-- contentScrim 这个属性是设置折叠后Toolbar的颜色-->
+            <RelativeLayout
+                android:id="@+id/headerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                android:visibility="gone"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.widget.TagImageView
+        android:id="@+id/tagImageView"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="12dp"
+        android:src="@mipmap/ic_loading_square_small"
+        app:roundimageview_height_ratio="1.205"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tagImageView"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/tagImageView"
+        android:text="李燕蕙 — 正念在成瘾群体中的应用"
+        android:textColor="@color/textColor_333"
+        />
+
+    <TextView
+        android:id="@+id/tv_last_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_profile"
+        android:layout_toRightOf="@+id/tagImageView"
+        android:layout_marginBottom="4dp"
+        android:text="今日更新"
+        android:textColor="@color/textColor_999"
+        />
+
+    <TextView
+        android:id="@+id/tv_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tagImageView"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_toRightOf="@+id/tagImageView"
+        android:text="第一课：正念关怀在监狱教化之实践与理念"
+        android:textColor="@color/textColor_666"
+        />
+</RelativeLayout>

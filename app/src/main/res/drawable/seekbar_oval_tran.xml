@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<!-- 第一层  上部和左部偏移一定距离-->
+
+<!-- 第二层 下部和有部偏移一定距离-->
+<item
+  >
+    <shape
+        android:shape="oval"
+        android:useLevel="false"
+        >
+        <size android:width="60px"
+            android:height="60px"/>
+        <solid android:color="#FF6AC8BA" />
+        <stroke
+            android:width="23px"
+            android:color="@color/white" />
+    </shape>
+</item>
+
+    <item
+        >
+        <shape
+            android:shape="oval"
+            android:useLevel="false"
+            >
+            <size android:width="11px"
+                android:height="11px"/>
+            <stroke
+                android:width="0.4px"
+                android:color="#26000000" />
+        </shape>
+    </item>
+
+</layer-list>

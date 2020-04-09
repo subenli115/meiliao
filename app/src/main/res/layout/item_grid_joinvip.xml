@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_joinvip_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="72dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_grid_amount"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tv_joinvip_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/textColor_333"
+            tools:text="一年"
+            android:layout_marginBottom="2dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_joinvip_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            tools:text="200元"
+            android:textColor="@color/textColor_teshe2"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+</FrameLayout>

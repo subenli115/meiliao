@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_course_video"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.pili.pldroid.player.widget.PLVideoTextureView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/iv_sjk_fulllive_coverview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/textColor_333"
+        />
+
+
+    <com.ziran.meiliao.common.commonwidget.ViewDragHelperLayout
+        android:id="@+id/view_drag_helper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/LoadingView"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/buffering"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="48dp"
+                    android:orientation="vertical">
+
+                   <com.ziran.meiliao.widget.livegift.GiftFrameLayout
+                        android:id="@+id/gift_layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <com.ziran.meiliao.widget.livegift.GiftFrameLayout
+                        android:id="@+id/gift_layout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <com.ziran.meiliao.widget.ChatCustomView
+                    android:id="@+id/chatCustomView"
+                    style="@style/ChatCustomView"
+                    android:layout_width="match_parent"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/ll_sjk_fulllive_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/edge_margin"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    >
+
+                    <com.ziran.meiliao.common.commonwidget.FilterImageView
+                        android:id="@+id/iv_sjk_fulllive_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_sjk_full_living_message"/>
+
+
+                    <com.ziran.meiliao.common.commonwidget.FilterImageView
+                        android:id="@+id/iv_sjk_fulllive_gift"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/living_gift"/>
+
+                    <com.ziran.meiliao.common.commonwidget.FilterImageView
+                        android:id="@+id/iv_sjk_fulllive_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12dp"
+                        android:layout_toLeftOf="@+id/iv_sjk_fulllive_gift"
+                        android:src="@mipmap/ic_sjk_full_living_more"/>
+
+                    <com.ziran.meiliao.common.commonwidget.FilterImageView
+                        android:id="@+id/iv_sjk_fulllive_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12dp"
+                        android:layout_toLeftOf="@+id/iv_sjk_fulllive_more"
+                        android:src="@mipmap/ic_sjk_full_living_share"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_vertical_live_shikan"/>
+
+            <com.ziran.meiliao.widget.LiveAvatarView
+                android:id="@+id/liveAvatarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/edge_margin"
+                />
+
+
+            <com.ziran.meiliao.common.commonwidget.FilterImageView
+                android:id="@+id/iv_sjk_fulllive_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/edge_margin"
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/ic_sjk_full_living_close"/>
+
+            <com.ziran.meiliao.common.commonwidget.FilterImageView
+                android:id="@+id/iv_sjk_fulllive_smallpop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/iv_sjk_fulllive_close"
+                android:src="@mipmap/ic_sjk_full_living_smallpop"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+    </com.ziran.meiliao.common.commonwidget.ViewDragHelperLayout>
+</RelativeLayout>

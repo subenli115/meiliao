@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="102dp"
+    android:paddingTop="12dp">
+
+        <ImageView
+            android:id="@+id/iv_item_buy_course_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/ic_vip"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="8dp" />
+
+        <TextView
+            android:id="@+id/tv_headview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_item_buy_course_img"
+            android:text="您已购买VIP会员"
+            android:textColor="@color/textColor_333"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/tv_headview_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_item_buy_course_img"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/iv_item_buy_course_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="2017.02.12 - 2018.02.12"
+            android:textColor="@color/textColor_9f"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_headview_date"
+            android:layout_marginBottom="3dp"
+            android:text="适用所有课程"
+            android:layout_toRightOf="@+id/iv_item_buy_course_img"
+            android:textColor="@color/textColor_9f"
+            />
+
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp" />
+</RelativeLayout>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/divider1"
+              android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewpager_height1"
+            />
+
+        <LinearLayout
+            android:id="@+id/ly_dots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/viewpager"
+            android:layout_marginBottom="12dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_main_home_top_jyg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_tran_gray"
+            android:drawablePadding="4dp"
+            android:drawableTop="@mipmap/index_menu_mindfln"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="觉当下"
+            android:textColor="@color/textColor_333"
+            />
+
+        <TextView
+            android:id="@+id/tv_main_home_top_sjk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_tran_gray"
+            android:drawablePadding="4dp"
+            android:drawableTop="@mipmap/index_menu_course"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="心智苑"
+            android:textColor="@color/textColor_333"
+            />
+
+        <TextView
+            android:id="@+id/tv_main_home_top_zczn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_tran_gray"
+            android:drawablePadding="4dp"
+            android:drawableTop="@mipmap/index_menu_heart"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="趣静观"
+            android:textColor="@color/textColor_333"
+            />
+    </LinearLayout>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="2dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="2dp"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_main_home_music"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_main_home_music_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="身心净化水元素"
+                            android:textColor="@color/textColor_333"
+                            android:textSize="16sp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_main_home_music_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:text="张芝华"
+                            android:textColor="@color/textColor_666"
+                            />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_main_home_music_depict"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:ellipsize="end"
+                        android:textSize="12sp"
+                        android:maxLines="2"
+                        />
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    >
+
+                    <com.ziran.meiliao.common.commonwidget.RoundImageView
+                        android:id="@+id/iv_main_home_music_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/ic_loading_rectangle"
+                        />
+
+                    <com.ziran.meiliao.common.commonwidget.PlayPauseView
+                        android:id="@+id/iv_main_home_music_play_or_pause"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        app:pp_bg_color="@color/transparent10"
+                        app:pp_bg_shadow_color_alpha="50"
+                        app:pp_bg_shadow_size="2dp"
+                        app:pp_border_show="true"
+                        app:pp_border_width="1dp"
+                        app:pp_gap_width="8"
+                        />
+                </FrameLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_main_home_music"
+                >
+
+                <include layout="@layout/include_wave_view"/>
+
+                <FrameLayout
+                    android:id="@+id/fl_main_home_music_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/head_view_wave_height"
+                    >
+
+                    <com.ziran.meiliao.common.commonwidget.FilterTextView
+                        android:id="@+id/tv_main_home_music_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawablePadding="4dp"
+                        android:drawableRight="@mipmap/index_arrow_more"
+                        android:gravity="center"
+                        android:text="查看全部音频"
+                        android:textColor="@color/textColor_666"
+                        android:textSize="12sp"
+                        />
+                </FrameLayout>
+            </FrameLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/ll_main_home_news"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="6dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/index_topline"
+            />
+
+
+        <com.ziran.meiliao.widget.RxTextViewVertical
+            android:id="@+id/tv_main_home_hot_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

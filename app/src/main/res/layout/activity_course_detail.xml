@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<com.ziran.meiliao.common.commonwidget.NormalTitleBar
+    android:id="@+id/ntb_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:ntb_tv_left="showAndFinish"
+    />
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/arl_activity"
+        android:layout_below="@+id/ntb_title"
+        >
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+        
+        
+        
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFAC0"
+        android:layout_above="@+id/tv_sign_up"
+        >
+
+        <TextView
+            android:id="@+id/tv_bird_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="67px"
+            android:layout_marginTop="6px"
+            android:text="@string/bird_price"
+            android:textColor="#FF5E5E" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10px"
+            android:layout_marginTop="10px"
+            android:layout_below="@+id/tv_bird_price"
+            android:layout_alignLeft="@+id/tv_bird_price"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/normal_black"
+                android:text="仅限5位"
+                android:textSize="15px"
+                android:paddingLeft="9px"
+                android:paddingTop="4px"
+                android:paddingBottom="4px"
+                android:paddingRight="9px"
+                android:layout_alignLeft="@+id/tv_bird_price"
+                android:layout_below="@+id/tv_bird_price"
+                />
+
+            <TextView
+                android:id="@+id/tv_NoPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/tv_num"
+                android:layout_marginLeft="12px"
+                android:layout_toRightOf="@+id/tv_num"
+                android:text="￥3500"
+                android:gravity="center"
+                android:textSize="18px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+            <TextView
+                android:id="@+id/tv_endTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="23px"
+                android:layout_marginRight="71px"
+                android:text="距结束仅剩：xx天xx时xx分xx秒"
+                />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <TextView
+        android:id="@+id/tv_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:text="立即报名(￥3500)"
+        android:gravity="center"
+        android:background="@drawable/background_gradient"
+        />
+    <android.support.design.widget.FloatingActionButton
+        app:layout_behavior="@string/scale_down_behavior"
+        android:layout_width="wrap_content"
+        app:elevation="2dp"
+        android:layout_alignParentBottom="true"
+            android:layout_marginBottom="300px"
+        android:layout_alignParentRight="true"
+        android:id="@+id/fab"
+        android:src="@mipmap/jdx_calendy_top"
+        android:layout_height="wrap_content"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

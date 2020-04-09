@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ziran.meiliao.widget.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rippleBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:rb_color="@color/white90"
+    app:rb_duration="6000"
+    app:rb_radius="80dp"
+    app:rb_rippleAmount="6"
+    app:rb_scale="1.6"
+    app:rb_strokeWidth="4dp"
+    app:rb_type="fillRipple"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ziran.meiliao.ui.settings.widget.DonutProgress
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:donut_finished_color="@color/white"
+            app:donut_finished_stroke_width="3dp"
+            app:donut_unfinished_stroke_width="3dp"
+            app:donut_show_text="true"
+            app:donut_text_color="@color/white"
+            app:donut_text_mode="TIME"
+            app:donut_text_size="19sp"
+            app:donut_unfinished_color="@color/white20" />
+
+        <com.ziran.meiliao.widget.wheelpicker.WheelPicker
+            android:id="@+id/weelPicker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:visibility="visible"
+            app:wheel_atmospheric="true"
+            app:wheel_curved="true"
+            app:wheel_data="@array/time_picker"
+            app:wheel_indicator="true"
+            app:wheel_indicator_color="@color/white70"
+            app:wheel_item_text_color="@color/white70"
+            app:wheel_selected_item_position="2"
+            app:wheel_selected_item_text_color="@color/white"
+            app:wheel_visible_item_count="5" />
+
+        <TextView
+            android:id="@+id/tv_picker_fen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="42dp"
+            android:text="分钟"
+            android:textColor="@color/white70"
+            android:visibility="visible" />
+    </FrameLayout>
+
+
+</com.ziran.meiliao.widget.RippleBackground>

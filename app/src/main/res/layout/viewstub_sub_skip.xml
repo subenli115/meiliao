@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F7F7F5"
+    android:visibility="visible"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_trailer_course_detail_sub_img"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        app:roundimageview_height_ratio="0.75"
+        android:layout_margin="4dp"
+        android:src="@mipmap/ic_loading_square_big"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/iv_trailer_course_detail_sub_img"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_trailer_course_detail_sub_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1111111111111111"
+            android:textColor="@color/textColor_333"/>
+
+        <TextView
+            android:id="@+id/tv_trailer_course_detail_sub_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥99元／年"
+            android:textColor="@color/textColor_666"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_trailer_course_detail_sub_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:padding="8dp"
+        android:text="进入订阅"
+        android:textColor="@color/textColor_teshe"
+        app:cs_bg_radius="4dp"
+        app:cs_border_color="@color/textColor_teshe"
+        app:cs_border_width="0.7dp"/>
+</RelativeLayout>
+
+

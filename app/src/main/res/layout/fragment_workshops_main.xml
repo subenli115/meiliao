@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/divider1"
+                android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <LinearLayout
+        android:id="@+id/iv_workshops_main_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="12dp"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.FilterImageView
+            android:id="@+id/iv_workshops_main_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:src="@drawable/back1"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.ziran.meiliao.widget.SlideSearchView
+                android:id="@+id/slideSearchView"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical|right"
+
+                />
+        </FrameLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

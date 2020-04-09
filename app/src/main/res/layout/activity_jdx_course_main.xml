@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/arl"
+    android:clipToPadding="true"
+    android:layout_height="wrap_content"
+    >
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_below="@+id/ntb_title"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/arlMain"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_head"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:src="@color/bank_FF6C6C6C"
+        android:layout_height="450px"
+        />
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:layout_width="match_parent"
+        android:layout_marginTop="20px"
+        android:id="@+id/ntb_title"
+        android:layout_height="wrap_content"/>
+
+
+    <ImageView
+        android:id="@+id/iv_me_main_avatar"
+        android:layout_width="148px"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="48px"
+        android:layout_height="148px"
+        android:src="@mipmap/ic_user_pic"
+        android:layout_below="@+id/ntb_title"
+        />
+
+    <TextView
+        android:layout_below="@+id/ntb_title"
+        android:id="@+id/tv_user_name"
+        android:layout_marginLeft="16px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69px"
+        android:layout_toRightOf="@+id/iv_me_main_avatar"
+        android:text="小明同学"
+        android:textColor="@color/white"
+        android:textSize="36px"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/tv_exe_dyas"
+        android:layout_marginLeft="16px"
+        android:layout_toRightOf="@+id/iv_me_main_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_user_name"
+        android:paddingTop="5px"
+        android:paddingBottom="5px"
+        android:layout_marginTop="13px"
+        android:textSize="24px"
+        android:paddingLeft="15px"
+        android:paddingRight="15px"
+        android:background="@drawable/normal_bg_gray_c0"
+        android:textColor="@color/black"
+        android:text="还未练习"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_below="@+id/tv_exe_dyas"
+        android:layout_width="match_parent"
+        android:background="#19FFFFFF"
+        android:orientation="horizontal"
+        android:id="@+id/all_top"
+        android:layout_marginTop="45px"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingTop="27px"
+            android:paddingBottom="27px"
+            android:gravity="center"
+            android:textSize="28px"
+            android:id="@+id/tv_teacher_speak"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="引导音:默认"/>
+        <View
+            android:layout_width="1px"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:background="#FCFCFC"
+            android:layout_height="match_parent"
+
+            />
+        <TextView
+            android:id="@+id/tv_exe_record"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingTop="27px"
+            android:paddingBottom="27px"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="28px"
+            android:text="@string/exercise_record"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_below="@+id/all_top"
+        android:layout_width="match_parent"
+        android:background="#F5F9FA"
+        android:layout_height="20px"
+
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_line"
+        android:layout_height="wrap_content">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="37px"
+        android:layout_marginTop="44px"
+        android:id="@+id/all_calendy"
+        android:layout_marginBottom="43px"
+        android:background="@drawable/normal_bg_tran"
+        >
+        <ImageView
+            android:layout_marginLeft="11px"
+            android:layout_gravity="center"
+            android:layout_width="36px"
+            android:layout_height="38px"
+            android:layout_marginRight="6px"
+            android:src="@mipmap/jdx_calendy_bottom"
+            />
+        <TextView
+            android:layout_marginRight="16px"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28px"
+            android:text="@string/exe_calenday"
+            android:textColor="#FF8947"
+            android:paddingBottom="5px"
+            android:paddingTop="5px"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:padding="10px"
+        android:id="@+id/back_today"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="返回今天"
+        android:layout_marginRight="30px"
+        android:layout_alignParentRight="true"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10px"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28px"
+                android:text="第一"
+                android:layout_marginLeft="48px"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="周日常练习"
+                android:textSize="28px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginLeft="48px"
+            android:layout_marginRight="48px"
+            android:layout_marginTop="33px"
+            android:background="#E0E0E0"
+            android:layout_marginBottom="39px"
+            android:layout_height="1px"/>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all_practice"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <LinearLayout
+                android:id="@+id/all_weeks"
+                android:layout_marginTop="20px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="65px"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px">
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_dot_gray"
+                        android:gravity="center"
+                        android:text="日" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_dot_gray"
+                        android:gravity="center"
+                        android:text="一" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_dot_gray"
+                        android:gravity="center"
+                        android:text="二" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_dot_gray"
+                        android:gravity="center"
+
+                        android:text="三" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_dot_gray"
+                        android:gravity="center"
+
+                        android:text="四" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_dot_gray"
+                        android:gravity="center"
+                        android:text="五" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/shape_dot_gray"
+                        android:gravity="center"
+                        android:text="六" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    android:id="@+id/recyclerView"
+                    android:layout_marginBottom="200px"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</ScrollView>
+</com.zhy.autolayout.AutoRelativeLayout>
+
+
+</ScrollView>
+
+    <TextView
+android:id="@+id/tv_join"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textColor="@color/white"
+android:background="@color/textColor_F08F55"
+android:text="@string/start_first_weeks"
+android:gravity="center"
+        android:visibility="invisible"
+android:paddingTop="17px"
+android:textSize="36px"
+android:layout_alignParentBottom="true"
+android:paddingBottom="17px"
+    /></com.zhy.autolayout.AutoRelativeLayout>

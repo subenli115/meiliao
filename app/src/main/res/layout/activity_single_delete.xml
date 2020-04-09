@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View style="@style/hor_match_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <Button
+                android:id="@+id/btnSelect"
+                style="@style/MoreImageView"
+                android:background="@drawable/selector_white_gray"
+                android:text="@string/selectall" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                style="@style/MoreImageView"
+                android:background="@drawable/selector_gray_tran"
+                android:text="@string/delete"
+                android:textColor="#EA4848" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.ziran.meiliao.widget.CustomMusicPanelNewView
+        android:id="@+id/musicPanelView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_above="@+id/tab_layout"
+        android:layout_gravity="bottom"
+        />
+</LinearLayout>

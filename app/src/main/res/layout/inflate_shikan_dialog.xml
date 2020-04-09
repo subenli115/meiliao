@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_shikan_dialog_bg"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_centerVertical="true"
+        >
+
+        <ImageView
+            android:id="@+id/iv_shikan_dialog_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="8dp"
+            android:src="@mipmap/ic_close_black"/>
+
+        <TextView
+            android:id="@+id/tv_shikan_dialog_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginTop="-24dp"
+            android:gravity="center"
+            android:text="你要购买或者加入会员才能继续观看课程哦"
+            android:textColor="@color/textColor_666"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="12dp">
+
+            <Button
+                android:id="@+id/btn_shikan_dialog_buy_vip"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_shikan_dialog_vip"
+                android:text="购买会员"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btn_shikan_dialog_buy_course"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_shikan_dialog_course"
+                android:text="购买课程"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

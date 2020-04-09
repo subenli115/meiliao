@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_title">#45B000</color>
+    <color name="item_content">#EAEAEA</color>
+    <color name="item_send">#FFE1AF</color>
+    <color name="item_target">#D5FFAA</color>
+    <color name="item_join_room">#4cFFA008</color>
+</resources>

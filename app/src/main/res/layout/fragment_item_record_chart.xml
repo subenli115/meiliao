@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="24dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="4dp"
+    >
+
+    <RadioGroup
+        android:id="@+id/rg_record_calendar_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_record_calendar_rg"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_record_calendar_chart_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_record_calendar_rb"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="日"
+            android:textColor="@color/white"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_record_calendar_chart_week"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_record_calendar_rb"
+            android:button="@null"
+            android:gravity="center"
+            android:text="周"
+            android:textColor="@color/white"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_record_calendar_chart_month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_record_calendar_rb"
+            android:button="@null"
+            android:gravity="center"
+            android:text="月"
+            android:textColor="@color/white"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_record_calendar_chart_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_record_calendar_rb"
+            android:button="@null"
+            android:gravity="center"
+            android:text="年"
+            android:textColor="@color/white"
+            />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rg_record_calendar_chart"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_record_calendar_chart_fl"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总时间"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999小时"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:gravity="right"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="练习时间"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_record_chart_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="999999小时"
+                />
+        </LinearLayout>
+
+        <com.ziran.meiliao.widget.hellocharts.view.ColumnChartView
+            android:id="@+id/columnChartView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_time"
+            android:layout_marginTop="4dp"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

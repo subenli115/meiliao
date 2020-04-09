@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.ziran.meiliao.widget.CustomEditText
+        android:id="@+id/et_edit_userinfo_nick"
+        style="@style/EditUserInfoEditText"
+        android:layout_below="@+id/ntb"
+        android:hint="@string/input_name"
+        android:padding="10px"
+        android:textSize="36px"
+        android:maxLength="15"
+        app:type="1"/>
+
+    <com.ziran.meiliao.widget.CustomEditText
+        android:id="@+id/et_edit_userinfo_email"
+        style="@style/EditUserInfoEditText"
+        android:layout_below="@+id/ntb"
+        android:hint="@string/input_email"
+        android:padding="10px"
+        android:inputType="textEmailAddress"
+        android:maxLength="25"
+        android:visibility="gone"
+        android:textSize="36px"
+        app:type="1"/>
+</com.zhy.autolayout.AutoRelativeLayout>

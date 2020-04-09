@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+//            // 移除无用的resource文件
+//            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    compile files('libs/alipaySdk-20160809.jar')
+    api files('libs/beecloud-2.6.0.jar')
+    //    compile files('libs/wechat-sdk-android-with-mta-1.0.2.jar')
+    //    compile files('libs/alipaySdk-20160809.jar')
+    //    compile files('libs/beecloud-2.6.0.jar')
+    //    compile files('libs/Cashier_SDK-v4.2.0.jar')
+    //    compile files('libs/UPPayAssistEx.jar')
+    api files('libs/libammsdk.jar')
+    api files('libs/alipaySdk-20170922.jar')
+}

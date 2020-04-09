@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent_helf"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/ll_share_exercise_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_bottom_myshot"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/ic_practise_bg_border"/>
+
+            <ImageView
+                android:id="@+id/iv_share_exercise_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
+
+
+            <TextView
+                android:id="@+id/tv_share_exercise_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="22dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <View style="@style/hor_match_line"/>
+
+                <TextView
+                    android:id="@+id/tv_share_exercise_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="24"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tv_exercise_yearAndMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:text="2017.02"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"/>
+
+                <View style="@style/hor_match_line"/>
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/iv_exercise_user_head"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_above="@+id/tv_share_exercise_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                android:src="@mipmap/ic_user_pic"/>
+            <com.ziran.meiliao.widget.CustomNumbersView
+                android:layout_width="match_parent"
+                android:layout_above="@+id/tv_exercise_qrcode"
+                android:layout_marginBottom="14dp"
+                android:id="@+id/customNumbersView"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_exercise_qrcode"
+                android:layout_width="wrap_content"
+                android:gravity="bottom"
+                android:textColor="@color/white"
+                android:layout_height="60dp"
+                android:text="珍爱既往 践行当下 无拘未来"
+                android:layout_above="@+id/ll_label"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                />
+            <LinearLayout
+                android:id="@+id/ll_label"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:layout_alignRight="@+id/tv_exercise_qrcode"
+                android:layout_height="wrap_content"
+                >
+                <View
+                    android:layout_width="48dp"
+                    android:layout_height="1dp"
+                    android:background="@mipmap/ic_loading_square_big" />
+                <TextView
+                    android:id="@+id/tv_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="5P医学"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.7dp"
+                android:layout_weight="1"
+                android:background="@color/divider"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="分享"
+                android:textColor="@color/white"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.7dp"
+                android:layout_weight="1"
+                android:background="@color/divider"/>
+
+        </LinearLayout>
+
+        <com.ziran.meiliao.widget.MoreImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/moreImageView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            app:moreImageView_count="2"
+            android:layout_marginRight="12dp"
+            android:paddingBottom="50dp"
+            android:paddingRight="50dp"
+                app:moreImageView_default_data="share_4"
+            />
+
+        <ImageView
+            android:id="@+id/iv_share_exercise_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            android:src="@mipmap/ic_main_jyc_close"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/selector_white_gray"
+              android:paddingLeft="12dp"
+              android:paddingTop="12dp">
+
+    <TextView
+        android:id="@+id/tv_sjk_profile_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/course_lessonbg3"
+        android:textSize="12sp"
+        android:gravity="center"
+        tools:text="1"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_sjk_profile_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+
+            android:layout_toLeftOf="@+id/tv_sjk_profile_tag"/>
+
+        <TextView
+            android:id="@+id/tv_sjk_profile_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_tv_jyg_vip_bg"
+            android:padding="4dp"
+            android:text="直播中"
+            android:textColor="@color/textColor_teshe"
+            android:layout_marginRight="12dp"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+        <View
+            style="@style/hor_match_line"
+            android:layout_below="@+id/tv_sjk_profile_title"
+            android:layout_marginTop="12dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

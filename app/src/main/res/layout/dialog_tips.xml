@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_corner4"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="10dp"
+    android:gravity="center_horizontal"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/edit_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11111111111111111"
+        android:gravity="center"
+        android:textColor="@color/textColor_333"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_weight="1"
+        android:gravity="center"
+        android:id="@+id/edit_dialog_message"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColor="@color/textColor_666"
+        tools:text="银行卡预留的手机号码是办理该银行卡时所填写的手机号码。没有预留、手机号忘记或停用，请联系银行客服更新处理。大陆手机号为11位数字，非大陆手机号为“国家代码-手机号码”形式。"
+        />
+
+    <View
+        android:id="@+id/edit_dialog_line"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider"
+        />
+
+
+
+
+        <TextView
+            android:id="@+id/tv_dialog_tops_know"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/selector_widget_md_dialog"
+            android:gravity="center"
+            android:text="知道了"
+            android:textColor="#0076FF"
+            android:textSize="16sp"
+            />
+
+</LinearLayout>

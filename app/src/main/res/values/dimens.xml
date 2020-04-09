@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="item_margin">8dp</dimen>
+    <dimen name="title_margin">24dp</dimen>
+    <dimen name="block_width">8dp</dimen>
+    <dimen name="edge_margin">12dp</dimen>
+    <dimen name="padding_6">6dp</dimen>
+    <dimen name="text_margin_left">12dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="item_height">54dp</dimen>
+    <dimen name="pwd_delete">24dp</dimen>
+    <dimen name="default_textsize">17sp</dimen>
+
+
+    <dimen name="item_common_height">54dp</dimen>
+    <dimen name="item_bottom_height">60dp</dimen>
+    <dimen name="def_marginLeft">24dp</dimen>
+    <dimen name="def_marginRight">24dp</dimen>
+    <dimen name="button_textsize">19sp</dimen>
+    <dimen name="item_mar">48dp</dimen>
+
+
+    <dimen name="heart_anim_bezier_x_rand">40.0dp</dimen>
+    <dimen name="heart_anim_init_x">50.0dp</dimen>
+    <dimen name="heart_anim_init_y">25.0dp</dimen>
+    <dimen name="heart_anim_length">100.0dp</dimen>
+    <dimen name="heart_anim_length_rand">150.0dp</dimen>
+    <dimen name="heart_anim_x_point_factor">30.0dp</dimen>
+
+    <dimen name="heart_size_height">27.3dp</dimen>
+    <dimen name="heart_size_width">32.5dp</dimen>
+    <dimen name="contorller_child_height">24dp</dimen>
+    <dimen name="media_contorller_item_height">48dp</dimen>
+
+
+    <dimen name="whenview_anim_width">60dp</dimen>
+    <dimen name="whenview_anim_radius">100dp</dimen>
+    <dimen name="whenview_anim_kongba_width">1dp</dimen>
+
+
+
+    <dimen name="WheelItemTextSize">24sp</dimen>
+    <dimen name="WheelItemSpace">12dp</dimen>
+    <dimen name="WheelIndicatorSize">0.85dp</dimen>
+    <dimen name="WheelMargins">8dp</dimen>
+    <dimen name="viewpager_height">180dp</dimen>
+    <dimen name="rippleStrokeWidth">12dp</dimen>
+    <dimen name="rippleRadius">60dp</dimen>
+    <dimen name="sjk_live_unfull_height">192dp</dimen>
+    <dimen name="jyg_player_icon">28dp</dimen>
+    <dimen name="lable_width">36dp</dimen>
+    <dimen name="chat_width">280dp</dimen>
+    <dimen name="chat_height">160dp</dimen>
+    <dimen name="jyg_album_player_img">26dp</dimen>
+    <dimen name="item_common_small_height">48dp</dimen>
+    <dimen name="head_view_wave_height">32dp</dimen>
+    <dimen name="width_90">370dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="collapsed_header_height">10dp</dimen>
+    <dimen name="init_float_offset_y">130dp</dimen>
+    <dimen name="collapsed_float_offset_y">5dp</dimen>
+    <dimen name="init_float_margin">20dp</dimen>
+    <dimen name="collapsed_float_margin">5dp</dimen>
+</resources>

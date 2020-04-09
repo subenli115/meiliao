@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item>
+        <!-- This is the border color -->
+        <shape>
+            <solid android:color="@color/divider"/>
+        </shape>
+    </item>
+    <item
+        android:bottom="1.2dp"
+        >
+        <!-- This is the main color -->
+        <shape>
+            <solid android:color="#fff"/>
+
+
+        </shape>
+    </item>
+</layer-list>

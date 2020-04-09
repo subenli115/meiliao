@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.ziran.meiliao.widget.SimpleTextView
+        android:id="@+id/simpleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="6dp"
+        app:text="评论"
+        app:textColor="@color/textColor_333" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/iv_edit_comment"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/simpleTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/simpleTextView"
+        android:layout_marginRight="12dp"
+        android:src="@drawable/edittext_bg" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fl_recycler_view"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/simpleTextView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/tv_comment_more"
+        android:layout_height="48dp"
+        android:layout_below="@+id/fl_recycler_view"
+        android:gravity="center"
+        android:text="查看更多评论"
+        android:textColor="@color/textColor_666" />
+</RelativeLayout>

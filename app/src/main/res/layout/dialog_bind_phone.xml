@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@color/white"
+                android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.ziran.meiliao.widget.PhoneCodeView
+            android:id="@+id/phone_code_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
+        <com.ziran.meiliao.widget.SmsCodeView
+            android:id="@+id/smsCodeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:background="@drawable/shape_edittext_bg"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.FilterTextView
+            android:id="@+id/btn_bing"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="48dp"
+            android:background="@mipmap/btn_bg"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:textColor="@color/white"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:text="绑定"/>
+    </LinearLayout>
+</RelativeLayout>

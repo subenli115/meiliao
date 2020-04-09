@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="76dp"
+    android:background="@drawable/selector_tran_gray"
+    android:paddingTop="8dp">
+
+    <include
+        android:id="@+id/include_smooth_checkbox"
+        layout="@layout/include_smooth_checkbox"
+        android:visibility="gone"
+        />
+    
+    <RelativeLayout
+        android:id="@+id/item_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="12dp">
+
+            <com.ziran.meiliao.common.commonwidget.RoundImageView
+                android:id="@+id/iv_me_collect_album_img"
+                android:layout_width="60dp"
+                android:src="@mipmap/ic_loading_rectangle"
+                android:layout_height="60dp" />
+
+            <com.ziran.meiliao.ui.settings.widget.DonutProgress
+                android:id="@+id/donutProgress"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:donut_finished_color="@color/textColor_teshe"
+                app:donut_progress="40"
+                app:donut_text_color="@color/textColor_teshe"
+                app:donut_text_size="9sp"
+                app:donut_unfinished_color="@color/transparent" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_me_collect_album_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/frameLayout"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/frameLayout"
+            android:maxLines="1"
+            android:textColor="@color/textcolor_2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_jyg_listen_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_me_collect_album_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:maxLines="1"
+            android:textColor="@color/textColor_999"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_me_collect_album_anchor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_me_collect_album_profile"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/frameLayout"
+            android:maxLines="1"
+            android:textColor="@color/textColor_666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_me_collect_album_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/frameLayout"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toLeftOf="@+id/tv_me_collect_album_price"
+            android:layout_toRightOf="@+id/frameLayout"
+            android:textColor="@color/textColor_666"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_me_collect_album_lable"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/frameLayout"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:visibility="gone"
+            android:background="@drawable/shape_tv_jyg_vip_bg"
+            android:gravity="center"
+            android:textColor="@color/textColor_teshe" />
+
+        <TextView
+            android:id="@+id/tv_me_collect_album_price"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_me_collect_album_lable"
+            android:layout_marginRight="3dp"
+            android:text="900元"
+            android:visibility="gone"
+            android:textSize="18sp"
+            android:layout_alignTop="@+id/tv_me_collect_album_lable"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/tv_me_collect_album_lable"
+            android:textColor="@color/textColor_teshe2" />
+
+
+    </RelativeLayout>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp" />
+</RelativeLayout>

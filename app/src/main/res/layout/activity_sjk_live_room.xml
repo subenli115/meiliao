@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rl_sjk_live_room_bg"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        >
+
+        <ImageView
+            android:id="@+id/iv_sjk_live_room_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_loading_square_big"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            />
+
+
+    </RelativeLayout>
+
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_sjk_live_room_avatar"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_below="@+id/rl_sjk_live_room_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-36dp"
+        android:src="@mipmap/ic_user_pic"
+        app:roundimageview_type="circle"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_sjk_live_room_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_sjk_live_room_avatar"
+        android:layout_marginTop="36dp"
+        android:paddingBottom="8dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_sjk_live_room_fans_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/textColor_666"
+            android:textSize="16sp"
+            tools:text="99999999\n粉丝"
+            />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom"
+            android:background="@color/diver_bar"
+            />
+
+        <TextView
+            android:id="@+id/tv_sjk_live_room_profit_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/textColor_666"
+            android:textSize="16sp"
+            tools:text="99999999\n收益"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_bottom_container"
+        android:layout_below="@+id/ll_sjk_live_room_number"
+        />
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/item_common_height"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        >
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/tv_sjk_live_room_open_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@mipmap/livetelecast_build"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:text="待开播"
+                android:textColor="@color/textColor_teshe"
+                android:textSize="16sp"
+                />
+        </FrameLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:background="@color/divider"
+            />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/tv_sjk_live_room_course_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@mipmap/livetelecast_list"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:text="历史直播"
+                android:textColor="@color/textColor_333"
+                android:textSize="16sp"
+                />
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

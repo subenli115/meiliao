@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/divider1"
+              android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_title_text="申请退款"
+        app:ntb_tv_left="showAndFinish"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:id="@+id/tv_refund_days"
+        android:padding="12dp"
+        tools:text="10个工作日内退款"
+        />
+
+    <com.ziran.meiliao.ui.me.widget.CourseDetailView
+        android:id="@+id/courseDetailView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_order_number_and_ref_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:lineSpacingMultiplier="1.4"
+            tools:text="订单编号：8888888888888888\n生成时间：2017-07-13"
+            />
+
+        <View
+            style="@style/hor_match_line"/>
+
+        <TextView
+            android:id="@+id/tv_refund_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"
+            tools:text="退款金额：¥999"
+            />
+
+        <TextView
+            android:id="@+id/tv_refund_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/textColor_666"
+            tools:text="其中含现金支付：999元及正念币500个"
+            />
+
+        <View
+            style="@style/hor_match_line_8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:text="退款原因："
+            android:textSize="16sp"
+            />
+
+        <EditText
+            android:id="@+id/et_refund_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:background="@null"
+            android:gravity="top"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="4"
+            android:minLines="2"
+            android:padding="8dp"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/tv_refund_submit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="24dp"
+        android:textColor="@color/textColor_333"
+        android:background="@drawable/selector_btn_refund"
+        android:gravity="center"
+        android:text="确认退款"
+        />
+</LinearLayout>

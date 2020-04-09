@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/iv_headview_sjk_zhuanlan_ban"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_loading_rectangle"
+        />
+
+    <TextView
+        android:id="@+id/tv_headview_sjk_zhuanlan_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_headview_sjk_zhuanlan_ban"
+        android:layout_margin="12dp"
+        android:text="专栏简介"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/tv_headview_sjk_zhuanlan_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/iv_headview_sjk_zhuanlan_ban"
+        android:layout_margin="12dp"
+        android:textColor="@color/textColor_999"
+        tools:text="9999人订阅"
+        />
+
+    <com.ziran.meiliao.widget.ExpandableTextView
+        android:id="@+id/tv_headview_sjk_zhuanlan_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_headview_sjk_zhuanlan_title"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:textColor="@color/textColor_666"
+        app:etv_MaxLinesOnShrink="6"
+        tools:text="台湾正念发展协会理事长暨正念引导师师资训练师、美国麻州大学医学院正念
+        中心合格正念减压师资、加州健康研究院正念中心联合创始人、澳洲昆士兰大学宗教研究博士、台湾法鼓文理学院佛教学系专任助理教授。1998年开始学习正念，发表多篇与正念运用与理论相关的论文，并译有多本正念实践与正念教学的译作，在医院、高校、企业教授正念，致力于传播正念的当代运用和正念源头的佛法智慧传统。"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_headview_sjk_zhuanlan_profile"
+        android:layout_margin="12dp"
+        android:text="最近更新"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        />
+</RelativeLayout>

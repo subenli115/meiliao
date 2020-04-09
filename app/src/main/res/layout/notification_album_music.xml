@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="64.0dip"
+        android:layout_height="64.0dip"
+        android:layout_alignParentLeft="true"
+
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8.0dip"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:id="@+id/action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical">
+
+
+        <ImageView
+            android:id="@+id/iv_pause"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:padding="4dp"
+            android:src="@drawable/nc_pause"/>
+
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="6dp"
+            android:src="@mipmap/ic_notify_player_next"/>
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="8dp"
+            android:padding="10dp"
+            android:src="@mipmap/ic_notify_player_close"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/action"
+        android:layout_toRightOf="@+id/image">
+        <!--//跑马灯效果   //跑马灯重复次数 //由于Activity中没有写任何方法，故此处让其获得焦点   -->
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="8.0dip"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="瞬间"
+            android:textColor="@color/textColor_333"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="8.0dip"
+            android:maxLines="1"
+            android:text="邓紫棋"
+            android:textColor="@color/textColor_9f"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

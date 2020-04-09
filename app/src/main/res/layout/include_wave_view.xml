@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:wave="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/head_view_wave_height"
+    >
+
+    <com.ziran.meiliao.widget.WaveViewBySinCos
+        android:id="@+id/wave_sin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        wave:waveSpeed="3"
+        wave:waveColor="#28d1ff3a"
+        wave:waveStartPeriod="1"
+        />
+<!--
+   wave:waveColor="#32ffe42d"
+-->
+    <com.ziran.meiliao.widget.WaveViewBySinCos
+        android:id="@+id/wave_sin2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        wave:waveColor="#28d1ff3a"
+        wave:waveStartPeriod="0"
+        />
+
+</FrameLayout>

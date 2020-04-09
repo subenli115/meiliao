@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_white_corner4"
+        android:orientation="vertical"
+        android:paddingBottom="24dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="16dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="完善一下信息，方便活动助手及时与您沟通"
+            android:textColor="@color/textColor_666"
+            />
+
+        <com.ziran.meiliao.widget.PhoneCodeView
+            android:id="@+id/phone_code_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            />
+
+        <com.ziran.meiliao.widget.SmsCodeView
+            android:id="@+id/smsCodeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <View
+            style="@style/hor_match_line"/>
+
+        <com.ziran.meiliao.common.commonwidget.FilterTextView
+            android:id="@+id/tv_dialog_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:layout_marginTop="16dp"
+            android:background="@mipmap/btn_bg_pre"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:text="确定"
+            android:textColor="@color/white"
+            app:cs_bg_radius="24dp"
+            />
+
+    </LinearLayout>
+
+
+</FrameLayout>

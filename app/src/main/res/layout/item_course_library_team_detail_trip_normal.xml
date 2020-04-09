@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_left_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ll_content_container"
+        android:layout_alignTop="@+id/ll_content_container"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/workshops_ic_schedule"
+            />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:background="@color/textColor_teshe"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@+id/ll_left_container"
+        android:orientation="vertical"
+        android:paddingBottom="6dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="下榻利舍庄园与大理小院子（距离约500米)"
+            android:textColor="@color/textColor_333"
+            />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="上午"
+            android:textColor="@color/textColor_teshe5"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="客栈店长举行欢迎仪式，介绍庄园周边位置、场景。从这里俯瞰洱海，宛如一轮新月，静静地依卧在苍山和大理坝子之间。"
+            android:textColor="@color/textColor_666"
+            />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:id="@+id/iv_pic"
+            android:maxWidth="120dp"
+            android:maxHeight="200dp"
+            android:layout_marginTop="4dp"
+            android:adjustViewBounds="true"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

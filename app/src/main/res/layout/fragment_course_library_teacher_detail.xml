@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+
+              android:orientation="vertical"
+    >
+
+    <!--
+
+
+    -->
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_right_img1="@drawable/selector_select_collect"
+        app:ntb_right_img2="@mipmap/btn_share_black"
+        app:ntb_title_text="海蓝"
+        app:ntb_tv_left="showAndFinish"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.LoadingTip
+            android:id="@+id/loadedTip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        >
+
+        <View
+            style="@style/hor_match_line"/>
+
+        <TextView
+            android:id="@+id/tv_course_library_teacher_detail_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/survicer_green"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:text="客服"
+            android:textColor="@color/textColor_teshe"
+            android:textSize="16sp"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.FilterTextView
+            android:id="@+id/tv_course_library_teacher_detail_fa"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_course_library_teacher_detail_buy"
+            android:text="发起众筹"
+            app:cs_bg_style="green"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.FilterTextView
+            android:id="@+id/tv_course_library_teacher_detail_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="团建购买"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cs_bg_style="yellow"
+            />
+    </RelativeLayout>
+</LinearLayout>

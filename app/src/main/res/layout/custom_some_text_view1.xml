@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <View
+        style="@style/hor_match_line_8dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:lineSpacingMultiplier="1.4"
+        android:textColor="@color/textColor_666"
+        tools:text="姓名：Ariel"
+        />
+
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_marginTop="6dp"
+        />
+
+    <ViewStub
+        android:id="@+id/viewStub_mid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/inflate_some_text_mid"
+        />
+
+    <TextView
+    android:id="@+id/tv_bottom"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginTop="12dp"
+    android:lineSpacingMultiplier="1.4"
+    tools:text="订单编号：8888888888888888"
+    />
+</LinearLayout>

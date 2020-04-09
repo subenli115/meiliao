@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--昼夜模式主色调-->
+    <attr name="dayNightBackground" format="color|reference"/>
+    <attr name="dayNightOneTextColor" format="color|reference"/>
+    <attr name="dayNightTwoTextColor" format="color|reference"/>
+    <attr name="dayNightThreeTextColor" format="color|reference"/>
+    <attr name="dayNightBackgroundDrawable" format="color|reference"/>
+
+    <declare-styleable name="DayNightMode">
+        <attr name="dayNightBackgroundAttr" format="string|reference"/><!--切换背景属性-->
+        <attr name="dayNightOneTextColorAttr" format="string|reference"/><!--切换一级字体颜色属性-->
+        <attr name="dayNightTwoTextColorAttr" format="string|reference"/><!--切换二级字体颜色属性-->
+        <attr name="dayNightThreeTextColorAttr" format="string|reference"/><!--切换三级字体颜色属性-->
+        <attr name="dayNightBackgroundDrawableAttr" format="string|reference"/><!--切换背景图片属性-->
+    </declare-styleable>
+
+
+    <declare-styleable name="IRecyclerView">
+        <attr name="refreshHeaderLayout" format="reference"/>
+        <attr name="loadMoreFooterLayout" format="reference"/>
+        <attr name="refreshEnabled" format="boolean"/>
+        <attr name="loadMoreEnabled" format="boolean"/>
+        <attr name="refreshFinalMoveOffset" format="dimension"/>
+    </declare-styleable>
+
+
+    <!-- SimpleButton，简写sb -->
+    <declare-styleable name="SimpleButton">
+        <attr name="sb_mode" format="enum">
+            <enum name="normal" value="201"/>
+            <enum name="check" value="202"/>
+            <enum name="icon_check_invisible" value="203"/>
+            <enum name="icon_check_change" value="204"/>
+        </attr>
+        <attr name="sb_shape" format="enum">
+            <enum name="round_rect" value="101"/>
+            <enum name="arc" value="102"/>
+            <enum name="rect" value="103"/>
+        </attr>
+        <!-- 3、5 是Gravity里定义的值 -->
+        <attr name="sb_gravity" format="enum">
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr>
+        <attr name="sb_auto_check" format="boolean"/>
+        <attr name="sb_checked" format="boolean"/>
+        <attr name="sb_bg_color" format="color"/>
+        <attr name="sb_border_color" format="color"/>
+        <attr name="sb_text_color" format="color"/>
+        <attr name="sb_bg_color_check" format="color"/>
+        <attr name="sb_border_color_check" format="color"/>
+        <attr name="sb_text_color_check" format="color"/>
+        <attr name="sb_text" format="string"/>
+        <attr name="sb_text_check" format="string"/>
+        <attr name="sb_text_size" format="dimension"/>
+        <attr name="sb_border_width" format="dimension"/>
+        <attr name="sb_border_radius" format="dimension"/>
+        <attr name="sb_vertical_padding" format="dimension"/>
+        <attr name="sb_horizontal_padding" format="dimension"/>
+        <attr name="sb_icon_padding" format="dimension"/>
+        <attr name="sb_icon" format="reference"/>
+        <attr name="sb_icon_change" format="reference"/>
+    </declare-styleable>
+
+
+
+    <declare-styleable name="RoundImageView">
+        <attr name="roundimageview_borderRadius" format="dimension"/>
+        <attr name="roundimageview_ratio" format="float"/>
+        <attr name="roundimageview_ratio_style" format="boolean"/>
+        <attr name="roundimageview_used_ratio" format="boolean"/>
+        <attr name="roundimageview_type" format="enum">
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+        <attr name="roundimageview_height_ratio" format="float" />
+        <attr name="roundimageview_width_ratio" format="float" />
+        <attr name="roundimageview_border_width" format="dimension" />
+        <attr name="roundimageview_border_color" format="color" />
+    </declare-styleable>
+
+
+
+    <declare-styleable name="PercentLayout_Layout">
+        <attr name="layout_widthPercent" format="string"/>
+        <attr name="layout_heightPercent" format="string"/>
+
+        <attr name="layout_marginPercent" format="string"/>
+        <attr name="layout_marginLeftPercent" format="string"/>
+        <attr name="layout_marginTopPercent" format="string"/>
+        <attr name="layout_marginRightPercent" format="string"/>
+        <attr name="layout_marginBottomPercent" format="string"/>
+        <attr name="layout_marginStartPercent" format="string"/>
+        <attr name="layout_marginEndPercent" format="string"/>
+
+        <attr name="layout_textSizePercent" format="string"/>
+
+        <attr name="layout_maxWidthPercent" format="string"/>
+        <attr name="layout_maxHeightPercent" format="string"/>
+        <attr name="layout_minWidthPercent" format="string"/>
+        <attr name="layout_minHeightPercent" format="string"/>
+
+        <attr name="layout_paddingPercent" format="string"/>
+        <attr name="layout_paddingTopPercent" format="string"/>
+        <attr name="layout_paddingBottomPercent" format="string"/>
+        <attr name="layout_paddingLeftPercent" format="string"/>
+        <attr name="layout_paddingRightPercent" format="string"/>
+    </declare-styleable>
+
+    <attr name="cs_normal_bg_color" format="color"/>
+    <attr name="cs_fitter_bg_color" format="color"/>
+    <attr name="cs_border_width" format="dimension"/>
+    <attr name="cs_border_color" format="color"/>
+    <attr name="cs_bg_radius" format="dimension"/>
+    <attr name="csv_pressTextColor" format="color"/>
+    <attr name="cs_bg_style" format="enum">
+        <enum name="tra_gray" value="0"/>
+        <enum name="white_gray" value="1"/>
+        <enum name="green" value="2"/>
+        <enum name="yellow" value="3"/>
+    </attr>
+    <!-- <attr name="cs_border_style" format="flag">
+         <flag name="left" value="1"/>
+         <flag name="top" value="2"/>
+         <flag name="right" value="4"/>
+         <flag name="bottom" value="8"/>
+         <flag name="all" value="16"/>
+     </attr>-->
+
+    <declare-styleable name="FilterImageView">
+        <attr name="cs_normal_bg_color"/>
+        <attr name="cs_fitter_bg_color"/>
+        <attr name="cs_border_width"/>
+        <attr name="cs_border_color"/>
+        <attr name="cs_bg_radius"/>
+        <attr name="cs_bg_style"/>
+    </declare-styleable>
+    <attr name="cs_border_style" format="integer">
+        <flag name="left" value="1"/>
+        <flag name="top" value="2"/>
+        <flag name="right" value="4"/>
+        <flag name="bottom" value="8"/>
+        <flag name="all" value="16"/>
+    </attr>
+    <declare-styleable name="FilterTextView">
+        <attr name="cs_normal_bg_color"/>
+        <attr name="cs_fitter_bg_color"/>
+        <attr name="cs_border_width"/>
+        <attr name="cs_border_color"/>
+        <attr name="cs_bg_radius"/>
+        <attr name="csv_pressTextColor"/>
+        <attr name="cs_bg_style"/>
+        <attr name="cs_border_style"/>
+    </declare-styleable>
+    <declare-styleable name="NormalTitleBar">
+        <attr name="ntb_bg" format="reference"/>
+        <attr name="ntb_right_img1" format="reference" />
+        <attr name="ntb_right_img2" format="reference" />
+        <attr name="ntb_right_img3" format="reference" />
+        <attr name="ntb_right_text" format="string" />
+        <attr name="ntb_title_text" format="string" />
+        <attr name="ntb_right_text_color" format="color" />
+        <attr name="ntb_right_text_size" format="float" />
+        <attr name="ntb_right_img_size" format="dimension" />
+        <attr name="ntb_img_padding" format="dimension" />
+        <attr name="ntb_tv_left" format="enum" >
+            <enum name="show" value="0" />
+            <enum name="showAndFinish" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CircleIndicator">
+        <attr name="ci_radius" format="dimension"/>
+        <attr name="ci_margin" format="dimension"/>
+        <attr name="ci_background" format="color|integer"/>
+        <attr name="ci_selected_background" format="color|integer"/>
+        <attr name="ci_gravity">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr name="ci_mode">
+            <enum name="inside" value="0"/>
+            <enum name="outside" value="1"/>
+            <enum name="solo" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PlayPauseView">
+        <attr name="pp_bg_color" format="color"/>
+        <attr name="pp_bg_shadow_size" format="dimension"/>
+        <attr name="pp_bg_shadow_color" format="color"/>
+        <attr name="pp_bg_shadow_color_alpha" format="integer"/>
+        <attr name="pp_btn_color" format="color"/>
+        <attr name="pp_gap_width" format="float"/>
+        <attr name="pp_space_padding" format="float"/>
+        <attr name="pp_anim_duration" format="integer"/>
+        <attr name="pp_border_show" format="boolean" />
+        <attr name="pp_border_width" format="dimension" />
+        <attr name="pp_border_color" format="color" />
+        <attr name="pp_anim_direction">
+            <enum name="positive" value="1"/>
+            <enum name="negative" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

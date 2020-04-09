@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tv_fm_sjk_zhuanlan_subscribe"
+        app:loadMoreEnabled="true"
+        app:refreshEnabled="true"/>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_fm_sjk_zhuanlan_subscribe"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/textColor_teshe"
+        android:gravity="center"
+        tools:text="订阅   ¥99/年"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+</RelativeLayout>

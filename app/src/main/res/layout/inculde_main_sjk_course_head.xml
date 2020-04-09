@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_main_sjk_course_head_pic"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginBottom="24dp"
+            android:background="#afacac"/>
+
+        <TextView
+            android:id="@+id/tv_main_sjk_course_head_gf"
+            style="@style/MainSJKCourseHeadTextView"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@+id/tv_main_sjk_course_head_recommend"
+            android:drawableTop="@mipmap/course_icon_official"
+            android:text="官方课程"
+            />
+
+        <TextView
+            android:id="@+id/tv_main_sjk_course_head_recommend"
+            style="@style/MainSJKCourseHeadTextView"
+            android:layout_centerHorizontal="true"
+            android:drawableTop="@mipmap/course_icon_commend"
+            android:text="推荐课程"
+            />
+
+        <TextView
+            android:id="@+id/tv_main_sjk_course_head_zoon"
+            style="@style/MainSJKCourseHeadTextView"
+            android:layout_marginLeft="48dp"
+            android:layout_toRightOf="@+id/tv_main_sjk_course_head_recommend"
+            android:drawableTop="@mipmap/course_icon_zone"
+            android:text="圈内活动"
+            />
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_item_workshops_main_crowd_funding_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:roundimageview_height_ratio="0.426"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_workshops_main_crowd_funding_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_item_workshops_main_crowd_funding_pic"
+        android:layout_marginTop="8dp"
+        tools:text="正念减压四日工作坊"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_item_workshops_main_crowd_funding_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_workshops_main_crowd_funding_title"
+        android:layout_marginTop="8dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_item_workshops_main_crowd_funding_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor_teshe5"
+            android:textSize="18sp"
+            tools:text=" ¥99"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_item_workshops_main_crowd_funding_people"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:drawablePadding="4dp"
+            android:drawableLeft="@mipmap/ic_persons"
+            android:gravity="center"
+            tools:text="99-999"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_item_workshops_main_crowd_funding_date"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:drawablePadding="4dp"
+            android:drawableLeft="@mipmap/ic_time"
+            android:gravity="center"
+            tools:text="2天1晚"
+            />
+    </LinearLayout>
+
+    <com.ziran.meiliao.ui.workshops.widget.ProgressTipsView
+        android:layout_width="match_parent"
+        android:id="@+id/progressTipsView"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/iv_item_workshops_main_crowd_funding_pic"
+        android:layout_alignRight="@+id/iv_item_workshops_main_crowd_funding_pic"
+        android:layout_below="@+id/ll_item_workshops_main_crowd_funding_price"
+        android:layout_marginTop="8dp"
+        />
+</RelativeLayout>

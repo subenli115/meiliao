@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:id="@+id/all_main"
+    >
+
+    <TextView
+        android:layout_marginTop="20px"
+        android:id="@+id/tv"
+        android:text="2222"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20px"
+        android:layout_marginBottom="14px"
+        android:layout_height="wrap_content">
+
+
+    </TextView>
+    <TextView
+        android:id="@+id/tv_time"
+        android:text="2222"
+        android:textSize="13dp"
+        android:textColor="@color/textColor_666"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20px"
+        android:layout_marginBottom="14px"
+        android:layout_height="wrap_content">
+    </TextView>
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/item_content_rl"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20px"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:layout_width="match_parent"
+        android:layout_marginTop="20px"
+        android:id="@+id/ntb_title"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_bd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF333333"
+        android:textSize="44px"
+        android:layout_centerHorizontal="true"
+        android:text="绑定手机"
+        android:layout_marginTop="30px"
+        android:layout_below="@+id/ntb_title"
+        />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入您常用的手机号码"
+        android:layout_below="@+id/tv_bd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31px"
+        />
+    <TextView
+        android:id="@+id/tv_86"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+86"
+        android:layout_marginLeft="73px"
+        android:textSize="36px"
+        android:drawableRight="@mipmap/spinner_icon"
+        android:paddingLeft="17px"
+        android:paddingRight="17px"
+        android:paddingTop="5px"
+        android:drawablePadding="10px"
+        android:paddingBottom="5px"
+        android:background="#FFE0E0E0"
+        android:layout_below="@+id/tv_hint"
+        android:layout_alignLeft="@+id/tv_zczh"
+        android:textColor="@color/textColor_666666"
+        android:layout_marginTop="74px"
+        />
+    <EditText
+        android:id="@+id/tv_input_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_86"
+        android:layout_below="@+id/tv_sjdl"
+        android:layout_alignTop="@+id/tv_86"
+        android:inputType="phone"
+        android:textColorHint="@color/textColor_CFCFCF"
+        android:background="@null"
+        android:textSize="40px"
+        android:hint="@string/input_phone1"
+        android:maxLength="16"
+        android:layout_marginLeft="45px"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:visibility="gone"
+        android:background="@color/textColor_8F8F8F"
+        android:layout_alignLeft="@+id/tv_zczh"
+        android:layout_toRightOf="@+id/tv_zczh"
+        android:layout_alignRight="@+id/tv_86"
+        android:layout_marginTop="28px"
+        android:layout_below="@+id/tv_86"
+        >
+    </View>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/textColor_8F8F8F"
+        android:layout_toRightOf="@+id/tv_zczh"
+        android:layout_marginTop="28px"
+        android:layout_marginLeft="73px"
+        android:layout_marginRight="71px"
+        android:layout_alignRight="@+id/iv_close"
+        android:layout_below="@+id/tv_86"
+        android:id="@+id/line_one"
+        android:layout_marginBottom="80px"
+        />
+
+
+    <EditText
+        android:id="@+id/tv_input_phone_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_86"
+        android:textColorHint="@color/textColor_CFCFCF"
+        android:background="@null"
+        android:textSize="36px"
+        android:layout_marginTop="61px"
+        android:visibility="invisible"
+        android:hint="@string/input_code"
+        android:inputType="number"
+        android:layout_alignLeft="@+id/line_one"
+        />
+    <com.ziran.meiliao.widget.SmsCodeView
+        android:id="@+id/smsCodeView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_86"
+
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_86"
+        android:layout_marginTop="31px"
+        android:layout_alignRight="@+id/line_one"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/textColor_8F8F8F"
+        android:layout_marginTop="28px"
+        android:layout_alignLeft="@+id/tv_86"
+        android:layout_marginRight="71px"
+        android:layout_below="@+id/tv_input_phone_code"
+        android:layout_alignRight="@+id/iv_close"
+        android:layout_marginBottom="80px"
+        >
+    </View>
+
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/all_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83px"
+        android:layout_marginRight="64px"
+        android:layout_marginLeft="64px"
+        android:layout_marginBottom="78px"
+        android:layout_below="@+id/smsCodeView"
+        android:background="@drawable/normal_bg_gray_44"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ljbd"
+            android:textSize="38px"
+            android:gravity="center"
+            android:paddingTop="13px"
+            android:paddingBottom="13px"
+            android:id="@+id/tv_bind"
+            android:layout_below="@+id/tv_input_password"
+            android:textColor="@color/white"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

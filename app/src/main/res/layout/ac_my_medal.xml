@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f9ff"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:layout_width="match_parent"
+        android:id="@+id/ntb"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"/>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/empty"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:id="@+id/tv_icon"
+            android:layout_width="247px"
+            android:layout_height="269px"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/medal_top"
+            android:layout_marginTop="251px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂时没有勋章"
+            android:layout_marginTop="65px"
+            android:layout_centerHorizontal="true"
+            android:textSize="34px"
+            android:textColor="@color/textColor_999"
+            android:layout_below="@+id/tv_icon"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_main"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ntb"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的勋章"
+            android:textSize="36px"
+            android:layout_marginLeft="67px"
+            android:textColor="@color/textColor_f333"
+            android:layout_below="@+id/ntb_title"
+            android:layout_marginTop="66px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的勋章"
+            android:textSize="24px"
+            android:layout_marginLeft="67px"
+            android:id="@+id/tv_count"
+            android:textColor="#00E6A5"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="42px"
+            />
+
+        <TextView
+            android:layout_width="153px"
+            android:layout_height="161px"
+            android:background="@mipmap/medal_top"
+            android:layout_marginTop="40px"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="106px"
+            android:layout_below="@+id/ntb_title"
+            />
+
+
+        <RelativeLayout
+            android:layout_below="@+id/tv_count"
+            android:layout_width="match_parent"
+            android:layout_marginTop="64px"
+            android:layout_marginLeft="36px"
+            android:layout_marginRight="36px"
+            android:layout_marginBottom="36px"
+            android:layout_height="wrap_content">
+
+            <GridView
+                android:id="@+id/gridView"
+                android:gravity="center"
+                android:columnWidth="175px"
+                android:background="@drawable/normal_bg_white4"
+                android:paddingLeft="34px"
+                android:paddingRight="34px"
+                android:paddingTop="58px"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </RelativeLayout>
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

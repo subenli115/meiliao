@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <com.ziran.meiliao.ui.workshops.widget.CrowdFundingStepView
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="80dp"
+                />
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_name"
+                style="@style/BaseItemView"
+                app:biv_content_hint="必填"
+                app:biv_content_size="16"
+                app:biv_content_type="edit"
+                app:biv_forword_show="false"
+                app:biv_title="姓    名"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_id"
+                style="@style/BaseItemView"
+                app:biv_content_hint="必填"
+                app:biv_content_size="16"
+                app:biv_content_type="edit"
+                app:biv_forword_show="false"
+                app:biv_title="身份证"
+                />
+
+
+            <EditText
+                android:id="@+id/et_crowd_funding_user_msg_input_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="top"
+                android:maxLines="4"
+                android:hint="请填写您的个人简介"
+                android:padding="12dp"
+                android:textColorHint="@color/textColor_hint"
+                android:textSize="16sp"
+                />
+
+            <com.ziran.meiliao.ui.workshops.widget.TitleGridView
+                android:id="@+id/titleGridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:tgv_grid_number="4"
+                app:tgv_title_size="16"
+                app:tgv_title="资格证书"
+                app:tgv_title_color="@color/textColor_333"
+                app:tgv_ver_space="8dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gridView"
+                android:layout_margin="12dp"
+                android:gravity="center_vertical"
+                >
+
+                <com.ziran.meiliao.widget.SmoothCheckBox
+                    android:id="@+id/checkbox"
+                    style="@style/smoothCheckBox"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="同意5P医学用户众筹课程协议书"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_crowd_funding_user_msg_input_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="6dp"
+        android:background="@mipmap/btn_bg"
+        android:enabled="false"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+</LinearLayout>

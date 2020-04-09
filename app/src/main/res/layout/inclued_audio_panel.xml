@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+
+    android:background="@drawable/shape_radius_gray"
+    >
+
+    <ImageView
+        android:id="@+id/iv_headview_music_panel_zl__cover"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="8dp"
+        />
+
+    <com.ziran.meiliao.widget.PlayPauseView
+        android:id="@+id/playPauseView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="14dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_headview_music_panel_zl_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:src="@mipmap/ic_jyg_player_download_press"
+        />
+
+    <TextView
+        android:id="@+id/tv_headview_music_panel_zl_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_toLeftOf="@+id/iv_headview_music_panel_zl_download"
+        android:layout_toRightOf="@+id/iv_headview_music_panel_zl__cover"
+        android:maxLines="1"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_headview_music_panel_zl_time_and_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_headview_music_panel_zl_title"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/iv_headview_music_panel_zl__cover"
+        android:textSize="12sp"
+        />
+
+</RelativeLayout>

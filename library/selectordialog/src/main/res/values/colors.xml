@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white_light">#dddddd</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="black">#333333</color> <!--黑-->
+    <color name="message">#666666</color> <!--黑-->
+
+    <color name="black_light">#363636</color>
+    <color name="teshu">#45B000</color>
+    <color name="gray2">#dcdcdc</color> <!--黑-->
+
+    <!--<color name="gray">#dcdcdc</color>-->
+
+</resources>

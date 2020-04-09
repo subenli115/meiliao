@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginStart="12dp"
+                android:paddingTop="12dp"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_item_sjk_act_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp">
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_sjk_act_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:roundimageview_height_ratio="0.381"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_loading_square_big"
+            />
+
+        <ImageView
+            android:id="@+id/iv_item_sjk_act_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/course_lab_enroll"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_item_sjk_act_count_down"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="@drawable/shape_main_sjk_nowlive_limit"
+            android:drawableLeft="@mipmap/course_icon_sandglass"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            tools:text="9天9小时9分9秒"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_act_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_item_sjk_act_top"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_act_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_sjk_act_title"
+        android:layout_marginTop="4dp"
+        android:drawableLeft="@mipmap/course_icon_time"
+        android:drawablePadding="4dp"
+        android:textColor="@color/textColor_9f"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_item_sjk_act_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_sjk_act_date"
+        android:layout_marginTop="4dp"
+        android:drawableLeft="@mipmap/course_icon_add"
+        android:drawablePadding="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/textColor_9f"
+        android:textSize="12sp"
+        tools:text="fffffffffffffffffffffffffffffffffffff"/>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_item_sjk_act_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_item_sjk_act_place"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tv_item_sjk_act_date"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_btn_sjk_activity_join"
+        android:gravity="center"
+        android:text="马上报名"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        />
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/tv_item_sjk_act_place"
+        android:layout_marginTop="12dp"/>
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:id="@+id/all_top"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_dot"
+        android:layout_width="10dp"
+        android:layout_marginTop="51px"
+        android:layout_height="10dp"
+        android:layout_marginBottom="51px"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_circle_dot_green"
+        android:layout_marginLeft="35px"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="大都市多"
+        android:textStyle="bold"
+        android:layout_marginLeft="11px"
+        android:textSize="37px"
+        android:layout_toRightOf="@+id/tv_dot"
+        android:textColor="@color/textColor_2A"
+        />
+    
+
+</com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/all_teacher"
+        android:orientation="vertical"
+        android:layout_below="@+id/all_top"
+        >
+    <View
+        android:id="@+id/view_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#E8E8E8"
+        android:layout_below="@+id/all_top"
+        />
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_teacher"
+                android:layout_width="24px"
+                android:layout_height="36px"
+                android:visibility="gone"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15px"
+                android:background="@mipmap/tab_me_norm" />
+
+            <TextView
+                android:id="@+id/tv_teacher_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="53px"
+                android:layout_below="@+id/all_top"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="38px"
+                android:maxEms="20"
+                android:singleLine="true"
+                android:layout_marginBottom="38px"
+                android:layout_toRightOf="@+id/iv_teacher"
+                android:ellipsize="end"
+                android:textColor="@color/textColor_2A" />
+
+            <ImageView
+                android:id="@+id/iv_big_teacher"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20px"
+                android:layout_marginRight="30px"
+                android:layout_marginBottom="20px"
+
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.ziran.meiliao.widget.ExpandableTextView
+
+        android:id="@+id/tv_headview_sjk_zhuanlan_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all_teacher"
+        android:layout_marginLeft="63px"
+        android:layout_marginRight="63px"
+
+        android:textColor="@color/textColor_666"
+        app:etv_MaxLinesOnShrink="13"
+        tools:text=""
+        />
+    
+    <ImageView
+        android:id="@+id/iv_table"
+        android:layout_marginTop="34px"
+        android:visibility="gone"
+        android:layout_below="@+id/tv_headview_sjk_zhuanlan_profile"
+        android:layout_width="match_parent"
+        android:layout_height="624px"
+        android:layout_marginLeft="52px"
+        android:layout_marginRight="19px"
+        />
+
+    <View
+        android:layout_below="@+id/iv_table"
+        android:layout_width="match_parent"
+        android:layout_marginTop="45px"
+        android:layout_height="26px"
+        android:background="#E8E8E8"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

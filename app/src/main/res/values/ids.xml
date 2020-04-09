@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="viewPager" type="id" />
+    <item name="tabLayout" type="id" />
+
+    <item type="id" name="tag_first"></item>
+</resources>

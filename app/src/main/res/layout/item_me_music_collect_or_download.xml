@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/selector_tran_gray">
+
+    <include
+        android:id="@+id/include_smooth_checkbox"
+        layout="@layout/include_smooth_checkbox"
+        android:visibility="gone"
+        />
+
+    <RelativeLayout
+        android:id="@+id/item_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="12dp">
+
+        <TextView
+            android:id="@+id/tv_item_jyg_audio_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/ll_item_jyg_audio"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_item_jyg_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_item_jyg_audio_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_jyg_play_1"
+                android:visibility="gone" />
+
+
+            <com.ziran.meiliao.ui.settings.widget.DonutProgress
+                android:id="@+id/donutProgress"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                app:donut_progress="22"
+                android:visibility="gone"
+                app:donut_finished_color="@color/textColor_teshe"
+                app:donut_text_color="@color/textColor_teshe"
+                app:donut_text_size="9sp"
+                app:donut_unfinished_color="@color/transparent" />
+
+            <TextView
+                android:id="@+id/tv_item_jyg_audio_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor_9f"
+                android:textSize="18sp"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp" />
+
+</RelativeLayout>

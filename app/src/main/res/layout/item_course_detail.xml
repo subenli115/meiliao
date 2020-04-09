@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.ziran.meiliao.widget.SlideLayoutNew
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginTop="12dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/tv_item_course_detail_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:background="@mipmap/course_lessonbg3"
+            android:gravity="center"
+            android:textSize="12sp"
+            tools:text="1"/>
+
+
+        <TextView
+            android:id="@+id/tv_item_course_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/tv_item_course_detail_icon"
+            android:maxLines="2"
+            android:text="第一课：照顾好自己才能照顾好他人，用正念减缓工作的压力与焦虑"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_item_course_detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_item_course_detail_title"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/tv_item_course_detail_icon"
+            android:padding="4dp"
+            android:text="7月20日 ／ 00:40:13 ／"
+            android:textColor="@color/textColor_9f"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_course_detail_watch_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_item_course_detail_title"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/tv_item_course_detail_date"
+            android:padding="4dp"
+            android:text="99999人学习 "
+            android:textColor="@color/textColor_9f"
+            android:textSize="12sp"
+            />
+
+        <View
+            style="@style/hor_match_line"
+            android:layout_below="@+id/tv_item_course_detail_date"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/tv_item_course_detail_icon"
+            />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/menu"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/slide_id"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/selector_course_list_red"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:text="课程\n下架"/>
+    </FrameLayout>
+
+</com.ziran.meiliao.widget.SlideLayoutNew>

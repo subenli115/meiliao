@@ -1,0 +1,232 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'//添加
+apply plugin: 'com.mob.sdk'
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+
+    signingConfigs {
+        wpyx {
+            keyAlias 'meiliaosigned'
+            keyPassword 'meiliao123'
+            storeFile file('C:\\Users\\Administrator\\Desktop\\keystore\\meiliao.jks')
+            storePassword 'meiliao123'
+        }
+        wpyxdebug {
+            keyAlias 'meiliaosigneddebug'
+            keyPassword 'meiliao123'
+            storeFile file('C:\\Users\\Administrator\\Desktop\\keystore\\debug.jks')
+//            storeFile file('F:/conpanyproject/wpyxdebug.jks')
+            storePassword 'meiliao123'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        applicationId "com.ziran.meiliao"
+        multiDexEnabled true
+
+        flavorDimensions rootProject.ext.android.versionName
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86"
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+    buildTypes {
+
+
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            signingConfig signingConfigs.wpyx
+            //混淆
+            minifyEnabled rootProject.ext.minifyEnabled
+            //Zipalign优化
+            zipAlignEnabled rootProject.ext.minifyEnabled
+//            // 移除无用的resource文件
+//            shrinkResources rootProject.ext.minifyEnabled
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //apk命名
+//            applicationVariants.all { variant ->
+//                variant.outputs.each { output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                        //def fileName = "app_v${defaultConfig.versionName}_${releaseTime()}.apk"
+//                        def fileName = "5P医学${defaultConfig.versionName}_${variant.productFlavors[0].name}-${releaseTime()}debug.apk"
+//                        output.outputFile = new File(outputFile.parent, fileName)
+//                    }
+//                }
+//            }
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled rootProject.ext.minifyEnabled
+            //Zipalign优化
+            zipAlignEnabled rootProject.ext.minifyEnabled
+            // 移除无用的resource文件
+            shrinkResources rootProject.ext.minifyEnabled
+
+            //签名
+            signingConfig signingConfigs.wpyx
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //apk命名
+//            applicationVariants.all { variant ->
+//                variant.outputs.each { output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                        //def fileName = "app_v${defaultConfig.versionName}_${releaseTime()}.apk"
+//                        def fileName = "5P医学${defaultConfig.versionName}_${variant.productFlavors[0].name}-${releaseTime()}release.apk"
+//                        output.outputFile = new File(outputFile.parent, fileName)
+//                    }
+//                }
+//            }
+        }
+    }
+//    //设置虚拟机堆内存空间大小，避免在编译期间OOM
+//    dexOptions {
+//        incremental true
+//        javaMaxHeapSize "4g"
+//    }
+//    //打包不检查
+
+    productFlavors {
+        yingyongbao {}
+        baidu {}
+        qihu360 {}
+        huawei {}
+
+        meizu {}
+        oppo {}
+        xiaomi {}
+//
+//        vivo {}
+    }
+    productFlavors.all {
+        flavor ->
+            flavor.manifestPlaceholders = [
+                    UMENG_CHANNEL_VALUE: name,
+                    HOTFIX_ID_SECRET   : getIDSecret(),
+                    HOTFIX_APP_SECRET  : getAPPSecret(),
+                    HOTFIX_REA_SECRET  : getREASecret()
+            ]
+    }
+
+}
+
+def getIDSecret() {
+    if (rootProject.ext.hotfix) {
+        return rootProject.ext.hotfix_ok.id_secret
+    }
+    return rootProject.ext.hotfix_test.id_secret
+}
+
+def getAPPSecret() {
+    if (rootProject.ext.hotfix) {
+        return rootProject.ext.hotfix_ok.app_secret
+    }
+    return rootProject.ext.hotfix_test.app_secret
+}
+
+def getREASecret() {
+    if (rootProject.ext.hotfix) {
+        return rootProject.ext.hotfix_ok.rea_secret
+    }
+    return rootProject.ext.hotfix_test.rea_secret
+}
+
+dependencies {
+    //日历控件
+    implementation 'com.zhy:autolayout:1.4.5'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //视频播放器
+    implementation 'com.justkiddingbaby:vercodeedittext:1.1.0'
+    //验证码
+    implementation project(':library:PLDroidMediaStreaming')
+    //七牛推流
+    implementation project(':library:photoPicker')
+    //图片选择
+    implementation 'com.cncoderx.wheelview:library:1.2.1'
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    implementation project(':library:rongcloud')
+    //融云聊天室
+    //    compile project(':library:zxingScan')//二维码扫码
+    implementation project(':library:pay')
+    //二维码扫码
+    implementation project(':library:citypicker')
+    //二维码扫码
+    implementation 'com.github.arcadefire:nice-spinner:1.3.4'
+    //数据库管理
+    //    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    //    compile project(path: ':library:common')
+    //    compile project(path: ':library:common')
+    annotationProcessor rootProject.ext.dependencies.butterknife
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'org.greenrobot:greendao-generator:3.2.2'
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation project(':calendarview')
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.6'
+    implementation files('libs/bdasr_V3_20180801_d6f298a.jar')
+    implementation 'com.airbnb.android:lottie:2.0.0-beta4'
+    implementation files('libs/mpandroidchartlibrary-2-1-5.jar')
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.20'
+    implementation files('libs/jaudiotagger-2.2.3.jar')
+    implementation 'com.github.AnJiaoDe:LoopViewPager:V2.2.2'
+    implementation 'com.github.JuHonggang:ShadowDrawable:0.1'
+    implementation project(':library:PLDroidPlayer')
+    implementation 'com.feezu.liuli:timeselector:1.1.3+'
+    implementation 'me.panpf:sketch:2.7.1-beta2'
+    implementation 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.0.0'
+    //小米Push通道
+    implementation 'com.umeng.sdk:push-xiaomi:1.0.0'
+    //华为Push通道
+    implementation 'com.umeng.sdk:push-huawei:1.0.0'
+    //魅族Push通道
+    implementation 'com.umeng.sdk:push-meizu:1.0.0'
+}
+greendao {
+    schemaVersion 7 //数据库版本号
+    daoPackage 'com.ziran.meiliao.dao'  //生成的dao路径
+    targetGenDir 'src/main/java'    //数据库文件的目录
+}
+MobSDK {
+    appKey "2c1213074f4a0"
+    appSecret "cc17ca3c16693893cae0de1ddf259b74"
+    MobLink {
+        // 若使用经典版，需打开该设置，否则默认为专业版
+//                preferClassicalEdition true
+        uriScheme "psytap"
+        appLinkHost "am1k.t4m.cn"
+    }
+}
+
+
+// 在MobSDK的扩展中注册MobLink的相关信息
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith('dex')
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = []
+        }
+        dx.additionalParameters += '--multi-dex' // enable multidex
+
+    }
+}
+
+

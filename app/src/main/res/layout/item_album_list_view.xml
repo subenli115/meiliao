@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="215px"
+    android:id="@+id/afl_main"
+    android:layout_height="303px">
+<ImageView
+    android:id="@+id/iv_bg"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/jdx_bg_add_course"
+    />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="基础冥想"
+        android:layout_marginLeft="23px"
+        android:textColor="@color/white"
+        android:layout_marginBottom="62px"
+        android:textSize="30px"
+        android:layout_gravity="bottom"
+        />
+    <TextView
+        android:id="@+id/tv_xj"
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom"
+        android:textSize="20px"
+        android:layout_marginBottom="28px"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23px"
+        android:textColor="#E0E0E0"
+        android:text="10小节"
+
+        />
+</com.zhy.autolayout.AutoFrameLayout>

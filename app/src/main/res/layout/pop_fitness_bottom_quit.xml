@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_gravity="bottom"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="1dp"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_banner"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@mipmap/fitness_quit_bg"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="65dp"
+        android:textSize="21sp"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content"
+        android:text="为什么要退出练习呀？"
+        android:textColor="#18667A"
+        />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content"
+        android:text="我们将会根据你的反馈推荐更合适的练习给你哦!"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        android:layout_below="@+id/tv_hint"
+        android:textColor="@color/white"
+        android:gravity="center"
+        />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/iv_banner"
+    android:id="@+id/ll"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_marginTop="27dp"
+    >
+    <TextView
+        android:id="@+id/tv_one"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:text="不喜欢课程"
+        android:textSize="14sp"
+        android:layout_below="@+id/iv_banner"
+        android:paddingLeft="21dp"
+        android:paddingTop="8dp"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingRight="21dp"
+        android:background="@drawable/normal_bg_tran"
+        />
+    <TextView
+        android:id="@+id/tv_two"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:text="暂时不太方便"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:layout_toRightOf="@+id/tv_one"
+        android:layout_below="@+id/iv_banner"
+        android:paddingLeft="21dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginLeft="20dp"
+        android:paddingRight="21dp"
+        android:background="@drawable/normal_bg_tran"
+        />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="40dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:text="课程太简单"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:paddingLeft="21dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingRight="21dp"
+            android:background="@drawable/normal_bg_tran"
+            />
+
+        <TextView
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:text="课程太难了"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:id="@+id/tv_four"
+            android:layout_below="@+id/tv_two"
+            android:paddingLeft="21dp"
+            android:paddingTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="8dp"
+            android:paddingRight="21dp"
+            android:background="@drawable/normal_bg_tran"
+            />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

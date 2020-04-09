@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="jianyaguan_tabs">
+        <item>推荐</item>
+        <item>分类</item>
+        <item>练习</item>
+    </string-array>
+    <!--{"减压馆", "私家课", "我的"};-->
+    <string-array name="main_bottom_tabs">
+        <item>减压馆</item>
+        <item>私家课</item>
+        <item>我的</item>
+    </string-array>
+    <string-array name="player_tabs">
+        <item>直播</item>
+        <item>课程</item>
+    </string-array>
+    <string-array name="player_tabs_three">
+        <item>直播</item>
+        <item>课程</item>
+        <item>开播</item>
+    </string-array>
+    <string-array name="sjk_live_tabs">
+        <item>课程简介</item>
+        <item>聊天室</item>
+        <item>推荐课程</item>
+        <item>评论</item>
+    </string-array>
+    <string-array name="sjk_live_tabs_3">
+        <item>课程简介</item>
+        <item>推荐课程</item>
+        <item>评论</item>
+    </string-array>
+<!--    <string-array name="follow_tabs">
+        <item>音频</item>
+        <item>专辑</item>
+        <item>课程</item>
+        <item>活动</item>
+    </string-array>-->
+
+
+    <string-array name="follow_tabs">
+        <item>音频</item>
+        <item>课程</item>
+        <item>专栏</item>
+        <item>训练</item>
+    </string-array>
+
+    <string-array name="download_tabs">
+        <item>专栏</item>
+        <item>专辑</item>
+        <item>训练营</item>
+    </string-array>
+    <string-array name="buy_course">
+        <item>专辑</item>
+        <item>专栏</item>
+        <item>课程</item>
+        <item>训练营</item>
+    </string-array>
+    <string-array name="jyg_audio_tabs">
+        <item>音频课程</item>
+        <item>音频课程简介</item>
+    </string-array>
+    <string-array name="jyg_message">
+        <item>我的消息</item>
+        <item>官方消息</item>
+    </string-array>
+
+    <string-array name="category_tabs">
+        <item>内观</item>
+        <item>冥想</item>
+        <item>正念</item>
+        <item>疗愈</item>
+    </string-array>
+
+
+    <string-array name="WheelArrayDefault">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+    </string-array>
+    <string-array name="WheelArrayHour">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+    <string name="not_need_notify">无</string>
+    <string-array name="WheelArrayPM">
+        <item>@string/not_need_notify</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+    </string-array>
+    <string-array name="WheelArrayZoom">
+        <item>@string/not_need_notify</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+    </string-array>
+    <string-array name="WheelArrayAM">
+        <item>@string/not_need_notify</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+    <string-array name="WheelArraySecond">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+
+    </string-array>
+
+    <string-array name="time_picker">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+        <item>110</item>
+        <item>120</item>
+    </string-array>
+    <string-array name="time_picker_str">
+    <item>01分钟</item>
+    <item>05分钟</item>
+    <item>10分钟</item>
+    <item>15分钟</item>
+    <item>20分钟</item>
+    <item>25分钟</item>
+    <item>30分钟</item>
+    <item>35分钟</item>
+    <item>40分钟</item>
+    <item>45分钟</item>
+    <item>50分钟</item>
+    <item>55分钟</item>
+    <item>60分钟</item>
+    <item>70分钟</item>
+    <item>80分钟</item>
+    <item>90分钟</item>
+    <item>100分钟</item>
+    <item>110分钟</item>
+    <item>120分钟</item>
+</string-array>
+
+    <string-array name="exe_time_picker">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+    </string-array>
+    <string-array name="time_picker_str1">
+        <item>01</item>
+        <item>05</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+        <item>110</item>
+        <item>120</item>
+    </string-array>
+    <string-array name="WheelArrayWeek">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+
+
+    <string-array name="wallet_detail">
+        <item>支出明细</item>
+        <item>收入明细</item>
+    </string-array>
+    <string-array name="profit_detail">
+        <item>课程购买</item>
+        <item>礼物收益</item>
+    </string-array>
+    <string-array name="main_bottom_tabs_new">
+        <item>首页</item>
+        <item>我</item>
+    </string-array>
+    <string-array name="private_course">
+        <item>专栏</item>
+        <item>训练营</item>
+    <item>课程</item>
+    <item>直播</item>
+</string-array>
+
+    <string-array name="home_main">
+        <item>热门专辑</item>
+        <item>训练营</item>
+        <item>工作坊</item>
+        <item>专栏</item>
+    </string-array>
+
+
+    <string-array name="subscribe_tag">
+        <item>课程简介</item>
+        <item>PPT</item>
+    </string-array>
+    <!--  <item>录播</item>-->
+    <string-array name="record_tag">
+        <item>介绍</item>
+        <item>播放目录</item>
+    </string-array>
+    <!--  <item>工作坊</item>-->
+    <string-array name="my_activity_tabs">
+        <item>团建</item>
+        <item>众筹</item>
+        <item>工作坊</item>
+
+    </string-array>
+
+    <!--    <item>关注</item>-->
+    <string-array name="my_crowd_funding_tabs">
+        <item>支持</item>
+        <item>退款</item>
+    </string-array>
+    <string-array name="course_library">
+        <item>众筹课程</item>
+        <item>课程库</item>
+        <item>名师教场</item>
+        <item>工作坊</item>
+    </string-array>
+    <!--    <item>赚取积分</item>-->
+    <string-array name="get_points">
+        <item>购买课程</item>
+        <item>金币充值</item>
+        <item>邀请新伙伴</item>
+        <item>邀请购课</item>
+        <item>完善个人资料</item>
+    </string-array>
+
+    <string-array name="points_detail">
+        <item>购课可获得对应课程的奖励积分</item>
+        <item>金币充值可获得对应的奖励积分</item>
+        <item>每邀请一位新伙伴注册可得30积分</item>
+        <item>邀请伙伴首次购课可获得对应课程的奖励积分</item>
+        <item>完善个人资料可得20积分</item>
+    </string-array>
+
+    <string-array name="points_button">
+        <item>选课</item>
+        <item>充值</item>
+        <item>邀请</item>
+        <item>选课分享</item>
+        <item>完成</item>
+    </string-array>
+
+    <string-array name="course_title">
+        <item>课程简介</item>
+        <item>导师简介</item>
+        <item>课程内容</item>
+        <item>面向人群</item>
+        <item>课程安排</item>
+        <item>往期学员反馈</item>
+        <item>报名缴费</item>
+    </string-array>
+    <string-array name="course_title_tab">
+        <item>课程简介</item>
+        <item>课程内容</item>
+        <item>课程安排</item>
+        <item>报名缴费</item>
+    </string-array>
+</resources>

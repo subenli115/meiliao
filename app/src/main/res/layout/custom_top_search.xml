@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="54dp"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="4dp"
+              android:paddingTop="4dp"
+    >
+
+    <com.citypicker.citylist.widget.ClearEditText
+        android:id="@+id/et_crowd_funding_choose_topic_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_weight="1"
+        android:background="@mipmap/index_bg_search"
+        android:gravity="center_vertical"
+        android:hint="搜索"
+        android:maxLines="1"
+        android:imeOptions="actionSearch"
+        android:imeActionLabel="搜索"
+        android:paddingLeft="36dp"
+        android:paddingRight="8dp"
+        android:textColorHint="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/et_crowd_funding_choose_topic_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="取消"
+        />
+
+</LinearLayout>

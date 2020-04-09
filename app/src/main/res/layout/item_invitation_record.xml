@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="16px"
+    android:layout_marginLeft="31px"
+    android:background="@color/white"
+    android:layout_marginRight="33px"
+    android:layout_height="wrap_content">
+<TextView
+    android:id="@+id/tv_time"
+    android:layout_marginTop="32px"
+    android:layout_marginLeft="48px"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="2011.21.21"
+    android:textSize="24px"
+    android:textColor="@color/textColor_aaa"
+    />
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_below="@+id/tv_time"
+    android:layout_marginTop="15px"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:textSize="28px"
+        android:textColor="@color/textColor_f333"
+        android:layout_marginLeft="48px"
+        android:layout_marginBottom="31px"
+        android:text="13222222222"
+        />
+
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="28px"
+        android:text="金币+200"
+        android:layout_marginLeft="100px"
+        android:textColor="#FBAF6B"
+        />
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text=" , "
+    android:gravity="center"
+    android:layout_weight="0.1"
+
+    />
+    <TextView
+        android:id="@+id/tv_points"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="积分+30"
+        android:textSize="28px"
+        android:textColor="#58BEA8"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

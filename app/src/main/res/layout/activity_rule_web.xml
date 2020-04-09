@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<com.ziran.meiliao.common.commonwidget.NormalTitleBar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tab_layout"
+    app:ntb_tv_left="showAndFinish"
+    >
+
+
+</com.ziran.meiliao.common.commonwidget.NormalTitleBar>
+
+    <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/webView"
+
+        >
+
+    </WebView>
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+    </com.ziran.meiliao.common.commonwidget.LoadingTip>
+</LinearLayout>

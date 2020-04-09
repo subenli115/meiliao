@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.zhy.autolayout.AutoRelativeLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/bg_login">
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="49px"
+        android:layout_marginLeft="49px"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/shadow_16225"
+        >
+
+        <TextView
+            android:id="@+id/tv_srzmm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56px"
+            android:layout_marginTop="59px"
+            android:text="@string/phone_code_intput"
+            android:textColor="#444444"
+            android:textSize="48px"
+            />
+
+        <TextView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/login_reght_back"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/tv_srzmm"
+            android:layout_marginTop="8px"
+            android:textSize="16sp"
+            android:layout_marginRight="69px"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            />
+
+        <com.jkb.vcedittext.VerificationCodeEditText
+            android:layout_width="wrap_content"
+            android:id="@+id/vcet_input_code"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/iv_submit"
+            android:layout_alignLeft="@+id/tv_srzmm"
+            app:cursorWidth="1dp"
+            android:layout_below="@+id/tv_srzmm"
+            android:layout_marginTop="159px"
+            android:inputType="number"
+            app:selectedBackgroundColor="@color/white"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:bottomLineHeight="2px"
+            app:figures="4"
+            app:cursorColor="@color/black"
+            app:cursorDuration="1000"
+            app:verCodeMargin="45px"
+            />
+
+        <TextView
+
+            android:id="@+id/iv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/login_right_go"
+            android:layout_marginLeft="37px"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="37px"
+            android:layout_alignBottom="@+id/vcet_input_code"
+            android:layout_marginTop="5px"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:paddingLeft="12px"
+            android:paddingRight="12px"
+            android:layout_marginRight="57px"
+            />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignStart="@+id/vcet_input_code"
+            android:layout_below="@+id/vcet_input_code"
+            android:visibility="invisible"
+            android:layout_marginRight="144px"
+            android:background="@color/textColor_DDDDDD" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_line"
+            android:layout_alignLeft="@+id/view_line"
+            android:layout_marginTop="68px"
+            android:layout_marginBottom="77px"
+            android:background="@drawable/normal_code"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5px"
+                android:text="获取验证码"
+                android:textColor="@color/textColor_999"
+                android:textSize="24px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

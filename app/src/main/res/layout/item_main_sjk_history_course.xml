@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:layout_marginTop="6dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/selector_tran_gray"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/fl_body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/tv_item_sjk_live_course_name"
+            android:background="@color/white_alpha_half">
+
+            <ImageView
+                android:id="@+id/iv_item_sjk_live_course_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_loading_square_big" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/transparent10"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp">
+
+                <TextView
+                    android:id="@+id/tv_item_sjk_live_course_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_item_sjk_live_course_listerCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:drawableLeft="@mipmap/ic_sjk_video_eye_white"
+                    android:drawablePadding="5dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_item_sjk_live_course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:layout_alignParentLeft="true"
+            android:maxLines="1"
+            android:gravity="center_vertical|left"
+            android:ellipsize="end"
+            android:layout_toLeftOf="@+id/tv_item_sjk_live_course_price"
+            android:paddingLeft="8dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_sjk_live_course_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_item_sjk_live_course_name"
+            android:layout_alignRight="@+id/fl_body"
+           android:paddingRight="8dp"
+            android:textColor="@color/textColor_teshe2"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

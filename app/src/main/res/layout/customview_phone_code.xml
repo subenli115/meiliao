@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/shape_edittext_bg"
+              android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_areacode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="10px"
+        android:drawableRight="@mipmap/ic_sjk_live_arrow_chose"
+        android:layout_marginLeft="22px"
+        android:gravity="center_vertical"
+        android:text="+86"
+        android:textColor="@color/textColor_333"
+        android:textSize="37px"/>
+
+    <EditText
+        android:id="@+id/et_phone"
+        style="@style/CommonEditTextStyle"
+        android:hint="@string/input_phone"
+            android:textSize="36px"
+        android:inputType="phone"
+        android:imeOptions="actionNext"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

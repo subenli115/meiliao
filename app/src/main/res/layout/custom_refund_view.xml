@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+       xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_tuikuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:textColor="@color/textColor_333"
+        android:background="@drawable/selector_btn_refund"
+        android:clickable="true"
+        android:text="申请退款"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_tuikuan"
+        android:layout_toRightOf="@+id/tv_tuikuan"
+        android:text="开课前一周不予退款"
+        />
+
+    <TextView
+        android:id="@+id/tv_refund_last_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_tuikuan"
+        android:layout_toRightOf="@+id/tv_tuikuan"
+        tools:text="退款有效时间：22:22:33"
+        />
+</merge>

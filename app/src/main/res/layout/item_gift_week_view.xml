@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F0F0F0"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
+        <ImageView
+            android:id="@+id/iv_inside"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/shape_circle_gift"
+            />
+
+        <ImageView
+            android:id="@+id/iv_outside"
+            android:layout_width="24dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:src="@mipmap/daka_gift"
+            android:layout_height="24dp"
+            />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_likeanim"
+            android:layout_gravity="center"
+            app:lottie_loop="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_marginTop="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="12sp"
+        android:id="@+id/tv_day"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:text="天"
+        />
+</LinearLayout>

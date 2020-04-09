@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.ziran.meiliao.widget.SmoothCheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/smoothCheckBox"
+   style="@style/smoothCheckBox"
+    android:layout_centerVertical="true"
+    android:layout_marginLeft="12dp"
+    app:color_unchecked="@color/white"
+    app:color_unchecked_stroke="@color/textColor_9f" />

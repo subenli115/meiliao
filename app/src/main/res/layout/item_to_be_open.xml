@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_item_to_be_open_img"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="12dp"
+        android:src="@mipmap/ic_loading_rectangle"
+        app:roundimageview_borderRadius="4dp"
+        app:roundimageview_height_ratio="0.646"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_to_be_open_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_item_to_be_open_img"
+        android:layout_toRightOf="@+id/iv_item_to_be_open_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        tools:text="标题标题标题标题标题标题"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_to_be_open_date_and_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_item_to_be_open_img"
+        android:layout_toRightOf="@+id/iv_item_to_be_open_img"
+        android:textColor="@color/textColor_999"
+        android:textSize="13sp"
+        tools:text="2017-06-23 已播放999次"
+        />
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/iv_item_to_be_open_img"
+        />
+
+</RelativeLayout>

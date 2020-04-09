@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:id="@+id/fl_top"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_joinvip_bg"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ntb_bg="@color/transparent"
+            app:ntb_right_img1="@mipmap/nav_servicer"
+            app:ntb_title_text="订单详情"
+            app:ntb_tv_left="showAndFinish"
+            />
+
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_top"
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.ziran.meiliao.ui.me.widget.CourseDetailView
+                android:id="@+id/courseDetailView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
+            <com.ziran.meiliao.ui.me.widget.SomeTextView
+                android:id="@+id/someTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <View
+                style="@style/hor_match_line_8dp"/>
+
+            <TextView
+                android:id="@+id/tv_refund_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:text="退款金额：¥999"
+                android:textColor="@color/textColor_333"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_refund_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="12dp"
+                android:text="其中含现金支付：999元及正念币500个"
+                android:textColor="@color/textColor_666"
+                />
+
+            <View
+                style="@style/hor_match_line_8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="退款原因：\n内容内容内容内容内容内容内容内容内容"
+                android:textColor="@color/textColor_666"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

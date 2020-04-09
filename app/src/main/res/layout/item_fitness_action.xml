@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_marginTop="45px"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="35px"
+        android:id="@+id/iv_item_sjk_act_img"
+        android:layout_width="284px"
+        android:layout_height="138px"
+        />
+<TextView
+    android:id="@+id/tv_action"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="第1式：预备式"
+    android:textSize="28px"
+    android:textColor="@color/textColor_666666"
+    android:layout_marginTop="26px"
+    android:layout_marginLeft="27px"
+    android:layout_alignTop="@+id/iv_item_sjk_act_img"
+    android:layout_toRightOf="@+id/iv_item_sjk_act_img"
+    />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22"
+        android:textSize="28px"
+        android:layout_marginLeft="27px"
+        android:layout_marginTop="33px"
+        android:textColor="@color/textColor_999"
+        android:layout_toRightOf="@+id/iv_item_sjk_act_img"
+        android:layout_below="@+id/tv_action"
+        />
+    <TextView
+        android:id="@+id/tv_try"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="试学"
+        android:textSize="11px"
+        android:paddingBottom="5px"
+        android:paddingTop="5px"
+        android:paddingLeft="11px"
+        android:visibility="gone"
+        android:paddingRight="11px"
+        android:layout_alignTop="@+id/iv_item_sjk_act_img"
+        android:layout_alignRight="@+id/iv_item_sjk_act_img"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/normal_orange_exe"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_marginTop="40px"
+        android:layout_width="match_parent"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:inputType="phone"
+        android:maxLength="11"
+        android:hint="@string/newphone"
+        android:layout_marginTop="167px"
+        android:layout_marginLeft="32px"
+        android:layout_marginRight="32px"
+        android:layout_below="@+id/ntb"
+        />
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="match_parent"
+        android:layout_marginTop="274px"
+        android:gravity="center"
+        android:text="@string/next"
+        android:textSize="36px"
+        android:layout_marginLeft="32px"
+        android:layout_marginRight="32px"
+        android:textColor="@color/white"
+        android:padding="27px"
+        android:background="@drawable/normal_bg_gray_c0"
+        android:layout_height="wrap_content" />
+
+</com.zhy.autolayout.AutoLinearLayout>

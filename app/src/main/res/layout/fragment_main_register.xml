@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/def_marginLeft"
+              android:paddingRight="@dimen/def_marginRight">
+
+    <com.ziran.meiliao.widget.PhoneCodeView
+        android:id="@+id/phone_code_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"/>
+
+    <com.ziran.meiliao.widget.SmsCodeView
+        android:id="@+id/scv_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_edittext_bg"/>
+
+    <com.ziran.meiliao.widget.CustomEditText
+        android:id="@+id/et_register_pwd"
+        style="@style/CommonEditTextStyle"
+        android:hint="@string/settings_pwd"
+        android:inputType="textPassword"
+        android:imeOptions="actionDone"
+        android:imeActionLabel="注册"
+        app:type="2"/>
+
+
+    <Button
+        android:id="@+id/bt_register_register"
+        style="@style/CommonBtnStyle"
+        android:layout_marginTop="30dp"
+        android:enabled="false"
+        android:text="@string/reighter"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册即代表同意「5P医学」"
+            android:textColor="@color/textColor_666"/>
+
+        <TextView
+            android:id="@+id/tv_register_user_xy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户协议"
+            android:textColor="@color/textColor_teshe"/>
+    </LinearLayout>
+
+</LinearLayout>

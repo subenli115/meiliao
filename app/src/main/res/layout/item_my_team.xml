@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="8dp"
+              android:orientation="vertical"
+              android:background="@color/white"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        >
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/textColor_teshe5"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            tools:text="团建课程"
+            android:textColor="@color/textColor_666"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            tools:text="2017-10-24"
+            android:textColor="@color/textColor_666"
+            />
+    </FrameLayout>
+
+    <View
+        style="@style/hor_match_line"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_img"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_loading_square"
+            app:roundimageview_height_ratio="0.646"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text=" ¥99"
+            android:textColor="@color/textColor_teshe5"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_item_img"
+            android:layout_marginRight="6dp"
+            android:layout_toLeftOf="@+id/tv_item_price"
+            android:layout_toRightOf="@+id/iv_item_img"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="10天深度睡眠"
+            android:textColor="@color/textColor_333"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_item_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_item_img"
+            android:layout_toRightOf="@+id/iv_item_img"
+            tools:text="订单编号：999999"
+            android:textColor="@color/textColor_666"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_item_order_number"
+            android:layout_toRightOf="@+id/iv_item_img"
+            tools:text="未处理"
+            android:textColor="@color/textColor_333"
+            android:textSize="12sp"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

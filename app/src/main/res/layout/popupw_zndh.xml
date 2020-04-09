@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent60"
+    android:gravity="center"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/contentView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_zndh_cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_loading_square_small"
+            app:roundimageview_height_ratio="1.44"
+
+            app:roundimageview_ratio="0" />
+
+        <ImageView
+            android:id="@+id/iv_zndh_close"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignRight="@+id/iv_zndh_cover"
+            android:layout_gravity="right"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:src="@mipmap/ic_close"
+            />
+
+        <ImageView
+            android:id="@+id/iv_zndh_jump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_zndh_cover"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/index_popbanner_btn" />
+    </RelativeLayout>
+</FrameLayout>
+

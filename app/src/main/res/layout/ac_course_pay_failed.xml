@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F9FA"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_tv_left="showAndFinish"
+        />
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all"
+    android:layout_width="match_parent"
+    android:layout_below="@+id/ntb_title"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="156px"
+        android:layout_height="156px"
+        android:layout_marginTop="26px"
+        android:background="@mipmap/course_pay_failed"
+        />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="支付失败\n请检查您的网络
+"
+        android:layout_marginTop="15px"
+        android:layout_marginBottom="44px"
+        android:textSize="22px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_back_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_gradient"
+        android:layout_marginTop="28px"
+        android:layout_marginLeft="103px"
+        android:text="返回详情页"
+        android:layout_marginRight="103px"
+        android:gravity="center_horizontal"
+        android:textSize="28px"
+        android:textColor="@color/white"
+        android:padding="18px"
+        android:layout_below="@+id/all"
+        />
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_below="@+id/tv_back"
+    >
+    <View
+        android:layout_width="86px"
+        android:layout_height="2px"
+        android:background="#A2D4B6"
+        />
+    
+    <View
+        android:layout_width="86px"
+        android:layout_height="2px"
+
+        android:background="#A2D4B6"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

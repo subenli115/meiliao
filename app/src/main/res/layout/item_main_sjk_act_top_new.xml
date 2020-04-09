@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_item_sjk_act_img"
+        android:layout_width="300px"
+        android:layout_height="189px"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_loading_rectangle"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184px"
+        android:background="@color/white"
+
+        >
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_marginTop="23px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="静心冥想"
+            android:layout_marginLeft="20px"
+            android:textColor="@color/textColor_444"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:textSize="21px"
+            android:textColor="#CCCCCC"
+            android:text="正念减压自我疗愈是三年时间不上班超声波差不多。"
+            android:layout_marginTop="20px"
+            android:layout_marginRight="20px"
+            android:layout_below="@+id/tv_title"
+            />
+<TextView
+    android:id="@+id/tv_teacher_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="阙建新"
+    android:layout_marginLeft="20px"
+    android:layout_marginTop="31px"
+    android:layout_marginBottom="28px"
+    android:layout_below="@+id/tv_content"
+    android:textSize="24px"
+    android:textColor="#666666"
+    />
+
+        <TextView
+            android:id="@+id/tv_gong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共"
+            android:layout_marginLeft="40px"
+            android:textSize="24px"
+
+            android:layout_alignTop="@+id/tv_teacher_name"
+            android:layout_toRightOf="@+id/tv_teacher_name"
+            />
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21"
+            android:textSize="24px"
+            android:layout_alignTop="@+id/tv_teacher_name"
+            android:layout_toRightOf="@+id/tv_gong"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_num"
+            android:layout_alignTop="@+id/tv_teacher_name"
+            android:textSize="24px"
+            android:text="节"
+            />
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoFrameLayout>

@@ -1,0 +1,106 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/def_marginLeft"
+              android:paddingRight="@dimen/def_marginRight"
+              tools:context="com.ziran.meiliao.ui.main.fragment.LoginFragment">
+
+    <com.ziran.meiliao.widget.PhoneCodeView
+        android:id="@+id/phone_code_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"/>
+
+    <com.ziran.meiliao.widget.CustomEditText
+        android:id="@+id/et_login_pwd"
+        style="@style/CommonEditTextStyle"
+        android:imeOptions="actionSend"
+        android:imeActionLabel="登录"
+        android:hint="@string/input_pwd"
+        android:singleLine="true"
+        android:inputType="textPassword|text"
+        app:type="2"/>
+
+    <com.ziran.meiliao.widget.SmsCodeView
+        android:id="@+id/scv_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_edittext_bg"
+        android:visibility="gone"
+        />
+    <!--  <item name="android:background">@drawable/selector_feek_btn</item>-->
+    <Button
+        android:id="@+id/bt_login_login"
+        style="@style/CommonBtnStyle"
+        android:layout_marginTop="48dp"
+        android:enabled="false"
+        android:text="@string/login_text"
+        android:textSize="16sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_login_forgetPwd"
+            style="@style/CommonTextViewStyle"
+            android:text="@string/forget_pwd"
+            android:textColor="@color/textColor_666"/>
+
+        <TextView
+            android:id="@+id/tv_sms_login"
+            style="@style/CommonTextViewStyle"
+            android:layout_alignParentRight="true"
+            android:text="@string/sms_code_login"
+            android:textColor="@color/textColor_666"/>
+
+        <TextView
+            android:id="@+id/tv_pwd_login"
+            style="@style/CommonTextViewStyle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:text="@string/pwd_login"
+            android:textColor="@color/textColor_666"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/tv_login_wc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_tran_gray"
+            android:src="@mipmap/living_share_wechat"/>
+
+        <ImageView
+            android:id="@+id/tv_login_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/selector_tran_gray"
+            android:src="@mipmap/living_share_qq"/>
+        <!--
+                <ImageView
+                    android:id="@+id/tv_login_xl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:background="@drawable/selector_tran_gray"
+                    android:src="@mipmap/living_share_weibo"/>-->
+    </LinearLayout>
+</LinearLayout>

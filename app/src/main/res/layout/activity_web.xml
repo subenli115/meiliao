@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rootView"
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/ll_headView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height">
+
+        <ImageView
+            android:id="@+id/iv_headview_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/edge_margin"
+            android:padding="5dp"
+            android:src="@mipmap/ic_close_black"/>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="@dimen/edge_margin"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/iv_headview_back"
+            android:background="@color/divider"/>
+
+        <TextView
+            android:id="@+id/tv_headview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/edge_margin"
+            android:layout_toRightOf="@+id/view_line"
+            android:text="活动详情"
+            android:textColor="@color/textColor_333"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/iv_headview_share"
+            style="@style/WebHeadImageView"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/selector_jyg_player_share"/>
+
+        <ImageView
+            android:id="@+id/iv_headview_collect"
+            style="@style/WebHeadImageView"
+            android:layout_toLeftOf="@+id/iv_headview_share"
+            android:src="@mipmap/ic_jyg_player_collect"/>
+
+    </RelativeLayout>
+
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_headView"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dip"
+        android:layout_below="@+id/ll_headView"
+        android:layout_marginTop="2dp"
+        android:progressDrawable="@drawable/pg"
+        android:visibility="gone"/>
+
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_headView"/>
+
+
+</RelativeLayout>

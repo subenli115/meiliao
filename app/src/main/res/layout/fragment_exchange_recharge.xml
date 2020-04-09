@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:id="@+id/tv_hint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F5F9FA"
+    android:textSize="12sp"
+    android:gravity="center"
+android:paddingTop="11dp"
+    android:paddingBottom="11dp"
+    android:text="积分可以兑换金币啦，您当前的积分为"
+    />
+
+    <TextView
+        android:id="@+id/tv_hint_exchange"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/tv_hint"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:layout_marginTop="7dp"
+        android:text="请选择兑换数量"
+        />
+
+
+    <GridView
+        android:id="@+id/gv_recharge_amount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20px"
+        android:layout_below="@+id/tv_hint_exchange"
+        android:gravity="center"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="2"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"/>
+    <TextView
+        android:id="@+id/iv_recharge_req"
+
+        android:layout_width="300dp"
+        android:layout_height="44dp"
+        android:layout_below="@+id/gv_recharge_amount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:text="@string/confirm_recharge"
+        android:layout_marginTop="48px"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/background_gradient"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>

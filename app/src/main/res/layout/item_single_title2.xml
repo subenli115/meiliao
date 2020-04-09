@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_item_single_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="6dp"
+    android:paddingLeft="12dp"
+    android:paddingStart="12dp"
+    android:background="@color/gray"
+    android:paddingTop="12dp"
+    android:textColor="@color/textColor_666"
+    android:textSize="15sp"
+    tools:text="标题很长"/>
+

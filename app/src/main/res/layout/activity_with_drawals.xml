@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#F0F0F0"
+              android:orientation="vertical">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"/>
+
+    <FrameLayout
+        android:id="@+id/fl_with_drawals_card_msg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_with_drawals_add_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="添加银行卡"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/ll_with_drawals_bank_message"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:text="到账银行卡"
+                android:textColor="@color/textColor_333"
+                android:textSize="16sp"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_with_drawals_bank_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:textColor="@color/textColor_teshe"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    tools:text="农业银行"/>
+
+                <TextView
+                    android:id="@+id/tv_with_drawals_bank_extra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:textColor="@color/textColor_666"
+                    android:visibility="visible"
+                    tools:text="尾号8888  储蓄卡"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/ic_goal_arrow_right"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        >
+
+        <TextView
+            android:id="@+id/tv_with_drawals_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="提现金额"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_with_drawals_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_with_drawals_label"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:text="可用余额是55元"
+            android:textColor="@color/textColor_999"
+            android:textSize="12sp"/>
+
+
+        <EditText
+            android:id="@+id/et_with_drawals_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_with_drawals_label"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            android:background="@null"
+            android:hint="请输入提现金额"
+            android:inputType="number"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_with_drawals_error_tips"
+            android:layout_below="@+id/et_with_drawals_amount"
+            android:layout_marginLeft="12dp"
+            android:visibility="invisible"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:text="输入金额超过提现金额"
+            android:textColor="@color/prompt_error"/>
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_with_drawals_card_req"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:background="@mipmap/btn_bg_pre"
+        android:gravity="center"
+        android:paddingBottom="6dp"
+        android:text="确认提现"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+</LinearLayout>

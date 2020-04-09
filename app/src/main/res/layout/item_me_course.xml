@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/selector_tran_gray"
+    android:paddingTop="12dp">
+
+    <include
+        android:id="@+id/include_smooth_checkbox"
+        layout="@layout/include_smooth_checkbox"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/item_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_buy_course_img"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            app:roundimageview_height_ratio="0.646"
+            android:src="@mipmap/ic_loading_square"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="8dp" />
+
+        <TextView
+            android:id="@+id/tv_item_buy_course_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_item_buy_course_img"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_item_buy_course_play_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/textColor_999"
+            android:visibility="gone"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_item_buy_course_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_item_buy_course_img"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/iv_item_buy_course_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/textColor_666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_item_buy_course_anchor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_item_buy_course_profile"
+            android:layout_marginBottom="3dp"
+            android:textColor="@color/textColor_666"
+            android:layout_toRightOf="@+id/iv_item_buy_course_img"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp" />
+</RelativeLayout>

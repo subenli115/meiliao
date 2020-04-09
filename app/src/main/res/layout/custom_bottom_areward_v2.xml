@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_common_height"
+    android:background="@drawable/selector_top_line"
+    android:orientation="horizontal">
+
+    <View
+        style="@style/hor_match_line"/>
+
+    <LinearLayout
+        android:id="@+id/ll_horizontal_use_video_coupon_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:visibility="gone"
+            android:drawableLeft="@mipmap/ic_me_icon_vip"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="开通VIP"
+            android:textColor="@color/textColor_teshe2"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_horizontal_use_video_coupon_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/selector_areward_buy"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+
+        <TextView
+            android:id="@+id/tv_horizontal_live_use_video_coupon_buy_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="购买课程 ¥30"/>
+
+        <TextView
+            android:id="@+id/tv_horizontal_live_use_video_coupon_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text=" (300正念币)"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

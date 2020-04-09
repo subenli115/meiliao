@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="7dp"
+        android:layout_marginTop="153dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:background="@mipmap/bind_phone_circle"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@mipmap/bing_phone"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="更换新号码成功！"
+        android:layout_marginTop="23dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_below="@+id/ll_icon"
+        />
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="match_parent"
+        android:layout_marginTop="99dp"
+        android:gravity="center"
+        android:text="@string/right_now"
+        android:textSize="18sp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_below="@+id/tv_hint"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        android:background="@drawable/normal_bg_green"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

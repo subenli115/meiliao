@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zone_textcolor_bg">#DDDDDD</color>
+    <color name="circle_name_selector_color">#cccccc</color>
+    <color name="container_background">#EBEBEB</color>
+    <color name="primary_text_white">#deffffff</color>
+    <!--87%white-->
+    <color name="progress_bar_unfinished">#D4D4D4</color>
+
+    <color name="diver_bar">#b2b2b2</color>
+    <color name="progress_yy">#b3EDF9F9</color>
+    <color name="rippelColor">#E7E8FB</color>
+    <color name="color_E5E5E5">#e5e5e5</color>
+    <color name="textColor_black_half">#70000000</color>
+
+    <color name="textColor_black_half1">#ffd1ff3a</color>
+    <color name="textColor_black_half2">#fffffc2d</color>
+    <color name="textColor_black_half3">#ffc1d9ff</color>
+
+    <color name="background">@color/transparent30</color>
+    <color name="textColor_teshe6">#6FE100</color>
+    <color name="textColor_teshe7">#FFCD00</color>
+    <color name="textColor_666666">#666666</color>
+    <color name="textColor_CFCFCF">#CFCFCF</color>
+    <color name="textColor_8F8F8F">#8F8F8F</color>
+    <color name="textColor_DDDDDD">#DDDDDD</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent_shandow">#F0F4F5</color>
+    <color name="colorInitFloatBackground">#b0ffffff</color>
+    <color name="colorCollapsedFloatBackground">#ffffff</color>
+</resources>

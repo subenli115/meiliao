@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="今天什么事让您感觉平静？"
+        android:textColor="@color/textColor_666"
+        android:textSize="16sp"/>
+
+    <com.ziran.meiliao.widget.ForbidEmojiEditText
+        android:id="@+id/et_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@null"
+        android:layout_marginRight="12dp"
+        android:hint="请输入您想写的..."
+        android:textColor="@color/textColor_333"
+        android:textColorHint="@color/textColor_hint"
+        android:textSize="16sp"
+        android:visibility="gone"/>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_marginTop="12dp"/>
+</LinearLayout>

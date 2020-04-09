@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="statusBarView" type="id"/>
+    <item name="tag_layout_helper_bg" type="id"/>
+
+
+    <item name="tv_right" type="id"/>
+    <item name="id_right_img1" type="id"/>
+    <item name="id_right_img2" type="id"/>
+    <item name="id_right_img3" type="id"/>
+
+
+    <item name="item_divider" type="id"/>
+</resources>

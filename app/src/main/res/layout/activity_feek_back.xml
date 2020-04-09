@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/ntb"
+        android:layout_margin="@dimen/edge_margin"
+        android:background="@color/titleBar_bg"
+        android:gravity="top"
+        android:hint="@string/feek_back_hint"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:textColor="@color/textColor_333"
+        android:textColorHint="@color/textColor_9f" />
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/et_content"
+        android:layout_margin="@dimen/edge_margin"
+        android:background="@color/titleBar_bg"
+        android:hint="@string/feek_back_phone"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:textColor="@color/textColor_333"
+        android:textColorHint="@color/textColor_9f" />
+
+</RelativeLayout>

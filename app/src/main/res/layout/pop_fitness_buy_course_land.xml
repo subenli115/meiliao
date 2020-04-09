@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    >
+    <View
+        android:id="@+id/touch_outside"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="321dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/normal_bg_white"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            >
+
+
+            <ImageView
+                android:id="@+id/iv_popuw_buy_video_coupon_pic"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:visibility="gone"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="-12dp"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toEndOf="@+id/iv_popuw_buy_video_coupon_pic"
+                android:layout_toRightOf="@+id/iv_popuw_buy_video_coupon_pic"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    tools:text="确认付款"/>
+
+                <TextView
+                    android:id="@+id/tv_popuw_buy_video_coupon_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="您有:"
+                    android:layout_toLeftOf="@+id/tv_popuw_buy_video_coupon_balance"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_popuw_buy_video_coupon_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/fitness_money"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:textSize="13sp"
+                    tools:text="200"/>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            android:orientation="vertical"
+            >
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/gray"
+                />
+
+            <TextView
+                android:id="@+id/tv_popuw_buy_video_coupon_title"
+                android:layout_marginTop="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正在购买八段锦课程"
+                android:textColor="#555555"
+                android:textStyle="bold"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv_popuw_buy_album_amount_member"
+                    android:layout_marginTop="11dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="149.00元"
+                    android:textColor="@color/textColor_f333"
+                    android:textSize="28sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_need_amount_member"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2222"
+                    android:textSize="12sp"
+                    android:layout_gravity="bottom"
+                    android:drawableLeft="@mipmap/fitness_money"
+                    />
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="11dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ll_need_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:text="原价  "
+                        android:textColor="@color/textColor_666666"/>
+                    <TextView
+                        android:id="@+id/tv_popuw_buy_video_coupon_need_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥30"
+                        android:textColor="@color/textColor_666666"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/tv_popuw_buy_coupon_need_amount"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2222"
+                        android:textSize="12sp"
+                        android:drawableLeft="@mipmap/fitness_money"
+                        />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="@color/black"
+                    />
+            </FrameLayout>
+            <com.ziran.meiliao.common.commonwidget.FilterTextView
+                android:id="@+id/iv_popuw_buy_video_coupon_buy"
+                android:layout_width="169dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/normal_bg_green_tran_8"
+                android:gravity="center"
+                android:text="确认购买"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="23dp"
+        android:layout_below="@+id/contentView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_height="23dp"
+        android:background="@mipmap/fitness_share_close"
+        />
+</RelativeLayout>
+

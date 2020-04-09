@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+    >
+
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_head_ban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_loading_square_big"
+        app:roundimageview_height_ratio="0.381"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_course_library_teacher_detail_team_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_head_ban"
+        android:layout_margin="12dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        tools:text="正念翻转小课堂，寒假班开班啦～！"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_course_library_teacher_detail_team_title"
+        android:layout_marginLeft="12dp"
+        android:drawablePadding="4dp"
+        android:drawableLeft="@mipmap/ic_persons"
+        android:gravity="center"
+        android:textSize="12sp"
+        tools:text="99-999"
+        />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_course_library_teacher_detail_team_title"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/tv_people"
+        android:drawablePadding="4dp"
+        android:drawableLeft="@mipmap/ic_time"
+        android:gravity="center"
+        android:textSize="12sp"
+        tools:text="2天1晚"
+        />
+
+    <TextView
+        android:id="@+id/tv_cx_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_people"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="4dp"
+        android:text="促销"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_cx_txt"
+        android:layout_toRightOf="@+id/tv_cx_txt"
+        android:drawableLeft="@mipmap/ic_checked_yellow"
+        android:gravity="center_vertical"
+        android:textColor="@color/textColor_999"
+        android:drawablePadding="4dp"
+        android:text="赠送会员积分"
+        />
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/tv_cx_txt"
+        android:layout_marginTop="12dp"
+        />
+</RelativeLayout>

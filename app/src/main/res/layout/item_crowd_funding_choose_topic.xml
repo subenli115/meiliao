@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_item_crowd_funding_choose_topic_cover"
+        android:layout_width="108dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:src="@mipmap/ic_loading_square"
+        app:roundimageview_height_ratio="0.611"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_crowd_funding_choose_topic_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_item_crowd_funding_choose_topic_cover"
+        android:ellipsize="end"
+        android:maxLines="2"
+        tools:text="10天深度睡眠"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_crowd_funding_choose_topic_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_crowd_funding_choose_topic_title"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/iv_item_crowd_funding_choose_topic_cover"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="12sp"
+        tools:text="简介简介简介简介简介简介简介简介简介简"
+        />
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_height="wrap_content"
+    android:layout_marginTop="65px"
+    android:layout_width="match_parent"
+    android:padding="5px"
+    android:background="@drawable/shape_mindfulness_hall_rg"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<com.zhy.autolayout.AutoFrameLayout
+    android:id="@+id/afl_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:layout_height="wrap_content"
+    >
+    <ImageView
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:id="@+id/iv_xc"
+        android:layout_width="match_parent"
+        android:layout_height="210px"
+        >
+    </ImageView>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="38px"
+        android:textColor="@color/black"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="80px"
+        android:text="身体扫描"
+        />
+
+    <TextView
+        android:id="@+id/tv_clock"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginLeft="20px"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="49px"
+        android:background="@mipmap/jdx_lock"
+        />
+
+
+
+</com.zhy.autolayout.AutoFrameLayout></com.zhy.autolayout.AutoLinearLayout>

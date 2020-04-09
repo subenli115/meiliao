@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/selector_tran_gray"
+                android:paddingTop="12dp">
+
+    <FrameLayout
+        android:id="@+id/fl_item_enrol"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="8dp">
+
+        <ImageView
+            android:id="@+id/iv_item_enrol_img"
+            android:layout_width="match_parent"
+            android:src="@mipmap/ic_loading_rectangle"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tv_item_enrol_flag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/transparent30"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="已结束"
+            android:textSize="14sp"/>
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tv_item_enrol_title"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="12dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/fl_item_enrol"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"/>
+
+   <!-- <TextView
+        android:id="@+id/tv_item_enrol_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fl_item_enrol"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:textColor="@color/textColor_teshe2"
+        android:textSize="16sp"/>-->
+
+    <TextView
+        android:id="@+id/tv_item_enrol_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fl_item_enrol"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@+id/fl_item_enrol"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/textColor_9f"
+        android:textSize="12sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_item_enrol_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_item_enrol_address"
+        android:layout_marginBottom="3dp"
+        android:layout_toRightOf="@+id/fl_item_enrol"
+        android:textColor="@color/textColor_9f"
+        android:textSize="12sp"/>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp"/>
+</RelativeLayout>

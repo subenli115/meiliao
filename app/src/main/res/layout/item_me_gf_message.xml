@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+     android:layout_marginTop="3dp"
+    app:cardBackgroundColor="@color/transparent"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_item_jyg_message_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            android:layout_above="@+id/tv_item_jyg_message_title"
+            android:src="@mipmap/ic_loading_square_big" />
+
+        <TextView
+            android:id="@+id/tv_item_jyg_message_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="12dp"
+            android:textColor="@color/textColor_333"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_item_jyg_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:padding="12dp"
+            android:textColor="@color/textColor_9f"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

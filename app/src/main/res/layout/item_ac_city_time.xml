@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="12px"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+
+        android:id="@+id/tv_activity_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25px"
+        android:paddingTop="25px"
+        android:gravity="center"
+        android:textSize="28px"
+        android:textColor="@color/textColor_2A"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/itemView_avatar"
+        style="@style/UserInfoItemGroupView"
+        android:layout_height="100dp"
+        app:itemView_leftText="头像"
+        app:itemView_leftText_color="@color/textColor_9f"
+        app:rightIcon="@mipmap/ic_user_pic"
+        app:showRightImage="true"/>
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/itemView_name"
+        style="@style/UserInfoItemGroupView"
+        app:itemView_leftText="昵称"
+        app:itemView_leftText_color="@color/textColor_9f"
+
+        />
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/itemView_acc"
+        style="@style/UserInfoItemGroupView"
+        app:itemView_leftText="账号"
+        app:itemView_leftText_color="@color/textColor_9f"
+        app:showRightArrow="false" />
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/itemView_gender"
+        style="@style/UserInfoItemGroupView"
+        app:itemView_leftText="性别"
+        app:itemView_leftText_color="@color/textColor_9f"
+        app:showRightArrow="false"/>
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/itemView_email"
+        style="@style/UserInfoItemGroupView"
+        app:itemView_leftText="邮箱"
+        app:itemView_leftText_color="@color/textColor_9f"/>
+
+
+</LinearLayout>

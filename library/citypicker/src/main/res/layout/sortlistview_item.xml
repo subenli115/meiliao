@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools"
+              android:background="@drawable/cityitem_click"
+              android:gravity="center_vertical"
+    >
+
+    <TextView
+        android:id="@+id/catalog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sort_catagory"
+        android:padding="10dp"
+        android:textColor="@color/text_color_02"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/catalog"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        tools:text="ffff"
+        android:padding="10dp"
+        android:textColor="@color/text_color_02"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/tv_code"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_alignTop="@+id/title"
+        android:layout_alignParentRight="true"
+        tools:text="ffff"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
+        />
+</RelativeLayout>

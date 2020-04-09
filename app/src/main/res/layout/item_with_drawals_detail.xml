@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_item_with_drawals_detail_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        android:text="2017年6月"
+        android:textColor="@color/textColor_666"
+        android:visibility="gone"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_item_with_drawals_detail_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:text="999"
+            android:textColor="@color/textColor_333"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_with_drawals_detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_item_with_drawals_detail_amount"
+            android:layout_marginBottom="12dp"
+            android:text="2017-08-09"
+            android:textColor="@color/textColor_999"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_with_drawals_detail_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="-99.9"
+            android:textColor="@color/textColor_333"
+            />
+    </RelativeLayout>
+
+    <View
+        style="@style/hor_match_line_margin_left"
+        />
+
+</LinearLayout>

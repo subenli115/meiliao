@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_item_workshops_main_workshops_cover"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="8dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_workshops_main_workshops_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_item_workshops_main_workshops_cover"
+        android:textColor="@color/textColor_333"
+        android:textSize="16sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        tools:text="正念翻转小课堂，寒假班开班啦～！"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_workshops_main_workshops_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_item_workshops_main_workshops_cover"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/iv_item_workshops_main_workshops_cover"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@color/textColor_999"
+        tools:text="广州市越秀区水荫二横路119号星光映..."
+        />
+
+    <TextView
+        android:id="@+id/tv_item_workshops_main_workshops_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_item_workshops_main_workshops_address"
+        android:layout_toRightOf="@+id/iv_item_workshops_main_workshops_cover"
+        android:textColor="@color/textColor_999"
+        tools:text="2017-02-12 至 2017-5-16"
+        />
+
+</RelativeLayout>

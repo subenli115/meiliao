@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+// 添加插件
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+
+    buildTypes {
+        release {
+            //混淆
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+//            // 移除无用的resource文件
+//            shrinkResources true
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    isLibrary = true
+    pomArtifactId = "Common"
+    pomDescription = "Common of android picker"
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //super
+    implementation rootProject.ext.dependencies.appcompatV7
+    api rootProject.ext.dependencies.design
+    api rootProject.ext.dependencies.recyclerview
+    api rootProject.ext.dependencies.cardview
+    api rootProject.ext.dependencies.annotations
+    //retrofit和rxjava
+    //    compile rootProject.ext.dependencies.retrofit
+    api rootProject.ext.dependencies.okhttp3logging
+    api rootProject.ext.dependencies.rxjava
+    api rootProject.ext.dependencies.rxandroid
+    api rootProject.ext.dependencies.retrofit2gson
+    api rootProject.ext.dependencies.retrofit2adapterrxjava
+    api rootProject.ext.dependencies.umeng
+    //view注解
+    annotationProcessor rootProject.ext.dependencies.butterknife
+    api rootProject.ext.dependencies.butterknife
+    //打印日志
+    api rootProject.ext.dependencies.glide
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
+    //菜单栏
+    api 'com.android.support:multidex:1.0.1'
+
+    api 'de.hdodenhof:circleimageview:2.1.0'
+    
+    //分包
+    api 'com.alibaba:fastjson:1.2.8'
+    //json解析封装框架
+    api 'com.commit451:PhotoView:1.2.4'
+    //图片缩放
+    api 'com.orhanobut:logger:1.13'
+    //显示图片框架
+    api files('libs/pinyin4j-2.5.0.jar')
+    //推送,分享,第三方登录,统计
+    //推送,分享,第三方登录,统计
+    api project(':library:umeng')
+    api project(':library:selectordialog')
+//    compile files('libs/OpenInstall_v1.1.1.jar')
+    api project(':library:okhttp3')
+    api files('libs/core-3.1.1-SNAPSHOT.jar')
+
+
+    api 'com.androidkun:XTabLayout:1.1.3'
+//    compile 'cn.bingoogolapple:bga-swipebacklayout:1.1.1@aar'
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+}

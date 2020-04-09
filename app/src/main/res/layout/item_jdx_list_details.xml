@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+<TextView
+    android:id="@+id/tv_question"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="2222222222222222"
+    android:textSize="32px"
+    android:layout_marginLeft="40px"
+    android:textColor="@color/textColor_999"
+    />
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:text="222222222222222222222222222222222222222222"
+        android:textColor="#444444"
+        android:layout_marginRight="64px"
+        android:layout_marginLeft="40px"
+        android:layout_height="wrap_content" />
+</com.zhy.autolayout.AutoLinearLayout>

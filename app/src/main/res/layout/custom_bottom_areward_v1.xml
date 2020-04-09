@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ll_buy"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_common_height"
+                android:background="@color/white"
+                android:visibility="visible"
+    >
+
+    <View
+        style="@style/hor_match_line"/>
+
+    <com.ziran.meiliao.common.commonwidget.FilterTextView
+        android:id="@+id/tv_album_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/textColor_teshe5"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="支持（¥20）"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+
+    <FrameLayout
+        android:id="@+id/fl_avd"
+        android:layout_toLeftOf="@+id/tv_album_buy"
+        android:layout_width="match_parent"
+        android:paddingLeft="40dp"
+        android:visibility="gone"
+        android:paddingRight="40dp"
+        android:layout_height="match_parent"
+        >
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:layout_width="match_parent"
+           android:layout_gravity="center_vertical"
+            app:roundimageview_height_ratio="0.12"
+            app:roundimageview_borderRadius="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_avd"
+            />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/fl_custom_arewardv1_tips"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/tv_custom_arewardv1_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="分享6人下载App获绿色通道"
+            android:textColor="@color/textColor_teshe"
+            />
+        <TextView
+            android:id="@+id/tv_custom_share_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"
+            android:textSize="12sp"
+            android:text="已成功分享0人"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

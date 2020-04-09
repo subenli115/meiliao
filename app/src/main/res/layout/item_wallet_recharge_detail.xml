@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_white_gray"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="12dp"
+    >
+
+    <TextView
+        android:id="@+id/tv_wallet_recharge_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColor_333"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/tv_wallet_recharge_amount"
+        android:layout_marginRight="12dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="16sp"
+        tools:text="在线支付"/>
+
+    <TextView
+        android:id="@+id/tv_wallet_recharge_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_wallet_recharge_title"
+        android:layout_marginTop="4dp"
+
+        android:textColor="@color/textColor_333"
+        android:textSize="13sp"
+        tools:text="余币：99.9"/>
+
+    <TextView
+        android:id="@+id/tv_wallet_recharge_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/textColor_teshe2"
+        android:textSize="18sp"
+        tools:text="+99"/>
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/tv_wallet_recharge_balance"
+        android:layout_marginTop="12dp"/>
+</RelativeLayout>

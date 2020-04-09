@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:id="@+id/fl_top"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_joinvip_bg"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ntb_bg="@color/transparent"
+            app:ntb_right_img1="@mipmap/nav_servicer"
+            app:ntb_title_text="提现详情"
+            app:ntb_tv_left="showAndFinish"
+            />
+
+
+
+        <com.ziran.meiliao.ui.me.widget.ProgressStepView
+            android:id="@+id/progressStepView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ntb"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            />
+    </RelativeLayout>
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_amount"
+                style="@style/BaseItemView"
+                android:layout_height="60dp"
+                app:biv_forword_show="false"
+                app:biv_right_text=" "
+                app:biv_right_color="@color/textColor_333"
+                app:biv_title="出账金额"
+                />
+
+            <View
+                style="@style/hor_match_line_8dp"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_time"
+                style="@style/BaseItemView"
+                app:biv_forword_show="false"
+                app:biv_right_color="@color/textColor_333"
+                app:biv_right_text=" "
+                app:biv_title="时间"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_bill_no"
+                style="@style/BaseItemView"
+                app:biv_forword_show="false"
+                app:biv_right_color="@color/textColor_333"
+                app:biv_right_text=" "
+                app:biv_title="交易单号"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_balance"
+                style="@style/BaseItemView"
+                app:biv_forword_show="false"
+                android:visibility="gone"
+                app:biv_right_color="@color/textColor_333"
+                app:biv_right_text=" "
+                app:biv_title="剩余零钱"
+                />
+
+            <com.ziran.meiliao.widget.BaseItemView
+                android:id="@+id/biv_bland_no"
+                style="@style/BaseItemView"
+                app:biv_forword_show="false"
+                app:biv_right_color="@color/textColor_333"
+                app:biv_right_text=" "
+                app:biv_title="到账账户"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

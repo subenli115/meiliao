@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="12dp"
+        android:src="@mipmap/ic_loading_rectangle"
+        app:roundimageview_type="circle"
+        />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/iv_avatar"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:text="2017-08-02"
+        android:textColor="@color/textColor_hint"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_avatar"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:text="2017-08-02"
+        android:textColor="@color/textColor_333"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_avatar"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:text="哈哈哈！你说的都对！"
+        android:textColor="@color/textColor_666"
+        android:textSize="12sp"
+        />
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_below="@+id/iv_avatar"
+        android:layout_toRightOf="@+id/iv_avatar"
+        />
+
+</RelativeLayout>

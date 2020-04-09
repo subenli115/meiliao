@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/transparent60"
+              android:orientation="vertical"
+    >
+
+    <View
+        android:id="@+id/touch_outside"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_popuw_buy_video_coupon_tips_free"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:background="@drawable/selector_white_gray"
+            android:gravity="center"
+            android:text="免费抢观看券"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_popuw_buy_video_coupon_tips_buy"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:background="@drawable/selector_white_gray"
+            android:gravity="center"
+            android:text="购买课程"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_popuw_buy_video_coupon_tips_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:background="@drawable/selector_white_gray"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"/>
+    </LinearLayout>
+</LinearLayout>
+

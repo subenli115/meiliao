@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_share_exercise_layout"
+    >
+</com.zhy.autolayout.AutoRelativeLayout>
+
+<com.zhy.autolayout.AutoFrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="147px"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
+        android:id="@+id/rl_bottom_myshot"
+        android:layout_above="@+id/arl_first"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/iv_exercise_user_head"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:visibility="invisible"
+            android:layout_above="@+id/tv_share_exercise_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:src="@mipmap/ic_user_pic"/>
+        <ImageView
+            android:id="@+id/iv_share_exercise_bg"
+            android:layout_width="match_parent"
+            android:layout_height="840px"
+            android:adjustViewBounds="true"
+            android:background="@mipmap/bg_jdx_exercise"
+            android:scaleType="fitXY" />
+        <TextView
+            android:id="@+id/tv_exercise"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:textSize="22px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="350px"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:maxEms="11"
+            android:lineSpacingExtra="6px"
+            android:text="释放工作和生活压力，冥想帮助卸下心灵重担，体会前所未有的放松与身心愉悦。"
+            />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginTop="460px"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="110px"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_share_exercise_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24"
+                android:textColor="#C1C1C1"
+                android:textSize="18px"/>
+
+            <TextView
+                android:id="@+id/tv_exercise_yearAndMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="2017.02"
+                android:textColor="#C1C1C1"
+                android:textSize="18px"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <ImageView
+            android:id="@+id/tv_exercise_qrcode"
+            android:layout_width="100px"
+        android:layout_gravity="center_horizontal|bottom"
+            android:layout_height="100px"
+            android:layout_marginBottom="22px"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            android:background="@mipmap/login_qrcode"
+
+            />
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="51px"
+            android:layout_marginRight="51px"
+            android:layout_marginTop="50px"
+            android:background="@drawable/normal_bg_tran888"
+            android:paddingLeft="44px"
+            android:paddingRight="44px">
+
+            <TextView
+                android:id="@+id/tv_share_exercise_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="31px"
+                android:text="nicole"
+                android:textColor="@color/white"
+                android:textSize="32px" />
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_share_exercise_title"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="15px"
+                android:text="我在5P医学APP  坚持冥想练习"
+                android:textColor="@color/white"
+                android:textSize="28px" />
+
+            <com.ziran.meiliao.widget.CustomNumbers1View
+                android:id="@+id/customNumbersView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/tv_exercise"
+                android:layout_below="@+id/tv_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="14dp"
+                android:layout_marginTop="17px" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    </com.zhy.autolayout.AutoFrameLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="22px"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="75px"
+        android:id="@+id/arl_first"
+        android:layout_above="@+id/iv_share_exercise_close"
+        android:layout_marginRight="75px"
+        android:background="@drawable/shape_white_corner8"
+        >
+
+
+
+        <com.ziran.meiliao.widget.MoreImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/moreImageView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="33px"
+            android:layout_marginBottom="33px"
+            android:layout_height="48dp"
+            android:layout_marginLeft="30px"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_marginRight="30px"
+            app:moreImageView_count="2"
+            app:moreImageView_default_data="share_4"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/iv_share_exercise_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="44px"
+        android:paddingTop="26px"
+        android:paddingRight="20px"
+        android:paddingLeft="20px"
+        android:src="@mipmap/share_jdx_close"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

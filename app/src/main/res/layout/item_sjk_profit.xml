@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_profit_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="正念引导生活"
+            android:textColor="@color/textColor_333"/>
+
+        <TextView
+            android:id="@+id/tv_item_profit_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="开始时间：2017-08-12  20:00"
+            android:textColor="@color/textColor_333"/>
+
+        <View
+            style="@style/hor_match_line"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_profit_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="12dp"
+            android:text="收益明细"
+            android:textColor="@color/textColor_teshe"/>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

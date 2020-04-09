@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_ban_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_loading_square_big"
+        app:roundimageview_borderRadius="0dp"
+        app:roundimageview_height_ratio="0.425"
+        />
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent30"
+        app:roundimageview_borderRadius="0dp"
+        app:roundimageview_height_ratio="0.425"
+        />
+
+    <com.ziran.meiliao.widget.PlayPauseView
+        android:id="@+id/playPauseView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+    <com.ziran.meiliao.widget.MyProgressView
+        android:id="@+id/myProgressView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_ban_pic"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="12dp"
+        app:MyProgressView_textColor="@color/white"
+        android:layout_marginRight="12dp"
+        />
+</RelativeLayout>

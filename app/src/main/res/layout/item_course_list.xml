@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ziran.meiliao.widget.SlideLayoutNew
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_open_live_list_pic"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_loading_square"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_open_live_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@+id/iv_item_open_live_list_pic"
+            android:maxLines="2"
+            tools:text="第一课：正念如何融入一天的工作与生活"
+            android:textColor="@color/textColor_333"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_item_open_live_list_date_and_watch_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_item_open_live_list_pic"
+            android:layout_toRightOf="@+id/iv_item_open_live_list_pic"
+            android:text="2017-06-23  已播放999次"
+            android:textColor="@color/textColor_9f"/>
+
+        <View
+            style="@style/hor_match_line"
+            android:layout_below="@+id/iv_item_open_live_list_pic"
+            android:layout_marginTop="12dp"/>
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/slide_id"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="80dp"
+            android:background="@drawable/selector_course_list_red"
+            android:gravity="center"
+            tools:text="课程\n下架"
+            android:paddingLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+    </FrameLayout>
+
+</com.ziran.meiliao.widget.SlideLayoutNew>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    >
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:layout_width="match_parent"
+        android:id="@+id/iv_item_course_library_teacher_detail_head_pic"
+        android:layout_height="wrap_content"
+        app:roundimageview_height_ratio="0.4"
+        app:roundimageview_borderRadius="0dp"
+        android:src= "@mipmap/ic_loading_square_big"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@mipmap/course_icon_teacher"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:text="教师简介"
+        />
+
+    <com.ziran.meiliao.widget.ExpandableTextView
+        android:id="@+id/tv_item_course_library_teacher_detail_head_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/textColor_666"
+        app:etv_MaxLinesOnShrink="4"
+        tools:text="ff222222gggggggggggg"
+        />
+
+</LinearLayout>

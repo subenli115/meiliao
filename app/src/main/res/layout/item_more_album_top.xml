@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="32px"
+    android:layout_height="wrap_content">
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_item_sjk_act_img"
+        android:layout_width="300px"
+        android:layout_height="189px"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_loading_rectangle"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="194px"
+
+        >
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_marginTop="16px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="静心冥想"
+            android:textSize="26px"
+            android:textColor="@color/textColor_f333"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20px"
+            android:textColor="#CCCCCC"
+            android:text="正念减压。"
+            android:layout_marginTop="7px"
+            android:layout_marginRight="20px"
+            android:layout_below="@+id/tv_title"
+            />
+        <TextView
+            android:id="@+id/tv_teacher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="阙建新"
+            android:layout_marginTop="11px"
+            android:layout_marginBottom="28px"
+            android:layout_below="@+id/tv_content"
+            android:textSize="20px"
+            android:textColor="#FF333333"
+            />
+
+        <TextView
+            android:id="@+id/tv_gong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="阙建新阙建新阙建新"
+            android:layout_marginLeft="6px"
+            android:textSize="16px"
+            android:maxLines="1"
+            android:textColor="#FF333333"
+            android:layout_alignBottom="@+id/tv_teacher_name"
+            android:layout_toRightOf="@+id/tv_teacher_name"
+            />
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoFrameLayout>
