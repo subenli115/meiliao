@@ -2,6 +2,10 @@
 <resources>
     <item name="viewPager" type="id" />
     <item name="tabLayout" type="id" />
-
+    <item type="id" name="glide_tag" />
     <item type="id" name="tag_first"></item>
+    <item type="id" name="id_autolayout" />
+    <item type="id" name="id_tag_pageset" />
+    <item type="id" name="id_toolbar_left" />
+    <item type="id" name="id_toolbar_right" />
 </resources>

@@ -191,8 +191,8 @@ public class SwipeLayout extends FrameLayout{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mMenuView = (ViewGroup) findViewById(R.id.ll_menu);
-        mMainView = ((ViewGroup) findViewById(R.id.ll_main));
+//        mMenuView = (ViewGroup) findViewById(R.id.ll_menu);
+//        mMainView = ((ViewGroup) findViewById(R.id.ll_main));
     }
     //获取主界面和菜单的宽度
     @Override
@@ -202,7 +202,7 @@ public class SwipeLayout extends FrameLayout{
         mWidth = getMeasuredWidth();
         mHeight = getMeasuredHeight();
         //获取菜单的宽度
-        mMaxDragRange = mMenuView.getMeasuredWidth();
+//        mMaxDragRange = mMenuView.getMeasuredWidth();
     }
 
     @Override
@@ -211,6 +211,6 @@ public class SwipeLayout extends FrameLayout{
         //摆放主界面
         mMainView.layout(0,0,mWidth,mHeight);
         //摆放菜单
-        mMenuView.layout(mWidth,0,mWidth+mMaxDragRange,mHeight);
+//        mMenuView.layout(mWidth,0,mWidth+mMaxDragRange,mHeight);
     }
 }

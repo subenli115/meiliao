@@ -12,6 +12,8 @@ import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.view.inputmethod.InputMethodManager;
 
 import com.ziran.meiliao.common.R;
 import com.ziran.meiliao.common.baseapp.AppManager;
@@ -49,7 +51,7 @@ import butterknife.ButterKnife;
 //    public void initPresenter() {
 //        mPresenter.setVM(this, mModel);
 //    }
-//
+//s
 //    @Override
 //    public void initView() {
 //    }
@@ -79,6 +81,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     //RxBus管理器
     public RxManager mRxManager;
     private String TAG;
+    private InputMethodManager imm;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         //初始化RxBus管理器
         mRxManager = new RxManager();
         //设置layout前配置
+         imm= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         doBeforeSetcontentView();
 //        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(getLayoutId());
@@ -109,6 +113,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         this.initView();
             PushAgent.getInstance(this).onAppStart();
         TAG = this.getClass().getSimpleName();
+        // 延伸显示区域到刘海
     }
 
     protected void initBundle(Bundle extras) {
@@ -122,6 +127,44 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         }
     }
 
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        if (ev.getAction() == MotionEvent.ACTION_DOWN){
+//            // 判断连续点击事件时间差
+//            if (isFastClick()){
+//                return true;
+//            }
+//        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    private static final int MIN_DELAY_TIME= 1000;  // 两次点击间隔不能少于1000ms
+    private static long lastClickTime;
+
+    public static boolean isFastClick() {
+        boolean flag = true;
+        long currentClickTime = System.currentTimeMillis();
+        if ((currentClickTime - lastClickTime) >= MIN_DELAY_TIME) {
+            flag = false;
+        }
+        lastClickTime = currentClickTime;
+        return flag;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // TODO Auto-generated method stub
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (this.getCurrentFocus() != null) {
+                if (this.getCurrentFocus().getWindowToken() != null) {
+                    imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            }
+        }
+        return super.onTouchEvent(event);
+    }
     /**
      * 是否支持滑动返回。这里在父类中默认返回 true 来支持滑动返回，如果某个界面不想支持滑动返回则重写该方法返回 false 即可
      *

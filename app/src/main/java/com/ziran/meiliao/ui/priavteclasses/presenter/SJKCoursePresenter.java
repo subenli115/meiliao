@@ -103,7 +103,6 @@ public class SJKCoursePresenter extends SJKFullLiveContract.Presenter {
             @Override
             public void onSuccess(StringDataBean result) {
                 if (result==null) return;
-                mView.onPayResult(result.getData());
             }
         });
     }

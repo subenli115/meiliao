@@ -30,6 +30,7 @@
                 android:id="@+id/iv_me_collect_zl_img"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+
                 android:src="@mipmap/ic_loading_square_small"
                 app:roundimageview_height_ratio="1.18"
                 />

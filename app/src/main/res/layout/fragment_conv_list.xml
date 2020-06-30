@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/conv_fragment_view"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        >
+
+        <TextView
+            android:id="@+id/main_title_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:text="消息"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"/>
+
+        <ImageButton
+            android:id="@+id/create_group_btn"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/msg_title_bar_right_btn_bg"
+            android:src="@drawable/msg_titlebar_right_btn"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f5f5f5"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/null_conversation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="暂无会话"
+            android:textColor="#999999"
+            android:textSize="16sp"
+            android:visibility="gone"
+            />
+
+        <ListView
+            android:id="@+id/conv_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:layout_marginTop="0dp"
+            android:headerDividersEnabled="false"/>
+
+        <com.ziran.meiliao.common.commonwidget.LoadingTip
+            android:id="@+id/loadedTip"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_below="@+id/ntb_title"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+</LinearLayout>

@@ -132,6 +132,38 @@ public class OkHttpUtil implements OkHttpUtilInterface{
     }
 
     /**
+     * 异步Post请求
+     * @param info 请求信息体
+     * @param callback 回调接口
+     */
+    @Override
+    public void doPutAsync(HttpInfo info, CallbackOk callback){
+        OkHttpHelper.Builder()
+                .httpInfo(info)
+                .requestMethod(RequestMethod.PUT)
+                .callbackOk(callback)
+                .helperInfo(packageHelperInfo())
+                .build()
+                .doRequestAsync();
+    }
+
+    /**
+     * 异步delete请求
+     * @param info 请求信息体
+     * @param callback 回调接口
+     */
+    @Override
+    public void doDeleteAsync(HttpInfo info, CallbackOk callback){
+        OkHttpHelper.Builder()
+                .httpInfo(info)
+                .requestMethod(RequestMethod.DELETE)
+                .callbackOk(callback)
+                .helperInfo(packageHelperInfo())
+                .build()
+                .doRequestAsync();
+    }
+
+    /**
      * 同步Get请求
      * @param info 请求信息体
      * @return HttpInfo

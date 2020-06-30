@@ -1,6 +1,6 @@
 package com.ziran.meiliao.ui.priavteclasses.presenter;
 
-import com.ziran.meiliao.app.WpyxConfig;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.envet.NewRequestCallBack;
@@ -34,7 +34,7 @@ public class NoBuyZhuanLanPresenter extends NoBuyZhuanLanContract.Presenter {
             @Override
             public void onSuccess(NewMediaAndTextBean result) {
                 NewMediaAndTextBean.DataBean data = result.getData();
-                WpyxConfig.isIsBuy(data.isIsBuy());
+                MeiliaoConfig.isIsBuy(data.isIsBuy());
                 mView.showData(data);
 
             }

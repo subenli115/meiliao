@@ -14,12 +14,12 @@ import android.os.Looper;
 import android.support.v4.content.FileProvider;
 import android.widget.TextView;
 
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.common.commonutils.LogUtils;
 import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonwidget.FilterTextView;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.compressorutils.FileUtil;
-import com.ziran.meiliao.app.WpyxConfig;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.widget.pupop.DownloadProgressDialog;
 import com.ziran.meiliao.widget.pupop.UpdateVersionPopupWindow;
@@ -31,10 +31,9 @@ import java.io.File;
  * 功能描述: 运用DownloadManager实现下载 一样通知栏会显示
  */
 public class UpdateVersionDownloadService extends Service {
-    public static final String DOWNLOAD_FOLDER_NAME = "wpyx/apk";
+    public static final String DOWNLOAD_FOLDER_NAME = "meiliao/apk";
     private static DownloadProgressDialog mprogressDialog;
-    //    public static final String DOWNLOAD_FILE_NAME = "wpyx.apk";
-private Handler handler = new Handler(Looper.getMainLooper());
+    private Handler handler = new Handler(Looper.getMainLooper());
     public static final String APK_URL = "APK_URL";
     public static final String APK_KEY = "APK_KEY";
     private static TextView mupdate;
@@ -51,11 +50,10 @@ private Handler handler = new Handler(Looper.getMainLooper());
         Intent intent = new Intent(context, UpdateVersionDownloadService.class);
         intent.putExtra(APK_URL, url);
         mContext=context;
-        mprogressDialog=progressDialog;
         downloadManager=mdownloadManager;
         context.startService(intent);
         mupdate=update;
-        mupdate.setText("下载中");
+//        mupdate.setText("下载中");
 
     }
 
@@ -204,8 +202,8 @@ private Handler handler = new Handler(Looper.getMainLooper());
             }
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
-            SPUtils.setString(AppConstant.SPKey.SYSTEM_VERSION,WpyxConfig.getLastVersion());
-            WpyxConfig.setLastVersion("");
+            SPUtils.setString(AppConstant.SPKey.SYSTEM_VERSION, MeiliaoConfig.getLastVersion());
+            MeiliaoConfig.setLastVersion("");
 //            FileUtil.delete(filePath);
         }
         //停止服务

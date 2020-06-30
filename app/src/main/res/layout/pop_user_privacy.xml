@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/transparent60"
+    android:layout_height="match_parent"
+    >
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="600px"
+        android:layout_height="954px"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/normal_bg_white_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户隐私政策说明"
+            android:textSize="36px"
+            android:textColor="@color/textColor_4c"
+            android:textStyle="bold"
+            android:layout_marginTop="100px"
+            android:layout_centerHorizontal="true"
+            />
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:paddingBottom="80px"
+    android:layout_marginTop="57px"
+    android:layout_below="@+id/tv_title"
+
+
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="3dp"
+        android:lineSpacingMultiplier="1"
+        android:text="1、我们会遵循隐私政策收集、使用信息，但不会强制捆绑；\n
+2、在仅浏览时，为了保证账号登录安全及信息安全，我们会收集设备信息与日志信息；\n
+3、地理位置信息、摄像头、麦克风、相册权限均需要经过授权才能使用相应功能或服务。
+您可以查看完整版"
+        android:layout_marginLeft="66px"
+        android:textColor="@color/textColor_4c"
+        android:layout_marginRight="66px"
+        android:textSize="28px"
+        />
+    <TextView
+        android:id="@+id/tv_qd"
+        android:layout_width="460px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59px"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:textColor="@color/white"
+        android:text="同意"
+        android:gravity="center"
+        android:textSize="30px"
+        android:layout_above="@+id/tv_close"
+        android:background="@drawable/normal_bg_bule"
+        />
+    <TextView
+        android:id="@+id/tv_close"
+        android:layout_width="460px"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="40px"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:text="不同意并退出"
+        android:background="@drawable/normal_bg_tran_a"
+        android:layout_centerHorizontal="true"
+        android:textSize="30px"
+
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>
+
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

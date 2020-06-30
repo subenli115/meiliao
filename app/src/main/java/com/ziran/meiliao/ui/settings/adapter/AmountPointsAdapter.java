@@ -1,12 +1,16 @@
 package com.ziran.meiliao.ui.settings.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.ViewHolderHelper;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.abslistview.CommonAblistViewAdapter;
 import com.ziran.meiliao.ui.bean.PointsListBean;
+import com.ziran.meiliao.ui.bean.RechargeBean;
+import com.ziran.meiliao.widget.GlideCircleTransform;
 
 /**
  * @author 吴祖清
@@ -19,56 +23,58 @@ import com.ziran.meiliao.ui.bean.PointsListBean;
  */
 
 
-public class AmountPointsAdapter extends CommonAblistViewAdapter<PointsListBean.DataBean.ScoreListBean> {
+public class AmountPointsAdapter extends CommonAblistViewAdapter<RechargeBean.DataBean.RecordsBean> {
 
+    private  double mMoney;
     private int mPoint;
 
-    public AmountPointsAdapter(Context context, int layoutId) {
+    public AmountPointsAdapter(Context context, int layoutId, double money) {
         super(context, layoutId);
+        mMoney = money;
     }
 
-    private int selectPosition;
-
+    public void update(double money){
+        mMoney = money;
+        notifyDataSetChanged();
+    }
     @Override
-    public void convert(ViewHolderHelper holder, PointsListBean.DataBean.ScoreListBean item, int position) {
-        if (item.isSelect()) {
-            holder.setBackgroundRes(R.id.ll_recharge_bg, R.drawable.shape_grid_amount_select);
-            holder.setTextColor(R.id.tv_recharge_amount, R.color.textColor_teshe);
-            selectPosition = position;
-            holder.getView(R.id.tv_points).setVisibility(View.VISIBLE);
+    public void convert(ViewHolderHelper holder, RechargeBean.DataBean.RecordsBean item, int position) {
+        if (item.getPrice() > 1) {
+            holder.setText(R.id.tv_recharge_amount, item.getName());
         } else {
-            holder.setTextColor(R.id.tv_recharge_amount, R.color.textColor_999);
-            holder.setBackgroundRes(R.id.ll_recharge_bg, R.drawable.shape_grid_amount);
-            holder.getView(R.id.tv_points).setVisibility(View.INVISIBLE);
+            holder.setText(R.id.tv_recharge_amount, item.getName());
         }
-        holder.setText(R.id.tv_recharge_gold, String.format("%d积分", item.getScore()));
-        if (item.getCoin()>1){
-            holder.setText(R.id.tv_recharge_amount, item.getCoin()+"金币");
-        }else{
-            holder.setText(R.id.tv_recharge_amount, item.getCoin()+"金币");
+        if (item.getReserve3().equals("1")) {
+            holder.setVisible(R.id.tv_new, true);
         }
-        if(item.getScore()>mPoint){
+        double price = item.getPrice();
+        holder.setText(R.id.tv_recharge_gold, "价值" + replace(price * 1000+"") + "ML币");
+        if (mMoney > price) {
+            holder.setProgress(R.id.progressBarHorizontal, 100);
+        } else {
+            int progress = (int) (mMoney / item.getPrice());
+            holder.setProgress(R.id.progressBarHorizontal, progress);
 
-            holder.setText(R.id.tv_points,"积分不足");
-        }else {
-            holder.getView(R.id.tv_points).setVisibility(View.GONE);
         }
     }
-    public void update(int point){
-        mPoint=point;
+    /**
+     * 使用java正则表达式去掉多余的.与0
+     * @param s
+     * @return  string
+     */
+    public static String replace(String s){
+        if(null != s && s.indexOf(".") > 0){
+            s = s.replaceAll("0+?$", "");//去掉多余的0
+            s = s.replaceAll("[.]$", "");//如最后一位是.则去掉
+        }
+        return s;
+    }
+
+    public void update(int point) {
+        mPoint = point;
         notifyDataSetChanged();
 
     }
 
-    public void changeSelect(int position) {
-        if (selectPosition != -1 && selectPosition != position) {
-            getItem(selectPosition).setSelect(false);
-            get(position).setSelect(true);
-            notifyDataSetChanged();
-        }
-    }
 
-    public PointsListBean.DataBean.ScoreListBean getSelect() {
-        return getItem(selectPosition);
-    }
 }

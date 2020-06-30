@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingStart="18dp"
-    android:paddingEnd="18dp"
+    android:layout_marginRight="15px"
+    android:layout_marginTop="40px"
     android:clickable="true"
     android:background="?attr/selectableItemBackground">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#000"
-        tools:text="Item Title" />
-
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="#bbb"
-        tools:text="Detail information" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginTop="10dp"
-        android:background="#eee" />
+<com.ziran.meiliao.common.commonwidget.RoundImageView
+    android:id="@+id/iv"
+    android:layout_width="63dp"
+    android:scaleType="center"
+    android:layout_height="63dp"
+    app:roundimageview_borderRadius="10dp"
+    app:roundimageview_type="round"
+    android:src="@drawable/jmui_head_icon"
+    />
 
 </LinearLayout>

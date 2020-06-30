@@ -3,37 +3,22 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:orientation="vertical"
                 android:id="@+id/rl_bg">
 
 
-
-
-
-
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/splash_bg"
-    android:focusable="false"
-    android:clickable="false"
-
-    />
-
-
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_likeanim"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:lottie_fileName="initial.json"
-        android:scaleType="fitXY"
-        app:lottie_loop="false"
-        android:layout_gravity="center"
-        app:lottie_autoPlay="true"
+    <ImageView
+        android:layout_width="390px"
+        android:layout_height="620px"
+        android:src="@mipmap/splash_bg"
         android:focusable="false"
+        android:layout_gravity="center"
         android:clickable="false"
+
         />
+
+
 
 
 
@@ -45,6 +30,7 @@
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="36dp"
+        android:visibility="gone"
         android:layout_height="36dp"
         android:layout_gravity="right"
         android:layout_alignParentRight="true"
@@ -52,16 +38,6 @@
 
         >
 
-        <TextView
-            android:id="@+id/tv_skip"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/shape_skip"
-            android:gravity="center"
-            android:text="跳过"
-            android:textColor="@color/textColor_teshe"
-            android:textSize="12sp"
-            />
 
         <com.ziran.meiliao.ui.settings.widget.DonutProgress
             android:id="@+id/donutProgress"
@@ -75,6 +51,7 @@
     <com.ziran.meiliao.common.commonwidget.LoadingTip
         android:id="@+id/loadedTip"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent"
         />
 </com.zhy.autolayout.AutoFrameLayout>

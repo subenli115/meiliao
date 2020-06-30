@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:id="@+id/arl_bg"
+    android:layout_height="match_parent"
+    >
+
+    <com.zhy.autolayout.AutoRelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl"
+        android:layout_marginTop="10dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView
+            android:id="@+id/main_title_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:textStyle="bold"
+            android:text="找朋友"
+            android:textColor="#000000"
+            android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/tv_preview"
+                android:layout_toRightOf="@+id/main_title_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="#7C9CBF"
+                android:background="@drawable/normal_bg_bule_e5"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25px"
+                android:paddingLeft="13px"
+                android:paddingTop="6px"
+                android:paddingBottom="6px"
+                android:paddingRight="13px"
+                android:textSize="25px"
+                android:text="预览"
+                />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.ziran.meiliao.widget.CardSlidePanel
+        android:layout_below="@+id/rl"
+        android:id="@+id/image_slide_panel"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>

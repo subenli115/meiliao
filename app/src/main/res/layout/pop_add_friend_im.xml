@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/arl"
+    android:layout_height="match_parent"
+    >
+
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/rl_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/normal_bg_white60"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:paddingBottom="22px"
+    android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="270dp"
+ android:gravity="center_horizontal"
+    android:layout_below="@+id/iv_top"
+    android:orientation="vertical"
+    android:layout_height="350dp">
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_marginTop="46dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="申请添加好友"
+        android:textSize="28sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:layout_marginBottom="29dp"
+        android:textStyle="bold"
+        />
+</FrameLayout>
+
+
+    <EditText
+        android:id="@+id/et_reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="75dp"
+        android:ellipsize="end"
+        android:imeOptions="actionSend"
+        android:maxLines="1"
+        android:paddingRight="75dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/normal_bg_gray_fa"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/icon_add_friend_gift"
+            />
+
+    <TextView
+        android:id="@+id/tv_gold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/normal_bg_orange_c5"
+        android:drawableLeft="@mipmap/icon_gold_little"
+        android:drawablePadding="1.5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="1000"
+        android:textColor="#FF9E01"
+
+        android:textSize="10sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="你需要送一个礼物表示诚意"
+        android:textSize="13sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/textColor_b2"
+        />
+
+    <TextView
+        android:id="@+id/tv_qd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="60dp"
+        android:padding="12dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:text="确定"
+        android:gravity="center"
+        android:background="@drawable/normal_bg_bule"
+        />
+
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

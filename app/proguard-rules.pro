@@ -228,7 +228,9 @@ public static java.lang.String TABLENAME;
   -keep public interface com.umeng.scrshot.**
 
   -keep public class com.umeng.socialize.* {*;}
-
+  -keep public class [com.ziran.meiliao].R$*{
+   public static final int *;
+  }
 
   -keep class com.facebook.**
   -keep class com.facebook.** { *; }
@@ -518,3 +520,30 @@ public static java.lang.String TABLENAME;
 #hotfix
 -keep class com.taobao.sophix.**{*;}
 -keep class com.ta.utdid2.device.**{*;}
+
+-dontoptimize
+-dontpreverify
+-keepattributes  EnclosingMethod,Signature
+-dontwarn cn.jpush.**
+-keep class cn.jpush.** { *; }
+
+-dontwarn cn.jiguang.**
+-keep class cn.jiguang.** { *; }
+
+-dontwarn cn.jmessage.**
+-keep class cn.jmessage.**{ *; }
+
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+
+#========================gson================================
+-dontwarn com.google.**
+-keep class com.google.gson.** {*;}
+
+#========================protobuf================================
+-keep class com.google.protobuf.** {*;}
+
+-keep class com.bytedance.sdk.openadsdk.** { *; }
+-keep public interface com.bytedance.sdk.openadsdk.downloadnew.** {*;}
+-keep class com.pgl.sys.ces.* {*;}

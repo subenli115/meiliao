@@ -8,14 +8,11 @@ import com.ziran.meiliao.common.security.AES;
  */
 
 public class StringDataBean extends Result {
-
-
-    private String code;
     private String data;
 
     //返回AES界面的字符串
     public String getData() {
-        return AES.get().decrypt(data);
+        return data;
     }
 
     public String getNornemData() {
@@ -33,13 +30,6 @@ public class StringDataBean extends Result {
             e.printStackTrace();
         }
         return -1;
-    }
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
     @Override
     public String toString() {

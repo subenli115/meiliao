@@ -12,52 +12,67 @@
         android:background="@color/transparent30"
         />
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/white"
+        android:background="@drawable/normal_half_white_bg"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingBottom="12dp"
         >
-
         <TextView
-            android:id="@+id/tv_content"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="60px"
             android:layout_height="wrap_content"
+            android:text="选择支付方式"
+            android:textStyle="bold"
+            android:textSize="36px"
+            android:textColor="@color/textColor_4c"
             />
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="40px"
+    android:gravity="center"
+    android:layout_marginBottom="20px"
+    android:layout_height="wrap_content">
 
-        <com.ziran.meiliao.common.commonwidget.FilterTextView
-            android:id="@+id/tv_wechat_pay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/btn_bg"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:paddingBottom="8dp"
-            android:text="微信支付"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="￥"
+        android:textColor="#FC636B"
+        android:textSize="55px"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="66"
+        android:textSize="60px"
+        android:textColor="#FC636B"
+        android:textStyle="bold"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+<TextView
+    android:id="@+id/tv_gold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="充值6000金币"
+    android:textSize="24px"
+    android:layout_marginBottom="30px"
+    android:textColor="#4D4D4D"
+    />
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-        <View
-            style="@style/hor_match_line"/>
 
-        <com.ziran.meiliao.common.commonwidget.FilterTextView
-            android:id="@+id/tv_aplipay_pay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/btn_bg"
-            android:drawablePadding="12dp"
-            android:gravity="center"
-            android:paddingBottom="8dp"
-            android:text="支付宝支付"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
+</android.support.v7.widget.RecyclerView>
+
+    </com.zhy.autolayout.AutoLinearLayout>
 </FrameLayout>

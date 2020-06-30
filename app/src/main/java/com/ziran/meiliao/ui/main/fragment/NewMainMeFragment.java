@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.app.WpyxConfig;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.common.commonutils.ImageLoaderUtils;
 import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonutils.TimeUtil;
@@ -41,16 +41,8 @@ import com.ziran.meiliao.ui.main.adapter.MeViewPagerAdapter;
 import com.ziran.meiliao.ui.main.contract.MainMeContract;
 import com.ziran.meiliao.ui.main.model.MainMeModel;
 import com.ziran.meiliao.ui.main.presenter.MainMePresenter;
-import com.ziran.meiliao.ui.priavteclasses.activity.LiveRoomActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.TrailerWebActivity;
-import com.ziran.meiliao.ui.settings.activity.CouponActivity;
-import com.ziran.meiliao.ui.settings.activity.DownloadActivity;
 import com.ziran.meiliao.ui.settings.activity.FeekBackActivity;
-import com.ziran.meiliao.ui.settings.activity.JoinAppActivity;
-import com.ziran.meiliao.ui.settings.activity.MeCollectActivity2;
-import com.ziran.meiliao.ui.settings.activity.MemberDetailsActivity;
 import com.ziran.meiliao.ui.settings.activity.MessageActivity;
-import com.ziran.meiliao.ui.settings.activity.MyMedalActivity;
 import com.ziran.meiliao.ui.settings.activity.NewUserInfoActivity;
 import com.ziran.meiliao.ui.settings.activity.SettingsActivity;
 import com.ziran.meiliao.ui.settings.activity.WalletActivity;
@@ -61,8 +53,6 @@ import com.ziran.meiliao.utils.StringUtils;
 import com.ziran.meiliao.utils.UpdateManager;
 import com.ziran.meiliao.widget.ItemGroupView;
 import com.ziran.meiliao.widget.ObservableScrollView;
-import com.ziran.meiliao.widget.pupop.PopupWindowUtil;
-import com.ziran.meiliao.widget.pupop.SJKRecommendPopupWindow;
 import com.ziran.meiliao.widget.pupop.SharePopupWindow;
 
 import java.io.File;
@@ -70,6 +60,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import cn.jpush.android.service.DownloadActivity;
 import rx.functions.Action1;
 
 
@@ -236,7 +227,6 @@ public class NewMainMeFragment extends CommonHttpFragment<MainMePresenter, MainM
                 @Override
                 public void onItemClick(ViewGroup container, TrailerBean.DataBean item, int position) {
                     mTrailerData = item;
-                    TrailerWebActivity.startAction(getContext(), item, item.getUrl());
                 }
             });
         }
@@ -345,42 +335,16 @@ public class NewMainMeFragment extends CommonHttpFragment<MainMePresenter, MainM
     //返回用户VIP信息的结果
     @Override
     public void showCheckLevel(CheckVipLevelBean result) {
-        MyAPP.setIsVip(result);
-        if (MyAPP.isVip()) {
-            ivIsVip.setVisibility(View.VISIBLE);
-        } else {
-            ivIsVip.setVisibility(View.GONE);
-        }
     }
 
     @Override
     public void showUserHomeRes(ResBean result) {
-        WpyxConfig.setResBean(result);
+        MeiliaoConfig.setResBean(result);
     }
 
     //显示推广专辑的窗口
     @Override
     public void gainSpread(final GainSpreadBean.DataBean bean) {
-        if (bean.isIsShow()) {
-            //订阅是否赠送专辑
-            mRxManager.on(AppConstant.RXTag.GIVE_ALBUM, new Action1<Boolean>() {
-                @Override
-                public void call(Boolean aBoolean) {
-                    mPresenter.giveAlbum(MapUtils.getOnlyCan("albumId", bean.getAlbumId()));
-                    SJKRecommendPopupWindow sjkRecommendPopupWindow = new SJKRecommendPopupWindow(getContext());
-                    sjkRecommendPopupWindow.setType(2, bean.getName());
-                    sjkRecommendPopupWindow.setIvImg(bean.getPic());
-                    sjkRecommendPopupWindow.setPoster(bean.getAlbumId(), bean.getName());
-                    PopupWindowUtil.show(getActivity(), sjkRecommendPopupWindow);
-                    mRxManager.remove(AppConstant.RXTag.GIVE_ALBUM);
-                }
-            });
-            SJKRecommendPopupWindow sjkRecommendPopupWindow = new SJKRecommendPopupWindow(getContext());
-            sjkRecommendPopupWindow.setType(1, bean.getName());
-            sjkRecommendPopupWindow.setIvImg(bean.getPic());
-            sjkRecommendPopupWindow.setPoster(bean.getAlbumId(), bean.getName());
-            PopupWindowUtil.show(sjkRecommendPopupWindow);
-        }
     }
 
     @Override
@@ -438,7 +402,6 @@ public class NewMainMeFragment extends CommonHttpFragment<MainMePresenter, MainM
             case R.id.iv_main_me_new_vip:
                 //跳转到加入会员
                 if (CheckUtil.check(getContext(), view)) {
-                    startActivity(JoinAppActivity.class);
                 }
                 break;
             case R.id.tv_me_main_new_message:
@@ -449,9 +412,6 @@ public class NewMainMeFragment extends CommonHttpFragment<MainMePresenter, MainM
                 break;
             case R.id.tv_main_me_new_coupon:
                 //跳转到加入会员
-                if (CheckUtil.check(getContext(), view)) {
-                    startActivity(CouponActivity.class);
-                }
                 break;
             //充值或余额查询
             case R.id.tv_main_me_new_recharge_or_balance_query:
@@ -461,7 +421,6 @@ public class NewMainMeFragment extends CommonHttpFragment<MainMePresenter, MainM
                 break;
             case R.id.tv_me_main_new_follow:
                 //跳转到收藏界面
-                startActivity(MeCollectActivity2.class);
                 break;
             case R.id.itemView_push:
                 sharePush(view);
@@ -476,19 +435,13 @@ public class NewMainMeFragment extends CommonHttpFragment<MainMePresenter, MainM
                 startActivity(FeekBackActivity.class);
 //                DefVideoActivity.startAction(getContext(),"http://ojlzx3sl8.bkt.clouddn.com/0.mp4");
                 break;
-            case R.id.tv_me_main_new_live_room:
-                //跳转到我的直播间后台界面
-                startActivity(LiveRoomActivity.class);
-                break;
 
             case R.id.rl_me_level:
                 //跳转到会员详情
-                startActivity(MemberDetailsActivity.class);
 
                 break;
             case R.id.itemView_medal:
                 //跳转到会员详情
-                startActivity(MyMedalActivity.class);
                 break;
         }
     }

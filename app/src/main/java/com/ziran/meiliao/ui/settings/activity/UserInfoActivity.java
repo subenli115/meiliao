@@ -132,11 +132,6 @@ public class UserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, Upda
         mRxManager.on(AppConstant.RXTag.EDIT_USER_INFO, new Action1<Integer>() {
             @Override
             public void call(Integer type) {
-                if (type == EditUserInfoActivity.TYPE_TEXT) {  //返回的是用户名
-                    mItemGroupViewName.setRigthText(MyAPP.getUserInfo().getNickName());
-                } else if (type == EditUserInfoActivity.TYPE_EMAIL) {  //返回的是邮箱
-                    mItemGroupViewEmail.setRigthText(MyAPP.getUserInfo().getEmail());
-                }
             }
         });
     }
@@ -172,7 +167,6 @@ public class UserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, Upda
                 break;
             case R.id.itemView_name:
                 //跳转到编辑用户资料界面更新昵称
-                EditUserInfoActivity.startAction(this, EditUserInfoActivity.TYPE_TEXT, mItemGroupViewName.getRightText());
                 break;
             case R.id.itemView_gender:
                 //性别更新
@@ -180,7 +174,6 @@ public class UserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, Upda
                 break;
             case R.id.itemView_email:
                 //编辑用户信息更新邮箱
-                EditUserInfoActivity.startAction(this, EditUserInfoActivity.TYPE_EMAIL, mItemGroupViewEmail.getRightText());
                 break;
         }
     }
@@ -227,24 +220,7 @@ public class UserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, Upda
 
     private void updateUserHead(ArrayList<String> imgPaths) {
         final String path = imgPaths.get(0);
-        HandlerUtil.runTask(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (true) {
-                        String autoFileOrFilesSize = FileSizeUtil.getAutoFileOrFilesSize(path);
-                        if ("0.00 B".equals(autoFileOrFilesSize)) {
-                            Thread.sleep(60);
-                        } else {
-                            mPresenter.updateUserHead(FileUtil.str2File(path), MapUtils.getDefMap(true));
-                            break;
-                        }
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+     mPresenter.updateUserHead(FileUtil.str2File(path), MapUtils.getDefMap(true));
     }
 
     @Override

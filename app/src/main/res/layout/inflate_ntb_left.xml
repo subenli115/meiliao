@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         app:roundimageview_type="circle"
         android:layout_margin="8dp"
-        android:src="@mipmap/ic_jyg_nva_player" />
+        />
 
     <com.ziran.meiliao.ui.settings.widget.DonutProgress
         android:id="@+id/progress"

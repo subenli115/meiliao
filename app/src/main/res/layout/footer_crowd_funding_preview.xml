@@ -47,6 +47,7 @@
             android:id="@+id/iv_footer_crowd_funding_preview_avatar"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:scaleType="centerCrop"
             android:src="@mipmap/ic_user_pic"
             app:roundimageview_type="circle"
             />

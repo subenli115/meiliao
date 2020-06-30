@@ -6,7 +6,7 @@ import android.content.Context;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.app.WpyxConfig;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
@@ -41,7 +41,7 @@ public class ExitUtil {
         RxManagerUtil.clear();
         TrailerCollectConfig.clear();
         UMengKit.trackMsgDismissed(context);
-        WpyxConfig.setMusicPanelHide(false);
+        MeiliaoConfig.setMusicPanelHide(false);
         MyAPP.mServiceManager.exit();
         HandlerUtil.onDestroy();
         PracticeDataUtil.onDestroy();

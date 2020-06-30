@@ -1,29 +1,25 @@
 package com.ziran.meiliao.ui.settings.fragment;
 
-import android.app.Dialog;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.citypicker.citylist.sortlistview.SortModel;
-import com.citypicker.citylist.utils.CityDataDb;
+import com.zhy.autolayout.AutoLinearLayout;
 import com.ziran.meiliao.R;
-import com.ziran.meiliao.common.baserx.RxManagerUtil;
+import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
-import com.ziran.meiliao.common.commonutils.ViewUtil;
-import com.ziran.meiliao.common.commonwidget.OnNoDoubleClickListener;
-import com.ziran.meiliao.common.compressorutils.EmptyUtils;
-import com.ziran.meiliao.common.compressorutils.RegexUtils;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.constant.ApiKey;
@@ -33,21 +29,19 @@ import com.ziran.meiliao.ui.base.CommonContract;
 import com.ziran.meiliao.ui.base.CommonHttpFragment;
 import com.ziran.meiliao.ui.base.CommonModel;
 import com.ziran.meiliao.ui.base.CommonPresenter;
-import com.ziran.meiliao.ui.bean.ExchangeBean;
-import com.ziran.meiliao.ui.bean.PointsListBean;
-import com.ziran.meiliao.ui.bean.PurseListCoinBean;
-import com.ziran.meiliao.ui.bean.StringDataBean;
-import com.ziran.meiliao.ui.main.activity.RegionActivity;
-import com.ziran.meiliao.ui.main.activity.UserAgreementWebActivity;
+import com.ziran.meiliao.ui.bean.PayListBean;
+import com.ziran.meiliao.ui.bean.RechargeBean;
+import com.ziran.meiliao.ui.bean.StringDataV2Bean;
+import com.ziran.meiliao.ui.bean.UserAccountBean;
+import com.ziran.meiliao.ui.bean.UserBean;
+import com.ziran.meiliao.ui.bean.UserExternalAccountBean;
+import com.ziran.meiliao.ui.me.activity.SetRealNameActivity;
+import com.ziran.meiliao.ui.settings.activity.RechargeDetailsActivity;
 import com.ziran.meiliao.ui.settings.adapter.AmountAdapter;
 import com.ziran.meiliao.ui.settings.adapter.AmountPointsAdapter;
-import com.ziran.meiliao.utils.HtmlUtil;
 import com.ziran.meiliao.utils.MapUtils;
-import com.ziran.meiliao.utils.PayUtil;
-import com.ziran.meiliao.widget.PhoneCodeView;
-import com.ziran.meiliao.widget.SmoothCheckBox;
-import com.ziran.meiliao.widget.SmsCodeView;
 import com.zhy.autolayout.AutoRelativeLayout;
+import com.ziran.meiliao.widget.pupop.SimplePayPopupWindow;
 
 import java.util.List;
 import java.util.Map;
@@ -55,8 +49,10 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-import static com.ziran.meiliao.constant.ApiKey.PURSE_GETUSERSCORE;
-import static com.ziran.meiliao.constant.ApiKey.USERCENTER_BUYBYSCORE;
+import static com.ziran.meiliao.constant.ApiKey.ACCOUNT_ACCOUNT_INFO;
+import static com.ziran.meiliao.constant.ApiKey.ACCOUNT_CAPITALEXTRACT_ADD;
+import static com.ziran.meiliao.constant.ApiKey.ACCOUNT_EXTERNAL;
+
 
 /**
  * 优惠劵Fragment
@@ -66,36 +62,41 @@ import static com.ziran.meiliao.constant.ApiKey.USERCENTER_BUYBYSCORE;
 public class RechargeFragment extends CommonHttpFragment<CommonPresenter, CommonModel> implements CommonContract.View<Result> {
 
 
-    @Bind(R.id.tv_recharge_balance)
-    TextView tvRechargeBalance;
+    @Bind(R.id.tv_withdrawal)
+    TextView tvWithdrawal;
+    @Bind(R.id.tv_recharge)
+    TextView tvRecharge;
+    @Bind(R.id.tv_recharge_gold)
+    TextView tvRechargeGold;
+    @Bind(R.id.tv_recharge_money)
+    TextView tvRechargeMoney;
     @Bind(R.id.gv_recharge_amount)
     GridView gvRechargeAmount;
     @Bind(R.id.gv_recharge_amount_two)
     GridView gvRechargeAmountTwo;
-    @Bind(R.id.smoothCheckBox_wechat)
-    SmoothCheckBox smoothCheckBoxWechat;
-    @Bind(R.id.smoothCheckBox_zfb)
-    SmoothCheckBox smoothCheckBoxZfb;
-    @Bind(R.id.tv_recharge_agreement)
-    TextView tvRechargeAgreement;
-    @Bind(R.id.tv_hint)
-    TextView tv_hint;
-    @Bind(R.id.tabLayout)
-    TabLayout tabLayout;
     @Bind(R.id.rll_two)
     AutoRelativeLayout rll_two;
     @Bind(R.id.rll_one)
     RelativeLayout rll_one;
+    @Bind(R.id.arl_bg)
+    AutoRelativeLayout arlBg;
     private AmountAdapter mAmountAdapter;
-    private PayUtil payUtil;
-    private Dialog threeLogindialog;
-    private SmsCodeView bindDialogSmsCodeView;
-    private SortModel mCityItem;
-    private Map<String, String> codeMap;
-    private int status;
-    private List<Fragment> list;
     private AmountPointsAdapter mAmountAdapterTwo;
-    private PointsListBean.DataBean mDataBeanTwo;
+    private List<RechargeBean.DataBean.RecordsBean> mDataBeanTwo;
+    private UserBean.DataBean dataBean;
+    private List<RechargeBean.DataBean.RecordsBean> mDataBeanOne;
+    private UserAccountBean.DataBean mUserAccountBean;
+    private List<RechargeBean.DataBean.RecordsBean> mDataBean;
+    private double money;
+    private View contentView;
+    private static final int REQUEST_CODE_C = 4;
+    private  UserExternalAccountBean.DataBean mUserExternalBean;
+    private boolean haveThreeAccount;
+    private String userId;
+    private String accessToken;
+    private double currency;
+    private SimplePayPopupWindow simplePayPopupWindow;
+
 
     @Override
     protected int getLayoutResource() {
@@ -107,250 +108,269 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
         mPresenter.setVM(this, mModel);
     }
 
-    private PayUtil.OnPayCallBack mOnPayCallBack = new PayUtil.OnPayCallBack() {
-        @Override
-        public void onPaySuccess(int platform) {
-            mPresenter.getData(ApiKey.PURSE_GET_BALANCE, MapUtils.getDefMap(true), StringDataBean.class);
-        }
-
-        @Override
-        public void onPayFailed() {
-
-        }
-    };
 
     @Override
     protected void initView() {
-        mCityItem = CityDataDb.getCountryZipCode(getContext());
-        if (payUtil == null) {
-            payUtil = new PayUtil(getContext());
-            payUtil.setOnPayCallBack(mOnPayCallBack);
-            mAmountAdapter = new AmountAdapter(getContext(), R.layout.item_grid_amount);
-            gvRechargeAmount.setAdapter(mAmountAdapter);
-            gvRechargeAmount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    mAmountAdapter.changeSelect(position);
-                }
-            });
-
-
-            smoothCheckBoxWechat.setChecked(true);
-            smoothCheckBoxWechat.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
-                    if (isChecked) {
-                        smoothCheckBoxZfb.setChecked(false);
-                        checkBox.setEnabled(false);
-                        smoothCheckBoxZfb.setEnabled(true);
-                    }
-                }
-            });
-            smoothCheckBoxZfb.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
-                    if (isChecked) {
-                        smoothCheckBoxWechat.setChecked(false);
-                        checkBox.setEnabled(false);
-                        smoothCheckBoxWechat.setEnabled(true);
-                    }
-                }
-            });
-            balance = getIntentExtra(AppConstant.ExtraKey.BALANCE);
-            tvRechargeBalance.setText(HtmlUtil.parseRechargeBalance(balance));
-            mPresenter.getData(ApiKey.PURSE_LIST_COIN, MapUtils.getDefMap(false), PurseListCoinBean.class);
-            if(balance.equals("")){
-                mPresenter.getData(ApiKey.PURSE_GET_BALANCE, MapUtils.getDefMap(true), StringDataBean.class);
-            }
-        }
-        tabLayout.addTab(tabLayout.newTab().setText("现金充值"));
-        tabLayout.addTab(tabLayout.newTab().setText("积分兑换"));
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#93DEDB"));
-        tabLayout.setTabTextColors(Color.parseColor("#2A2A2A"), Color.parseColor("#93DEDB"));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        dataBean = MyAPP.getmUserBean();
+        userId = MyAPP.getUserId();
+        accessToken = MyAPP.getAccessToken();
+         simplePayPopupWindow = new SimplePayPopupWindow(getActivity());
+        mAmountAdapter = new AmountAdapter(getContext(), R.layout.item_grid_amount);
+        gvRechargeAmount.setAdapter(mAmountAdapter);
+        gvRechargeAmount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.getPosition()==0){
-                    rll_one.setVisibility(View.VISIBLE);
-                    rll_two.setVisibility(View.GONE);
-                }else {
-                    rll_one.setVisibility(View.GONE);
-                    rll_two.setVisibility(View.VISIBLE);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (mDataBeanOne != null) {
+                    RechargeBean.DataBean.RecordsBean recordsBean = mDataBeanOne.get(position);
+                    int money = (int) recordsBean.getPrice();
+                    simplePayPopupWindow.setPamras(recordsBean.getName(), money + "", recordsBean.getId(), recordsBean.getPrice());
+                    simplePayPopupWindow.show();
                 }
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
-        mAmountAdapterTwo = new AmountPointsAdapter(getContext(), R.layout.item_grid_amount);
+        balance = getIntentExtra(AppConstant.ExtraKey.BALANCE);
+        if (balance == null || balance.equals("")) {
+        }
+        mAmountAdapterTwo = new AmountPointsAdapter(getContext(), R.layout.item_grid_point_amount, currency);
         gvRechargeAmountTwo.setAdapter(mAmountAdapterTwo);
-
         gvRechargeAmountTwo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mAmountAdapterTwo.changeSelect(position);
-            }
-        });
-        reflash();
-    }
-    private void reflash() {
-        Map<String, String> defMap = MapUtils.getDefMap(true);
-        mPresenter.getData(PURSE_GETUSERSCORE, defMap, PointsListBean.class);
-    }
-
-    private String balance;
-    private PurseListCoinBean.DataBean mDataBean;
-
-    @Override
-    public void returnData(Result result) {
-        if (result instanceof PurseListCoinBean) {
-            mDataBean = ((PurseListCoinBean) result).getData();
-            List<PurseListCoinBean.DataBean.ListBean> list = mDataBean.getList();
-            list.get(0).setSelect(true);
-            mAmountAdapter.replaceAll(list);
-        } else if (result instanceof StringDataBean) {
-            if(balance.equals("")){
-                String balance = ((StringDataBean) result).getNornemData();
-                tvRechargeBalance.setText(HtmlUtil.parseRechargeBalance(balance));
-                RxManagerUtil.post(AppConstant.RXTag.BALANCE, balance);
-                return;
-            }else{
-                String balance = ((StringDataBean) result).getNornemData();
-                tvRechargeBalance.setText(HtmlUtil.parseRechargeBalance(balance));
-                RxManagerUtil.post(AppConstant.RXTag.BALANCE, balance);
-                finish();
-            }
-        }else if(result instanceof PointsListBean){
-            mDataBeanTwo = ((PointsListBean) result).getData();
-            List<PointsListBean.DataBean.ScoreListBean> list = mDataBeanTwo.getScoreList();
-            list.get(0).setSelect(true);
-            tv_hint.setText("积分可以兑换金币啦，您当前的积分为"+mDataBeanTwo.getScore());
-            tvRechargeBalance.setText("当前金币数量"+mDataBeanTwo.getCoin());
-            mAmountAdapterTwo.replaceAll(list);
-            mAmountAdapterTwo.update(mDataBeanTwo.getScore());
-        }else {
-            reflash();
-            ToastUitl.showShort("兑换成功");
-        }
-
-    }
-    //绑定手机的对话框
-    private void showBindDialog() {
-        threeLogindialog = new Dialog(getContext(), R.style.MyDialogStyle);
-        View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_bind_phone, null);
-        bindDialogSmsCodeView = ViewUtil.getView(contentView, R.id.smsCodeView);
-        final PhoneCodeView phoneCodeView = ViewUtil.getView(contentView, R.id.phone_code_view);
-        final TextView tvBind = ViewUtil.getView(contentView, R.id.btn_bing);
-        bindDialogSmsCodeView.setTvPhone(phoneCodeView.getEtPhone());
-        bindDialogSmsCodeView.setCodeNumberCallBack(new SmsCodeView.CodeNumberCallBack() {
-            @Override
-            public String getCodeNumber() {
-                return mCityItem.getCodeNumber();
-            }
-        });
-
-
-        bindDialogSmsCodeView.setOnSmsCallBack(new SmsCodeView.OnSmsCallBack() {
-            @Override
-            public void call(int type, Map<String, String> codeMap) {
-                codeMap.put("areaCode", mCityItem.getCodeNumber());
-                getSmsCode(codeMap);
-            }
-        });
-        bindDialogSmsCodeView.bindBtn(tvBind);
-        phoneCodeView.setTvAreaCodeClickListener(new OnNoDoubleClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                startActivityForResult(new Intent(getContext(), RegionActivity.class), 100);
-            }
-        });
-
-        tvBind.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String phone = phoneCodeView.getPhoneText();
-                String code = bindDialogSmsCodeView.getCode();
-                if (RegexUtils.regex(phone, "notCheck", code, mCityItem.getCodeNumber())) {
-                    Map<String, String> codeMap = MapUtils.getSmsMap( phone, code,1);
-                    OkHttpClientManager.postAsync(ApiKey.SMS_CHECK_SMSCODE, codeMap, new NewRequestCallBack<StringDataBean>(StringDataBean.class) {
-                        @Override
-                        protected void onSuccess(StringDataBean result) {
-                            if (result.getResultCode()==1){
-                                if (threeLogindialog != null) {
-                                    threeLogindialog.dismiss();
-                                }
-                                ToastUitl.show("绑定成功",0);
+                if (mDataBeanTwo != null) {
+                    RechargeBean.DataBean.RecordsBean recordsBean = mDataBeanTwo.get(position);
+                    if (mDataBeanTwo.get(position).getPrice() > money) {
+                        ToastUitl.showShort("余额不足");
+                    } else {
+                        if (MyAPP.getmUserBean().getIdCard() == null || MyAPP.getmUserBean().getIdCard().equals("")) {
+                            showApplyPopWindow(recordsBean, 3);
+                        } else {
+                            if(haveThreeAccount){
+                                showApplyPopWindow(recordsBean, 1);
+                            }else {
+                                showApplyPopWindow(recordsBean, 2);
                             }
                         }
-                    });
+                    }
                 }
             }
         });
-        Window dialogWindow = threeLogindialog.getWindow();
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.gravity = Gravity.CENTER;
-        dialogWindow.setAttributes(lp);
-        threeLogindialog.setContentView(contentView);
-        threeLogindialog.show();
+        getCommodityList("2");
+        getCommodityList("3");
+        getThreeAccount();
+        getPayList();
     }
-    private void getSmsCode(Map<String, String> codeMap) {
-        this.codeMap = codeMap;
-        OkHttpClientManager.postAsync(ApiKey.SMS_GET_SMSCODE, codeMap, new NewRequestCallBack<StringDataBean>(StringDataBean.class) {
+    public void    getPayList(){
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("android","0");
+        defMap.put("status","0");
+        OkHttpClientManager.getAsyncMore(ApiKey.ACCOUNT_METHOD_PAGE, defMap, new NewRequestCallBack<PayListBean>(PayListBean.class) {
             @Override
-            protected void onSuccess(StringDataBean result) {
+            protected void onSuccess(PayListBean result) {
+                simplePayPopupWindow.setPopList(result.getData().getRecords());
+            }
 
+            @Override
+            public void onError(String msg, int code) {
+                ToastUitl.showShort(msg);
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.getDataOneHead(ACCOUNT_ACCOUNT_INFO, userId,accessToken, UserAccountBean.class);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_CODE_C:
+                if (resultCode == Activity.RESULT_OK) {
+                    getThreeAccount();
+                }
+            default:
+                break;
+        }
+
+    }
+
+    private void getThreeAccount() {
+        mPresenter.getDataOneHead(ACCOUNT_EXTERNAL, userId,accessToken, UserExternalAccountBean.class);
+    }
+
+    private void showApplyPopWindow(RechargeBean.DataBean.RecordsBean recordsBean, int type) {
+        // 一个自定义的布局，作为显示的内容
+        int[] location = new int[2];
+        if (type == 1) {
+            contentView = LayoutInflater.from(getContext()).inflate(R.layout.pop_withdrawal_apply, null);
+        } else if (type == 2) {
+            contentView = LayoutInflater.from(getContext()).inflate(R.layout.pop_withdrawal_set_account, null);
+        } else if (type == 3) {
+            contentView = LayoutInflater.from(getContext()).inflate(R.layout.pop_real_apply, null);
+        }
+        contentView.getLocationOnScreen(location);
+        final PopupWindow popupWindow = new PopupWindow(contentView,
+                AutoLinearLayout.LayoutParams.MATCH_PARENT, AutoLinearLayout.LayoutParams.MATCH_PARENT, true);
+
+        popupWindow.setTouchable(true);
+        popupWindow.setOutsideTouchable(true);// 设置同意在外点击消失
+        popupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        // 如果不设置PopupWindow的背景，有些版本就会出现一个问题：无论是点击外部区域还是Back键都无法dismiss弹框
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
+        popupWindow.showAtLocation(arlBg, Gravity.CENTER, 0, 0);
+        TextView qd = contentView.findViewById(R.id.tv_qd);
+        TextView qx = contentView.findViewById(R.id.tv_qx);
+        TextView etReason = contentView.findViewById(R.id.et_reason);
+        if(type==1){
+            etReason.setText("确定提现"+recordsBean.getPrice()+"元到您的支付宝账户？");
+        }
+        qd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (type == 2) {
+                    popupWindow.dismiss();
+                    if(haveThreeAccount){
+                        SetRealNameActivity.startAction("ThirdPay", REQUEST_CODE_C,mUserExternalBean.getRealName(),mUserExternalBean.getName(),mUserExternalBean.getId()+"");
+                    }else {
+                        SetRealNameActivity.startAction("ThirdPay", REQUEST_CODE_C);
+                    }
+                } else if (type == 1) {
+                     capitalextractAdd(recordsBean);
+                } else {
+                    //去实名
+                    popupWindow.dismiss();
+                    SetRealNameActivity.startAction("real", REQUEST_CODE_C);
+                }
 
 
             }
         });
+        qx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+
+            }
+        });
     }
-    @OnClick({R.id.check_wechat, R.id.check_alipay, R.id.iv_recharge_req, R.id.tv_recharge_agreement,R.id.iv_recharge_req_two})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.check_wechat:
-                smoothCheckBoxWechat.setChecked(true);
-                break;
-            case R.id.check_alipay:
-                smoothCheckBoxZfb.setChecked(true);
-                break;
-            case R.id.tv_recharge_agreement:
-                //充值协议
-                UserAgreementWebActivity.startAction(getContext(), mDataBean.getPro(),"充值协议");
-                break;
-            case R.id.iv_recharge_req:
-                    PurseListCoinBean.DataBean.ListBean dataBean = mAmountAdapter.getSelect();
-                    if (EmptyUtils.isEmpty(dataBean)) return;
-                    payUtil.setPrice(dataBean.getRmb() );
-                    payUtil.setTitle(dataBean.getTitle());
-                    payUtil.setPayId(dataBean.getId());
-                    payUtil.setType(dataBean.getType());
-                    if (smoothCheckBoxWechat.isChecked()) {
-                        //使用微信支付
-                        payUtil.weChatPay();
-                    } else {
-                        //使用支付宝支付
-                        payUtil.alipayPay();
+
+    private void capitalextractAdd(RechargeBean.DataBean.RecordsBean recordsBean) {
+        startProgressDialog("请等待");
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("userId", userId);
+        defMap.put("channel", "1");
+        defMap.put("userName", MyAPP.getmUserBean().getRealName()+"");
+        defMap.put("money", recordsBean.getPrice() + "");
+        OkHttpClientManager.postAsyncAddHead(ACCOUNT_CAPITALEXTRACT_ADD, defMap, "", new
+                NewRequestCallBack<StringDataV2Bean>(StringDataV2Bean.class) {
+
+                    @Override
+                    public void onSuccess(StringDataV2Bean listBean) {
+                        ToastUitl.showShort(listBean.getResultMsg());
+                        stopProgressDialog();
                     }
 
-                break;
+                    @Override
+                    public void onError(String msg, int code) {
+                        stopProgressDialog();
+                        ToastUitl.showShort(msg);
+                        if (code == 3000) {
+                            //提现成功
+                            ToastUitl.showShort("提现成功");
+                            getCommodityList("3");
+                            mPresenter.getDataOneHead(ACCOUNT_ACCOUNT_INFO,userId,accessToken, UserAccountBean.class);
+                        }
+                    }
+                });
+    }
 
-            case R.id.iv_recharge_req_two:
-                PointsListBean.DataBean.ScoreListBean dataBeanTwo = mAmountAdapterTwo.getSelect();
-                Map<String, String> defMap = MapUtils.getDefMap(true);
-                defMap.put("goodsId",dataBeanTwo.getGoodsId()+"");
-                defMap.put("type","4");
-                mPresenter.postData(USERCENTER_BUYBYSCORE, defMap, ExchangeBean.class);
-                break;
+    public void getCommodityList(String type) {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("status", "0");
+        defMap.put("type", type);
+        mPresenter.getData(ApiKey.ACCOUNT_COMMODITY_PAGE, defMap, RechargeBean.class);
+
+    }
+
+    private String balance;
+
+    @Override
+    public void returnData(Result result) {
+        if (result instanceof RechargeBean) {
+            //充值列表返回
+            mDataBean = ((RechargeBean) result).getData().getRecords();
+            if (mDataBean != null && mDataBean.size() > 0) {
+
+                if (mDataBean.get(0).getType().equals("2")) {
+                    mDataBeanOne = mDataBean;
+                    mAmountAdapter.replaceAll(mDataBeanOne);
+                } else {
+                    mDataBeanTwo = mDataBean;
+                    mAmountAdapterTwo.replaceAll(mDataBeanTwo);
+
+                }
+            }
+        } else if (result instanceof UserAccountBean) {
+            mUserAccountBean = ((UserAccountBean) result).getData();
+            int gold = MyAPP.saveMoney(((UserAccountBean) result));
+            tvRechargeGold.setText(gold + "");
+            money=(int)mUserAccountBean.getMoney();
+             currency = mUserAccountBean.getCurrency()/1000+mUserAccountBean.getMoney();
+             if(mAmountAdapterTwo!=null){
+                 mAmountAdapterTwo.update(currency);
+             }
+            tvRechargeMoney.setText(money + "");
+        } else if (result instanceof UserExternalAccountBean) {
+            mUserExternalBean = ((UserExternalAccountBean) result).getData();
+            if(mUserExternalBean!=null){
+                if (mUserExternalBean.getName()!= null && mUserExternalBean.getName().length() > 0) {
+                    haveThreeAccount = true;
+                }
+            }
         }
+
+    }
+
+
+    @OnClick({R.id.iv_real_name, R.id.tv_withdrawal, R.id.tv_recharge,R.id.ll_details})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_real_name:
+                if (MyAPP.getmUserBean().getIdCard() == null || MyAPP.getmUserBean().getIdCard().equals("")) {
+                    showApplyPopWindow(null, 3);
+                } else {
+                    if(haveThreeAccount){
+                        SetRealNameActivity.startAction("ThirdPay", REQUEST_CODE_C,mUserExternalBean.getRealName(),mUserExternalBean.getName(),mUserExternalBean.getId()+"");
+                    }else {
+                        SetRealNameActivity.startAction("ThirdPay", REQUEST_CODE_C);
+                    }
+                }
+                break;
+            case R.id.tv_recharge:
+                rll_one.setVisibility(View.VISIBLE);
+                rll_two.setVisibility(View.GONE);
+                setTextSize(tvRecharge, tvWithdrawal);
+                break;
+            case R.id.tv_withdrawal:
+                rll_one.setVisibility(View.GONE);
+                rll_two.setVisibility(View.VISIBLE);
+                setTextSize(tvWithdrawal, tvRecharge);
+                break;
+           case  R.id.ll_details:
+               RechargeDetailsActivity.startAction(getContext());
+            break;
+        }
+    }
+
+    private void setTextSize(TextView tv1, TextView tv2) {
+        tv1.setTextColor(Color.parseColor("#000000"));
+        tv1.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+        tv1.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        tv2.setTextColor(Color.parseColor("#808080"));
+        tv2.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+        tv2.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
     }
 }

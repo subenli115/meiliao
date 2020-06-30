@@ -41,6 +41,14 @@ public interface CommonContract {
          * @param callback 网络请求的结果回调
          */
         void post(String url, Map<String, String> params, OkHttpClientManager.ResultCallback callback);
+
+
+
+
+
+
+        void getDataOneHead(String url, String params,String token, OkHttpClientManager.ResultCallback callback);
+
     }
 
 
@@ -61,6 +69,8 @@ public interface CommonContract {
         public abstract <D extends Result> void postAction(String url, Map<String, String> params, final Class<D> clz);
         //发起GET请求
         public abstract <D extends Result> void getData(String url, Map<String, String> params, final Class<D>
+                clz);
+        public abstract <D extends Result> void getDataOneHead(String url, String params, String token,final Class<D>
                 clz);
     }
 }

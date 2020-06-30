@@ -168,7 +168,6 @@
                 android:layout_width="73px"
                 android:layout_height="73px"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/login_qrcode"
                 />
 
             <com.zhy.autolayout.AutoRelativeLayout

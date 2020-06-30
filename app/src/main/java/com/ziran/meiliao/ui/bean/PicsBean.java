@@ -14,7 +14,6 @@ public  class PicsBean  extends ShareBean{
     /**
      * link : 这是一个路径
      * type : h5
-     * url : https://www.psytap.com/wpyx_manager/static/images/coursePics/1.jpg
      */
 
     private String link;

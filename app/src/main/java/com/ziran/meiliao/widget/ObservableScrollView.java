@@ -8,7 +8,6 @@ import android.widget.ScrollView;
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
 import com.ziran.meiliao.common.commonutils.LogUtils;
 import com.ziran.meiliao.constant.AppConstant;
-import com.ziran.meiliao.utils.MusicPanelFloatManager;
 
 /**
  * @author 吴祖清
@@ -47,24 +46,17 @@ public class ObservableScrollView extends ScrollView {
             int count;
             @Override
             public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldX, int oldY, int downX, int downY) {
-              boolean  showOrHide = MusicPanelFloatManager.getInstance().isShowing();
                 if (lastY > y) { //下拉
                     if (count>12){
                         count = 0;
                     }
                     count++;
-                    if (count > 2 && !showOrHide) {
-                        RxManagerUtil.post(AppConstant.RXTag.HOME_MUSIC_PLANE_SHOW_OR_HIDE, true);
-                    }
                     LogUtils.logd("下拉" + (downY - y) + " downY:" + downY + "  y:" + y);
                 } else if (lastY < y) { //上拉
                     if (count<-12){
                         count = 0;
                     }
                     count--;
-                    if (count < -2 && showOrHide) {
-                        RxManagerUtil.post(AppConstant.RXTag.HOME_MUSIC_PLANE_SHOW_OR_HIDE, false);
-                    }
 //                    LogUtils.logd("上拉" + (downY - y) + " downY:" + downY + "  y:" + y);
                 }
                 lastY = y;

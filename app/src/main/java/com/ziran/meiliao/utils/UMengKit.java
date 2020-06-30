@@ -20,17 +20,9 @@ import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.constant.IConstants;
 import com.ziran.meiliao.receiver.NotificationBroadcast;
-import com.ziran.meiliao.ui.NewDecompressionmuseum.activity.PracticeStartActivity;
-import com.ziran.meiliao.ui.decompressionmuseum.activity.AlbumDetailActivity;
-import com.ziran.meiliao.ui.decompressionmuseum.activity.RecordVideoPlayerActivity;
 import com.ziran.meiliao.ui.main.activity.NewLoginActivity;
-import com.ziran.meiliao.ui.settings.activity.ForgetPwdActivity;
-import com.ziran.meiliao.ui.settings.activity.MemberDetailsActivity;
-import com.ziran.meiliao.ui.workshops.activity.WorkshopsMainActivity;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
-import com.umeng.message.MsgConstant;
-import com.umeng.message.PushAgent;
 import com.umeng.message.UTrack;
 import com.umeng.message.UmengMessageHandler;
 import com.umeng.message.UmengNotificationClickHandler;
@@ -70,26 +62,26 @@ public class UMengKit {
 
         UMConfigure.setLogEnabled(false);
         //初始化组件化基础库, 统计SDK/推送SDK/分享SDK都必须调用此初始化接口
-        UMConfigure.init(context, "58c63e89c62dca7076001a6a", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "c802f1ca9d87419d1c9a43f788f9497e");
+        UMConfigure.init(context, "5e9905aa570df3fa1a0001ef", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "c802f1ca9d87419d1c9a43f788f9497e");
         //开启ShareSDK debug模式，方便定位错误，具体错误检查方式可以查看http://dev.umeng.com/social/android/quick-integration的报错必看，正式发布，请关闭该模式
         UMShareConfig config = new UMShareConfig();
         config.isNeedAuthOnGetUserInfo(true);
         UMShareAPI.get(context).setShareConfig(config);
 
-        final PushAgent mPushAgent = PushAgent.getInstance(context);
-        //注册推送服务 每次调用register都会回调该接口
-        mPushAgent.register(new IUmengRegisterCallback() {
-            @Override
-            public void onSuccess(String deviceToken) {
-                Log.e("setDeviceToken",""+deviceToken);
-                MyAPP.setDeviceToken(deviceToken);
-            }
-
-            @Override
-            public void onFailure(String s, String s1) {
-                Log.e("setDeviceToken",""+s+s1);
-            }
-        });
+//        final PushAgent mPushAgent = PushAgent.getInstance(context);
+//        //注册推送服务 每次调用register都会回调该接口
+//        mPushAgent.register(new IUmengRegisterCallback() {
+//            @Override
+//            public void onSuccess(String deviceToken) {
+//                Log.e("setDeviceToken",""+deviceToken);
+//                MyAPP.setDeviceToken(deviceToken);
+//            }
+//
+//            @Override
+//            public void onFailure(String s, String s1) {
+//                Log.e("setDeviceToken",""+s+s1);
+//            }
+//        });
         //是否开启log日志打印(true 打印 ,FALSe 不打印 默认为true)
         //处理各种事件
         @SuppressLint("HandlerLeak") final Handler handler = new Handler() {
@@ -98,27 +90,10 @@ public class UMengKit {
                 Map map = StringUtils.getUrlParams(message.obj.toString());
                 switch (message.what) {
                     case 1:
-                        Intent intent = new Intent(context, PracticeStartActivity.class);
-                        intent.putExtra("time",1);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                        break;
-                    case 2:
-                         intent = new Intent(context, WorkshopsMainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
                         break;
                     case 4:
-                           intent = new Intent(context, MemberDetailsActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
                         break;
                     case 5:
-                        String albumId = (String) map.get("albumId");
-                         intent = new Intent(context, AlbumDetailActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.putExtra(AppConstant.SPKey.ALBUM_ID, albumId);
-                        context.startActivity(intent);
                         break;
                     case 6:
                         //专栏
@@ -127,11 +102,6 @@ public class UMengKit {
 //                        ZhuanLanDetailActivity.startAction(context,specialID,isBuy,subscriptionBean.getHtmlLink(),mActivity,9,subscriptionBean.getSubscriptionNum());
                         break;
                     case 7:
-                        String recId = (String) map.get("recId");
-                         intent = new Intent(context, RecordVideoPlayerActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.putExtra("recId",recId);
-                        context.startActivity(intent);
 
                         break;
                     case 8:
@@ -161,54 +131,54 @@ public class UMengKit {
                 }
             }
         });
-        //sdk开启通知声音
-        mPushAgent.setNotificationPlaySound(MsgConstant.NOTIFICATION_PLAY_SDK_ENABLE);
-        UmengMessageHandler messageHandler = new UmengMessageHandler() {
-            @Override
-            public void dealWithNotificationMessage(Context context, UMessage uMessage) {
-                super.dealWithNotificationMessage(context, uMessage);
-            }
-
-
-    };
-        mPushAgent.setMessageHandler(messageHandler);
-        //设置通知栏显示的消息个数
-        UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler(){
-            @Override
-            public void launchApp(Context context, UMessage uMessage) {
-                super.launchApp(context, uMessage);
-                String url = uMessage.extra.get("url");
-                if(  url.contains("wpyx://timing")){
-                    senMessageForInto(url, handler, 1);
-                }else if(url.contains("wpyx://interesting")){
-                    senMessageForInto(url, handler, 2);
-
-                }else  if(url.contains("wpyx://live")){
-                    senMessageForInto(url, handler, 3);
-
-                }else if(url.contains("wpyx://vipCenter")){
-                    senMessageForInto(url, handler, 4);
-
-                }else if(url.contains("wpyx://album")){
-                    senMessageForInto(url, handler, 5);
-
-                }else if(url.contains("wpyx://specialColumn")){
-                    senMessageForInto(url, handler, 6);
-
-                }else if(url.contains("wpyx://record/getRecSummary")){
-                    senMessageForInto(url, handler, 7);
-
-                }else {
-                    senMessageForInto(url, handler, 8);
-                }
-            }
-
-
-        };
-
-        mPushAgent.setNotificationClickHandler(notificationClickHandler);
-
-        mPushAgent.setDisplayNotificationNumber(3);
+//        //sdk开启通知声音
+//        mPushAgent.setNotificationPlaySound(MsgConstant.NOTIFICATION_PLAY_SDK_ENABLE);
+//        UmengMessageHandler messageHandler = new UmengMessageHandler() {
+//            @Override
+//            public void dealWithNotificationMessage(Context context, UMessage uMessage) {
+//                super.dealWithNotificationMessage(context, uMessage);
+//            }
+//
+//
+//    };
+//        mPushAgent.setMessageHandler(messageHandler);
+//        //设置通知栏显示的消息个数
+//        UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler(){
+//            @Override
+//            public void launchApp(Context context, UMessage uMessage) {
+//                super.launchApp(context, uMessage);
+//                String url = uMessage.extra.get("url");
+//                if(  url.contains("wpyx://timing")){
+//                    senMessageForInto(url, handler, 1);
+//                }else if(url.contains("wpyx://interesting")){
+//                    senMessageForInto(url, handler, 2);
+//
+//                }else  if(url.contains("wpyx://live")){
+//                    senMessageForInto(url, handler, 3);
+//
+//                }else if(url.contains("wpyx://vipCenter")){
+//                    senMessageForInto(url, handler, 4);
+//
+//                }else if(url.contains("wpyx://album")){
+//                    senMessageForInto(url, handler, 5);
+//
+//                }else if(url.contains("wpyx://specialColumn")){
+//                    senMessageForInto(url, handler, 6);
+//
+//                }else if(url.contains("wpyx://record/getRecSummary")){
+//                    senMessageForInto(url, handler, 7);
+//
+//                }else {
+//                    senMessageForInto(url, handler, 8);
+//                }
+//            }
+//
+//
+//        };
+//
+//        mPushAgent.setNotificationClickHandler(notificationClickHandler);
+//
+//        mPushAgent.setDisplayNotificationNumber(3);
         //友盟分享的初始化
         UMShareAPI.get(context);
     }
@@ -228,7 +198,6 @@ public class UMengKit {
                 trackMsgDismissed(context);
                 MyAPP.setShowDialog(false);
                 MyAPP.logout(AppManager.getAppManager().currentActivity(), NewLoginActivity.class);
-
             }
 
             @Override
@@ -236,7 +205,6 @@ public class UMengKit {
                 dialog.dismiss();
                 trackMsgDismissed(context);
                 MyAPP.setShowDialog(false);
-                MyAPP.logout(AppManager.getAppManager().currentActivity(), ForgetPwdActivity.class);
             }
         }, true);
     }

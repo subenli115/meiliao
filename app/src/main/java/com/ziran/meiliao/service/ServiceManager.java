@@ -19,7 +19,6 @@ import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.constant.IConstants;
 import com.ziran.meiliao.entry.MusicEntry;
 import com.ziran.meiliao.ui.bean.AlbumBean;
-import com.ziran.meiliao.utils.MusicPanelFloatManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +85,6 @@ public class ServiceManager implements IConstants {
     public void refreshMusicList(List<MusicEntry> musicList) {
         if (musicList != null && mService != null) {
             try {
-                MusicPanelFloatManager.getInstance().removePlayOrPauseView(null);
                 mSize = musicList.size();
                 mService.refreshMusicList(musicList);
             } catch (RemoteException e) {
@@ -365,8 +363,6 @@ public class ServiceManager implements IConstants {
             try {
                 isNervePlay = false;
                 cancelNotification();
-                MusicPanelFloatManager.getInstance().setIsShowing(true);
-                MusicPanelFloatManager.getInstance().unBindView(null);
 
                 setClickFrom(CLICK_FROM_URL);
                 mSize=-1;
@@ -396,7 +392,6 @@ public class ServiceManager implements IConstants {
             if (getClick_from() != CLICK_FROM_NONE) {
                 try {
                     mService.stop();
-                    MusicPanelFloatManager.getInstance().removePlayOrPauseView(null);
                     setClickFrom(CLICK_FROM_NONE);
                 } catch (RemoteException e) {
                     e.printStackTrace();

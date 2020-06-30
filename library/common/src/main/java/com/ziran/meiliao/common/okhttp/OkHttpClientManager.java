@@ -4,7 +4,9 @@ import android.accounts.NetworkErrorException;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.okhttplib.HttpInfo;
 import com.okhttplib.OkHttpUtil;
 import com.okhttplib.bean.UploadFileInfo;
@@ -18,17 +20,22 @@ import com.ziran.meiliao.common.security.EncodeUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.UnknownServiceException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import retrofit2.BaseUrl;
 
 /**
  * Created by zhy on 15/8/17.
@@ -36,8 +43,10 @@ import okhttp3.Response;
 public class OkHttpClientManager {
     private static String BASE_URL;
 
-    private static final String OK_BASE_URL = "https://www.dgli.net/";
-    private static final String TEST_BASE_URL = "http://192.168.1.4:9999/";
+    private static final String OK_BASE_URL = "http://api.ziran518.com:9999/";
+//    private static final String TEST_BASE_URL = "http://192.168.1.5:9999/";
+    private static final String TEST_BASE_URL = "http://39.98.156.53:9999/";
+
 
     private static OkHttpClientManager mInstance;
     private Handler mDelivery;
@@ -100,12 +109,140 @@ public class OkHttpClientManager {
         }
     }
 
+    /**
+     * 执行GET 请求
+     *
+     * @param url
+     * @param params
+     * @param callback
+     */
+    public static void getAsyncOne(String url, String params, final ResultCallback callback) {
+        try {
+            if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
+                getInstance().sendFailedStringCallback(null, new NetworkErrorException(BaseApplication.getAppResources().getString(R
+                        .string.network_error)), callback);
+                return;
+            }
+            if (callback != null) callback.onStart();
+
+            OkHttpUtil.getDefault().doGetAsync(HttpInfo.Builder().setUrl(BASE_URL + url + "/" + params).build(), new CallbackOk() {
+                @Override
+                public void onResponse(HttpInfo info) {
+                    doResult(info, callback);
+                }
+            });
+            LogUtils.logd("urlgetAsyncOne = " + BASE_URL + url + "/" + params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 执行GET 请求
+     *
+     * @param url
+     * @param params
+     * @param callback
+     */
+    public static void getDataOneHead(String url, String params,String token ,final ResultCallback callback) {
+        try {
+            if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
+                getInstance().sendFailedStringCallback(null, new NetworkErrorException(BaseApplication.getAppResources().getString(R
+                        .string.network_error)), callback);
+                return;
+            }
+            if (callback != null) callback.onStart();
+
+            OkHttpUtil.getDefault().doGetAsync(HttpInfo.Builder().setUrl(BASE_URL + url + "/" + params).addHead("Authorization","Bearer "+token).build(), new CallbackOk() {
+                @Override
+                public void onResponse(HttpInfo info) {
+                    doResult(info, callback);
+                }
+            });
+            LogUtils.logd("urlgetAsyncOne = " + BASE_URL + url + "/" + params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 执行GET 请求
+     *
+     * @param url
+     * @param params
+     * @param callback
+     */
+    public static void getAsyncMore(String url, Map<String, String> params, final ResultCallback callback) {
+        LogUtils.logd("url = " + url + " /params" + params.toString());
+        if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
+            getInstance().sendFailedStringCallback(null, new NetworkErrorException(
+                    BaseApplication.getAppResources().getString(R.string
+                            .network_error_p)), callback);
+            return;
+        }
+        if (callback != null) callback.onStart();
+        String headString = "";
+        if (params.get("accessToken") != null && !params.get("accessToken").equals("")) {
+            headString = "Bearer " + params.get("accessToken");
+        } else {
+            headString = "Basic YXBwOmFwcA==";
+        }
+        OkHttpUtil.getDefault().doGetAsync(HttpInfo.Builder().setUrl(BASE_URL + url).addParams(params).addHead("Authorization", headString).build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo info) throws IOException {
+                doResult(info, callback);
+            }
+        });
+        LogUtils.logd(headString);
+    }
+
+    /**
+     * 执行GET 请求
+     *
+     * @param url
+     * @param params
+     * @param accessToken
+     * @param callback
+     */
+    public static void getAsyncHead(String url, String params, String accessToken, final ResultCallback callback) {
+        try {
+            if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
+                getInstance().sendFailedStringCallback(null, new NetworkErrorException(BaseApplication.getAppResources().getString(R
+                        .string.network_error)), callback);
+                return;
+            }
+            if (callback != null) callback.onStart();
+            HttpInfo.Builder builder = HttpInfo.Builder();
+            String headString = "";
+            if (accessToken != null && !accessToken.equals("")) {
+                headString = "Bearer " + accessToken;
+            } else {
+                headString = "Basic YXBwOmFwcA==";
+            }
+//            if (params.size() <= 1) {
+            builder.addHead("Authorization", headString).setUrl(BASE_URL + url + "/" + params);
+//            } else {
+//                builder.addHead("Authorization", headString).setUrl(BASE_URL + url).addParams(params);
+//            }
+            OkHttpUtil.getDefault().doGetAsync(builder.build(), new CallbackOk() {
+                @Override
+                public void onResponse(HttpInfo info) {
+                    doResult(info, callback);
+                }
+            });
+            LogUtils.logd("url = " + url + " /params" + params+headString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private static void doResult(HttpInfo info, ResultCallback callback) {
         if (info.isSuccessful()) {
             try {
                 String string = info.getRetDetail().trim();
                 getInstance().sendSuccessResultCallback(string, callback);
-                LogUtils.logd(info.getUrl() + " \n HttpInfo getParams " + info.getParams().toString() + "\n" + string);
+                if (info.getParams() != null) {
+                    LogUtils.logd(info.getUrl() + " \n HttpInfo getParams " + info.getParams().toString() + "\n" + string);
+                }
             } catch (com.google.gson.JsonParseException e) {
                 getInstance().sendFailedStringCallback(null, e, callback);
             }
@@ -136,6 +273,96 @@ public class OkHttpClientManager {
 //        LogUtils.logd("url = " + url + " /params" + params.toString());
     }
 
+    /**
+     * 执行POST 请求
+     *
+     * @param url
+     * @param params
+     * @param callback
+     */
+    public static void postAsyncAddHead(String url, Map<String, String> params, String rUrl, final ResultCallback callback) {
+        LogUtils.logd("url = " + url + " /params" + params.toString());
+        if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
+            getInstance().sendFailedStringCallback(null, new NetworkErrorException(BaseApplication.getAppResources().getString(R.string
+                    .network_error_p)), callback);
+            return;
+        }
+        if (callback != null) callback.onStart();
+        String headString = "";
+        if (params.get("accessToken") != null && !params.get("accessToken").equals("")) {
+            headString = "Bearer " + params.get("accessToken");
+        } else {
+            headString = "Basic YXBwOmFwcA==";
+        }
+        Log.e("postAsyncAddHead",""+headString);
+        OkHttpUtil.getDefault().doPostAsync(HttpInfo.Builder().setUrl(BASE_URL + url + rUrl).addParams(params).addHead("Authorization", headString).addHead("Accept-Language"," zh-CN,zh").build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo info) throws IOException {
+                doResult(info, callback);
+            }
+        });
+        LogUtils.logd(headString);
+    }
+
+    /**
+     * 执行Put 请求
+     *
+     * @param url
+     * @param params
+     * @param callback
+     */
+    public static void putAsyncAddHead(String url, Map<String, String> params, final ResultCallback callback) {
+        LogUtils.logd("url = " + url + " /params" + params.toString());
+        if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
+            getInstance().sendFailedStringCallback(null, new NetworkErrorException(
+                    BaseApplication.getAppResources().getString(R.string
+                            .network_error_p)), callback);
+            return;
+        }
+        if (callback != null) callback.onStart();
+        String headString = "";
+        if (params.get("accessToken") != null && !params.get("accessToken").equals("")) {
+            headString = "Bearer " + params.get("accessToken");
+        } else {
+            headString = "Basic YXBwOmFwcA==";
+        }
+        OkHttpUtil.getDefault().doPutAsync(HttpInfo.Builder().setUrl(BASE_URL + url).addParams(params).addHead("Authorization", headString).build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo info) throws IOException {
+                doResult(info, callback);
+            }
+        });
+        LogUtils.logd(headString);
+    }
+
+    /**
+     * 执行delete 请求
+     *
+     * @param url
+     * @param callback
+     */
+    public static void deleteAsync(String url,  Map<String, String> params,String id ,final ResultCallback callback) {
+        if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
+            getInstance().sendFailedStringCallback(null, new NetworkErrorException(
+                    BaseApplication.getAppResources().getString(R.string
+                            .network_error_p)), callback);
+            return;
+        }
+        if (callback != null) callback.onStart();
+        String headString = "";
+        if (params.get("accessToken") != null && !params.get("accessToken").equals("")) {
+            headString = "Bearer " + params.get("accessToken");
+        } else {
+            headString = "Basic YXBwOmFwcA==";
+        }
+        OkHttpUtil.getDefault().doDeleteAsync(HttpInfo.Builder().setUrl(BASE_URL + url+ "/" + id).addHead("Authorization", headString).build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo info) throws IOException {
+                doResult(info, callback);
+            }
+        });
+        LogUtils.logd(headString);
+    }
 
     /**
      * 处理请求错误回调
@@ -176,7 +403,6 @@ public class OkHttpClientManager {
 
     /**
      * 返回结果基类
-     *
      */
     public static abstract class ResultCallback {
 
@@ -187,7 +413,6 @@ public class OkHttpClientManager {
         public abstract void onResponse(String response);
 
     }
-
 
 
     //执行上传文件操作
@@ -208,7 +433,8 @@ public class OkHttpClientManager {
                     }
                 }));
             }
-            HttpInfo info = HttpInfo.Builder().setUrl(BASE_URL + url).addParams(map).addUploadFiles(uploadFiles).build();
+            Log.e("uploadFiles",""+uploadFiles.size());
+            HttpInfo info = HttpInfo.Builder().setUrl(BASE_URL + url).addParams(map).addHead("Authorization", "Bearer " + map.get("accessToken")).addUploadFiles(uploadFiles).build();
             OkHttpUtil.getDefault().doUploadFileAsync(info);
             LogUtils.logd("map : " + map.toString() + files.toString());
         } catch (Exception e) {
@@ -240,31 +466,59 @@ public class OkHttpClientManager {
         }
     }
 
+    /**
+     * @param url
+     * @param pathList
+     * @throws Exception
+     */
+    public static void upLoadFiles(final String url, final String params, final List<String> pathList, final OkHttpClientManager.ResultCallback
+            callback ){
+        OkHttpClient client = new OkHttpClient.Builder()
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build();
+            MediaType MutilPart_Form_Data = MediaType.parse("multipart/form-data; charset=utf-8");
+            RequestBody bodyParams = RequestBody.create(MutilPart_Form_Data, JSON.toJSONString(params));
+            MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("keyVo", "", bodyParams);
+            //循环添加文件
+            for (int i = 0; i < pathList.size(); i++) {
+                File file = new File(pathList.get(i));
+                requestBodyBuilder.addFormDataPart("file", file.getName(), RequestBody.create(MutilPart_Form_Data, new File(pathList.get(i))));
+            }
+            RequestBody requestBody = requestBodyBuilder.build();
+
+            Request request = new Request.Builder()
+                    .url(BASE_URL + url)
+                    .addHeader("Authorization","Bearer "+params )
+                    .post(requestBody)
+                    .build();
+            deliveryResult(callback, request);
+    }
+
 
     /**
      * 批量上传文件操作
      *
      * @param url
-     * @param map
-     * @param files
      * @param callback
      */
-    public static void _postContentAndFiles(String url, final Map<String, String> map, List<File> files, final OkHttpClientManager
+    public static void _postContentAndFiles(String url, String token, List<File> files, final OkHttpClientManager
             .ResultCallback callback) {
         /* form的分割线,自己定义 */
         String boundary = "xx--------------------------------------------------------------xx";
         MultipartBody.Builder builder = new MultipartBody.Builder(boundary);
         builder.setType(MultipartBody.FORM);
-        if (map != null && map.size() > 0) {
-            Set<String> keySet = map.keySet();
-            for (String key : keySet) {
-                String value = map.get(key);
-                if ("text".equals(key) || "content".equals(key)) {
-                    value = EncodeUtil.encodeUTF(value);
-                }
-                builder.addFormDataPart(key, value);
-            }
-        }
+//        if (map != null && map.size() > 0) {
+//            Set<String> keySet = map.keySet();
+//            for (String key : keySet) {
+//                String value = map.get(key);
+//                if ("text".equals(key) || "content".equals(key)) {
+//                    value = EncodeUtil.encodeUTF(value);
+//                }
+//                builder.addFormDataPart(key, value);
+//            }
+//        }
         if (files != null && files.size() > 0) {
             for (int i = 0; i < files.size(); i++) {
                 okhttp3.RequestBody fileBody = okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), files.get(i));
@@ -272,9 +526,8 @@ public class OkHttpClientManager {
             }
         }
         MultipartBody mBody = builder.build();
-        Request request = new Request.Builder().url(BASE_URL + url).post(mBody).build();
+        Request request = new Request.Builder().url(BASE_URL + url).addHeader("Authorization",token).post(mBody).build();
         deliveryResult(callback, request);
-        LogUtils.logd("url" + BASE_URL + url + "\n map" + map.toString() + "file" + files.toString());
     }
 
 

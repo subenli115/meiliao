@@ -10,7 +10,7 @@ import com.okhttplib.OkHttpUtil;
 import com.okhttplib.annotation.DownloadStatus;
 import com.okhttplib.bean.DownloadFileInfo;
 import com.okhttplib.callback.ProgressCallback;
-import com.ziran.meiliao.app.WpyxConfig;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
 import com.ziran.meiliao.common.commonutils.LogUtils;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
@@ -43,7 +43,7 @@ public class DownloadUtil {
     private  boolean isExqWork = false;
     public static final String DOWNLOAD_FINISH = "DOWNLOAD_FINISH";
     public static boolean isPlayerActivity;
-    private WpyxDownloadUtil.onDownloadListener mdownloadListener;
+    private MlDownloadUtil.onDownloadListener mdownloadListener;
 
     public static DownloadUtil getInstance() {
         if (INSTANCE == null) {
@@ -87,7 +87,7 @@ public class DownloadUtil {
             switch (msg.what) {
                 case EXQ_WORK:
                     isExqWork = true;
-//                    WpyxConfig.isDowning=false;
+//                    MeiliaoConfig.isDowning=false;
                     if (EmptyUtils.isNotEmpty(urls)) {
                         final String currentUrl = urls.getFirst();
                         final DownloadFileInfo fileInfo = mDownloadDatas.get(currentUrl);
@@ -98,7 +98,7 @@ public class DownloadUtil {
 //                                    mdownloadListener.onDownStart(currentUrl);
 //                                }
                                 setProgress(percent, currentUrl, false);
-                                WpyxConfig.setDownUrl(currentUrl);
+                                MeiliaoConfig.setDownUrl(currentUrl);
                                 LogUtils.logd("下载"+percent);
                             }
 
@@ -108,7 +108,7 @@ public class DownloadUtil {
                                     setProgress(100, currentUrl, true);
                                     urls.remove(currentUrl);
                                     mDownloadDatas.remove(currentUrl);
-                                    WpyxConfig.isDowning=true;
+                                    MeiliaoConfig.isDowning=true;
                                     RxManagerUtil.post(DOWNLOAD_FINISH, fileInfo);
                                     LogUtils.logd(info.getRetDetail() + "\n下载状态：" + fileInfo.getDownloadStatus());
                                         ToastUitl.showShort("下载完成");
@@ -176,7 +176,7 @@ public class DownloadUtil {
         }
     }
 
-    public void singleDownloadFile(String url, String fileDir, String fileName, WpyxDownloadUtil.onDownloadListener downloadListener) {
+    public void singleDownloadFile(String url, String fileDir, String fileName, MlDownloadUtil.onDownloadListener downloadListener) {
          mdownloadListener=downloadListener;
         if (EmptyUtils.isNotEmpty(url) && EmptyUtils.isNotEmpty(fileDir) && !urls.contains(url)) {
             urls.add(url);

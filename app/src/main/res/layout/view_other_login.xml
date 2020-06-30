@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+<TextView android:id="@+id/tv_other"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:text="@string/login_text_other"
+    android:textSize="15sp"
+    android:gravity="center"
+    android:textColor="@color/textColor_4c"
+    android:layout_below="@+id/afl"
+    android:background="@drawable/normal_bg_e0"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+</RelativeLayout>

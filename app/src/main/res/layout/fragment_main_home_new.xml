@@ -75,7 +75,6 @@
                     android:id="@+id/num"
                     android:paddingTop="14px"
                     android:paddingBottom="30px"
-                    android:layout_alignBottom="@+id/barchart"
                     android:layout_marginLeft="32px"
                     android:orientation="vertical">
                 <LinearLayout
@@ -161,13 +160,6 @@
                 </com.zhy.autolayout.AutoLinearLayout>
 
 
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/barchart"
-                    android:layout_width="match_parent"
-                    android:layout_height="191dp"
-                    android:layout_marginBottom="30px"
-                    android:layout_toRightOf="@+id/num"
-                    android:layout_marginRight="70px" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
@@ -290,17 +282,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottie_likeanim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:lottie_fileName="data.json"
-            app:lottie_loop="true"
-            android:layout_marginBottom="100px"
-            android:layout_gravity="center"
-            app:lottie_autoPlay="true"
-            />
 
 
 

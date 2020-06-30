@@ -57,10 +57,8 @@ public class NewMediaAndTextBean extends Result{
          * seeCount : 263
          * activityPrice : 1000
          * price : 99
-         * shareUrl : http://www.dgli.net/wpyx/page/static/subscribe/jieshao/19/index.html
          * shareTimes : 6
          * isShare : 0
-         * htmlLink : http://www.dgli.net/wpyx/page/static/subscribe/jieshao/19/index.html
          */
 
         private int isGetCertificate;

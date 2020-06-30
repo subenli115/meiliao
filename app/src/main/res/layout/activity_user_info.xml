@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F5"
+
+    android:orientation="vertical">
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"
+        app:ntb_title_text="资料修改"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View style="@style/hor_match_line_8dp"/>
+
+        <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_nick"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:background="@color/white"
+            app:itemView_leftText="昵称"
+            app:itemView_leftText_color="@color/textColor_333"
+            />
+
+        <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_sex"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:background="@color/white"
+            app:itemView_leftText="性别"
+            app:showRightArrow="false"
+            app:itemView_leftText_color="@color/textColor_333"
+            />
+        <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_age"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="@dimen/item_common_height"
+            app:itemView_leftText="年龄"
+            app:itemView_leftText_color="@color/textColor_333"
+            />
+
+        <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_region"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            app:itemView_leftText="地区"
+            android:background="@color/white"
+            app:showRightArrow="false"
+            app:itemView_leftText_color="@color/textColor_333"
+            />
+        <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_choose"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            app:itemView_rightTextSize="11sp"
+            app:itemView_leftText_color="@color/textColor_333"
+            app:itemView_leftText="交友偏好"
+            android:background="@color/white"
+            app:showRightArrow="true"/>
+        <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_sign"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            app:itemView_rightTextSize="11sp"
+            app:itemView_leftText_color="@color/textColor_333"
+            app:itemView_leftText="个性签名"
+            android:background="@color/white"
+            app:showRightArrow="true"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

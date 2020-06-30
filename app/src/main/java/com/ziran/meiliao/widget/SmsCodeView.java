@@ -65,7 +65,7 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
      * 吐丝内容
      */
     private String toast = getContext().getString(R.string.res_getcode);
-
+    private String codeNumber = "+86";
 
     private Handler handler = new Handler() {
         @Override
@@ -87,6 +87,7 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
      * 失去焦点监听
      */
     private OnNotFocusListener onNotFocusListener;
+    private String mPhone;
 
     public SmsCodeView(Context context) {
         this(context, null);
@@ -100,10 +101,12 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
         super(context, attrs, defStyleAttr);
         initView();
     }
-    public void setTextSize(float size){
+
+    public void setTextSize(float size) {
         etSmsCode.setTextSize(size);
 
     }
+
     /**
      * 初始化控件
      */
@@ -112,25 +115,38 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
         etSmsCode = (EditText) findViewById(R.id.et_sms_code);
         tvSmsGetCode = (TextView) findViewById(R.id.tv_sms_getcode);
         tvSmsGetCode.setOnClickListener(new OnNoDoubleClickListener() {
+            private Map<String, String> codeMap;
+
             @Override
             protected void onNoDoubleClick(View v) {
+
                 if (tvPhone != null) {
+
                     String phone = tvPhone.getText().toString();
-                    String codeNumber = "+86";
-                    if (mCodeNumberCallBack != null) {
-                        codeNumber = mCodeNumberCallBack.getCodeNumber();
+                    if(mPhone!=null&&mPhone.length()>0){
+                        phone=mPhone;
                     }
                     if (!RegexUtils.regexMoble(phone, codeNumber)) {
                         return;
                     }
                     if (mOnSmsCallBack != null) {
-                        registerSms();
-                        Map<String, String> codeMap = MapUtils.getCodeMap("", phone, "false");
+//                        registerSms();
+                        if(phone.length()>0){
+                            codeMap = MapUtils.getCodeMap("", phone, "false");
+                        }else{
+                             codeMap = MapUtils.getCodeMap("", phone, "false");
+                        }
                         mOnSmsCallBack.call(TYPE_POST, codeMap);
                     }
                 }
             }
         });
+    }
+
+    public void setbg(String phone) {
+        mPhone=phone;
+        etSmsCode.setHint("请输入");
+        rootView.setBackgroundResource(R.drawable.normal_bg);
     }
 
     //注册短信观察者
@@ -172,6 +188,7 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
      * 设置获取验证码按钮不可点击
      */
     public void reset() {
+
         tvSmsGetCode.setEnabled(false);
     }
 
@@ -206,6 +223,9 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
         }
     };
 
+    public void setCodeTextReset(){
+        handler.sendEmptyMessage(0);
+    }
 
     public void setOnNotFocusListener(OnNotFocusListener onNotFocusListener) {
         this.onNotFocusListener = onNotFocusListener;
@@ -232,7 +252,7 @@ public class SmsCodeView extends LinearLayout implements View.OnFocusChangeListe
         getEtitTextCode().addTextChangedListener(new SimpleTextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btn.setEnabled(EmptyUtils.isNotEmpty(s.toString()) && s.length() >= 4 && tvPhone.getText().length()>=10);
+                btn.setEnabled(EmptyUtils.isNotEmpty(s.toString()) && s.length() >= 4 && tvPhone.getText().length() >= 10);
             }
         });
     }

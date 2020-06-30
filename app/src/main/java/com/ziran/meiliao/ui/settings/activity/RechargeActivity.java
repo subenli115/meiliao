@@ -2,6 +2,7 @@ package com.ziran.meiliao.ui.settings.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseActivity;
@@ -41,10 +42,18 @@ public class RechargeActivity extends BaseActivity {
 
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getSupportFragmentManager().getFragments().get(0).onActivityResult(requestCode, resultCode, data);
+    }
+
     @Override
     public void initView() {
+        ntb.setVisibility(View.VISIBLE);
         ntb.setTvLeftVisiable(true, true);
-        ntb.setTitleText(getString(R.string.recharge));
+        ntb.setTitleText(getString(R.string.wallet));
         initFragment(new RechargeFragment());
     }
 }

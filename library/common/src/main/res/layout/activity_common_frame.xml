@@ -6,6 +6,7 @@
 
     <com.ziran.meiliao.common.commonwidget.NormalTitleBar
         android:id="@+id/ntb"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

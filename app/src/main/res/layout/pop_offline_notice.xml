@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
+
+    android:background="@drawable/normal_bg_white60"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    >
+
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/ll"
+    android:layout_width="600px"
+ android:gravity="center_horizontal"
+    android:background="@drawable/normal_bg_white60"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoFrameLayout
+    android:layout_width="wrap_content"
+    android:layout_marginTop="78px"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="强制下线通知"
+        android:textSize="44px"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+</com.zhy.autolayout.AutoFrameLayout>
+
+<com.zhy.autolayout.AutoLinearLayout
+android:gravity="center_horizontal"
+    android:layout_marginLeft="61px"
+    android:layout_marginRight="61px"
+    android:layout_width="match_parent"
+    android:layout_marginTop="56px"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_update_version_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="账号在另一个手机上登录，您已被迫下线；如非本人操作，则密码可能已泄露，建议立即修改密码"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_qd"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39px"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:text="确定"
+        android:layout_marginBottom="80px"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:textSize="30px"
+        android:gravity="center"
+        android:background="@drawable/normal_bg_bule_px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

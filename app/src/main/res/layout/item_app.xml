@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingRight="11dp"
+        android:paddingLeft="11dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="60dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_gold_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/normal_bg_orange_c5"
+            android:drawableLeft="@mipmap/icon_gold_little"
+            android:drawablePadding="1.5dp"
+            android:text="23111112"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:textColor="#FF9E01"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_gold_num"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="23232"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:textColor="#4D4D4D"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        />
+</FrameLayout>

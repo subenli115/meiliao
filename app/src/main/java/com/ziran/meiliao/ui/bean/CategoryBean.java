@@ -24,7 +24,6 @@ public class CategoryBean extends Result {
 
     public static class DataBean {
         /**
-         * picture : https://www.psytap.com/wpyx_longjg/static/home/images/album/1.png
          * vip : 限时
          * title : 正念创造力
          * albumId : 1

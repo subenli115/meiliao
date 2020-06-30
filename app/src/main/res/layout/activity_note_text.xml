@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_tv_left="showAndFinish"
+        >
+
+
+    </com.ziran.meiliao.common.commonwidget.NormalTitleBar>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#F5F5F5"></View>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rl_nike"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="22dp"
+            android:layout_height="wrap_content">
+            <com.citypicker.citylist.widget.ClearEditText
+                android:id="@+id/ed_text"
+                android:maxLength="8"
+                android:lines="1"
+                android:paddingLeft="16dp"
+                android:text="2232222222222222"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_toLeftOf="@+id/tv_hint"
+                android:layout_height="46.67dp"
+                android:background="@null"/>
+
+            <TextView
+                android:id="@+id/tv_hint"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:textSize="13sp"
+                android:textColor="#FF4F68"
+                />
+        </RelativeLayout>
+        <com.ziran.meiliao.widget.CustomEditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="多行输入"
+            android:visibility="gone"
+            android:textColorHint="@color/textColor_b2"
+            android:textSize="15sp"
+            android:padding="12dp"
+            android:maxLength="40"
+            android:textColor="#999999"
+            />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可输入8个字"
+        android:background="#F5F5F5"
+        android:textColor="#B2B2B2"
+        android:textSize="12sp"
+        android:padding="15dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="#F5F5F5">
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="280dp"
+            android:layout_marginTop="66.5dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:background="@drawable/normal_bg_bule"
+            android:text="@string/save"
+            />
+    </LinearLayout>
+</LinearLayout>

@@ -3,7 +3,6 @@ package com.ziran.meiliao.ui.bean;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.irecyclerview.WrapperAdapter;
 import com.ziran.meiliao.common.okhttp.Result;
-import com.ziran.meiliao.ui.priavteclasses.adapter.MainSJKLiveAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +41,6 @@ public class SJKLiveBean extends Result {
      * "price":"0.01"},{"picture":null,"id":17,"author":{"name":"测试"},"title":"七天睡眠治疗","price":"0.01"},{"picture":null,"id":18,
      * "author":{"name":"测试"},"title":"七天睡眠治疗","price":"0.01"},{"picture":null,"id":19,"author":{"name":"测试"},"title":"七天睡眠治疗",
      * "price":"0.01"},{"picture":null,"id":20,"author":{"name":"测试"},"title":"七天睡眠治疗","price":"0.01"}],"pics":[{"link":"这是一个路径",
-     * "type":"h5","url":"https://www.psytap.com/wpyx_manager/static/images/coursePics/1.jpg"},{"link":"这是一个Id","type":"native",
-     * "url":"https://www.psytap.com/wpyx_manager/static/images/coursePics/2.jpg"}],"list":[{"picture":null,"id":1,
      * "author":{"name":"测试"},"title":"七天睡眠治疗","price":"0.01"},{"picture":null,"id":2,"author":{"name":"测试"},"title":"七天睡眠治疗",
      * "price":"0.01"},{"picture":null,"id":3,"author":{"name":"测试"},"title":"七天睡眠治疗","price":"0.01"},{"picture":null,"id":4,
      * "author":{"name":"测试"},"title":"七天睡眠治疗","price":"0.01"},{"picture":null,"id":5,"author":{"name":"测试"},"title":"七天睡眠治疗",
@@ -136,7 +133,7 @@ public class SJKLiveBean extends Result {
         if (EmptyUtils.isNotEmpty(dataBean.getHistory())) {
             SJKSingeLiveData sjkSingeLiveData = new SJKSingeLiveData();
             sjkSingeLiveData.setHistoryData(dataBean.getHistory());
-            sjkSingeLiveData.setItemType(MainSJKLiveAdapter.TYPE_HISTORY);
+//            sjkSingeLiveData.setItemType(MainSJKLiveAdapter.TYPE_HISTORY);
             data.add(sjkSingeLiveData);
         }
         return data;

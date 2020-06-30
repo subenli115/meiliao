@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout android:layout_width="match_parent"
+    android:background="@drawable/normal_bg_white60_half"
+    android:layout_height="wrap_content"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:id="@+id/iv_empty"
+        android:layout_width="429px"
+        android:layout_marginTop="100px"
+        android:layout_height="282px"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_wechat_empty"
+        android:background="@color/white"
+        />
+    <TextView
+        android:layout_below="@+id/iv_empty"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:textSize="32px"
+        android:textColor="@color/textColor_b2"
+        android:text="TA还没有发动态哦"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

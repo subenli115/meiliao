@@ -11,7 +11,6 @@ import java.util.List;
 public class PracticePageBean extends Result{
 
     /**
-     * data : {"startMusicUrl":"http://www.psytap.com/wpyx_longjg/static/upload/music/practiceMusic/s.mp3","list":[{"pg":"https://www.psytap.com/wpyx_longjg/static/upload/images/practiceMusic/1.jpg","musicUrl":""},{"pg":"https://www.psytap.com/wpyx_longjg/static/upload/images/practiceMusic/2.jpg","musicUrl":"http://www.psytap.com/wpyx_longjg/static/upload/music/practiceMusic/2.mp3"},{"pg":"https://www.psytap.com/wpyx_longjg/static/upload/images/practiceMusic/3.jpg","musicUrl":""}],"number":1}
      */
 
     private DataBean data;
@@ -26,8 +25,6 @@ public class PracticePageBean extends Result{
 
     public static class DataBean {
         /**
-         * startMusicUrl : http://www.psytap.com/wpyx_longjg/static/upload/music/practiceMusic/s.mp3
-         * list : [{"pg":"https://www.psytap.com/wpyx_longjg/static/upload/images/practiceMusic/1.jpg","musicUrl":""},{"pg":"https://www.psytap.com/wpyx_longjg/static/upload/images/practiceMusic/2.jpg","musicUrl":"http://www.psytap.com/wpyx_longjg/static/upload/music/practiceMusic/2.mp3"},{"pg":"https://www.psytap.com/wpyx_longjg/static/upload/images/practiceMusic/3.jpg","musicUrl":""}]
          * number : 1
          */
 
@@ -61,7 +58,6 @@ public class PracticePageBean extends Result{
 
         public static class ListBean {
             /**
-             * pg : https://www.psytap.com/wpyx_longjg/static/upload/images/practiceMusic/1.jpg
              * musicUrl :
              */
 

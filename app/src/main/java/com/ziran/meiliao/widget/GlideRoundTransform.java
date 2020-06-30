@@ -20,7 +20,7 @@ public class GlideRoundTransform extends BitmapTransformation {
     private static float radius = 0f;
 
     public GlideRoundTransform(Context context) {
-        this(context, 4);
+        this(context, 14);
     }
 
     public GlideRoundTransform(Context context, int dp) {

@@ -32,7 +32,7 @@
     <color name="gray70">#7bF0F0F0</color>
     <color name="gray_deep">#c9000000</color>
     <color name="transparent">#00000000</color>
-    <color name="transparent_helf">#70000000</color>
+    <color name="transparent_helf">#80000000</color>
     <color name="transparent30">#28000000</color>
     <color name="transparent60">#48000000</color>
     <color name="transparent10">#12000000</color>
@@ -82,14 +82,15 @@
     <color name="dask_bg">#f5f5f5</color>
     <color name="textColor_teshe">#45B000</color>
     <color name="textColor_teshe8">#89CAA2</color>
-
+    <color name="textColor_main_red"> #459BFF</color>
+    <color name="textColor_main_bule"> #459BFF</color>
     <color name="textColor_b1">#B1B1B1</color>
     <color name="textColor_teshe_half">#A2D77F</color>
     <color name="textColor_teshe3">#3C9A00</color>
     <color name="textColor_bar_me">#98D983</color>
     <color name="textColor_teshe2">#5DA7FA</color>
     <color name="textColor_teshe7">#FBAF6B</color>
-    <color name="textColor_teshe5">#FFA008</color>
+    <color name="textColor_teshe5">#FC636B</color>
     <color name="textColor_teshe_pre">#7cEF8C57</color>
     <color name="textColor_teshe_unsel">#c6cbcb</color>
     <color name="textColor_5392CC">#5392CC</color>

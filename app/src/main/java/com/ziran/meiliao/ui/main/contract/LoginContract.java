@@ -4,11 +4,11 @@ import com.ziran.meiliao.common.base.BaseModel;
 import com.ziran.meiliao.common.base.BasePresenter;
 import com.ziran.meiliao.common.base.BaseView;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
-import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.entry.LoginBean;
+import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.CheckPhoneBean;
-import com.ziran.meiliao.ui.bean.StringDataBean;
 import com.ziran.meiliao.ui.bean.TagCheckBean;
+import com.ziran.meiliao.ui.bean.UserBean;
 
 import java.util.Map;
 
@@ -21,13 +21,11 @@ public interface LoginContract {
         void getLoginData(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
 
         void getBindPhoneData(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
-
         void getLoginCode(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
-
+        void postPwdLogin(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
         void getBindCode(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
-
+        void getUserInfo(String params, String token,OkHttpClientManager.ResultCallback callback);
         void getPartyLoginData(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
-
         void getCheckLoginPhone(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
         void getTagSaveCheck(Map<String, String> params, OkHttpClientManager.ResultCallback callback);
     }
@@ -36,12 +34,12 @@ public interface LoginContract {
         void returnLoginData(LoginBean registerBean);
         void returnBindPhoneData(LoginBean registerBean);
 
-        void returnLoginCode(Result registerBean);
-
-        void returnBindCode(StringDataBean registerBean);
+        void returnLoginCode(StringDataV2Bean registerBean);
+        void returnBindCode(LoginBean registerBean);
 
         void returnPartyLogin(LoginBean registerBean);
-
+        void showPwdLogin(LoginBean result);
+        void showUserInfo(UserBean result);
         void showLoginCheck(CheckPhoneBean result);
         void showCheckSaveData(TagCheckBean data);
     }
@@ -59,6 +57,8 @@ public interface LoginContract {
         public abstract void postPartyLoginData(Map<String, String> map);
         public abstract void postCheckLoginPhone(Map<String, String> map);
         public abstract void postTagSaveCheck(Map<String,String> map );
+        public abstract void postPwdLogin(Map<String,String> map );
+        public abstract void getUserInfo(String map ,String token);
 
     }
 }

@@ -21,22 +21,5 @@ import com.ziran.meiliao.widget.TagImageView;
 public class SubscriptionHelper {
     public static void convert(final ViewHolderHelper holder, final Object obj) {
         final SpecColumnData specColumnData = EmptyUtils.parseObject(obj);
-        holder.setImageUrlTarget(R.id.iv_item_sjk_recommend_pic, specColumnData.getPic(), R.mipmap.ic_loading_square_small);
-
-        holder.setText(R.id.tv_item_sjk_recommend_title, specColumnData.getTitle());
-        holder.setText(R.id.tv_item_sjk_recommend_des, specColumnData.getDescript());
-        if (EmptyUtils.isNotEmpty(specColumnData.getTag())) {
-            holder.setVisible(R.id.tv_item_sjk_recommend_tag, true);
-            holder.setText(R.id.tv_item_sjk_recommend_tag, specColumnData.getTag());
-        } else {
-            holder.setVisible(R.id.tv_item_sjk_recommend_tag, false);
-        }
-        CatchUtil.execute(new MyCallBack() {
-            @Override
-            public void call() {
-                TagImageView tagImageView =holder.getView(R.id.iv_item_sjk_recommend_pic);
-                tagImageView.setTagByType(specColumnData.getType());
-            }
-        });
     }
 }

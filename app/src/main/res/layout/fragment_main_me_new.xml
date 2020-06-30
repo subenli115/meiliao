@@ -22,7 +22,6 @@
                 android:id="@+id/rl_me_main_head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/bg_my"
                 >
                 <com.ziran.meiliao.common.commonwidget.NormalTitleBar
                     android:id="@+id/ntb"
@@ -200,7 +199,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="我的钱包"
+                    android:text="st"
                     android:textColor="@color/textColor_333"
                     android:textSize="16sp"
                     android:textStyle="bold"/>

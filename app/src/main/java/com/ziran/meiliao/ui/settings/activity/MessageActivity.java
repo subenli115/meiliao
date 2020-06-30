@@ -14,7 +14,7 @@ import butterknife.Bind;
 
 /**
  * 减压馆 -消息界面
- * Created by Administrator on 2017/1/14.
+ * Created by Administrator on 2017/1/14.·
  */
 
 public class MessageActivity extends BaseActivity {

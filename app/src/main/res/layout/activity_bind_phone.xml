@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.ziran.meiliao.common.commonwidget.NormalTitleBar
         android:layout_width="match_parent"
-        android:layout_marginTop="20px"
         android:id="@+id/ntb_title"
         app:ntb_tv_left="showAndFinish"
         android:layout_height="wrap_content"/>
@@ -32,6 +31,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31px"
         />
+
+
     <TextView
         android:id="@+id/tv_86"
         android:layout_width="wrap_content"

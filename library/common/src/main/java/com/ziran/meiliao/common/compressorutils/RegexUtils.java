@@ -251,15 +251,15 @@ public class RegexUtils {
     }
 
     public static boolean regexMoble(String phone, String codeNumber) {
-        if ("+86".equals(codeNumber)) {
-            if (!isMobileExact(phone)) {
-                ToastUitl.showShort("请输入正确的手机号码");
-                return false;
-            }
-        } else if (phone.length() < 6) {
-            ToastUitl.showShort("请输入正确的手机号码");
-            return false;
-        }
+//        if ("+86".equals(codeNumber)) {
+//            if (!isMobileExact(phone)) {
+//                ToastUitl.showShort("请输入正确的手机号码");
+//                return false;
+//            }
+//        } else if (phone.length() < 6) {
+//            ToastUitl.showShort("请输入正确的手机号码");
+//            return false;
+//        }
         return true;
     }
 

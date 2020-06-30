@@ -7,6 +7,7 @@ import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.ViewHolderHelper;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.abslistview.CommonAblistViewAdapter;
 import com.ziran.meiliao.ui.bean.PurseListCoinBean;
+import com.ziran.meiliao.ui.bean.RechargeBean;
 
 /**
  * @author 吴祖清
@@ -19,44 +20,22 @@ import com.ziran.meiliao.ui.bean.PurseListCoinBean;
  */
 
 
-public class AmountAdapter extends CommonAblistViewAdapter<PurseListCoinBean.DataBean.ListBean> {
+public class AmountAdapter extends CommonAblistViewAdapter<RechargeBean.DataBean.RecordsBean> {
 
     public AmountAdapter(Context context, int layoutId) {
         super(context, layoutId);
     }
 
-    private int selectPosition;
 
     @Override
-    public void convert(ViewHolderHelper holder, PurseListCoinBean.DataBean.ListBean item, int position) {
-        if (item.isSelect()) {
-            holder.setBackgroundRes(R.id.ll_recharge_bg, R.drawable.shape_grid_amount_select);
-            holder.setTextColor(R.id.tv_recharge_amount, R.color.textColor_teshe);
-            selectPosition = position;
-            holder.getView(R.id.tv_points).setVisibility(View.VISIBLE);
+    public void convert(ViewHolderHelper holder,RechargeBean.DataBean.RecordsBean item, int position) {
+        holder.setText(R.id.tv_recharge_gold, item.getName());
+        if (item.getPrice() > 1) {
+            holder.setText(R.id.tv_recharge_amount, String.format("￥%.0f", item.getPrice()));
         } else {
-            holder.setTextColor(R.id.tv_recharge_amount, R.color.textColor_999);
-            holder.setBackgroundRes(R.id.ll_recharge_bg, R.drawable.shape_grid_amount);
-            holder.getView(R.id.tv_points).setVisibility(View.INVISIBLE);
-        }
-        holder.setText(R.id.tv_recharge_gold, String.format("%d金币", item.getCoin()));
-        if (item.getRmb()>1){
-            holder.setText(R.id.tv_recharge_amount, String.format("￥%.0f", item.getRmb()));
-        }else{
-            holder.setText(R.id.tv_recharge_amount, String.format("￥%.2f", item.getRmb()));
-        }
-        holder.setText(R.id.tv_points,item.getJifen()+"积分");
-    }
-
-    public void changeSelect(int position) {
-        if (selectPosition != -1 && selectPosition != position) {
-            getItem(selectPosition).setSelect(false);
-            get(position).setSelect(true);
-            notifyDataSetChanged();
+            holder.setText(R.id.tv_recharge_amount, String.format("￥%.2f", item.getPrice()));
         }
     }
 
-    public PurseListCoinBean.DataBean.ListBean getSelect() {
-        return getItem(selectPosition);
-    }
+
 }

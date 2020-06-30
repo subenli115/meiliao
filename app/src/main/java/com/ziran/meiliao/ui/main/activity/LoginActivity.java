@@ -13,8 +13,8 @@ import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.permission.PermissionUtil;
 import com.ziran.meiliao.ui.base.PermissionActivity;
+import com.ziran.meiliao.ui.main.contract.LoginContract;
 import com.ziran.meiliao.ui.main.fragment.LoginFragment;
-import com.ziran.meiliao.ui.main.fragment.RegisterFragment;
 import com.umeng.socialize.UMShareAPI;
 
 import butterknife.Bind;
@@ -28,7 +28,6 @@ public class LoginActivity extends PermissionActivity implements RadioGroup.OnCh
     //登录Fragment
     LoginFragment loginFragment;
     //注册Fragment
-    RegisterFragment registerFragment;
     //切换登录与注册的RadioGroup
     @Bind(R.id.rg_login)
     RadioGroup radioGroup;
@@ -81,7 +80,6 @@ public class LoginActivity extends PermissionActivity implements RadioGroup.OnCh
                 break;
             case R.id.rb_login:
                 showLoginFragment();
-                iv_bg.setImageResource(R.mipmap.login_bg);
                 break;
         }
     }
@@ -89,25 +87,11 @@ public class LoginActivity extends PermissionActivity implements RadioGroup.OnCh
     public void showRegisterFragment(LoginFragment.ThreeLoginBean flag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.hide(loginFragment);
-        if (registerFragment == null) {
-            registerFragment = RegisterFragment.newInstance(null, null);
-            ft.add(R.id.fl_login_container, registerFragment, "register");
-        } else {
-            ft.show(registerFragment);
-        }
-        if (EmptyUtils.isNotEmpty(mThreeLoginBean)) {
-            registerFragment.setJsonData(flag);
-            mThreeLoginBean = null;
-        }
-        iv_bg.setImageResource(R.mipmap.register_bg);
         ft.commit();
     }
 
     public void showLoginFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (registerFragment != null) {
-            ft.hide(registerFragment);
-        }
         ft.show(loginFragment);
         ft.commit();
     }
@@ -144,9 +128,6 @@ public class LoginActivity extends PermissionActivity implements RadioGroup.OnCh
             SortModel cityData = data.getParcelableExtra("cityData");
             if (EmptyUtils.isNotEmpty(cityData)) {
                 loginFragment.setAreaCode(cityData);
-                if (registerFragment != null) {
-                    registerFragment.setAreaCode(cityData);
-                }
             } else {
                 UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
             }

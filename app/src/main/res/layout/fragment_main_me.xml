@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cl"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_header"
+                android:layout_width="match_parent"
+                android:layout_height="750px"
+                app:layout_collapseMode="parallax"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+                <ImageView
+                    android:id="@+id/iv_bg"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent"
+                    />
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/all"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="26px"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="30px"
+                    android:background="@drawable/normal_bg_black_tran"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30px"
+                        android:layout_height="30px"
+                        android:layout_marginTop="10px"
+                        android:layout_marginBottom="10px"
+                        android:layout_marginLeft="20px"
+                        android:src="@mipmap/icon_gold_big"
+                        />
+                    <TextView
+                        android:id="@+id/tv_gold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1000"
+                        android:layout_marginLeft="5px"
+                        android:textSize="28px"
+                        android:textColor="@color/white"
+                        />
+                    <ImageView
+                        android:layout_width="30px"
+                        android:layout_height="30px"
+                        android:layout_marginTop="10px"
+                        android:layout_marginBottom="10px"
+                        android:layout_marginLeft="20px"
+                        android:src="@mipmap/icon_red_gold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_red_gold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:layout_marginLeft="5px"
+                        android:textSize="28px"
+                        android:layout_marginRight="20px"
+                        android:textColor="@color/white"
+                        />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_get_money"
+                    android:layout_width="122px"
+                    android:layout_below="@+id/all"
+                    android:layout_marginTop="32px"
+                    android:layout_alignLeft="@+id/all"
+                    android:layout_height="122px"
+                    />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FAFAFA"
+                app:layout_collapseMode="pin">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_more"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="48px"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_me_more"
+                        />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nsv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/normal_bg_white60_half"
+        app:behavior_overlapTop="30dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_marginTop="60px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="120px"
+                android:layout_marginRight="64px"
+                android:layout_alignParentRight="true"
+                android:layout_height="120px"
+                android:background="@mipmap/icon_gift"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

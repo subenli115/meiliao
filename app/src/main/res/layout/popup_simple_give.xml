@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/touch_outside"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent30"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+<com.ziran.meiliao.im.view.SimpleAppsGridView
+    android:id="@+id/gridView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+</com.ziran.meiliao.im.view.SimpleAppsGridView>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</FrameLayout>

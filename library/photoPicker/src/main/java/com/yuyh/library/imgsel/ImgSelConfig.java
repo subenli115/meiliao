@@ -136,8 +136,8 @@ public class ImgSelConfig {
         private String cropImagePath;
         private int aspectX = 1;
         private int aspectY = 1;
-        private int outputX = 400;
-        private int outputY = 400;
+        private int outputX = 600;
+        private int outputY = 600;
 
         public Builder(ImageLoader loader) {
             this.loader = loader;
@@ -242,7 +242,7 @@ public class ImgSelConfig {
         public void displayImage(Context context, String path, ImageView imageView) {
             ImageLoaderUtils.displayResult(context, imageView, path);
         }
-    }).needCrop(false).multiSelect(false).build();
+    }).needCrop(true).multiSelect(false).build();
 
     public static ImgSelConfig DEFAULT_SIGN_HEAD(String cropImagePath) {
         return new ImgSelConfig.Builder(new ImageLoader() {

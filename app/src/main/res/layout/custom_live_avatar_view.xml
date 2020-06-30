@@ -16,6 +16,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@mipmap/ic_user_pic"
+        android:scaleType="centerCrop"
         app:roundimageview_type="circle"/>
 
     <TextView

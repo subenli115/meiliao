@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0px"
+            android:layout_height="1px"
+            android:layout_below="@+id/tv_86"
+            android:layout_alignLeft="@+id/tv_sjdl"
+            android:layout_alignRight="@+id/tv_86"
+            android:layout_marginLeft="95px"
+            android:layout_toRightOf="@+id/tv_sjdl"
+            android:layout_weight="1"
+            android:background="#CCCCCC"
+            android:visibility="invisible"></View>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22px"
+            android:layout_marginRight="22px"
+            android:text="其它登录方式"
+            android:textColor="@color/textColor_999"
+            android:textSize="24px" />
+
+        <View
+            android:layout_width="0px"
+            android:layout_height="1px"
+            android:layout_below="@+id/tv_86"
+            android:layout_alignLeft="@+id/tv_sjdl"
+            android:layout_alignRight="@+id/tv_86"
+            android:layout_marginRight="95px"
+            android:layout_toRightOf="@+id/tv_sjdl"
+            android:layout_weight="1"
+            android:background="#CCCCCC"
+            android:visibility="invisible"></View>
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_down"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/all"
+        android:padding="20px"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_other"
+            android:layout_width="18px"
+            android:layout_height="10px"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/icon_other_down"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arl_down"
+        android:id="@+id/arl_login"
+        android:visibility="invisible"
+        android:layout_marginTop="4px"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_wechat"
+            android:layout_width="80px"
+            android:layout_height="80px"
+
+            android:src="@mipmap/login_wechat" />
+
+        <ImageView
+            android:id="@+id/iv_qq"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_marginLeft="58px"
+            android:layout_toRightOf="@+id/iv_wechat"
+            android:src="@mipmap/login_qq" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

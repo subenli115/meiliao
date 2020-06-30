@@ -293,7 +293,6 @@ public class NewGongZuoFangActivity extends CommonHttpActivity<CommonPresenter, 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CourseEnrollmentActivity.startAction(mContext,courseId,name,lastPrice);
             }
         });
 

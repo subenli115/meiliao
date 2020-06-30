@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonwidget.NormalTitleBar;
-import com.ziran.meiliao.ui.NewDecompressionmuseum.activity.FitnessLoadActivity;
 import com.ziran.meiliao.ui.base.CommonHttpActivity;
 import com.ziran.meiliao.ui.base.CommonModel;
 import com.ziran.meiliao.ui.base.CommonPresenter;
@@ -120,7 +119,6 @@ public class MemberRuleActivity extends CommonHttpActivity<CommonPresenter, Comm
                     share();
                     return true;
                 }else if(url.contains("wpyx://start")){
-                    FitnessLoadActivity.startAction(mContext,serializableExtra);
 
                     return true;
                 }else {

@@ -15,9 +15,7 @@ import com.ziran.meiliao.common.okhttp.Result;
 public class TeacherPageBean extends Result {
 
     /**
-     * data : {"course":{"id":36,"picture":"http://www.psytap.com/wpyx_longjg/resource/images/course/35.png","author":{"name":"陈",
      * "descript":"xiaochen"},"title":"测试","time":"05月03日10:38-10:39","shareDescript":"","shareTitle":"测试","shareUrl":"http://www.psytap
-     * .com/wpyx_longjg/page/content/shareCourse.html?courseId=36","sharePic":"","intro":"测试----"},"flag":true}
      */
 
     private DataBean data;
@@ -32,9 +30,7 @@ public class TeacherPageBean extends Result {
 
     public static class DataBean {
         /**
-         * course : {"id":36,"picture":"http://www.psytap.com/wpyx_longjg/resource/images/course/35.png","author":{"name":"陈",
          * "descript":"xiaochen"},"title":"测试","time":"05月03日10:38-10:39","shareDescript":"","shareTitle":"测试","shareUrl":"http://www
-         * .psytap.com/wpyx_longjg/page/content/shareCourse.html?courseId=36","sharePic":"","intro":"测试----"}
          * flag : true
          */
 
@@ -60,13 +56,11 @@ public class TeacherPageBean extends Result {
         public static class CourseBean {
             /**
              * id : 36
-             * picture : http://www.psytap.com/wpyx_longjg/resource/images/course/35.png
              * author : {"name":"陈","descript":"xiaochen"}
              * title : 测试
              * time : 05月03日10:38-10:39
              * shareDescript :
              * shareTitle : 测试
-             * shareUrl : http://www.psytap.com/wpyx_longjg/page/content/shareCourse.html?courseId=36
              * sharePic :
              * intro : 测试----
              */

@@ -71,16 +71,6 @@
                     android:textColor="@color/textColor_333"
                     android:textSize="12sp"/>
             </LinearLayout>
-            <!--
-                        <TextView
-                            android:id="@+id/tv_share_album_wpyx"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/tv_share_album_ewm"
-                            android:layout_marginLeft="8dp"
-                            android:layout_toRightOf="@+id/tv_share_album_ewm"
-                            android:text="5P医学App"
-                            android:textColor="@color/textColor2"/>-->
 
             <TextView
                 android:id="@+id/tv_share_album_tltle"

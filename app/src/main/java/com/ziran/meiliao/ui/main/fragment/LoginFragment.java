@@ -18,8 +18,8 @@ import android.widget.TextView;
 import com.citypicker.citylist.sortlistview.SortModel;
 import com.citypicker.citylist.utils.CityDataDb;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.app.WpyxConfig;
 import com.ziran.meiliao.common.commonutils.JsonUtils;
 import com.ziran.meiliao.common.commonutils.KeyBordUtil;
 import com.ziran.meiliao.common.commonutils.LogUtils;
@@ -31,23 +31,22 @@ import com.ziran.meiliao.common.commonwidget.OnNoDoubleClickListener;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.compressorutils.FileUtil;
 import com.ziran.meiliao.common.compressorutils.RegexUtils;
-import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.common.security.AES;
 import com.ziran.meiliao.common.security.EncodeUtil;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.entry.LoginBean;
 import com.ziran.meiliao.envet.ThreeLoginCallBack;
 import com.ziran.meiliao.ui.base.CommonHttpFragment;
+import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.CheckPhoneBean;
-import com.ziran.meiliao.ui.bean.StringDataBean;
 import com.ziran.meiliao.ui.bean.TagCheckBean;
+import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.main.activity.LoginActivity;
 import com.ziran.meiliao.ui.main.activity.MainActivity;
 import com.ziran.meiliao.ui.main.activity.RegionActivity;
 import com.ziran.meiliao.ui.main.contract.LoginContract;
 import com.ziran.meiliao.ui.main.model.LoginModel;
 import com.ziran.meiliao.ui.main.presenter.LoginPresenter;
-import com.ziran.meiliao.ui.settings.activity.ForgetPwdActivity;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.widget.PhoneCodeView;
 import com.ziran.meiliao.widget.SmsCodeView;
@@ -204,7 +203,6 @@ public class LoginFragment extends CommonHttpFragment<LoginPresenter, LoginModel
                 break;
             case R.id.tv_login_forgetPwd:
                 //执行跳转到忘记密码界面
-                ForgetPwdActivity.startAction(getActivity(), ForgetPwdActivity.FROM_FORGET_PWD);
                 break;
             case R.id.tv_sms_login:
                 //点击切换短信验证码登录
@@ -274,7 +272,7 @@ public class LoginFragment extends CommonHttpFragment<LoginPresenter, LoginModel
     public void returnLoginData(LoginBean registerBean) {
         //讲用户phone和token保存到偏好设置
         SPUtils.setString(AppConstant.SPKey.PHONE, mPhoneCodeView.getPhoneText());
-        FileUtil.createFileFolder(WpyxConfig.setPhone(mPhoneCodeView.getPhoneText()),getContext());
+        FileUtil.createFileFolder(MeiliaoConfig.setPhone(mPhoneCodeView.getPhoneText()),getContext());
         loginSuccess(registerBean);
     }
 
@@ -294,13 +292,20 @@ public class LoginFragment extends CommonHttpFragment<LoginPresenter, LoginModel
         }
     }
 
+    @Override
+    public void returnLoginCode(StringDataV2Bean registerBean) {
+
+    }
+
+    @Override
+    public void returnBindCode(LoginBean registerBean) {
+
+    }
+
+
     //登录成功跳转页面
     private void loginSuccess(LoginBean registerBean) {
         //保存token
-        SPUtils.setString(AppConstant.SPKey.TOKEN, registerBean.getData().getAccessToken());
-        MyAPP.setAccessToken(registerBean.getData().getAccessToken());
-        com.ziran.meiliao.entry.UserInfo userInfo = registerBean.getData().getUserInfo();
-        MyAPP.setmUserInfo(userInfo);
         //跳转到主界面
         MainActivity.startAction(getActivity(), 1);
         if (!MyAPP.isLogout()) {
@@ -310,19 +315,7 @@ public class LoginFragment extends CommonHttpFragment<LoginPresenter, LoginModel
         getActivity().finish();
     }
 
-    //成功获取验证码后执行,执行倒计时
-    @Override
-    public void returnLoginCode(Result registerBean) {
-        ToastUitl.showShort(getString(R.string.getcode_ok));
-        smsCodeView.startDjs();
-        bt_login_login.setEnabled(true);
-    }
 
-    @Override
-    public void returnBindCode(StringDataBean registerBean) {
-        ToastUitl.showShort(getString(R.string.getcode_ok));
-        if (bindDialogSmsCodeView != null) bindDialogSmsCodeView.startDjs();
-    }
 
     //返回第三方登录结果
     @Override
@@ -342,6 +335,16 @@ public class LoginFragment extends CommonHttpFragment<LoginPresenter, LoginModel
 ////            //弹出绑定对话框
 ////            showBindDialog(bean);
 //        }
+    }
+
+    @Override
+    public void showPwdLogin(LoginBean result) {
+
+    }
+
+    @Override
+    public void showUserInfo(UserBean result) {
+
     }
 
     @Override

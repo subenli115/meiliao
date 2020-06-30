@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_item_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="19dp"
+    android:paddingTop="20dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <RelativeLayout
+        android:id="@+id/card_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/card_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:roundimageview_borderRadius="15dp"
+            android:scaleType="centerCrop"
+            />
+<ImageView
+    android:id="@+id/iv_like"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:alpha="0"
+    android:layout_marginTop="10dp"
+    android:src="@mipmap/like_icon"
+    />
+        <ImageView
+            android:id="@+id/iv_no_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:alpha="0"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/nolike_icon"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="245dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/koloda_bottom"
+            />
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="22dp"
+            android:layout_marginLeft="14dp"
+            android:layout_alignParentBottom="true"
+            >
+
+<LinearLayout
+    android:id="@+id/ll"
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/card_user_name"
+        android:text="迷人小姐姐"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginRight="7dp"
+        android:textColor="#ffffff"
+        />
+
+    <ImageView
+        android:id="@+id/iv_real_name"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_toRightOf="@+id/card_user_name"
+        android:src="@drawable/real_name" />
+</LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_ll"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/ll"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="女"
+                    android:textColor="#ffffff"
+                    />
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="7dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:background="#ffffff"
+                    />
+                <TextView
+                    android:id="@+id/tv_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="18岁"
+                    android:textColor="#ffffff"
+                    />
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="7dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:background="#ffffff"
+                    />
+                <TextView
+                    android:id="@+id/tv_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="重庆"
+                    android:textColor="#ffffff"
+                    />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_chat"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/chat_icon" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/card_bottom_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+    </RelativeLayout>
+</LinearLayout>

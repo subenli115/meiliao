@@ -12,7 +12,6 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.ziran.meiliao.common.commonwidget.LoadingTip;
-import com.ziran.meiliao.javascript.JavaScriptObject;
 
 /**
  * author 吴祖清
@@ -129,7 +128,6 @@ public class WebViewManager {
             //设置编码方式
             webView.getSettings().setDefaultTextEncodingName("utf-8");
             //设置 Javascript交互接口
-            webView.addJavascriptInterface(new JavaScriptObject(), "wpyx");
         }
     }
 

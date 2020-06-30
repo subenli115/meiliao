@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+    android:id="@+id/ntb_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:ntb_tv_left="showAndFinish"
+    />
+<TextView
+    android:id="@+id/tv_title_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="青少年模式已开启"
+    android:textSize="56px"
+    android:layout_marginTop="99px"
+    android:textStyle="bold"
+    android:layout_below="@+id/ntb_title"
+    android:layout_centerHorizontal="true"
+    android:textColor="@color/black"
+    />
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title_name"
+        android:layout_marginTop="96px"
+        android:lineSpacingExtra="11px"
+        android:lineSpacingMultiplier="1"
+        android:layout_marginLeft="87px"
+        android:textColor="@color/black"
+        android:layout_marginRight="95px"
+        android:text="青少年模式开启后，用户只能使用适合青少年使用的功能，且无法进行充值，送礼物等操作。\n
+        \n
+开启青少年模式，需要先设置独立密码，如忘记密码可以通过申诉重置密码。\n
+\n青少年模式是每聊APP为促进青少年健康成长做出的一次尝试，我们优先针对核心场景进行了优化，也将继续致力于优化更多场景。"
+        />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="560px"
+        android:layout_marginTop="100px"
+        android:paddingTop="28px"
+        android:paddingBottom="28px"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_content"
+        android:gravity="center"
+        android:textSize="30px"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:background="@drawable/normal_bg_bule_px"
+        android:text="关闭青少年模式"
+        />
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

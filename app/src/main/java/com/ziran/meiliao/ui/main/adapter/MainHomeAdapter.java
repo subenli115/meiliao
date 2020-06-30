@@ -77,8 +77,6 @@ public class MainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
                     return R.layout.item_main_sjk_act_top;
                 case HeadData.Type.TITLE:
                     return R.layout.item_main_home_title;
-                case HeadData.Type.ZHUANLAN:
-                    return R.layout.item_sjk_recommend_zhuanlan;
 
             }
             return -1;

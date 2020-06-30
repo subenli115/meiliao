@@ -9,13 +9,6 @@
 
     <application
         >
-        <activity
-            android:name="com.ziran.meiliao.common.imagePager.BigImagePagerActivity"
-            />
-        <activity
-            android:name="com.ziran.meiliao.common.imagePager.ImagePreviewActivity"
-            />
-
 
 
         <receiver android:name="com.ziran.meiliao.common.receiver.NetBroadcastReceiver">

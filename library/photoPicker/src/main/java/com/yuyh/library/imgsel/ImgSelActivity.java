@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -50,6 +52,7 @@ public class ImgSelActivity extends FragmentActivity implements View.OnClickList
     private String cropImagePath;
 
     private ArrayList<String> result = new ArrayList<>();
+    private Uri outputUri;
 
     public static void startActivity(Activity activity, ImgSelConfig config, int RequestCode) {
         Intent intent = new Intent(activity, ImgSelActivity.class);
@@ -137,12 +140,12 @@ public class ImgSelActivity extends FragmentActivity implements View.OnClickList
 
     @Override
     public void onSingleImageSelected(String path) {
-        if (config.needCrop) {
-            crop(path);
-        } else {
+//        if (config.needCrop) {
+//            crop(path);
+//        } else {
             Constant.imageList.add(path);
             exit();
-        }
+//        }
     }
 
     @Override
@@ -159,15 +162,14 @@ public class ImgSelActivity extends FragmentActivity implements View.OnClickList
     @Override
     public void onCameraShot(File imageFile) {
         if (imageFile != null) {
-            if (config.needCrop) {
-                crop(imageFile.getAbsolutePath());
-            } else {
+//            if (config.needCrop) {
+//                crop(imageFile.getAbsolutePath());
+//            } else {
                 Constant.imageList.add(imageFile.getAbsolutePath());
                 exit();
-            }
+//            }
         }
     }
-
     private void crop(String imagePath) {
         if (TextUtils.isEmpty(config.cropImagePath)) {
             cropImagePath = MyFileUtils.createRootPath(this) + "/" + System.currentTimeMillis() + ".jpg";
@@ -178,15 +180,15 @@ public class ImgSelActivity extends FragmentActivity implements View.OnClickList
         File file = new File(cropImagePath);
         FileUtil.delete(file.getPath());
         MyFileUtils.createFile(file);
-        Uri outputUri = Uri.fromFile(file);
+         outputUri = Uri.fromFile(file);
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(imageUri, "image/*");
         intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", config.aspectX);
-        intent.putExtra("aspectY", config.aspectY);
         intent.putExtra("outputX", config.outputX);
         intent.putExtra("outputY", config.outputY);
         intent.putExtra("return-data", false);
+           intent.putExtra("aspectX", 9998);
+             intent.putExtra("aspectY", 9999);
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG);
         intent.putExtra("scale", true);
         intent.putExtra("scaleUpIfNeeded", true);

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_tv_left="showAndFinish" />
+
+    <View style="@style/hor_match_line_8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/tv_name"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/black"
+            android:text="姓名"
+            />
+
+        <com.citypicker.citylist.widget.ClearEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:hint="请输入"
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            android:textColorHint="@color/textColor_b2"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
+            android:id="@+id/tv_id"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/black"
+            android:text="身份证"
+            />
+
+        <com.citypicker.citylist.widget.ClearEditText
+            android:id="@+id/et_id"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:hint="请输入"
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            android:textColorHint="@color/textColor_b2"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/textColor_b2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="*姓名和证件必须为本人，身份证绑定后不能修改"
+        />
+    <TextView
+        android:id="@+id/tv_qd"
+        android:layout_width="280dp"
+        android:layout_marginTop="40.5dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:background="@drawable/normal_bg_bule"
+        android:text="确定"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/icon_realname"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:maxLines="2"
+            android:text="您提供的证件信息将受到严格的保护，仅用于身份验证、提现\n
+                    打款，未经本人许可不会用于其他用途"
+            android:textColor="#4d4d4d"
+            android:textSize="12sp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

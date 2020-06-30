@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent60"
+    >
+
+<ImageView
+    android:id="@+id/iv_star"
+    android:layout_width="690px"
+    android:layout_height="500px"
+    android:background="@mipmap/icon_star"
+    android:layout_marginLeft="30px"
+    android:layout_marginTop="50px"
+    android:layout_marginRight="30px"
+    android:layout_centerHorizontal="true"
+    />
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/rl_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="400px"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/ll"
+    android:layout_width="540px"
+ android:gravity="center_horizontal"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/normal_bg_white60"
+    android:orientation="vertical"
+    android:layout_height="560px">
+<com.zhy.autolayout.AutoFrameLayout
+    android:layout_width="wrap_content"
+    android:layout_marginTop="165px"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="领取ML币成功"
+        android:textSize="56px"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+</com.zhy.autolayout.AutoFrameLayout>
+
+<com.zhy.autolayout.AutoLinearLayout
+android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+
+        android:id="@+id/tv_update_version_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="恭喜获取"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="#F81C1C"
+        android:textSize="72px"
+        />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ML币"
+    android:layout_marginLeft="4dp"
+    android:textColor="@color/black"
+    android:textSize="30px"
+    android:textStyle="bold"
+
+    />
+</com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_qd"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65px"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:text="确定"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:textSize="30px"
+        android:gravity="center"
+        android:background="@drawable/normal_bg_yellow"
+        />
+
+
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+    <ImageView
+        android:layout_width="347px"
+        android:layout_height="248px"
+        android:layout_alignBottom="@+id/iv_star"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/icon_gold"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

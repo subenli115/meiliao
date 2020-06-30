@@ -14,15 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.bumptech.glide.Glide;
-import com.github.mikephil.charting.charts.BarChart;
 import com.google.gson.Gson;
+import com.zhy.autolayout.AutoRelativeLayout;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.app.WpyxConfig;
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
-import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
@@ -32,10 +29,8 @@ import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.entry.MusicEntry;
-import com.ziran.meiliao.envet.MyOnScrollListener;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.service.ServiceManager;
-import com.ziran.meiliao.ui.NewDecompressionmuseum.activity.PracticeStartActivity;
 import com.ziran.meiliao.ui.base.CommonModel;
 import com.ziran.meiliao.ui.base.CommonRefreshFragment;
 import com.ziran.meiliao.ui.bean.ActisData;
@@ -55,32 +50,19 @@ import com.ziran.meiliao.ui.bean.StringDataBean;
 import com.ziran.meiliao.ui.bean.TempActivityBean;
 import com.ziran.meiliao.ui.bean.ZhiBoData;
 import com.ziran.meiliao.ui.bean.ZhuanLanBean;
-import com.ziran.meiliao.ui.decompressionmuseum.activity.AlbumPlayerActivity;
 import com.ziran.meiliao.ui.main.adapter.NewMainHomeAdapter;
 import com.ziran.meiliao.ui.main.contract.MainHomeContract;
 import com.ziran.meiliao.ui.main.presenter.MainHomePresenter;
 import com.ziran.meiliao.ui.main.util.NewMainHomeHeadViewUtil;
-import com.ziran.meiliao.ui.priavteclasses.activity.AlbumMoreActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.DefWebActivity;
 import com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.HorizontalHistoryActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.HorizontalLiveActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.PrivateCourseActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.SearchActivity;
-import com.ziran.meiliao.ui.priavteclasses.util.SJKLiveUtil;
 import com.ziran.meiliao.ui.settings.activity.MessageActivity;
-import com.ziran.meiliao.ui.workshops.activity.WorkshopsMainActivity;
 import com.ziran.meiliao.utils.CheckUtil;
 import com.ziran.meiliao.utils.DeviceUtil;
 import com.ziran.meiliao.utils.MapUtils;
-import com.ziran.meiliao.utils.MusicPanelFloatManager;
 import com.ziran.meiliao.utils.MyValueTempCache;
 import com.ziran.meiliao.utils.PrefUtils;
 import com.ziran.meiliao.widget.LocationUtils;
 import com.ziran.meiliao.widget.SlideSearchView;
-import com.ziran.meiliao.widget.pupop.BasePopupWindow;
-import com.ziran.meiliao.widget.pupop.PopupWindowUtil;
-import com.ziran.meiliao.widget.pupop.ZndhPopupWindow;
 import com.zhy.autolayout.AutoFrameLayout;
 import com.zhy.autolayout.AutoLinearLayout;
 
@@ -105,8 +87,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
 
     @Bind(R.id.rl_main_home_root)
     CoordinatorLayout mRlRootView;
-    @Bind(R.id.barchart)
-    BarChart barchart;
     @Bind(R.id.scrolling_header)
     AutoFrameLayout scrollingHeader;
     @Bind(R.id.slideSearchView)
@@ -119,14 +99,14 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
     TextView tvKnow;
     @Bind(R.id.all_js)
     AutoLinearLayout allJs;
-    @Bind(R.id.lottie_likeanim)
-    LottieAnimationView lottie;
     @Bind(R.id.ll_main_home_title_bar)
     View llMainHomeTitleBar;
     @Bind(R.id.max_num)
     TextView maxNum;
     @Bind(R.id.mid_num)
     TextView midNum;
+    @Bind(R.id.arl_bg)
+    AutoRelativeLayout arlBg;
     private ArrayList<Entity> list;
     private String hotWord;
     private int unReadCount;
@@ -165,7 +145,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
     @Override
     public void showChartData(PractiveChartBean.DataBean result) {
         List<PractiveChartBean.DataBean.ChartDataBean> chartData = result.getChartData();
-        newMainHomeHeadViewUtil.setData(chartData.size(),chartData,result.getX(),result.getY(),maxNum,midNum);
     }
 
 
@@ -183,7 +162,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
                return;
             }
         }
-        MusicPanelFloatManager.getInstance().res(false);
         MyAPP.mServiceManager.refreshMusicList(mMusicList);
         MyAPP.mServiceManager.setAlbumPicture(albumBean.getRoundPic());
         MyAPP.mServiceManager.setAlbumName1(albumBean.getTitle());
@@ -193,7 +171,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
         MyAPP.mServiceManager.setIsbuy(albumBean.isBuy());
         MyAPP.mServiceManager.setAlbum(albumBean);
         MyValueTempCache.get().put(AppConstant.SPKey.PLAY_DATA,mMusicList);
-        AlbumPlayerActivity.startAction(mContext, id+"",true);
     }
 
     @Override
@@ -219,7 +196,7 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
         if(data.getRecActivity().size()>0){
             homeList.add(recActivityBean);
         }
-        WpyxConfig.setHotWord(hotWord);
+        MeiliaoConfig.setHotWord(hotWord);
         if (EmptyUtils.isNotEmpty(hotWord)) {
             mSearchView.setText(hotWord);
         }
@@ -248,9 +225,7 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
         String albumBeanString = PrefUtils.getString("albumBean", "",getContext());
         if(!albumBeanString.equals("")){
             homeAlbumBean =gson.fromJson(albumBeanString, HomeAlbumBean.class);
-            newMainHomeHeadViewUtil.setMusicModule(homeAlbumBean);
         }else{
-            newMainHomeHeadViewUtil.setMusicModule(data);
         }
         return albumBeanString;
     }
@@ -267,7 +242,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
     @Override
     public void showNewMusicList(List<MusicEntry> musicEntries) {
         mMusicList=musicEntries;
-        newMainHomeHeadViewUtil.setResult(mAuthor,mMusicList);
     }
 
 
@@ -283,18 +257,11 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
         super.onResume();
         showQuitPopWindow();
     }
-        private void initAni() {
-        lottie.setImageAssetsFolder("images/");
-        lottie.setAnimation("data.json");
-        lottie.loop(true);
-        lottie.playAnimation();
-    }
 
 
     private void showQuitPopWindow() {
         boolean isFisrtHome = PrefUtils.getBoolean("isFisrtHome", false, getContext());
         if(!isFisrtHome){
-            initAni();
             mRlRootView.setEnabled(false);
             all_action.setVisibility(View.VISIBLE);
             all_action.setOnTouchListener(new View.OnTouchListener() {
@@ -313,9 +280,7 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
         PicsBean picsBean = (PicsBean) adViewpagerUtil.getDatas().get(position);
         if ("zhibo".equals(picsBean.getType())) {
             if (!CheckUtil.check(getContext(), getView())) return;
-            HorizontalLiveActivity.startAction(getContext(), picsBean.getLink(), 1);
         } else if ("history".equals(picsBean.getType())) {
-            HorizontalHistoryActivity.startAction(getContext(), picsBean.getLink(), 0);
         } else if ("h5".equals(picsBean.getType())) {
             ActisData dataBean = new ActisData();
             dataBean.setPicture(picsBean.getPicture());
@@ -333,43 +298,23 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
     protected void initView() {
         super.initView();
          mContext = getContext();
-        FileUtil.createFileFolder(WpyxConfig.setPhone(SPUtils.getString("phone")), mContext);
+        FileUtil.createFileFolder(MeiliaoConfig.setPhone(SPUtils.getString("phone")), mContext);
         try {
         //初始数据
-        MyOnScrollListener scrollListener = new MyOnScrollListener(iRecyclerView, llMainHomeTitleBar, scrollingHeader, AppConstant.RXTag
-                .HOME_MUSIC_PLANE_SHOW_OR_HIDE);
-        scrollListener.setOnChangeListener(new MyOnScrollListener.OnChangeListener() {
-            @Override
-            public void change(boolean showOrHide) {
-                mSearchView.toggle();
-            }
-        });
             iRecyclerView.setFocusableInTouchMode(false);
             iRecyclerView.setFocusable(false);
             iRecyclerView.setHasFixedSize(true);
-        iRecyclerView.addOnScrollListener(scrollListener);
              gson=new Gson();
         initHeadData();
-        newMainHomeHeadViewUtil = new NewMainHomeHeadViewUtil(barchart,iRecyclerView,scrollingHeader);
         mRxManager.on(AppConstant.RXTag.MAIN_HOME_MORE_CLICK, new Action1<HeadData>() {
             @Override
             public void call(HeadData headData) {
-                if (headData.getId() == HeadData.Type.ZHUANLAN) {
-                    PrivateCourseActivity.startAction(getContext(),"0");
-                } else if (headData.getId() == HeadData.Type.COURSE) {
-                    PrivateCourseActivity.startAction(getContext(),"2");
-                } else if (headData.getId() == HeadData.Type.ALBUM) {
-                    startActivity(AlbumMoreActivity.class);
-                }else if(headData.getId() == HeadData.Type.BOOTCAMP){
-                    PrivateCourseActivity.startAction(getContext(),"1");
-                }
             }
         });
 
         mSearchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchActivity.startAction(hotWord);
             }
         });
 //大会内容窗口
@@ -409,7 +354,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
             if(aBoolean.equals("next")){
                 String albumBeanString = PrefUtils.getString("albumBean", "", getContext());
                     homeAlbumBean =gson.fromJson(albumBeanString, HomeAlbumBean.class);
-                    newMainHomeHeadViewUtil.setMusicModule(homeAlbumBean);
             }
             }
         });
@@ -428,7 +372,7 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
         defMap.put("cellphone",android.os.Build.BRAND+android.os.Build.MODEL);
         defMap.put("version", DeviceUtil.getVersionCode(getContext()));
         defMap.put("page",page+"");
-        defMap.put("portVersion",WpyxConfig.portVersion);
+        defMap.put("portVersion", MeiliaoConfig.portVersion);
         mPresenter.getNewHomeData(defMap);
         getChartData();
         mPresenter.getUnReadCount(MapUtils.getDefMapSp(true));
@@ -448,10 +392,8 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
             public void itemClick(int id) {
                 switch (id){
                     case R.id.all_yxs:
-                        PrivateCourseActivity.startAction(getContext(),"0");
                         break;
                     case R.id.all_zztj:
-                        startActivity(WorkshopsMainActivity.class);
                         break;
                 }
             }
@@ -537,7 +479,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
         int itemViewType = mAdapter.getItemViewType(position);
         switch (itemViewType) {
             case HeadData.Type.TOP_OTHER:
-                    PrivateCourseActivity.startAction(getContext(),"0");
                 break;
             case HeadData.Type.GONGZUOFANG_TOP:
                 break;
@@ -546,7 +487,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
                 break;
             case HeadData.Type.ZHIBO:
                 ZhiBoData zhiBoData = EmptyUtils.parseObject(bean);
-                SJKLiveUtil.startActivity(getContext(), String.valueOf(zhiBoData.getId()), zhiBoData.getTag(), zhiBoData.getStatusX());
                 break;
             case HeadData.Type.ZHUANLAN:
                 break;
@@ -556,28 +496,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
     private ImageView floatView;
 
     private void showZndh(final TempActivityBean.DataBean result) {
-        ZndhPopupWindow zndhPopupWindow = new ZndhPopupWindow(getContext());
-        zndhPopupWindow.setData(result);
-        zndhPopupWindow.setOnDissmisListener(new BasePopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                if (floatView == null) {
-                    floatView = new ImageView(getContext());
-                    Glide.with(getContext()).load(result.getIcon()).into(floatView);
-                    floatView.setImageResource(R.mipmap.index_btn_mindfulness);
-                    floatView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                                DefWebActivity.startAction(getContext(),result.getUrl(), result.getTitle(),result,result.getZhiboUrl());
-                        }
-                    });
-//              0      mRlRootView.addView(floatView, new RelativeLayout.LayoutParams(-2, -2));
-                    floatView.setX(DisplayUtil.getScreenWidth(getContext()) - DisplayUtil.dip2px(72));
-                    floatView.setY(DisplayUtil.getScreenHeight(getContext()) - DisplayUtil.dip2px(196));
-                }
-            }
-        });
-        PopupWindowUtil.show(getActivity(), zndhPopupWindow);
     }
     //button点击监听
     @OnClick({ R.id.iv_main_home_title_ba_message,R.id.tv_know,R.id.all_js})
@@ -596,7 +514,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
                 mRlRootView.setEnabled(true);
                 break;
             case R.id.all_js:
-                PracticeStartActivity.startAction(getContext(),1,null, "","");
                 break;
         }
     }

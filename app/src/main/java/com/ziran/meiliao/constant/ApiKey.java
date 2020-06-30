@@ -1,5 +1,7 @@
 package com.ziran.meiliao.constant;
 
+import com.ziran.meiliao.ui.bean.VersionNewBean;
+
 /**
  * author 吴祖清
  * create  2017/3/31 10
@@ -26,12 +28,12 @@ public interface ApiKey {
     /**
      * 获取登录的验证码
      */
-    String USER_GET_LOG_CODE = "user/getLogCode";
+    String USER_GET_LOG_CODE = "admin/mobile/alibabaSendSms";
 
     /**
      * 请求登录
      */
-    String USER_LOGIN = "user/login";
+    String USER_LOGIN = "auth/oauth/token";
     /**
      * 获取重置密码的验证码
      */
@@ -71,6 +73,7 @@ public interface ApiKey {
      * /version/getLastestVersion 获取平台最新版本号
      */
     String VERSION = "version/getLastestVersion";
+
 
     /**
      * POST /user/authorizeCheck 第三方登录检测
@@ -191,10 +194,6 @@ public interface ApiKey {
     String LIKE_COURSE = "course/like/";
 
 
-    /**
-     * /beeCloud/getAppSecret 获取BeeCloud-AppSecret
-     */
-    String GET_BEECLOUD_APPSECRET = "beeCloud/getAppSecret/";
 
 
     /**
@@ -600,46 +599,6 @@ public interface ApiKey {
     String PRACTICE_GET_NOTE_QUES = "practice/getNoteQues";
 
     /**
-     * /practice/getShareData 获取分享的H5数据
-     */
-    String PRACTICE_GET_SHARE_DATA = "practice/getShareData";
-
-
-    /**
-     * /practice/getTotal 获取用户总的冥想时间、冥想课程、连续天数
-     */
-    String PRACTICE_GET_TOTAL = "practice/getTotal";
-
-    /**
-     * /practice/getTotalByDate 根据日期获取用户的总冥想时间
-     */
-    String PRACTICE_GET_TOTAL_BY_DATE = "practice/getTotalByDate";
-
-    /**
-     * /practice/getUserNote 根据日期获取用户的笔记
-     */
-    String PRACTICE_GET_USER_NOTE = "practice/getUserNote";
-    /**
-     * /practice/getTagByMonth 根据月份返回每日是否正念
-     */
-    String PRACTICE_GET_TAG_BY_MONTH = "practice/getTagByMonth";
-
-    /**
-     * /practice/listPra 获取练习的记录列表
-     */
-    String PRACTICE_LIST_PRA = "practice/listPra";
-
-    /**
-     * /practice/updateDailyMind 设置每日正念时间
-     */
-    String PRACTICE_UPDATE_DAILY_MINDV2 = "practice/updateDailyMindV2";
-
-
-    /**
-     * /practice/upload 练习完成后上传并返回数据
-     */
-    String PRACTICE_UPLOAD = "practice/upload/";
-    /**
      * /practice/uploadPoster 海报上传
      */
     String PRACTICE_UPLOADPOSTER = "practice/uploadPoster/";
@@ -657,142 +616,13 @@ public interface ApiKey {
      */
     String HOME_GET_DATA = "home/getData/";
 
-    /**
-     * /sjk/getActData 获取工作坊数据
-     */
-    String SJK_GET_ACT_DATA = "sjk/getActData/";
-
-    /**
-     * /sjk/getRecData 获取推荐页数据
-     */
-    String SJK_GET_REC_DATA = "sjk/getRecData/";
-
-    /**
-     * /sjk/getSpecData 获取专栏页数据 / 换一换
-     */
-    String SJK_GET_SPEC_DATA = "sjk/getSpecData/";
-
-    /**
-     * 导铃推荐页面接口：/album/getRecData
-     */
-    String ALBUM_GET_REC_DATA = "album/getRecData/";
-
-    /**
-     * /practice/delNote 删除笔记
-     */
-    String PRACTICE_DEL_NOTE = "practice/delNote/";
 
     /**
      * /practice/updateNote 修改笔记
      */
     String PRACTICE_UPDATE_NOTE = "practice/updateNote/";
 
-    /**
-     * /practice/getUserNoteById 根据日期获取用户的笔记
-     */
-    String PRACTICE_GET_USER_NOTE_BY_ID = "practice/getUserNoteById/";
 
-    /**
-     * /subscription/buy 购买专栏
-     */
-    String SPEC_COLUMN_BUY = "subscription/buy/";
-
-    /**
-     * /subscription/listRecord 专栏列表
-     */
-    String SPEC_COLUMN_LIST_RECORD = "subscription/listRecord/";
-
-    /**
-     * /subscription/mediaDetail 图文详情
-     */
-    String SUBSCRIPTION_MEDIA_DETAIL = "subscription/mediaDetail/";
-    /**
-     *  /subscription/mediaAndText 看图文，听音频
-     */
-    String SUBSCRIPTION_MEDIA_AND_TEXT = "subscription/mediaAndText/";
-
-    /**
-     * /subscription/gz 关注专栏
-     */
-    String SPEC_COLUMN_GZ = "subscription/gz/";
-
-    /**
-     * /subscription/nativeIndex 专栏原生首页
-     */
-    String SPEC_COLUMN_NATIVE_INDEX = "subscription/nativeIndex/";
-
-
-    /**
-     * /subscription/bigBrand 大牌进驻内容
-     */
-    String SUBSCRIPTION_BIG_BRAND = "subscription/bigBrand/";
-
-    /**
-     * /subscription/seeUp 增加查阅次数
-     */
-    String SPEC_COLUMN_SEE_UP = "subscription/seeUp/";
-
-
-    /**
-     * /subscription/webIndex/{authorId} 专栏Web首页
-     */
-    String SPEC_COLUMN_WEB_INDEX = "subscription/webIndex/";
-    /**
-     * /subscription/getCoursePPt 获取课程ppt 专栏Web首页
-     */
-    String SUBSCRIPTION_GET_COURSE_PPT = "subscription/getCoursePPt/";
-
-
-    /**
-     * /audio/collect 收藏音频课程
-     */
-    String AUDIO_COLLECT = "audio/collect/";
-    /**
-     * /audio/comment 评论音频课程
-     */
-    String AUDIO_COMMENT = "audio/comment/";
-    /**
-     * /audio/deleteComment 删除评论
-     */
-    String AUDIO_DELETE_COMMENT = "audio/deleteComment/";
-    /**
-     * /audio/getComment 获取音频课程评论
-     */
-    String AUDIO_GET_COMMENT = "audio/getComment/";
-    /**
-     * /audio/getData 音频课程首页数据
-     */
-    String AUDIO_GET_DATA = "audio/getData/";
-
-    /**
-     * /audio/like 点赞音频课程
-     */
-    String AUDIO_LIKE = "audio/like/";
-
-    /**
-     * /audio/listenUp 增加收听次数
-     */
-    String AUDIO_LISTEN_UP = "audio/listenUp/";
-
-    /**
-     * /audio/praiseComment 点赞音频课程评论
-     */
-    String AUDIO_PRAISE_COMMENT = "audio/praiseComment/";
-
-    /**
-     * /course/praiseComment 点赞视频课程评论
-     */
-    String COURSE_PRAISE_COMMENT = "course/praiseComment/";
-
-    /**
-     * /course/deleteComment 删除视频课程评论
-     */
-    String COURSE_DELETE_COMMENT = "course/deleteComment/";
-
-    /**
-     * /course/getData点赞音频课程评论
-     */
-    String COURSE_GET_DATA = "course/getData/";
     /**
      * /message/getNoReadCount 获取未读消息数
      */
@@ -802,10 +632,6 @@ public interface ApiKey {
      */
     String MESSAGE_READ_ALL = "message/readAll/";
 
-    /**
-     * /practice/getChartData 根据日期获取用户的总冥想时间
-     */
-    String PRACTICE_GET_CHART_DATA = "practice/getChartData/";
 
     /**
      * /practice/downloadVedio 下载练习视频
@@ -819,174 +645,13 @@ public interface ApiKey {
     String CONFERENCE_GET_CONFERENCE = "conference/getConference/";
 
 
-    /**
-     * /famousTeachers/famousTeachersList 名师教场列表
-     */
-    String FAMOUS_TEACHERS_FAMOUS_TEACHERS_LIST = "famousTeachers/famousTeachersList/";
 
-
-    /**
-     * /missionBuilt/buyMissionBuilt 购买（定制）团建课程库详情
-     */
-    String MISSION_BUILT_BUY_MISSION_BUILT = "missionBuilt/buyMissionBuilt/";
-
-
-    /**
-     * /missionBuilt/createMissionBuilt 团建定制页面信息填写
-     */
-    String MISSION_BUILT_CREATE_MISSION_BUILT = "missionBuilt/createMissionBuilt/";
-
-
-    /**
-     * /missionBuilt/listMissionBuilt 团建课程库列表
-     */
-    String MISSION_BUILT_LIST_MISSION_BUILT = "missionBuilt/listMissionBuilt/";
-
-
-    /**
-     * /missionBuilt/listMissionBuiltInfo 获取团建库课程库分类信息
-     */
-    String MISSION_BUILT_LIST_MISSION_BUILT_INFO = "missionBuilt/listMissionBuiltInfo/";
-
-
-    /**
-     * /missionBuilt/missionBuiltDetail 团建课程库详情
-     */
-    String MISSION_BUILT_MISSION_BUILT_DETAIL = "missionBuilt/missionBuiltDetail/";
-
-
-    /**
-     * /qCourseLibrary/searchQCourseLibrary 课题库搜索
-     */
-    String Q_COURSE_LIBRARY_SEARCH_QCOURSE_LIBRARY = "qCourseLibrary/searchQCourseLibrary/";
-
-
-    /**
-     * /qjg/getRecData 获取趣静观推荐页数据
-     */
-    String QJG_GET_REC_DATA = "qjg/getRecData/";
-
-
-    /**
-     * /crownFund/crowdFundDetail 获取众筹详情
-     */
-    String CROWN_FUND_CROWD_FUND_DETAIL = "crownFund/crowdFundDetail/";
-
-    /**
-     * /crownFund/addCrowdFundUser 填写众筹用户信息
-     */
-    String CROWN_FUND_ADD_CROWD_FUND_USER = "crownFund/addCrowdFundUser/";
-
-
-    /**
-     * /crownFund/buyCrowdFund 众筹购买
-     */
-    String CROWN_FUND_BUY_CROWD_FUND = "crownFund/buyCrowdFund/";
-
-
-    /**
-     * /crownFund/checkCrowdFundUser 检查是否已经被审核通过众筹个人信息
-     */
-    String CROWN_FUND_CHECK_CROWD_FUND_USER = "crownFund/checkCrowdFundUser/";
-
-
-    /**
-     * /crownFund/createCrowdFund 发起众筹
-     */
-    String CROWN_FUND_CREATE_CROWD_FUND = "crownFund/createCrowdFund/";
-
-
-    /**
-     * /crownFund/getCrowdFundModule 获取众筹模板
-     */
-    String CROWN_FUND_GET_CROWD_FUND_MODULE = "crownFund/getCrowdFundModule/";
-
-
-    /**
-     * /crownFund/listCFQcourseLibrary 获取众筹课程库
-     */
-    String CROWN_FUND_LIST_CFQCOURSE_LIBRARY = "crownFund/listCFQcourseLibrary/";
-
-
-    /**
-     * /crownFund/listCrowdFund 获取众筹页面列表
-     */
-    String CROWN_FUND_LIST_CROWD_FUND = "crownFund/listCrowdFund/";
-
-    /**
-     * /crownFund/searchCFQcourseTeachers 条件搜索老师众筹库
-     */
-    String CROWN_FUND_SEARCH_CFQCOURSE_TEACHERS = "crownFund/searchCFQcourseTeachers/";
-
-    /**
-     * /crownFund/searchCFQcourseLibrary 条件搜索众筹库
-     */
-    String CROWN_FUND_SEARCH_CFQCOURSE_LIBRARY = "crownFund/searchCFQcourseLibrary/";
-
-
-    /**
-     * /famousTeachers/collectFamousTeacher 名师教场课程收藏
-     */
-    String FAMOUS_TEACHERS_COLLECT_FAMOUS_TEACHER = "famousTeachers/collectFamousTeacher/";
-
-
-    /**
-     * /crownFund/listCFQcourseTeachers 获取众筹老师列表
-     */
-    String CROWN_FUND_LIST_CFQCOURSE_TEACHERS = "crownFund/listCFQcourseTeachers/";
-
-
-    /**
-     * /missionBuilt/missionBuiltOrderList 团建课订单/列表
-     */
-    String MISSION_BUILT_MISSION_BUILT_ORDER_LIST = "missionBuilt/missionBuiltOrderList/";
-
-    /**
-     * /missionBuilt/collectMissionBuilt 收藏团建课程
-     */
-    String MISSION_BUILT_COLLECT_MISSION_BUILT = "missionBuilt/collectMissionBuilt/";
 
     /**
      * /missionBuilt/collectMissionList 收藏众筹课程列表
      */
     String MISSION_BUILT_COLLECT_MISSION_LIST = "missionBuilt/collectMissionList/";
 
-    /**
-     * /missionBuilt/missionBuiltOrderListIntro 团建课订单简要信息
-     */
-    String MISSION_BUILT_MISSION_BUILT_ORDER_LIST_INTRO = "missionBuilt/missionBuiltOrderListIntro/";
-
-
-    /**
-     * /missionBuilt/missionBuiltOrderDetail 团建课订单详情或者跳转到课程详情
-     */
-    String MISSION_BUILT_MISSION_BUILT_ORDER_DETAIL = "missionBuilt/missionBuiltOrderDetail/";
-
-
-    /**
-     * /crownFund/collectCrownFund 收藏众筹课程
-     */
-    String CROWN_FUND_COLLECT_CROWN_FUND = "crownFund/collectCrownFund/";
-
-    /**
-     * /crownFund/crowdFundOrderList 众筹(发起/购买)订单/列表
-     */
-    String CROWN_FUND_CROWD_FUND_ORDER_LIST = "crownFund/crowdFundOrderList/";
-
-    /**
-     * /crownFund/crownFundOrderDetail 众筹订单明细
-     */
-    String CROWN_FUND_CROWN_FUND_ORDER_DETAIL = "crownFund/crownFundOrderDetail/";
-
-    /**
-     * /crownFund/crownFundOrderListIntro 众筹订单简要信息
-     */
-    String CROWN_FUND_CROWN_FUND_ORDER_LIST_INTRO = "crownFund/crownFundOrderListIntro/";
-
-    /**
-     * /crownFund/refundDetail 众筹订单退款明细
-     */
-    String CROWN_FUND_REFUND_DETAIL = "crownFund/refundDetail/";
 
     /**
      * /crownFund/refundSupply 提交众筹订单退款申请
@@ -1004,15 +669,6 @@ public interface ApiKey {
      */
     String CROWN_FUND_REFUND_SUPPLY_PROGRESS = "crownFund/refundSupplyProgress/";
 
-    /**
-     * /uploadImgs/uploadImgs 图片（单张/多张）上传通用
-     */
-    String UPLOAD_IMGS_UPLOAD_IMGS = "uploadImgs/uploadImgs/";
-
-    /**
-     * /famousTeachers/famousTeachersDetail 名师教场详情
-     */
-    String FAMOUS_TEACHERS_FAMOUS_TEACHERS_DETAIL = "famousTeachers/famousTeachersDetail/";
 
 
     /**
@@ -1031,46 +687,6 @@ public interface ApiKey {
      */
     String ADVERT_GET_ADVERT = "advert/getAdvert/";
 
-    /**
-     * /subscription/subscriptionShareSave 专栏课程分享记录保存
-     */
-    String SUBSCRIPTION_SUBSCRIPTION_SHARE_SAVE = "subscription/subscriptionShareSave/";
-
-    /**
-     * /crownFund/crowdFundShareSave 众筹课程分享记录保存
-     */
-    String CROWN_FUND_CROWD_FUND_SHARE_SAVE = "crownFund/crowdFundShareSave/";
-
-    /**
-     * /missionBuilt/missionBuiltShareSave 团建课程分享记录保存
-     */
-    String MISSION_BUILT_MISSION_BUILT_SHARE_SAVE = "missionBuilt/missionBuiltShareSave/";
-
-    /**
-     * /famousTeachers/famousTeachersShareSave 名师课程分享记录保存
-     */
-    String FAMOUS_TEACHERS_FAMOUS_TEACHERS_SHARE_SAVE = "famousTeachers/famousTeachersShareSave/";
-
-    /**
-     * /coupon/couponSave 优惠券保存
-     */
-    String COUPON_COUPON_SAVE = "coupon/couponSave/";
-
-    /**
-     * /subscription/collectSubscriptionList 收藏专栏课程列表
-     */
-    String SUBSCRIPTION_COLLECT_SUBSCRIPTION_LIST = "subscription/collectSubscriptionList/";
-
-    /**
-     * /subscription/collectSubscription 收藏专栏课程
-     */
-    String SUBSCRIPTION_COLLECT_SUBSCRIPTION = "subscription/collectSubscription/";
-
-
-    /**
-     * /practice/getByDay 获取正念币
-     */
-    String PRACTICE_GET_BY_DAY = "practice/getByDay/";
 
     /**
      * /crownFund/collectCrownFundList 收藏众筹课程列表
@@ -1090,119 +706,9 @@ public interface ApiKey {
      *  /level/level 会员等级
      */
     String USER_MEMBER_LEVEL = "level/level/";
-    /**
-     *  /level/levelDetail 会员详情
-     */
-//    String USER_MEMBER_Detail =  "level/levelDetail/";
-
-    /**
-     *  /user/checkLoginPhone 检测是否登录
-     */
-    String USER_CHECKLOGINPHONE = "admin/mobile/{mobile}";
 
 
     /**
-     *  /practiceActivity/homeData 新首页数据
-     */
-    String PRACTIEACTIVITY_HOMEDATA = "/practiceActivity/homeData" ;
-
-
-    /**
-     *
-     *  /practiceActivity/INFO mbsr练习册详情
-     */
-    String PRACTIEACTIVITY_INFO = "/practiceActivity/info" ;
-
-    /**
-     *  /practiceActivity/join mbsr练习加入/退出
-     */
-    String PRACTIEACTIVITY_JOIN = "/practiceActivity/join" ;
-    /**
-     *  /practiceActivity/head mbsr练习头
-     */
-    String PRACTIEACTIVITY_HEAD = "/practiceActivity/head" ;
-
-    /**
-     *  /practiceActivity/start 开始第一周练习
-     */
-    String PRACTIEACTIVITY_START = "/practiceActivity/start" ;
-
-
-    /**
-     *  /practiceActivity/calendar 练习日历
-     */
-    String PRACTIEACTIVITY_CALENDAR = "/practiceActivity/calendar" ;
-
-
-    /**
-     *  /practiceActivity/detailOne 第一类练习数据
-     */
-    String PRACTIEACTIVITY_DetailONE = "/practiceActivity/detailOne" ;
-
-    /**
-     *  /practiceActivity/detailTwo 第二类练习数据
-     */
-    String PRACTIEACTIVITY_DetailTWO = "/practiceActivity/detailTwo" ;
-
-
-
-    /**
-     *  /practiceActivity/detailOneSave 第三类练习数据保存
-     */
-    String PRACTIEACTIVITY_DetailThreeSave = "/practiceActivity/detailThreeSave" ;
-
-    /**
-     *  /practiceActivity/detailTreeCheck 第三类练习数据检查
-     */
-    String PRACTIEACTIVITY_DetailThreeCheck = "/practiceActivity/detailThreeCheck" ;
-
-
-    /**
-     *  /practiceActivity/detailFourSave 第四类练习数据
-     */
-    String PRACTIEACTIVITY_DetailFOURSAVE = "/practiceActivity/detailFourSave" ;
-    /**
-     *  /practiceActivity/detailFourCheck 第四类练习数据
-     */
-    String PRACTIEACTIVITY_DetailFOURCheck = "/practiceActivity/detailFourCheck" ;
-
-    /**
-     *  /practiceActivity/detailFiveList 第五类练习数据，觉察
-     */
-    String PRACTIEACTIVITY_DETATILFIVELIST = "/practiceActivity/detailFiveList" ;
-
-
-
-    /**
-     *  /practiceActivity/detailFiveSave 第五类练习数据保存
-     */
-    String PRACTIEACTIVITY_FIVESTATUSSAVE = "/practiceActivity/detailFiveSave" ;
-
-
-    /**
-     *  /practiceActivity/statusUpdate 更新练习状态
-     */
-    String PRACTIEACTIVITY_STATUSUPDATE = "/practiceActivity/statusUpdate" ;
-
-    /**
-     *  /practiceActivity/statusCalendar 练习记录日历
-     */
-    String PRACTIEACTIVITY_STATUSCALENDAR = "/practiceActivity/statusCalendar" ;
-
-    /**
-     *  /practiceActivity/practiceHis 练习记录
-     */
-    String PRACTIEACTIVITY_PRACTICEHIS = "/practiceActivity/practiceHis" ;
-    /**
-     *  /practiceActivity/uploadPracticeBooks 练习册图片上传
-     */
-    String PRACTIEACTIVITY_UPLOADPRACTICEBOOKS= "/practiceActivity/uploadPracticeBooks" ;
-
-
-    /**
-     *  /subscription/nativeIndexV3 专栏原生首页,3.0
-     */
-    String SUBSCRIPTION_NATIVEINDEXV3= "/subscription/nativeIndexV3" ;
 
     /**
      *  /userInfo/tagList 获取标签列表
@@ -1227,68 +733,7 @@ public interface ApiKey {
     String HOME_GDATAV2= "/home/getDataV2" ;
 
 
-    /**
-     *  /album/getBgMusic 获取专辑
-     */
-    String ALBUM_GETBGMUSIC= "/album/getBgMusic" ;
 
-
-    /**
-     *  /album/getAlbumShare 音频每日分享后链接
-     */
-    String ALBUM_GETALBUMSHARE= "/album/getAlbumShare" ;
-
-    /**
-     *  /album/getAlbumPrac 每日打卡
-     */
-    String ALBUM_GETALBUMPRAC= "/album/getAlbumPrac" ;
-
-
-    /**
-     *  /album/getAlbumList 更多音频
-     */
-    String ALBUM_GETALBUMLIST= "/album/getAlbumList" ;
-
-    /**
-     *  /subscription/getSubscriptionList 获取专栏标签列表
-     */
-    String SUBSCRIPTION_GETSUBSCRIPTIONLIST= "/subscription/getSubscriptionList" ;
-
-
-    /**
-     *  /practiceActivity/getList 获取课程列表
-     */
-    String PRACTICEACTIVITY_GETLIST= "/practiceActivity/getList" ;
-
-
-    /**
-     *  /activity/getActivityList 获取课程列表
-     */
-    String ACTIVITY_GETACTIVITYLIST= "/activity/getActivityList" ;
-
-    /**
-     *  /course/getZhiboPageData 获取直播界面列表
-     */
-    String COURSE_GETZHIBOPAGEDATA= "/course/getZhiboPageData" ;
-
-    /**
-     *  /subscription/subscriptionList 获取专栏标签列表内容
-     */
-    String SUBSCRIPTION_SUBSCRIPTIONLIST= "/subscription/subscriptionList" ;
-    /**
-     *  /practice/getPunchHis 获取打卡记录
-     */
-    String PRACTICE_GETPUNCHHIS= "/practice/getPunchHis" ;
-
-    /**
-     *  /album/getMoreAlbum 获取更多音频
-     */
-    String PRACTICE_GETMOREALBUM= "/album/getMoreAlbum";
-
-    /**
-     *  /album/getAlbumCatalog 標簽分類
-     */
-    String ALBUM_GETALBUMCATALOG= "/album/getAlbumCatalog";
 
     /**
      *  /userInfo/tagSaveCheck 第一次采集
@@ -1305,10 +750,6 @@ public interface ApiKey {
      */
     String ACTIVITY_GETSHAREDATA= "/activity/getShareData";
 
-    /**
-     *  /album/getAlbumShareData 新版V2--每首音频播放结束，获取分享数据
-     */
-    String ALBUM_GETALBUMSHAREDATA= "/album/getAlbumShareData";
 
 
     /**
@@ -1346,24 +787,6 @@ public interface ApiKey {
 
 
     /**
-     *  /record/getRecSummary  新版V2——录播
-     */
-    String RECORD_GETRECSUMMARY= "/record/getRecSummary";
-
-
-    /**
-     *  /record/recShareSuccess  新版V2——录播课程分享成功
-     *
-     */
-    String RECORD_RECSHARESUCCESS= "/record/recShareSuccess";
-
-
-    /**
-     *  /record/getRecList  新版V2——获取播放目录
-     */
-    String RECORD_GETRECLIST= "/record/getRecList";
-
-    /**
      *  /activity/getActivityDetails  课程详情
      */
     String ACTIVITY_GETACTIVITYDETAILS= "/activity/getActivityDetails";
@@ -1389,51 +812,7 @@ public interface ApiKey {
      */
     String PURSE_GETUSERSCORE= "/purse/getUserScore";
 
-    /**
-     *  /activity/getAcSucList
-     *    获取已购课程列表
-     */
-    String ACTIVITY_GETACSUCLIST= "/activity/getAcSucList";
 
-    /**
-     *  /jsCourse/detail
-     *    课程详情页
-     */
-    String JSCOURSE_DETAIL= "/jsCourse/detail";
-
-
-    /**
-     *  /jsCourse/buy
-     *    健身功法购买
-     */
-    String JSCOURSE_BUY= "/jsCourse/buy";
-
-    /**
-     *  /jsCourse/saveExitReason
-     *    保存离开原因
-     */
-    String JSCOURSE_SAVEEXITREASON= "/jsCourse/saveExitReason";
-
-
-    /**
-     *  /jsCourse/collect
-     *    收藏健身功法
-     */
-    String JSCOURSE_COLLECT= "/jsCourse/collect ";
-
-    /**
-     *  /jsCourse/savePractice
-     *
-     * 保存动作练习次数
-     */
-    String JSCOURSE_SAVEPRACTICE= "/jsCourse/savePractice  ";
-
-    /**
-     *  /jsCourse/listcollect
-     *
-     * 训练营收藏列表
-     */
-    String JSCOURSE_LISTCOLLECT= "/jsCourse/listcollect  ";
 
     /**
      *  /jsCourse/listMedal
@@ -1442,10 +821,257 @@ public interface ApiKey {
      */
     String JSCOURSE_LISTMEDAL= "/jsCourse/listMedal  ";
 
+
+
     /**
-     *  /jsCourse/listBuy
-     *
-     * 训练营已购
+     *  一键登录
      */
-    String JSCOURSE_LISTBUY= "/jsCourse/listBuy  ";
+    String ONEKEYLOGIN= "admin/mobile/oneKeyLogin";
+
+    /**
+     * 请求登录
+     */
+    String CODEANDPHONE_LOGIN= "auth/mobile/token/sms";
+
+
+    /**
+     * 文件上传
+     */
+    String ADMIN_FILE_UPLOAD= "admin/sys-file/upload";
+
+
+
+    /**
+     * 检测昵称是否存在
+     */
+    String ADMIN_USER_EXISTENCE= "admin/user/existence";
+
+
+    /**
+     * 完善资料
+     */
+    String ADMIN_USER_INFOPERFECT= "admin/user/infoPerfect";
+
+    /**
+     * 退出登录
+     */
+    String AUTH_TOKEN_LOGOUT= "auth/token/logout";
+
+    /**
+     * 刷新token
+     */
+    String AUTH_OAUTH_TOKEN= "auth/oauth/token";
+
+    /**
+     *  绑定手机
+     */
+    String ADMIN_USER_BINGDINGUSERPHONE= "admin/user/bindingUserPhone";
+
+    /**
+     *  获取用户信息
+     */
+    String ADMIN_USER_COMPLETEUSERINFO= "admin/user/completeUserInfo";
+
+
+    /**
+     *  修改用户信息
+     */
+    String ADMIN_USER_UPDATE= "admin/user/update";
+
+    /**
+     *  实名认证
+     */
+    String ADMIN_USER_AUTHENTICATION= "admin/user/authentication";
+
+
+    /**
+     *  修改手机号
+     */
+    String ADMIN_USER_UPDATEUSERPHONE= "admin/user/updateUserPhone";
+
+    /**
+     *  校验验证码
+     */
+    String ADMIN_USER_VERIFICATION= "admin/user/verification";
+
+    /**
+     *  设置密码
+     */
+    String ADMIN_USER_EDIT= "admin/user/edit";
+
+
+    /**
+     *  青少年模式修改
+     */
+    String ADMIN_TEENAGERS_EDIT= "admin/teenagers/edit";
+
+
+    /**
+     *  我的动态展示列表
+     */
+    String ADMIN_SPACE_IMGPAGE= "admin/space/imgPage";
+
+    /**
+     *  批量上传
+     */
+    String ADMIN_SYS_FILE_UPLOADS= "admin/sys-file/uploads";
+
+    /**
+     *  他人主页
+     */
+    String ADMIN_USER_COMPLETEOTHERSUSERINFO= "admin/user/completeOthersUserInfo";
+
+
+    /**
+     *  用户动态列表分页
+     */
+    String ADMIN_SPACE_APPPAGE= "admin/space/appPage";
+
+    /**
+     *  3元现金红包
+     */
+    String ADMIN_USER_REGISTERRE= "admin/user/registerReward";
+
+
+    /**
+     *  用户动态删除
+     */
+    String ADMIN_SPACE_DELETE= "admin/space/delete";
+
+    /**
+     *  获取匹配推荐用户列表
+     */
+    String ADMIN_USER_RECOMMENDUSERPGE= "admin/user/recommendUserPage";
+
+    /**
+     *  喜欢匹配
+     */
+    String ADMIN_USERSIGN_ADD= "admin/usersign/add";
+
+
+    /**
+     *  发布动态
+     */
+    String ADMIN_SPACE_ADD= "admin/space/add";
+
+    /**
+     *  三方登录
+     */
+    String AUTH_MOBILE_TOKEN_SOCIAL= "auth/mobile/token/social";
+
+    /**
+     *  商品查询
+     */
+    String ACCOUNT_COMMODITY_PAGE= "account/commodity/page";
+
+
+    /**
+     *  账户信息查询
+     */
+    String ACCOUNT_ACCOUNT_INFO= "account/account/info";
+
+    /**
+     *  提现
+     */
+    String ACCOUNT_CAPITALEXTRACT_ADD= "account/capitalextract/add";
+
+
+    /**
+     *  微信h5
+     */
+    String ACCOUNT_WX_WXPAY= "account/wxh5/wxpay";
+
+    /**
+     *  微信统一支付
+     */
+    String ACCOUNT_WX_WXCHATPAY= "account/wxh5/wechatpay";
+
+    /**
+     *  收到的礼物
+     */
+    String ADMIN_GIFTRECORD_PAGE= "admin/giftrecord/getPage";
+
+    /**
+     *  赠送礼物
+     */
+    String ADMIN_GIFTRECORD_ADD= "admin/giftrecord/add";
+
+    /**
+     * 通过第三方账户
+     */
+    String ACCOUNT_EXTERNAL= "account/external";
+
+    /**
+     * 用户绑定第三方账户
+     */
+    String ACCOUNT_EXTERNAL_BINDING= "account/external/binding";
+
+    /**
+     * 用户修改第三方账户
+     */
+    String ACCOUNT_EXTERNAL_UPDATEBYUSERID= "account/external/updateByUserId";
+
+    /**
+     *  聊天付费
+     */
+    String ADMIN_GIFTRECORD_CHAT= "admin/giftrecord/chat";
+
+    /**
+     *  广告领金币
+     */
+    String ACCOUNT_ADVERTISEMENTRECORD_RECEIVE= "account/advertisementrecord/receive";
+
+    /**
+     *  获取三方用户信息
+     */
+    String ADMIN_SOCIAL_SOCIAL= "admin/social/social";
+
+    /**
+     * 验证两个用户是否加过好友
+     */
+    String ADMIN_GIFTRECORD_REPEAT= "admin/giftrecord/repeat";
+
+    /**
+     * 绑定三方信息
+     */
+    String ADMIN_SOCIAL_BIND= "admin/social/bind";
+
+
+    /**
+     * 支付方式管理
+     */
+    String ACCOUNT_METHOD_PAGE= "account/method/page";
+
+    /**
+     * 支付宝APP下单支付
+     */
+    String ACCOUNT_ZFB_APPALIPAY= "account/zfb/appalipay";
+
+    /**
+     * 订单信息查询
+     */
+    String ACCOUNT_ORDER= "account/order";
+
+
+    /**
+     * 根据条件查询版本信息
+     */
+    String ADMIN_APPVERSION_APPVERSION= "admin/appversion/appVersion";
+
+
+    /**
+     * 根据条件查询列表信息
+     */
+    String ADMIN_DICT_TYPE= "admin/dict/type";
+
+    /**
+     * 新增举报信息
+     */
+    String ADMIN_TREPORT_ADD= "admin/treport/add";
+
+    /**
+     * 金币明细
+     */
+    String ACCOUNT_ACCOUNTLISTING_PAGE= "account/accountlisting/page";
+
 }

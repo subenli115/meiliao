@@ -39,7 +39,6 @@ import com.wevey.selector.dialog.MDSelectionDialog;
 import com.yuyh.library.imgsel.ImgSelActivity;
 import com.yuyh.library.imgsel.ImgSelConfig;
 
-import org.feezu.liuli.timeselector.TimeSelector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,7 +74,6 @@ public class NewUserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, U
     private boolean hasChange;
     private String[] genderList;
     private int from;
-    private TimeSelector timeSelector;
 
     /**
      * 入口
@@ -165,8 +163,7 @@ public class NewUserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, U
         switch (view.getId()) {
             case R.id.iv_user_avatar:
                 //跳转到选择用户头像界面
-                ImgSelActivity.startActivity(this, ImgSelConfig.DEFAULT_SIGN_HEAD(StringUtils.newHeadImgPath(MyAPP.getUserInfo()
-                        .getHeadImgVersion() + 1)), ImgSelConfig.RequestCode);
+                ImgSelActivity.startActivity(this, ImgSelConfig.DEFAULT_SIGN_HEAD(StringUtils.newHeadImgPath( 1)), ImgSelConfig.RequestCode);
                 break;
             case R.id.tv_sex:
                 //性别更新
@@ -175,7 +172,6 @@ public class NewUserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, U
             case R.id.tv_birthday:
                 //生日
                 // 更新
-                showPop();
                 break;
             case R.id.tv_update:
                 String ncName = etNcName.getText().toString();
@@ -208,19 +204,6 @@ public class NewUserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, U
         }
     }
 
-    private void showPop() {
-         timeSelector = new TimeSelector(this, new TimeSelector.ResultHandler() {
-            @Override
-            public void handle(String time) {
-              time = time.replaceAll("-","\\.");
-               tvBirthday.setText(time.substring(0,10));
-            }
-        }, "1960-01-01 00:00", "2005-12-31 23:59");
-        timeSelector.setMode(TimeSelector.MODE.YMD);//只显示 年月日
-        timeSelector.show();
-
-
-    }
 
     /**
      * 性别选择对话框
@@ -260,24 +243,7 @@ public class NewUserInfoActivity extends BaseActivity<UpdateUserInfoPresenter, U
     }
     private void updateUserHead(ArrayList<String> imgPaths) {
         final String path = imgPaths.get(0);
-        HandlerUtil.runTask(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (true) {
-                        String autoFileOrFilesSize = FileSizeUtil.getAutoFileOrFilesSize(path);
-                        if ("0.00 B".equals(autoFileOrFilesSize)) {
-                            Thread.sleep(60);
-                        } else {
                             mPresenter.updateUserHead(FileUtil.str2File(path), MapUtils.getDefMap(true));
-                            break;
-                        }
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
     @Override
     public void returnUserHead(UpdateUserHeadBean result) {

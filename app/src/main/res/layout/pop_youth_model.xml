@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_helf">
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/rl_content"
+    android:layout_width="600px"
+    android:layout_height="wrap_content"
+android:layout_centerHorizontal="true"
+    android:layout_marginTop="300px"
+    android:background="@drawable/normal_bg_white_update"
+    android:orientation="vertical">
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="233px"
+    android:gravity="center"
+    android:layout_below="@+id/iv_top"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="青少年模式"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:layout_marginRight="30px"
+        android:textSize="44px"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginLeft="61px"
+        android:layout_marginRight="61px"
+        android:layout_marginTop="47px"
+        android:textSize="30px"
+        android:textColor="@color/black"
+        android:text="为了呵护未成年人健康成长，特推出青少年模式，该模式下部分功能无法使用。请监护人主动选择，并设置监护密码。"
+        />
+
+    <TextView
+        android:id="@+id/tv_zd"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36px"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:layout_below="@+id/tv_into"
+        android:textColor="@color/white"
+        android:text="知道了"
+        android:layout_marginBottom="63px"
+        android:gravity="center"
+        android:textSize="30px"
+        android:layout_above="@+id/tv_update_version_close"
+        android:background="@drawable/normal_bg_bule"
+        />
+        <TextView
+            android:id="@+id/tv_into"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_content"
+            android:layout_marginTop="35px"
+            android:text="进入青少年模式"
+            android:textColor="#459BFF"
+            android:layout_centerHorizontal="true"
+            android:textSize="30px"
+            android:textStyle="bold"
+
+            />
+
+</com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>
+    <ImageView
+        android:layout_width="600px"
+        android:layout_height="252px"
+        android:scaleType="fitXY"
+        android:layout_marginTop="243px"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/head_youth_model"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -78,7 +78,6 @@ public class SettingsActivity extends ShareActivity {
     public void onClick(final View view) {
         switch (view.getId()) {
             case R.id.itemView_update_pwd:
-                ForgetPasswordActivity.startAction(SettingsActivity.this, ForgetPwdActivity.FROM_UPDATE_PWD);
                 break;
             case R.id.itemView_clear_cache:
                 clearCache();
@@ -97,11 +96,9 @@ public class SettingsActivity extends ShareActivity {
                 updateVersion(view);
                 break;
             case R.id.itemView_about:
-                startActivity(AboutActivity.class);
                 break;
             case R.id.itemview_phone:
 
-                startActivity(ChangePhoneActivity.class);
                 break;
         }
     }

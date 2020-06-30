@@ -19,11 +19,16 @@ public class CommonModel implements CommonContract.Model {
 
     @Override
     public void getData(String url, Map<String, String> params, OkHttpClientManager.ResultCallback callback) {
-        OkHttpClientManager.getAsync(url, params, callback);
+        OkHttpClientManager.getAsyncMore(url, params, callback);
+    }
+    @Override
+    public void getDataOneHead(String url, String params,String token, OkHttpClientManager.ResultCallback callback) {
+        OkHttpClientManager.getDataOneHead(url, params,token, callback);
     }
 
     @Override
     public void post(String url, Map<String, String> params, OkHttpClientManager.ResultCallback callback) {
-        OkHttpClientManager.postAsync(url, params, callback);
+        OkHttpClientManager.postAsyncAddHead(url, params,"", callback);
     }
+
 }

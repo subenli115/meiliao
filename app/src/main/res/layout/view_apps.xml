@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+
+    <GridView
+        android:id="@+id/gv_apps"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:horizontalSpacing="10dip"
+        android:layout_marginBottom="5dp"
+        android:verticalSpacing="5dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="4"
+
+        android:fadeScrollbars="false"
+        />
+
+    <RelativeLayout
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        >
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_centerVertical="true"
+    android:padding="3dp"
+    android:layout_marginLeft="15dp"
+    android:background="@drawable/normal_bg_gray_f5"
+    android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/iv_popuw_give_gift_recharge"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_gold_big"
+            />
+
+        <TextView
+            android:id="@+id/tv_popuw_give_gift_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/iv_popuw_give_gift_recharge"
+            android:textColor="@color/textColor_333"
+            android:textSize="18sp"
+            android:text="22332"
+            />
+    <ImageView
+        android:id="@+id/iv_recharge"
+        android:layout_toRightOf="@+id/tv_popuw_give_gift_balance"
+        android:layout_width="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/icon_gift_recharge"
+        />
+</RelativeLayout>
+
+        <com.ziran.meiliao.common.commonwidget.FilterTextView
+            android:id="@+id/tv_popuw_give_gift_give"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/normal_bg_red"
+            android:gravity="center"
+            android:paddingLeft="21dp"
+            android:paddingRight="21dp"
+            android:textStyle="bold"
+            android:layout_marginRight="14dp"
+            android:text="送礼物"
+            android:singleLine="true"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@mipmap/icon_give_gift"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

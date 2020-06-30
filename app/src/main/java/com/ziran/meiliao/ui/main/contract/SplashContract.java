@@ -5,6 +5,7 @@ import com.ziran.meiliao.common.base.BaseView;
 import com.ziran.meiliao.ui.base.CommonModel;
 import com.ziran.meiliao.ui.bean.AdvertBean;
 import com.ziran.meiliao.ui.bean.VersionBean;
+import com.ziran.meiliao.ui.bean.VersionNewBean;
 
 import java.util.Map;
 
@@ -14,7 +15,7 @@ import java.util.Map;
 public interface SplashContract {
     interface View extends BaseView {
         //返回修改密码请求结果
-        void showVersionResult(VersionBean result);
+        void showVersionResult(VersionNewBean result);
 
         //返回获取验证码结果
         void showCheckTokenResult(boolean result);

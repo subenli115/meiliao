@@ -186,7 +186,6 @@ public class AnimationUtil {
             }
         });
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.setDuration(duration);
         if (showAlpha) {
             animatorSet.playTogether(valueAnimator, alpha);
         } else {

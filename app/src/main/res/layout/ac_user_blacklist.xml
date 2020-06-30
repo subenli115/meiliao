@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_tv_left="showAndFinish"
+        >
+
+
+    </com.ziran.meiliao.common.commonwidget.NormalTitleBar>
+    <TextView
+        android:id="@+id/tv_num"
+        android:layout_width="match_parent"
+        android:layout_height="61px"
+        android:visibility="invisible"
+        android:layout_below="@+id/ntb_title"
+        android:gravity="center_vertical"
+        android:text="已拉黑人数"
+        android:paddingLeft="24px"
+        android:textSize="24px"
+        android:background="#F5F5F5"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_num"
+        android:layout_height="match_parent">
+
+
+    </android.support.v7.widget.RecyclerView>
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_below="@+id/ntb_title"
+        android:layout_height="match_parent"/>
+</com.zhy.autolayout.AutoRelativeLayout>

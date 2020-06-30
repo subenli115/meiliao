@@ -7,28 +7,30 @@
 
     <RelativeLayout
         android:id="@+id/ll_recharge_bg"
-        android:layout_width="140dp"
-        android:layout_height="60dp"
+        android:layout_width="166.6dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="6dp"
-        android:background="@drawable/shape_grid_amount"
+        android:background="@drawable/normal_bg_gray_fa"
 
         >
 
         <TextView
-            android:id="@+id/tv_points"
+            android:id="@+id/tv_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="38积分"
+            android:text="新人专享"
             android:paddingTop="2dp"
             android:paddingRight="2dp"
+            android:layout_marginTop="19.5dp"
+            android:visibility="gone"
             android:paddingBottom="2dp"
             android:textSize="7sp"
             android:paddingLeft="5dp"
             android:gravity="center"
             android:textColor="@color/white"
             android:layout_alignParentRight="true"
-            android:background="@drawable/normal_green_point"
+            android:background="@drawable/normal_red_new_people"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -38,23 +40,34 @@
             android:layout_centerInParent="true"
             >
             <TextView
+                android:id="@+id/tv_recharge_amount"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:text="200元"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <TextView
                 android:id="@+id/tv_recharge_gold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:drawablePadding="4dp"
                 android:gravity="center"
+                android:layout_marginTop="5.5dp"
                 android:textColor="@color/black"
-                android:text="100金币"
+                android:text="价值100金币"
                 android:layout_below="@+id/tv_recharge_amount"
-                android:textSize="13sp"/>
-            <TextView
-                android:id="@+id/tv_recharge_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="200元"
-                android:textColor="@color/textColor_f333"
-                android:textSize="11sp"/>
+                android:textSize="12sp"/>
+            <ProgressBar
+                android:max="100"
+                android:progressDrawable="@drawable/progressbar"
+                android:id="@+id/progressBarHorizontal"
+                android:layout_marginTop="10dp"
+                android:progress="20"
+                android:layout_marginBottom="20dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="4dp"/>
         </LinearLayout>
 
     </RelativeLayout>

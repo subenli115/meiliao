@@ -180,7 +180,11 @@ public class LoadingTip extends LinearLayout {
     public void setEmptyMsg(String emptyMsg, int iconId) {
         this.emptyMsg = emptyMsg;
         this.logeEmpty = iconId;
+        progress.setVisibility(View.GONE);
         img_tip_logo.setImageResource(iconId);
+        img_tip_logo.setVisibility(VISIBLE);
+        tv_tips.setText(emptyMsg);
+        setVisibility(VISIBLE);
     }
 
 

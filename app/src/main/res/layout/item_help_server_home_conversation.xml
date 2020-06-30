@@ -12,6 +12,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="12dp"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_loading_rectangle"
         app:roundimageview_type="circle"
         />

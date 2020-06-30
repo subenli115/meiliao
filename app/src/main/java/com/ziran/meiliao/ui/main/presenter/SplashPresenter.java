@@ -5,6 +5,7 @@ import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.ui.bean.AdvertBean;
 import com.ziran.meiliao.ui.bean.StringDataBean;
 import com.ziran.meiliao.ui.bean.VersionBean;
+import com.ziran.meiliao.ui.bean.VersionNewBean;
 import com.ziran.meiliao.ui.main.contract.SplashContract;
 
 import java.util.Map;
@@ -34,9 +35,9 @@ public class SplashPresenter extends SplashContract.Presenter{
 
     @Override
     public void getVersion(Map<String, String> params) {
-        mModel.getData(ApiKey.VERSION, params, new NewRequestCallBack<VersionBean>(VersionBean.class) {
+        mModel.getData(ApiKey.ADMIN_APPVERSION_APPVERSION, params, new NewRequestCallBack<VersionNewBean>(VersionNewBean.class) {
             @Override
-            protected void onSuccess(VersionBean result) {
+            protected void onSuccess(VersionNewBean result) {
 
                 mView.showVersionResult(result);
             }

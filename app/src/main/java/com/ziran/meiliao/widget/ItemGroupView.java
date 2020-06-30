@@ -227,10 +227,10 @@ public class ItemGroupView extends RelativeLayout {
     public void showRightAllow(boolean showRightAllow) {
         if (showRightAllow) {
             rightDrawable = getResources().getDrawable(R.mipmap.ic_arrow_gray);
-            rightTextpaddRight = (int) DisplayUtil.dp2px(getResources(), 24);
+            rightTextpaddRight = (int) DisplayUtil.dp2px(getResources(), 12);
         } else {
             rightDrawable = null;
-            rightTextpaddRight = 0;
+            rightTextpaddRight = (int) DisplayUtil.dp2px(getResources(), 12);
             tvRightText.setPadding(0, 0, 0, 0);
         }
         updateDraw();

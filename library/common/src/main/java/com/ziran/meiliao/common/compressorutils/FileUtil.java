@@ -485,7 +485,7 @@ public class FileUtil {
     }
 
     public static String getDownApkFile( ) {
-        return getAppRootFile("apk")+"updateWpyx.apk";
+        return getAppRootFile("apk")+"updatemeiliao.apk";
     }
 
 
@@ -605,7 +605,7 @@ public class FileUtil {
     public static File mkdirStorageFileDir(Context context, String phone) {
         try {
             File filesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            File temp = new File(filesDir.getParent(), getChild("wpyx"));
+            File temp = new File(filesDir.getParent(), getChild("meiliao"));
             if (!temp.exists()) temp.mkdirs();
             newFile(temp, "cache");
             File newFile = newFile(temp, phone);
@@ -633,25 +633,25 @@ public class FileUtil {
 
     public static String getAppRootFile(String file) {
         if (isExistSDCard()) {
-            String wpyx = getExternalStorageDirectory() + getChild("wpyx") + file + "/";
-            makeDirs(wpyx);
-            return wpyx;
+            String meiliao = getExternalStorageDirectory() + getChild("meiliao") + file + "/";
+            makeDirs(meiliao);
+            return meiliao;
         } else {
             File filesDir = BaseApplication.getAppContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
             assert filesDir != null;
-            File temp = new File(filesDir.getParent(), getChild("wpyx"));
-            String wpyx = temp.getAbsolutePath() + File.separator + file + "/";
-            makeDirs(wpyx);
-            return wpyx;
+            File temp = new File(filesDir.getParent(), getChild("meiliao"));
+            String meiliao = temp.getAbsolutePath() + File.separator + file + "/";
+            makeDirs(meiliao);
+            return meiliao;
         }
     }
 
     public static String getAppFilePath() {
         if (isExistSDCard()) {
-            return getExternalStorageDirectory() + getChild("wpyx");
+            return getExternalStorageDirectory() + getChild("meiliao");
         } else {
             File filesDir = BaseApplication.getAppContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            File temp = new File(filesDir.getParent(), getChild("wpyx"));
+            File temp = new File(filesDir.getParent(), getChild("meiliao"));
             makeDirs(temp.getAbsolutePath());
             return temp.getAbsolutePath();
         }
@@ -659,10 +659,10 @@ public class FileUtil {
 
     public static String getAppFilePath(String phone) {
         if (isExistSDCard()) {
-            return getExternalStorageDirectory() + getChild("wpyx") + phone;
+            return getExternalStorageDirectory() + getChild("meiliao") + phone;
         } else {
             File filesDir = BaseApplication.getAppContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            File temp = new File(filesDir.getParent(), getChild("wpyx") + phone);
+            File temp = new File(filesDir.getParent(), getChild("meiliao") + phone);
             return temp.getAbsolutePath();
         }
     }
@@ -700,10 +700,10 @@ public class FileUtil {
     //获取图片加载框架缓存的目录
     public static String getImageCacheFolder() {
         if (isExistSDCard()) {
-            return getExternalStorageDirectory() + getChild("wpyx") + "cache";
+            return getExternalStorageDirectory() + getChild("meiliao") + "cache";
         } else {
             File filesDir = BaseApplication.getAppContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            File temp = new File(filesDir.getParent(), getChild("wpyx"));
+            File temp = new File(filesDir.getParent(), getChild("meiliao"));
             return temp.getAbsolutePath() + File.separator + "cache";
         }
     }
@@ -733,10 +733,10 @@ public class FileUtil {
     public static String getMyAPPFolder(String folder) {
         String phone = SPUtils.getString("phone");
         if (isExistSDCard()) {
-            return getExternalStorageDirectory() + getChild("wpyx1") + phone + getChild(folder);
+            return getExternalStorageDirectory() + getChild("meiliao1") + phone + getChild(folder);
         } else {
             File filesDir = BaseApplication.getAppContext().getFilesDir();
-            File temp = new File(filesDir.getParent(), getChild("wpyx1"));
+            File temp = new File(filesDir.getParent(), getChild("meiliao1"));
             return temp.getAbsolutePath() + File.separator + phone + getChild(folder);
         }
     }
@@ -748,7 +748,7 @@ public class FileUtil {
             if (isExistSDCard()) {
                 mkdirStorageFileDir(BaseApplication.getAppContext(), phone);
                 File rootFolder =Environment.getExternalStorageDirectory();
-                File temp = new File(rootFolder, getChild("wpyx1"));
+                File temp = new File(rootFolder, getChild("meiliao1"));
                 if (!temp.exists()) temp.mkdirs();
                 newFile(temp, "cache");
                 File newFile = newFile(temp, phone);

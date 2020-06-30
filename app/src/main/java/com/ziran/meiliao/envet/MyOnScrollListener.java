@@ -2,12 +2,13 @@ package com.ziran.meiliao.envet;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
+import com.nostra13.universalimageloader.utils.L;
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
 import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.irecyclerview.IRecyclerView;
-import com.ziran.meiliao.utils.MusicPanelFloatManager;
 
 /**
  * @author 吴祖清
@@ -22,7 +23,7 @@ import com.ziran.meiliao.utils.MusicPanelFloatManager;
 public class MyOnScrollListener extends RecyclerView.OnScrollListener {
 
     private int onScrolledY;
-//    private static boolean showOrHide;
+    //    private static boolean showOrHide;
     private View topBar;
     private View listViewTop;
     private String tag;
@@ -39,9 +40,11 @@ public class MyOnScrollListener extends RecyclerView.OnScrollListener {
 
         topBarHeight = DisplayUtil.getStatusBarHeight(topBar.getContext());
         if ( recyclerView != null) {
+            Log.e("setOnMoveListener","onReset");
             recyclerView.setOnMoveListener(new IRecyclerView.OnMoveListener() {
                 @Override
                 public void moveY(int measuredHeight, int moved) {
+                    Log.e("setOnMoveListener","measuredHeight"+measuredHeight+"   "+topBar.isShown());
                     if (measuredHeight > 0 && topBar.isShown()) {
                         topBar.setVisibility(View.GONE);
                     }
@@ -49,6 +52,7 @@ public class MyOnScrollListener extends RecyclerView.OnScrollListener {
 
                 @Override
                 public void onReset() {
+                    Log.e("setOnMoveListener","onReset");
                     topBar.setVisibility(View.VISIBLE);
                 }
             });
@@ -67,7 +71,7 @@ public class MyOnScrollListener extends RecyclerView.OnScrollListener {
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         onScrolledY += dy;
-        boolean showOrHide = MusicPanelFloatManager.getInstance().isShowing();
+        boolean showOrHide = false;
         if (Math.abs(onScrolledY) > 30) {
             if (mOnChangeListener!=null){
                 if ( onScrolledY > 0 && !searchShowOrHide){

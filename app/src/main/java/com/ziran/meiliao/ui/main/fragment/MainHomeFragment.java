@@ -5,18 +5,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.bumptech.glide.Glide;
 import com.ziran.meiliao.R;
-import com.ziran.meiliao.app.WpyxConfig;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
-import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.entry.MusicEntry;
-import com.ziran.meiliao.envet.MyOnScrollListener;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.ui.base.CommonModel;
 import com.ziran.meiliao.ui.base.CommonRefreshFragment;
@@ -29,28 +26,15 @@ import com.ziran.meiliao.ui.bean.PicsBean;
 import com.ziran.meiliao.ui.bean.PractiveChartBean;
 import com.ziran.meiliao.ui.bean.StringDataBean;
 import com.ziran.meiliao.ui.bean.TempActivityBean;
-import com.ziran.meiliao.ui.bean.ZhiBoData;
 import com.ziran.meiliao.ui.main.adapter.MainHomeAdapter;
 import com.ziran.meiliao.ui.main.contract.MainHomeContract;
 import com.ziran.meiliao.ui.main.presenter.MainHomePresenter;
-import com.ziran.meiliao.ui.main.util.MainHomeHeadViewUtil;
-import com.ziran.meiliao.ui.priavteclasses.activity.DefWebActivity;
 import com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangMoreActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.HorizontalHistoryActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.HorizontalLiveActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.NowLiveMoreActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.SearchActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.ZhuanLanMoreActivity;
-import com.ziran.meiliao.ui.priavteclasses.util.SJKLiveUtil;
 import com.ziran.meiliao.ui.settings.activity.MessageActivity;
 import com.ziran.meiliao.utils.CheckUtil;
 import com.ziran.meiliao.utils.HandlerUtil;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.widget.SlideSearchView;
-import com.ziran.meiliao.widget.pupop.BasePopupWindow;
-import com.ziran.meiliao.widget.pupop.PopupWindowUtil;
-import com.ziran.meiliao.widget.pupop.ZndhPopupWindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,8 +62,6 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
     ImageView ivMessage;
 
 
-    //recyclerView头部控件工具类
-    private MainHomeHeadViewUtil mMainHomeHeadViewUtil;
     //搜索热词
     private String hotWord;
 
@@ -94,34 +76,21 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
     protected void initView() {
         super.initView();
         //首页头部帮助类
-        mMainHomeHeadViewUtil = new MainHomeHeadViewUtil(iRecyclerView);
-        //给iRecyclerView添加滚动监听
-        MyOnScrollListener scrollListener = new MyOnScrollListener(iRecyclerView, llMainHomeTitleBar, mMainHomeHeadViewUtil.getTopView(), AppConstant.RXTag
-                .HOME_MUSIC_PLANE_SHOW_OR_HIDE);
-        scrollListener.setOnChangeListener(new MyOnScrollListener.OnChangeListener() {
-            @Override
-            public void change(boolean showOrHide) {
-                mSearchView.toggle();
-            }
-        });
-        iRecyclerView.addOnScrollListener(scrollListener);
         //订阅点击更多的监听
         mRxManager.on(AppConstant.RXTag.MAIN_HOME_MORE_CLICK, new Action1<HeadData>() {
             @Override
             public void call(HeadData headData) {
                 if (headData.getId() == HeadData.Type.ZHIBO) {
-                    NowLiveMoreActivity.startAction(getContext()); //直播更多页面
                 } else if (headData.getId() == HeadData.Type.COURSE) {
-                    startActivity(GongZuoFangMoreActivity.class);//工作坊更多页面
                 } else if (headData.getId() == HeadData.Type.ZHUANLAN) {
-                    startActivity(ZhuanLanMoreActivity.class);//工作坊更多页面
+//                    startActivity(ZhuanLanMoreActivity.class);//工作坊更多页面
                 }
             }
         });
         mSearchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchActivity.startAction(hotWord);
+//                SearchActivity.startAction(hotWord);
             }
         });
         //大会内容窗口
@@ -133,7 +102,6 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
                     protected void onSuccess(TempActivityBean result) {
                         if (EmptyUtils.isNotEmpty(result.getData())) {
                             if (EmptyUtils.isNotEmpty(result.getData().getShareUrl())) {
-                                showZndh(result.getData());
                                 return;
                             }
                         }
@@ -188,8 +156,6 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
                 }
                 break;
             case HeadData.Type.ZHIBO:
-                ZhiBoData zhiBoData = EmptyUtils.parseObject(bean);
-                SJKLiveUtil.startActivity(getContext(), String.valueOf(zhiBoData.getId()), zhiBoData.getTag(), zhiBoData.getStatusX());
                 break;
             case HeadData.Type.ZHUANLAN:
 //                ZhuanLanDetailActivity.startAction(getContext(), bean);
@@ -204,9 +170,8 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
         PicsBean picsBean = (PicsBean) adViewpagerUtil.getDatas().get(position);
         if ("zhibo".equals(picsBean.getType())) {
             if (!CheckUtil.check(getContext(), getView())) return;
-            HorizontalLiveActivity.startAction(getContext(), picsBean.getLink(), 1);
         } else if ("history".equals(picsBean.getType())) {
-            HorizontalHistoryActivity.startAction(getContext(), picsBean.getLink(), 0);
+//            HorizontalHistoryActivity.startAction(getContext(), picsBean.getLink(), 0);
         } else if ("h5".equals(picsBean.getType())) {
             ActisData dataBean = new ActisData();
             dataBean.setPicture(picsBean.getPicture());
@@ -240,7 +205,6 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
     public void onPause() {
         super.onPause();
         //停止今天头条的滚动
-        mMainHomeHeadViewUtil.onPause();
     }
 
 
@@ -248,7 +212,6 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
     public void onResume() {
         super.onResume();
         //恢复今天头条的滚动
-        mMainHomeHeadViewUtil.onResume();
     }
 
     private boolean isShowHodeData;
@@ -260,20 +223,16 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
         HomeDataBean.DataBean data = result.getData();
         //首页轮播图
         if (adViewpagerUtil == null) {
-            adViewpagerUtil = mMainHomeHeadViewUtil.getViewPagerUtil();
             adViewpagerUtil.setOnAdItemClickListener(this);
         }
         adViewpagerUtil.setDataAndRef(data.getPics(), parseImgs(data.getPics()));
         boolean flag = false;
-        mMainHomeHeadViewUtil.setHomeMusic(data.getRecMusic()); //显示推送音乐数据
-        mMainHomeHeadViewUtil.setNews(data.getNews());          //显示今天头条数据
         hotWord = data.getHotWord();                            //搜索热词
-        WpyxConfig.setHotWord(hotWord);
+        MeiliaoConfig.setHotWord(hotWord);
         if (EmptyUtils.isNotEmpty(hotWord)) {
             mSearchView.setText(hotWord);
 //            tvMainHomeTitleBarSearch.setText(hotWord);
         }
-        mMainHomeHeadViewUtil.bindHeadView();
         List list = new ArrayList();
         //绑定headView
         flag = EmptyUtils.isEmpty(data.getNews());
@@ -296,30 +255,6 @@ public class MainHomeFragment extends CommonRefreshFragment<MainHomePresenter, C
 
     private ImageView floatView;
 
-    private void showZndh(final TempActivityBean.DataBean result) {
-        ZndhPopupWindow zndhPopupWindow = new ZndhPopupWindow(getContext());
-        zndhPopupWindow.setData(result);
-        zndhPopupWindow.setOnDissmisListener(new BasePopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                if (floatView == null) {
-                    floatView = new ImageView(getContext());
-                    Glide.with(getContext()).load(result.getIcon()).into(floatView);
-                    floatView.setImageResource(R.mipmap.index_btn_mindfulness);
-                    floatView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            DefWebActivity.startAction(getContext(),result.getUrl(), result.getTitle(),result,result.getZhiboUrl());
-                        }
-                    });
-                    mRlRootView.addView(floatView, new RelativeLayout.LayoutParams(-2, -2));
-                    floatView.setX(DisplayUtil.getScreenWidth(getContext()) - DisplayUtil.dip2px(72));
-                    floatView.setY(DisplayUtil.getScreenHeight(getContext()) - DisplayUtil.dip2px(196));
-                }
-            }
-        });
-        PopupWindowUtil.show(getActivity(), zndhPopupWindow);
-    }
 
     private int unReadCount;
 

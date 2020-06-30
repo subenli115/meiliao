@@ -30,20 +30,19 @@ public class PermissionUtil {
 
     public static String[] getAllPermission() {
         return new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WAKE_LOCK,
-                Manifest.permission.SYSTEM_ALERT_WINDOW,
-//                Manifest.permission.SET_ALARM,
-//                Manifest.permission.CALL_PHONE,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-//                Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE,
-                Manifest.permission.READ_PHONE_STATE,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                Manifest.permission.READ_EXTERNAL_STORAGE,
+//                Manifest.permission.SYSTEM_ALERT_WINDOW,
+////                Manifest.permission.SET_ALARM,
+//                Manifest.permission.CAMERA,
+////                Manifest.permission.CALL_PHONE,
+//                Manifest.permission.ACCESS_FINE_LOCATION,
+////                Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
+//                Manifest.permission.ACCESS_COARSE_LOCATION,
+//                Manifest.permission.ACCESS_NETWORK_STATE,
+//                Manifest.permission.ACCESS_WIFI_STATE,
+//                Manifest.permission.READ_PHONE_STATE,
 //                Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
-                Manifest.permission.RECORD_AUDIO
         };
     }
     //  无法拿到权限

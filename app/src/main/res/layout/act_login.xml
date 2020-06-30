@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@mipmap/login_bg"/>
+            />
 
         <ImageView
             android:id="@+id/iv_login_logo"
@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/rg_login"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/login_logo"
             tools:ignore="ContentDescription"/>
 
         <RadioGroup

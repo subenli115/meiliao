@@ -6,9 +6,7 @@ import android.view.View;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
-import com.ziran.meiliao.ui.decompressionmuseum.activity.RecordActivity;
 import com.ziran.meiliao.ui.me.activity.MyActivityActivity;
-import com.ziran.meiliao.ui.settings.activity.MBuyCourseActivity;
 import com.ziran.meiliao.ui.settings.activity.WalletActivity;
 import com.ziran.meiliao.utils.CheckUtil;
 import com.ziran.meiliao.widget.MainMeItemView;
@@ -65,7 +63,6 @@ public class MainMeNewItemUtil {
     public static void onItemClick(Context context, MainMeItemView.Items item, int position,View view) {
         switch (item.getId()) {
             case ID_ME_COURSE:
-                startActivity(context,  MBuyCourseActivity.class);
                 break;
             case ID_ME_ACT:
                 startActivity(context,  MyActivityActivity.class);
@@ -74,7 +71,6 @@ public class MainMeNewItemUtil {
                 ToastUitl.showShort(R.string.not_function);
                 break;
             case ID_ME_ZHENGNIAN:
-                startActivity(context,  RecordActivity.class);
                 break;
             case ID_ME_WALLET:
                 if (CheckUtil.check(context, view)) {

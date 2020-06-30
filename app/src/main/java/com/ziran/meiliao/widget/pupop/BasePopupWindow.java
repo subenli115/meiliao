@@ -38,7 +38,7 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
     protected View mContentView;
     protected View animView;
     protected Context mContext;
-    protected int durtion = 180;
+    protected int durtion = 100;
     public BasePopupWindow(Context context) {
         super(context);
         this.mContext = context;
@@ -53,7 +53,7 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
         setFocusable(true);
         setTouchable(true);
         setBackgroundDrawable(new BitmapDrawable());
-        setAnimationStyle(getAnimStyle());
+//        setAnimationStyle(getAnimStyle());
         setTouchInterceptor(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -110,14 +110,9 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
     @Override
     public void showAtLocation(View parent, int gravity, int x, int y) {
         super.showAtLocation(parent, gravity, x, y);
-        if (animView != null) {
-            HandlerUtil.runMain(new Runnable() {
-                @Override
-                public void run() {
-                    showAnimation();
-                }
-            },50);
-        }
+//        if (animView != null) {
+//           showAnimation();
+//        }
     }
 
     protected void showAnimation() {

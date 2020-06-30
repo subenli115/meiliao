@@ -8,8 +8,11 @@ import com.ziran.meiliao.common.commonutils.JsonUtils;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.common.okhttp.Result;
+import com.ziran.meiliao.ui.bean.StringDataBean;
 import com.ziran.meiliao.utils.StringUtils;
 import org.apache.http.conn.ConnectTimeoutException;
+
+import java.io.IOException;
 import java.net.ConnectException;
 import okhttp3.Request;
 
@@ -20,10 +23,14 @@ import okhttp3.Request;
 
 public abstract class NewRequestCallBack<T extends Result> extends OkHttpClientManager.ResultCallback {
     private BaseView baseView;
-    private Class<T> mClass;
+    private Class<T> mClass,mClass1;
 
     public NewRequestCallBack(Class<T> aClass) {
         mClass = aClass;
+    }
+    public NewRequestCallBack(Class<T> aClass,Class<T> bClass) {
+        mClass = aClass;
+        mClass1 = bClass;
     }
     public NewRequestCallBack(Class<T> aClass,BaseView view) {
         mClass = aClass;
@@ -35,13 +42,18 @@ public abstract class NewRequestCallBack<T extends Result> extends OkHttpClientM
     @Override
     public void onResponse(String response) {
         try {
-            T result = JsonUtils.fromJsonToType(response, mClass);
-            // 1 表示请求成功,其他表示请求失败
+             T result = JsonUtils.fromJsonToType(response, mClass);
             if (result == null) {
-                onError(response, -1);
+                StringDataBean da = JsonUtils.fromJsonToType(response, StringDataBean.class);
+                if(da!=null&&da.getResultCode()==1001){
+                    MyAPP.refreshToken();
+                    onError("请重试", da.getResultCode());
+                    return;
+                }
+                onError("服务器繁忙", -1);
                 return;
             }
-
+            Log.e("meiliaoresponse",result.toString());
             switch (result.getResultCode()) {
                 case 0:
                     if (baseView!=null) baseView.stopLoading();
@@ -49,11 +61,26 @@ public abstract class NewRequestCallBack<T extends Result> extends OkHttpClientM
                     onSuccess(result);
                     break;
                 case -5:
-                    MyAPP.logout(MyAPP.getContext());
                     break;
                 case 10:
                     ToastUitl.showShort(result.getResultMsg());
                     showEmpty(result);
+                    break;
+                case 1001:
+                    ToastUitl.showShort("操作失败，请重试");
+                    MyAPP.refreshToken();
+                    break;
+                case 1002:
+                    onError(result.getResultMsg(), result.getResultCode());
+                    break;
+                case 1003:
+                    onError(result.getResultMsg(), result.getResultCode());
+                    break;
+                case 2000:
+                    onError(result.getResultMsg(), result.getResultCode());
+                    break;
+                case 3000:
+                    onError(result.getResultMsg(), result.getResultCode());
                     break;
                 default:
                     onError(result.getResultMsg(), result.getResultCode());
@@ -82,7 +109,7 @@ public abstract class NewRequestCallBack<T extends Result> extends OkHttpClientM
         onError(getExceptionMessage(e), -1);
     }
 
-    protected abstract void onSuccess(T result);
+    protected abstract void onSuccess(T result) throws IOException;
 
     public void onError(String msg, int code) {
         try {

@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -202,7 +203,8 @@ public class BaseItemView extends RelativeLayout {
         return "";
     }
 
-    private void createEditText(String hint) {
+    private void createEditText(String hints) {
+        hint=hints;
         if (maxLines == 1) {
             etContent = new ClearEditText(getContext());
         } else {
@@ -277,7 +279,7 @@ public class BaseItemView extends RelativeLayout {
         ivContent = new ImageView(getContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(contentImageSize, contentImageSize);
         params.gravity = Gravity.CENTER_VERTICAL;
-        ivContent.setImageResource(R.mipmap.ic_member_pic);
+        ivContent.setImageResource(R.mipmap.ic_areacode_arr);
         if (drawable != null) {
             ivContent.setImageDrawable(drawable);
         }
@@ -328,7 +330,7 @@ public class BaseItemView extends RelativeLayout {
         return mSmoothCheckBox != null && mSmoothCheckBox.isChecked();
     }
 
-    public void setOnRightClickListener(View.OnClickListener listener) {
+    public void setOnRightClickListener(OnClickListener listener) {
         if (tvRightText != null) {
             tvRightText.setOnClickListener(listener);
         }
@@ -342,7 +344,7 @@ public class BaseItemView extends RelativeLayout {
 
     public void setImageUrl(String avatar) {
         if (ivContent != null) {
-            ImageLoaderUtils.displayCircle(getContext(), ivContent, avatar, R.mipmap.ic_member_pic);
+            ImageLoaderUtils.displayCircle(getContext(), ivContent, avatar, R.drawable.jmui_head_icon);
         }
     }
 
@@ -382,11 +384,14 @@ public class BaseItemView extends RelativeLayout {
     }
 
     public void setContent(CharSequence content) {
-        createContentText();
+//        createContentText();
+        createEditText(content.toString());
         if (tvContent != null) {
+            Log.e("setContent","CharSequence2");
             tvContent.setText(content);
         } else if (etContent != null) {
-            etContent.setText(content);
+            Log.e("setContent","CharSequence1"+content.toString());
+            etContent.setText(content.toString());
             etContent.setSelection(content.length()-1);
         }
 //        ViewUtil.setText(tvContent, content);

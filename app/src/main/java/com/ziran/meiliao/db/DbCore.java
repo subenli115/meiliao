@@ -32,7 +32,7 @@ import java.io.File;
  */
 public class DbCore {
     //默认数据库的名称
-    private static final String DEFAULT_DB_NAME = "wpyxdata.db";
+    private static final String DEFAULT_DB_NAME = "meiliaodata.db";
 
 
     private static DaoMaster daoMaster;

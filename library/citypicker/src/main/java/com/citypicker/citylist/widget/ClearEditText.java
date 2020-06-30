@@ -69,6 +69,8 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
             if (right == null) {
                 right = getResources().getDrawable(R.drawable.ic_code_del);
             }
+            right.setBounds(22, 1, 20, 0);
+            setPadding(0,0,23,0);
             initDatas();
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +82,6 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
      */
     private void initDatas() {
         try {
-
             // 第一次显示，隐藏删除图标
             setCompoundDrawablesWithIntrinsicBounds(left, null, null, null);
             addListeners();
@@ -168,6 +169,10 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
+        change(hasFocus);
+    }
+
+    public  void change(boolean hasFocus) {
         try {
             this.hasFocus = hasFocus;
             String msg = getText().toString();

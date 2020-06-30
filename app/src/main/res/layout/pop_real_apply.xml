@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/arl"
+    android:background="@color/transparent60"
+    android:layout_height="match_parent"
+    >
+
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/rl_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/normal_bg_white60"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="300dp"
+ android:gravity="center_horizontal"
+    android:layout_below="@+id/iv_top"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_marginTop="46dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="未实名认证"
+        android:textSize="22sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:layout_marginBottom="29dp"
+        android:textStyle="bold"
+        />
+</FrameLayout>
+
+
+    <TextView
+        android:id="@+id/et_reason"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="31dp"
+        android:layout_marginRight="31dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="请先完成实名认证后申请提现"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_qd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="60dp"
+        android:padding="12dp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:text="立即认证"
+        android:gravity="center"
+        android:background="@drawable/normal_bg_bule"
+        />
+
+    <TextView
+        android:id="@+id/tv_qx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消"
+        android:textSize="15sp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginTop="18dp"
+        />
+
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

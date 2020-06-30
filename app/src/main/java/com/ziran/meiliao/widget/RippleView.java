@@ -291,7 +291,6 @@ public class RippleView extends FrameLayout implements WheelPicker.OnItemSelecte
 
     public void setProgressBack() {
 
-        progress.setBackgroundBitmap(getResources().getDrawable(R.mipmap.ic_jyg_player_bg_green));
     }
 
     public void setResProgress() {

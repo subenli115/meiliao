@@ -68,6 +68,7 @@ public class HttpInfo {
          * @param params 参数集合
          */
         public Builder addParams(Map<String, String> params) {
+
             if(null == params)
                 return this;
             if(null == this.params){

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_tv_left="showAndFinish"
+        >
+
+
+    </com.ziran.meiliao.common.commonwidget.NormalTitleBar>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#F5F5F5"></View>
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+
+    android:layout_height="100px">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:text="手机号"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        android:layout_gravity="center_vertical"
+        />
+    <EditText
+        android:id="@+id/ed_phone"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:hint="请输入"
+        android:paddingLeft="49px"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:background="@drawable/normal_bg"
+        android:textSize="30px"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/textColor_b2"
+        android:layout_below="@+id/afl"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#F0F0F0"
+        />
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="100px">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        android:text="验证码"
+        android:layout_gravity="center_vertical"
+        />
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_gravity="center_vertical"
+    android:layout_height="wrap_content">
+
+
+    <com.ziran.meiliao.widget.SmsCode2View
+        android:id="@+id/smsCodeView2"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_86"
+        android:layout_alignRight="@+id/line_one"
+        />
+    <com.ziran.meiliao.widget.SmsCode2View
+        android:id="@+id/smsCodeView"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_86"
+        android:layout_alignRight="@+id/line_one"
+        />
+
+</FrameLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="#F5F5F5">
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="560px"
+            android:layout_marginTop="134px"
+            android:paddingTop="28px"
+            android:paddingBottom="28px"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30px"
+            android:textColor="@color/white"
+            android:background="@drawable/normal_bg_bule"
+            android:text="下一步"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

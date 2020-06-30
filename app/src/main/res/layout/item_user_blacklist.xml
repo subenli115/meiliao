@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="100px"
+        app:roundimageview_type="circle"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_height="100px"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="33px"
+        android:layout_marginLeft="24px"
+        />
+
+
+<TextView
+    android:id="@+id/tv_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_marginLeft="21px"
+    android:text="sdfdf"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:layout_toRightOf="@+id/iv_head"
+    />
+<TextView
+    android:id="@+id/tv_qx"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="24px"
+    android:textColor="@color/black"
+    android:layout_marginRight="23px"
+    android:paddingLeft="23px"
+    android:paddingRight="23px"
+    android:paddingTop="13px"
+    android:paddingBottom="13px"
+    android:layout_centerVertical="true"
+    android:text="取消拉黑"
+    android:layout_alignParentRight="true"
+    android:background="@drawable/normal_black"
+    />
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

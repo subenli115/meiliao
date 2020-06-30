@@ -14,7 +14,6 @@ public class SJKLiveDetailProfileBean extends Result {
 
 
     /**
-     * data : {"chrmId":3,"detail":"本次五日正念止语静修营，旨在为学习过正念初阶的伙伴，以及喜爱静观的朋友创造修习机会。 \r\n　　五日正念止语静修是一段严格的、高强度的静观练习，可以带来丰硕的回报。在这个五日静修中，你将沉浸于正念练习中，学习有系统的方法，循序渐进地了解压力的真相，开发超越压力苦迫的心智能力。换言之，是籍由直接觉照身心现象，透过亲身的经验，培育正念的觉知力，乃至洞察身心实相的理解力。给身心全然的滋养，更深的对自己和世界的领悟和理解，并增强你作为正念老师的承诺。 \r\n　　课程着重于实作的引导与练习后经验的讨论。在这五天中，当我们细致小心地去探索我们的心念时，老师们会讲解练习的原则和应用，设有问答互动环节，以及培育深刻共享的那份投入。在这个五天中，系统性的冥想指导会带领你进入止静，并帮助你善巧地与所呈现的种种现象工作。这是内在觉知和发现的旅途，蕴涵着巨大的转化的可能。","chrmUserId":"0d88f49ad56c4ceac58f24185172f054","likeCount":1,"shareTitle":"历史1号","sharePic":"","hasBuy":true,"isCollect":true,"type":"course","url":"wWdi62+Z6I0tJ4orIpTpz+PLDT8ITQrvHj8oxiHuonD1nffoi8GAOUUiKAahDTt4","ableUsedCoupon":false,"picture":"https://www.psytap.com/wpyx_longjg/resource/images/activity/a1/active_banner.png","author":{"name":"测试"},"vip":"vip","duration":"01:30:00","title":"历史1号","price":0.01,"chrmUserToken":"wfc1O3o7ltu8iuWbI6nn0ib92i28VOt4/OSL4jTlr7cXoOJ8Asp5NxI/EJ38wnN1dwya5+/BrjywIAyhNMP6zlp08e2b16Ved53zRrK0/VlLw0/43UMWBGNfEqROz/DudirbDzWEeFc=","dir":[{"isCur":false,"duration":"01:30:00","title":"预告","courseId":1,"isHis":false,"url":""},{"isCur":false,"duration":"01:30:00","title":"直播","courseId":2,"isHis":false,"url":""},{"isCur":true,"duration":"01:30:00","title":"历史1号","courseId":3,"isHis":true,"url":""},{"isCur":false,"duration":"02:00:00","title":"历史2号","courseId":4,"isHis":true,"url":""},{"isCur":false,"duration":"01:00:00","title":"历史3号","courseId":5,"isHis":true,"url":""}],"shareDescript":"本次五日正念止语静修营，旨在为学习过正念初阶的伙伴，以及喜爱静观的朋友创造修习机会。 \r\n　　五日正","isLike":true,"watchCount":268,"shareUrl":"http://www.psytap.com/wpyx_longjg/page/content/shareCourse.html?courseId=3&shareUser=vUMRVcWbR/u/lVNIOHAsxCKxAvoxhzhnbyPx78kCOhW2hJEK0v1tNk1VMggA6Wgn","shareTimes":15}
      */
 
     private DataBean data;
@@ -42,7 +41,6 @@ public class SJKLiveDetailProfileBean extends Result {
          * type : course
          * url : wWdi62+Z6I0tJ4orIpTpz+PLDT8ITQrvHj8oxiHuonD1nffoi8GAOUUiKAahDTt4
          * ableUsedCoupon : false
-         * picture : https://www.psytap.com/wpyx_longjg/resource/images/activity/a1/active_banner.png
          * author : {"name":"测试"}
          * vip : vip
          * duration : 01:30:00
@@ -54,7 +52,6 @@ public class SJKLiveDetailProfileBean extends Result {
          * 　　五日正
          * isLike : true
          * watchCount : 268
-         * shareUrl : http://www.psytap.com/wpyx_longjg/page/content/shareCourse.html?courseId=3&shareUser=vUMRVcWbR/u/lVNIOHAsxCKxAvoxhzhnbyPx78kCOhW2hJEK0v1tNk1VMggA6Wgn
          * shareTimes : 15
          */
 

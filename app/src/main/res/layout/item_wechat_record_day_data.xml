@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <com.zhy.autolayout.AutoLinearLayout
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30px"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13"
+            android:textColor="@color/black"
+            android:textSize="48px"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_month"
+            android:layout_toRightOf="@+id/tv_day"
+            android:layout_width="wrap_content"
+            android:layout_alignBottom="@+id/tv_day"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5px"
+            android:text="4月"
+            android:textSize="26px"
+            android:textStyle="bold"
+            android:layout_marginLeft="3px"
+            />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/menu_info_recyclerview"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22px"
+            android:layout_alignTop="@+id/tv_month"
+            android:layout_toRightOf="@+id/tv_month"
+            android:layout_width="match_parent"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <!--内层的RecyclerView-->
+
+</com.zhy.autolayout.AutoLinearLayout>

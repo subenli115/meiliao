@@ -13,6 +13,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginBottom="90dp"
+
         app:roundimageview_type="circle"
         />
     <LinearLayout
@@ -144,10 +145,4 @@
         </LinearLayout>
     </LinearLayout>
 
-
-    <com.ziran.meiliao.widget.BottomPlayerView
-        android:id="@+id/bottom_exercise_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
 </FrameLayout>

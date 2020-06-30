@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/common_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:background="@color/white">
+        <!-- 公共的的标题栏 -->
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_tran_gray"
+            android:drawableLeft="@drawable/back1"
+            android:gravity="center"
+            android:paddingLeft="23px"
+            android:paddingRight="23px"
+            android:textColor="@color/textColor_666"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_back"
+            android:text="发动态"
+            android:textColor="@color/black"
+            android:textSize="38px" />
+
+        <TextView
+            android:id="@+id/tv_fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="24px"
+            android:background="@drawable/normal_bg_bule"
+            android:paddingLeft="21px"
+            android:paddingTop="8px"
+            android:paddingRight="21px"
+            android:paddingBottom="8px"
+            android:text="发布"
+            android:textColor="@color/white"
+            android:textSize="30px" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.ziran.meiliao.widget.CustomEditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/common_title"
+        android:scrollbars="vertical"
+        android:lines="4"
+        android:hint="分享或记录美好瞬间~"
+        android:maxLength="100"
+        android:paddingLeft="50px"
+        android:text=""
+        android:paddingTop="25px"
+        android:paddingRight="30px"
+        android:paddingBottom="24px"
+        android:textColor="@color/black"
+        android:textColorHint="@color/textColor_b2"
+        android:textSize="30px" />
+    <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
+        android:id="@+id/snpl_moment_add_photos"
+        style="@style/WrapWrap"
+        android:layout_marginTop="243px"
+        android:layout_below="@+id/common_title"
+        android:layout_marginLeft="50px"
+        app:bga_snpl_deleteDrawable="@mipmap/bga_pp_ic_delete"
+        app:bga_snpl_deleteDrawableOverlapQuarter="false"
+        app:bga_snpl_editable="true"
+        app:bga_snpl_itemCornerRadius="10dp"
+        app:bga_snpl_itemSpanCount="3"
+        app:bga_snpl_itemWhiteSpacing="4dp"
+        app:bga_snpl_itemWidth="0dp"
+        app:bga_snpl_maxItemCount="9"
+        app:bga_snpl_otherWhiteSpacing="100dp"
+        app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
+        app:bga_snpl_plusDrawable="@mipmap/icon_select_photo"
+        app:bga_snpl_plusEnable="true"
+        app:bga_snpl_sortable="true" />
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/igv_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        android:layout_below="@+id/snpl_moment_add_photos"
+        android:layout_marginTop="31px"
+        android:background="@color/white"
+        app:itemView_leftText="位置"
+        app:itemView_leftText_color="@color/black"
+        app:itemView_rightText="不显示位置"
+        app:itemView_rightTextSize="11sp"
+        app:itemView_rightText_color="@color/textColor_b2"
+        app:leftIcon="@mipmap/icon_release_adress"
+        app:showRightArrow="true" />
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/igv_private"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        android:layout_below="@+id/igv_address"
+        android:background="@color/white"
+        app:itemView_leftText="谁可以看"
+        app:itemView_leftText_color="@color/black"
+        app:itemView_rightText="所有人"
+        app:itemView_rightTextSize="11sp"
+        app:itemView_rightText_color="@color/textColor_b2"
+        app:leftIcon="@mipmap/icon_release_private"
+        app:showRightArrow="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/igv_private"
+        android:background="#f5f5f5" />
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -3,10 +3,12 @@ package com.ziran.meiliao.utils;
 import android.app.Activity;
 import android.content.Context;
 
+import com.ziran.meiliao.BuildConfig;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.app.WpyxConfig;
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
 import com.ziran.meiliao.common.commonutils.NetWorkUtils;
+import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.commonwidget.LoadingDialog;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
@@ -15,6 +17,7 @@ import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.ui.bean.VersionBean;
+import com.ziran.meiliao.ui.bean.VersionNewBean;
 import com.ziran.meiliao.ui.workshops.util.ServiceDialogUtil;
 import com.ziran.meiliao.widget.pupop.PopupWindowUtil;
 import com.ziran.meiliao.widget.pupop.UpdateVersionPopupWindow;
@@ -35,15 +38,14 @@ import java.util.Map;
 
 public class UpdateManager {
     private Context mContext;
-    private static VersionBean sVersionBean;
+    private static VersionNewBean sVersionBean;
 
-    public static VersionBean getVersionBean() {
+    public static VersionNewBean getVersionBean() {
         return sVersionBean;
     }
 
-    public static void setVersionBean(VersionBean versionBean) {
+    public static void setVersionBean(VersionNewBean versionBean) {
         sVersionBean = versionBean;
-        ServiceDialogUtil.setServicePhone(versionBean.getData().getServicePhone());
     }
 
     public UpdateManager(Context context) {
@@ -56,7 +58,7 @@ public class UpdateManager {
     public void checkUpdate() {
         if (EmptyUtils.isNotEmpty(getVersionBean())) {
             showCheckVersionResult(getVersionBean());
-        } else checkUpdate(!WpyxConfig.isCheckUpdate(), false);
+        } else checkUpdate(!MeiliaoConfig.isCheckUpdate(), false);
     }
 
     private boolean needToast = false;
@@ -68,7 +70,7 @@ public class UpdateManager {
         this.needToast = needToast;
         if (NetWorkUtils.isNetConnected(MyAPP.getContext()) && needCheck) {
             isUpdate();
-            WpyxConfig.setIsCheckUpdateVersion(true);
+            MeiliaoConfig.setIsCheckUpdateVersion(true);
         }
     }
 
@@ -84,11 +86,12 @@ public class UpdateManager {
         }
         final String currentVersion = DeviceUtil.getVersionName(mContext);
         Map<String, String> defMap = MapUtils.getDefMap(false);
-        defMap.put("version", currentVersion);
-        defMap.put("platform", "android");
-        OkHttpClientManager.getAsync(ApiKey.VERSION, defMap, new NewRequestCallBack<VersionBean>(VersionBean.class) {
+        defMap.put("isNew", "0");
+        defMap.put("type", "1");
+        OkHttpClientManager.getAsync(ApiKey.ADMIN_APPVERSION_APPVERSION, defMap, new NewRequestCallBack<VersionNewBean>(VersionNewBean.class) {
             @Override
-            public void onSuccess(final VersionBean result) {
+            public void onSuccess(final VersionNewBean result) {
+                UpdateManager.setVersionBean(result);
                 showCheckVersionResult(result);
             }
 
@@ -100,15 +103,15 @@ public class UpdateManager {
         });
     }
 
-    private void showCheckVersionResult(final VersionBean result) {
+    private void showCheckVersionResult(final VersionNewBean result) {
         LoadingDialog.cancelDialogForLoading();
-        if (result.getData().isIsNew()) {
+        if (CheckUtil.compareVersion(BuildConfig.VERSION_NAME,result.getData().getAppVersion())==-1&& !SPUtils.getString("isVersionRemind").equals(result.getData().getAppVersion())) {
             // 显示提示对话框
             HandlerUtil.runMain(new Runnable() {
                 @Override
                 public void run() {
-                    WpyxConfig.setLastVersion(result.getData().getLastestVersion());
-                    showNoticeDialog(result.getData().getUrl(), result.getData().getContent());
+                    MeiliaoConfig.setLastVersion(result.getData().getAppVersion());
+                    showNoticeDialog(result.getData().getAppVersion(),result.getData().getAddress(), result.getData().getUpdateContent(),result.getData().getIsUpdate());
                 }
             }, 200);
         } else {
@@ -123,10 +126,11 @@ public class UpdateManager {
     /**
      * 显示软件更新对话框
      */
-    private void showNoticeDialog(final String downUrl, final String content) {
+    private void showNoticeDialog(String version, final String downUrl, final String content, int isUpdate) {
         UpdateVersionPopupWindow popupwindow = new UpdateVersionPopupWindow(mContext);
         popupwindow.setDownloadUrl(downUrl);
-        popupwindow.setContent(content);
+        popupwindow.setContent(content,version);
+        popupwindow.setIsForceUpdate(isUpdate);
         PopupWindowUtil.show(popupwindow);
     }
 

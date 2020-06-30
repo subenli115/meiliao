@@ -3,6 +3,7 @@ package com.ziran.meiliao.ui.base;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.envet.NewRequestCallBack;
+import com.ziran.meiliao.im.activity.BaseActivity;
 
 import java.util.Map;
 
@@ -31,10 +32,14 @@ public class CommonPresenter extends CommonContract.Presenter {
             @Override
             public void onError(String msg, int code) {
                 super.onError(msg, code);
+                ( (CommonHttpActivity)mView).stopProgressDialog();
                 ToastUitl.showShort(msg);
+
             }
         });
     }
+
+
 
     @Override
     public <D extends Result> void postAction(String url, Map<String, String> params, final Class<D> clz) {
@@ -47,6 +52,11 @@ public class CommonPresenter extends CommonContract.Presenter {
                 } else {
                     mView.returnData(result);
                 }
+            }
+
+            @Override
+            public void onError(String msg, int code) {
+                super.onError(msg, code);
             }
         });
     }
@@ -61,4 +71,15 @@ public class CommonPresenter extends CommonContract.Presenter {
         });
     }
 
+
+
+    @Override
+    public <D extends Result> void getDataOneHead(String url, String params,String token, final Class<D> clz) {
+        mModel.getDataOneHead(url, params,token, new NewRequestCallBack<D>(clz, mView) {
+            @Override
+            public void onSuccess(D result) {
+                mView.returnData(result);
+            }
+        });
+    }
 }

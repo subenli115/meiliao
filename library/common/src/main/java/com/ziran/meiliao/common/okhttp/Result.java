@@ -31,7 +31,7 @@ public class Result   {
 
 
     public int getResultCode() {
-        return resultCode;
+        return code;
     }
 
     public void setResultCode(int code) {

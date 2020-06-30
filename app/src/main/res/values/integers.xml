@@ -9,6 +9,7 @@
     <integer name="anim_length_half">250</integer>
 
 
+    <integer name="loading_frame_interval">80</integer>
     <integer name="id_course">7771</integer>
     <integer name="id_teacher">7772</integer>
     <integer name="id_type">7773</integer>

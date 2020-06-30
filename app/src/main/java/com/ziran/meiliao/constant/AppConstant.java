@@ -92,7 +92,9 @@ public interface AppConstant {
 
     interface SPKey {
         String TOKEN = "accessToken";
+        String R_TOKEN = "r_accessToken";
         String PHONE = "phone";
+        String USERID = "USERID";
         String EXTRAS_URL = "url";
         String ALBUM_ID = "albumId";
         String COURSE_ID = "courseId";
@@ -157,6 +159,7 @@ public interface AppConstant {
         String ON_WEB_PAY = "onWebPay";
         String EDIT_USER_INFO = "EDIT_USER_INFO";
         String UPDATE_USER = "UPDATE_USER";
+        String UPDATE_OTHERUSER = "UPDATE_OTHERUSER";
         String NETWORK_CHANGE_STATE = "netWorkState";
 
         String REQ_BUY_COURSE = "REQ_BUY_COURSE";
@@ -164,6 +167,8 @@ public interface AppConstant {
         String LIVE_OVER = "LIVE_OVER";
         String USER_TICK = "USER_TICK";
         String GIVE_GIFT = "GIVE_GIFT";
+        String GIVE_GIFT1 = "GIVE_GIFT1";
+        String GIVE_GIFT2 = "GIVE_GIFT2";
         String BALANCE = "balance";
         String GIVE_ALBUM = "GIVE_ALBUM";
         String ALBUM_COUNT_DOWN_TIME = "ALBUM_COUNT_DOWN_TIME";

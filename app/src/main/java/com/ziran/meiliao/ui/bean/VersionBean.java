@@ -10,7 +10,6 @@ public class VersionBean extends Result {
 
 
     /**
-     * data : {"content":"新版本是这样的<br/>sads das d","isNew":false,"lastestVersion":"0.0","url":"https://www.psytap.com/wpyx_longjgnull"}
      */
 
     private DataBean data;
@@ -28,7 +27,6 @@ public class VersionBean extends Result {
          * content : 新版本是这样的<br/>sads das d
          * isNew : false
          * lastestVersion : 0.0
-         * url : https://www.psytap.com/wpyx_longjgnull
          */
 
         private String content;

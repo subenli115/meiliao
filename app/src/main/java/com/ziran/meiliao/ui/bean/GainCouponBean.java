@@ -11,8 +11,6 @@ import java.util.List;
 public class GainCouponBean extends Result {
 
     /**
-     * data : {"pics":["https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/pics1.png"
-     * ,"https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/pics2.png","https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/pics3.png"],"times":"15","pg":"https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/bg.png","number":1,"faceValue":"200","exist":false}
      */
 
     private DataBean data;
@@ -27,10 +25,7 @@ public class GainCouponBean extends Result {
 
     public static class DataBean extends ShareBean {
         /**
-         * pics : ["https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/pics1.png",
-         * "https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/pics2.png","https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/pics3.png"]
          * times : 15
-         * pg : https://www.psytap.com/wpyx_longjg/static/home/images/shareCoupon/bg.png
          * number : 1
          * faceValue : 200
          * exist : false

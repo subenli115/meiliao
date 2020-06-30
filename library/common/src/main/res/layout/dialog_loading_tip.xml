@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="15dp"
-        android:textColor="@color/textColor_999"
+        android:textColor="#B2B2B2"
         android:textSize="@dimen/font_normal"
         android:text="加载中..." />
     <Button

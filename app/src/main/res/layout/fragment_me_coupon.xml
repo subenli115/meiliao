@@ -5,6 +5,8 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <View style="@style/hor_match_line_8dp" />
+
     <FrameLayout
         android:id="@+id/rootFrame"
         android:layout_width="match_parent"
@@ -26,12 +28,4 @@
             android:gravity="center"/>
     </FrameLayout>
 
-    <Button
-        android:id="@+id/btn_me_coupon_receive"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_btn_buy"
-        android:text="我要领优惠劵"
-        android:textColor="@color/white"
-        android:textSize="18sp"/>
 </LinearLayout>

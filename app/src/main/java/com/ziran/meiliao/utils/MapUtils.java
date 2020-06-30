@@ -36,10 +36,9 @@ public class MapUtils {
     //登录需要的map数据
     public static Map<String, String> getLoginMap(String phone, String code, String password) {
         Map<String, String> map = getDefMap(false);
-        put("userName", phone, map);
-        put("logCode", code, map);
-
-        put("deviceId", DeviceUtil.getDeviceId(MyAPP.getContext()) , map);
+        put("mobile", "SMS@"+phone, map);
+        put("code", code, map);
+        put("grant_type","mobile",map);
         put("password", password, map);
         return map;
     }
@@ -65,7 +64,7 @@ public class MapUtils {
     public static Map<String, String> getCodeMap(String areaCode, String phoneNum, String isVoice) {
         Map<String, String> map = getDefMap(true);
         put("areaCode", areaCode, map);
-        put("phoneNum", phoneNum, map);
+        put("mobile", phoneNum, map);
         put("isVoice", isVoice, map);
         return map;
     }
@@ -82,9 +81,8 @@ public class MapUtils {
     //获取验证码需要的map数据
     public static Map<String, String> getSmsMap( String phoneNum,String smsCode,int project) {
         Map<String, String> map = getDefMap(true);
-        put("phoneNum", phoneNum, map);
-        put("smsCode", smsCode, map);
-        put("project", Integer.toString(project), map);
+        put("phone", phoneNum, map);
+        put("code", smsCode, map);
         return map;
     }
     //将数据添加到map
@@ -121,6 +119,13 @@ public class MapUtils {
         Map<String, String> map = new HashMap<>();
         if (needToken && EmptyUtils.isNotEmpty( MyAPP.getAccessToken())) {
             map.put("accessToken", MyAPP.getAccessToken());
+        }
+        return map;
+    }
+    public static Map<String, String> getDefMap1(boolean needToken) {
+        Map<String, String> map = new HashMap<>();
+        if (needToken && EmptyUtils.isNotEmpty( MyAPP.getAccessToken())) {
+            map.put("accessToken", MyAPP.getAccessToken()+"2");
         }
         return map;
     }

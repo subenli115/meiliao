@@ -6,8 +6,17 @@ import android.content.Intent;
 import android.view.View;
 
 import com.ziran.meiliao.R;
-import com.ziran.meiliao.constant.AppConstant;
-import com.ziran.meiliao.ui.priavteclasses.activity.GetVideoCouponActivity;
+import com.ziran.meiliao.app.MyAPP;
+import com.ziran.meiliao.common.baserx.RxManager;
+import com.ziran.meiliao.common.commonutils.ToastUitl;
+import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
+import com.ziran.meiliao.constant.ApiKey;
+import com.ziran.meiliao.envet.NewRequestCallBack;
+import com.ziran.meiliao.ui.bean.UserBean;
+import com.ziran.meiliao.utils.MapUtils;
+import com.ziran.meiliao.widget.ItemGroupView;
+
+import java.util.Map;
 
 /**
  * @author 吴祖清
@@ -22,8 +31,16 @@ import com.ziran.meiliao.ui.priavteclasses.activity.GetVideoCouponActivity;
 
 public class VideoCouponTipsPopupWindow extends BasePopupWindow {
 
-    public VideoCouponTipsPopupWindow(Context context) {
+    private final ItemGroupView tv_me_main_new_choose;
+    private final RxManager rxManager;
+    private String setSex;
+
+
+    public VideoCouponTipsPopupWindow(Context context, ItemGroupView tv_me_main_new_choose, RxManager mRxManager) {
         super(context);
+        mContext=context;
+        rxManager=mRxManager;
+        this.tv_me_main_new_choose=tv_me_main_new_choose;
     }
 
     @Override
@@ -39,32 +56,49 @@ public class VideoCouponTipsPopupWindow extends BasePopupWindow {
         setOnClickListener(R.id.tv_popuw_buy_video_coupon_tips_cancel);
     }
 
+
+    public void setSex(String sex){
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("id", MyAPP.getUserId());
+        if(sex.equals("(男)")){
+            sex="1";
+        }else {
+            sex="2";
+        }
+        defMap.put("preference",sex);
+        OkHttpClientManager.putAsyncAddHead(ApiKey.ADMIN_USER_UPDATE, defMap, new
+                NewRequestCallBack<UserBean>(UserBean.class) {
+                    @Override
+                    public void onSuccess(UserBean result) {
+                        ToastUitl.showShort("修改成功");
+                        MyAPP.setmUserBean(result.getData());
+                        rxManager.post("updateCard","");
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+                        ToastUitl.showShort(msg);
+                    }
+                });
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_popuw_buy_video_coupon_tips_buy:
-                BuyCoursePopupWindow popupwindow = new BuyCoursePopupWindow(mContext);
-                popupwindow.setText(coinTitle, String.valueOf(useCoin), needCoin,memberPrice,levelDetail);
-                popupwindow.setUrl(coverUrl);
-                popupwindow.setStyle(useCoin<=needCoin);
-                PopupWindowUtil.show((Activity) mContext, popupwindow);
+                 setSex = MyAPP.getmUserBean().getSex() == 1 ? "(男)" : "(女)";
+                tv_me_main_new_choose.setRigthText("同性"+setSex);
+                setSex(setSex);
                 break;
             case R.id.tv_popuw_buy_video_coupon_tips_free:
-                Intent intent = new Intent(mContext, GetVideoCouponActivity.class);
-                intent.putExtra(AppConstant.SPKey.COURSE_ID, courseId);
-                mContext.startActivity(intent);
+                 setSex = MyAPP.getmUserBean().getSex() == 1 ? "(女)" : "(男)";
+                tv_me_main_new_choose.setRigthText("异性"+setSex);
+                setSex(setSex);
                 break;
         }
         dismiss();
     }
-    private String  levelDetail;
-    private int memberPrice;
-    public int useCoin;
-    private int needCoin;
-    private String coinTitle;
-    private String coinCouponTitle;
-    private String coinCouponDes;
-    private String coverUrl;
     private String courseId;
 
     public String getCourseId() {
@@ -75,54 +109,5 @@ public class VideoCouponTipsPopupWindow extends BasePopupWindow {
         this.courseId = courseId;
     }
 
-    public void setParams(int useCoin, int needCoin, String coinTitle, String coinCouponDes, String coinCouponTitle, String coverUrl,String levelDetail,int memberPrice) {
-        this.useCoin = useCoin;
-        this.needCoin = needCoin;
-        this.coinTitle = coinTitle;
-        this.coinCouponDes = coinCouponDes;
-        this.coinCouponTitle = coinCouponTitle;
-        this.coverUrl = coverUrl;
-        this.memberPrice=memberPrice;
-        this.levelDetail=levelDetail;
-    }
 
-    public int getUseCoin() {
-        return useCoin;
-    }
-
-    public void setUseCoin(int useCoin) {
-        this.useCoin = useCoin;
-    }
-
-    public int getNeedCoin() {
-        return needCoin;
-    }
-
-    public void setNeedCoin(int needCoin) {
-        this.needCoin = needCoin;
-    }
-
-    public String getCoinTitle() {
-        return coinTitle;
-    }
-
-    public void setCoinTitle(String coinTitle) {
-        this.coinTitle = coinTitle;
-    }
-
-    public String getCoinCouponTitle() {
-        return coinCouponTitle;
-    }
-
-    public void setCoinCouponTitle(String coinCouponTitle) {
-        this.coinCouponTitle = coinCouponTitle;
-    }
-
-    public String getCoinCouponDes() {
-        return coinCouponDes;
-    }
-
-    public void setCoinCouponDes(String coinCouponDes) {
-        this.coinCouponDes = coinCouponDes;
-    }
 }

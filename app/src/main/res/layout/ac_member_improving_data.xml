@@ -14,7 +14,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="448px"
-        android:background="@mipmap/improving_data_bg"
 
         />
     <com.ziran.meiliao.common.commonwidget.NormalTitleBar

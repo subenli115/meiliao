@@ -7,7 +7,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
 
-
 import com.ziran.meiliao.R;
 
 import java.lang.ref.WeakReference;

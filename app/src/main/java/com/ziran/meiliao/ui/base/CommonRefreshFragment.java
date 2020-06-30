@@ -98,6 +98,7 @@ public abstract class CommonRefreshFragment<T extends BasePresenter, E extends B
             iRecyclerView.setOnRefreshListener(this);//设置刷新监听
             iRecyclerView.setOnLoadMoreListener(this);//设置加载更多监听
             iRecyclerView.setHasFixedSize(true);    //启动加速
+            iRecyclerView.setNestedScrollingEnabled(false);
             if (mAdapter == null) {
                 defPadding = getResources().getDimensionPixelOffset(R.dimen.text_margin_left);
                 //初始化RecyclerView

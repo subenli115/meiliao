@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/arl"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+<com.zhy.autolayout.AutoLinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80px"
+        android:layout_marginTop="73px"
+        android:text="完善资料"
+        android:textColor="@color/textColor_4c"
+        android:textSize="48px"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="为你匹配合适的人"
+        android:layout_marginLeft="80px"
+        android:textSize="26px"
+        android:textColor="#7c7c7c"
+        android:layout_marginTop="28px"
+        />
+
+
+    <com.citypicker.citylist.widget.ClearEditText
+        android:id="@+id/ed_nick"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="81px"
+        android:layout_marginRight="95px"
+        android:layout_height="80px"
+        android:singleLine="true"
+        android:hint="@string/nick_name_title"
+        android:paddingLeft="49px"
+        android:layout_marginTop="82px"
+        android:layout_gravity="center"
+        android:textSize="30px"
+        android:maxLength="11"
+        android:lines="1"
+        android:paddingRight="23px"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/textColor_b2"
+        android:layout_below="@+id/afl"
+        android:background="@drawable/normal_bg_tran"
+        />
+<TextView
+    android:id="@+id/tv_hint"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="137px"
+    android:visibility="invisible"
+    android:text="*该昵称已被使用"
+    android:layout_marginTop="19px"
+    android:textSize="26px"
+    android:textColor="#FF4F68"
+    />
+
+
+        <com.citypicker.citylist.widget.ClearEditText
+            android:id="@+id/ed_age"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:hint="@string/info_age"
+            android:paddingLeft="49px"
+            android:layout_gravity="center"
+            android:textSize="30px"
+            android:layout_marginLeft="81px"
+            android:layout_marginRight="95px"
+            android:layout_marginTop="36px"
+            android:inputType="number"
+            android:maxLength="2"
+            android:singleLine="true"
+            android:layout_centerHorizontal="true"
+            android:textColorHint="@color/textColor_b2"
+            android:layout_below="@+id/afl"
+            android:background="@drawable/normal_bg_tran"
+            />
+
+
+    <TextView
+        android:id="@+id/tv_region"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="81px"
+        android:layout_marginRight="95px"
+        android:layout_height="80px"
+        android:paddingLeft="49px"
+        android:layout_marginTop="80px"
+        android:layout_gravity="center"
+        android:textSize="30px"
+        android:textColorHint="@color/textColor_b2"
+        android:gravity="center_vertical"
+        android:layout_centerHorizontal="true"
+        android:hint="地区"
+        android:layout_below="@+id/afl"
+        android:background="@drawable/normal_bg_tran"
+        />
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="88px"
+        android:layout_marginRight="88px"
+        android:layout_height="88px"
+        android:layout_marginTop="244px"
+        android:text="@string/next"
+        android:paddingLeft="92px"
+        android:paddingRight="92px"
+        android:layout_gravity="center"
+        android:textSize="30px"
+        android:layout_marginBottom="60px"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_below="@+id/afl"
+        android:background="@drawable/normal_bg_bule50"
+        />
+
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="53dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_dot_one"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/shape_dot_bule"
+
+            />
+        <ImageView
+            android:id="@+id/iv_dot_two"
+            android:layout_marginLeft="13dp"
+            android:layout_toRightOf="@+id/iv_dot_one"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/shape_dot_bule50"
+
+            />
+        <ImageView
+            android:layout_marginLeft="13dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_toRightOf="@+id/iv_dot_two"
+            android:src="@drawable/shape_dot_bule50"
+
+            />
+
+    </RelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -2,38 +2,38 @@ package com.ziran.meiliao.ui.bean;
 
 import com.ziran.meiliao.common.okhttp.Result;
 
-/**
- * Created by Administrator on 2018/7/19.
- */
-
 public class CheckPhoneBean extends Result {
+    private DataBean data;
 
-    private String data;
-
-    public String getData() {
+    public DataBean getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(DataBean data) {
         this.data = data;
     }
 
-//    public static class DataBean {
-//
-//
-//        /**
-//         * status : 1
-//         */
-//
-//        public  int status;
-//
-//        public  int getStatus() {
-//            return status;
-//        }
-//
-//        public void setStatus(int status) {
-//            this.status = status;
-//        }
-//    }
+    public static class DataBean {
+
+        private String  mobile;
+        private String  mobileCode;
+        public String getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(String mobile) {
+            this.mobile = mobile;
+        }
+
+
+        public String getMobileCode() {
+            return mobileCode;
+        }
+
+        public void setMobileCode(String mobileCode) {
+            this.mobileCode = mobileCode;
+        }
+
+    }
 
 }

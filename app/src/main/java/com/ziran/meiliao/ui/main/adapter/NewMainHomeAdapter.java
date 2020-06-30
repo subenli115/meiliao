@@ -2,7 +2,6 @@ package com.ziran.meiliao.ui.main.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -33,11 +32,8 @@ import com.ziran.meiliao.ui.bean.HotAlbumBean;
 import com.ziran.meiliao.ui.bean.RecActivityBean;
 import com.ziran.meiliao.ui.bean.ZhiBoData;
 import com.ziran.meiliao.ui.bean.ZhuanLanBean;
-import com.ziran.meiliao.ui.decompressionmuseum.activity.AlbumDetailActivity;
-import com.ziran.meiliao.ui.decompressionmuseum.activity.RecordVideoPlayerActivity;
 import com.ziran.meiliao.ui.main.listener.OnClickMoreListener;
 import com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangActivity;
-import com.ziran.meiliao.ui.priavteclasses.activity.NowLiveMoreActivity;
 import com.ziran.meiliao.ui.priavteclasses.util.CountDownUtil;
 import com.ziran.meiliao.widget.GlideRoundTransform;
 import com.zhy.autolayout.AutoLinearLayout;
@@ -64,8 +60,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
     protected OnItemClickListener mOnItemClickListener;
     private RecyclerView recyclerView;
     private CYLoopPagerAdapter<DataBean.RecActivityBean> cyLoopPagerAdapter;
-    private BootCampAdapter bootAdapter;
-    private ZhuanLanAdapter zlAdapter;
 
     public NewMainHomeAdapter(Context context, Activity activity, MultiItemTypeSupport<Object> multiItemTypeSupport, RxManager mRxManager) {
         super(context, multiItemTypeSupport);
@@ -79,12 +73,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
 
 
     public void update(){
-        if(bootAdapter!=null){
-            bootAdapter.notifyDataSetChanged();
-        }
-        if(zlAdapter!=null){
-            zlAdapter.notifyDataSetChanged();
-        }
     }
 
     private ItemClickListener itemClickListener;
@@ -190,21 +178,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
             @Override
             public void onItemClick(int position, DataBean.RecActivityBean bean) {
                 String url = bean.getUrl();
-                if(url.contains("wpyx://live")){
-                    Intent intent = new Intent(mContext, NowLiveMoreActivity.class);
-                    intent.putExtra("id",1);
-                    mContext.startActivity(intent);
-                }else if(url.contains("http")){
-                    ActisData dataBean = new ActisData();
-                    dataBean.setPosition(position);
-                    dataBean.setPicture(bean.getPicture());
-                    dataBean.setShareUrl(bean.getShareUrl());
-                    dataBean.setUrl(bean.getUrl());
-                    dataBean.setShareDescript(bean.getShareDescript());
-                    GongZuoFangActivity.startAction(mContext,dataBean);
-                }else if(url.equals("")){
-                    RecordVideoPlayerActivity.startAction(mContext,bean.getRecId());
-                }
             }
         };
         cyRollPagerView.setAdapter(cyLoopPagerAdapter,3000,new CYColorPointHintView(mContext));
@@ -223,7 +196,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
         hotAlbumAdapter.setItemClickListener(new HotAlbumAdapter.ItemClickListener() {
             @Override
             public void itemClick(int position, int itemId) {
-                AlbumDetailActivity.startAction(mContext,itemId+"");
                 MyAPP.mServiceManager.setAlbumName1(data.getHotAlbum().get(position).getAlbumName());
             }
         });
@@ -233,16 +205,12 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
     private void setBootCampAdapter(ViewHolderHelper holder, Object bean) {
          recyclerView = setCommonManager(holder);
         BootCampBean data = EmptyUtils.parseObject(bean);
-        bootAdapter = new BootCampAdapter(data.getBeans(),mContext);
-        recyclerView.setAdapter(bootAdapter);
     }
 
 
     private void setZuanLanAdapter(ViewHolderHelper holder, Object bean) {
         recyclerView = setCommonManager(holder);
         ZhuanLanBean data = EmptyUtils.parseObject(bean);
-         zlAdapter = new ZhuanLanAdapter(data.getSubscription(),mContext,mActivity,mRxManager);
-        recyclerView.setAdapter(zlAdapter);
 
     }
 

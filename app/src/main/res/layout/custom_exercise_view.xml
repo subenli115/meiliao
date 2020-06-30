@@ -36,7 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="840px"
             android:adjustViewBounds="true"
-            android:background="@mipmap/bg_jdx_exercise"
             android:scaleType="fitXY" />
         <TextView
             android:id="@+id/tv_exercise"
@@ -91,7 +90,6 @@
             android:layout_marginBottom="22px"
             android:layout_centerHorizontal="true"
             android:visibility="invisible"
-            android:background="@mipmap/login_qrcode"
 
             />
         <com.zhy.autolayout.AutoRelativeLayout

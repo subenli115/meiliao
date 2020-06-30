@@ -4,60 +4,75 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
-import android.database.DatabaseErrorHandler;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.mob.moblink.MobLink;
-import com.mob.moblink.RestoreSceneListener;
-import com.mob.moblink.Scene;
+import com.activeandroid.ActiveAndroid;
+import com.baidu.mapapi.SDKInitializer;
+import com.bumptech.glide.request.target.ViewTarget;
+import com.chuanglan.shanyan_sdk.OneKeyLoginManager;
+import com.chuanglan.shanyan_sdk.listener.InitListener;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.google.gson.Gson;
 import com.ziran.meiliao.BuildConfig;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.common.baseapp.BaseApplication;
+import com.ziran.meiliao.common.commonutils.ACache;
 import com.ziran.meiliao.common.commonutils.LogUtils;
 import com.ziran.meiliao.common.commonutils.NetWorkUtils;
 import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
-import com.ziran.meiliao.common.compressorutils.FileUtil;
 import com.ziran.meiliao.common.crash.Cockroach;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
-import com.ziran.meiliao.common.security.AES;
+import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.dao.UserInfoDao;
 import com.ziran.meiliao.db.DbCore;
+import com.ziran.meiliao.entry.LoginBean;
 import com.ziran.meiliao.entry.UserInfo;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.envet.OnLoadDataListener;
+import com.ziran.meiliao.im.activity.MainActivity;
+import com.ziran.meiliao.im.application.JGApplication;
+import com.ziran.meiliao.im.database.UserEntry;
+import com.ziran.meiliao.im.entity.NotificationClickEventReceiver;
+import com.ziran.meiliao.im.location.service.LocationService;
+import com.ziran.meiliao.im.pickerimage.utils.StorageUtil;
+import com.ziran.meiliao.im.utils.SharePreferenceManager;
+import com.ziran.meiliao.im.utils.ThreadUtil;
+import com.ziran.meiliao.im.utils.imagepicker.GlideImageLoader;
+import com.ziran.meiliao.im.utils.imagepicker.ImagePicker;
+import com.ziran.meiliao.im.utils.imagepicker.view.CropImageView;
 import com.ziran.meiliao.service.ServiceManager;
 import com.ziran.meiliao.ui.bean.CheckVipLevelBean;
-import com.ziran.meiliao.ui.bean.ResBean;
+import com.ziran.meiliao.ui.bean.UserAccountBean;
+import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.bean.UserInfoBean;
 import com.ziran.meiliao.ui.main.activity.NewLoginActivity;
-import com.ziran.meiliao.utils.HandlerUtil;
+import com.ziran.meiliao.ui.main.activity.SplashActivity;
+import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
 import com.ziran.meiliao.utils.MapUtils;
-import com.ziran.meiliao.utils.PracticeDataUtil;
+import com.ziran.meiliao.utils.PrefUtils;
 import com.ziran.meiliao.utils.StringUtils;
 import com.ziran.meiliao.utils.UMengKit;
-import com.ziran.meiliao.utils.UpdateVersionUtil;
-import com.taobao.sophix.SophixManager;
-import com.taobao.sophix.listener.PatchLoadStatusListener;
+//import com.taobao.sophix.SophixManager;
+//import com.taobao.sophix.listener.PatchLoadStatusListener;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
+import com.ziran.meiliao.widget.BGAGlideImageLoader3;
 
 
 import java.io.File;
-import java.io.IOException;
+import java.util.Map;
 
-import cn.beecloud.BCPay;
-import cn.beecloud.BeeCloud;
-import cn.rongcloud.live.LiveKit;
+import cn.bingoogolapple.photopicker.imageloader.BGAImage;
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.api.BasicCallback;
 
 
 /**
@@ -67,6 +82,10 @@ public class MyAPP extends BaseApplication {
 
     //用户token
     private static String accessToken;
+
+
+    //用户id
+    private static String userId;
     //当前用户的资料
     public static UserInfo mUserInfo;
     public static boolean reqPerOk = false;
@@ -76,17 +95,11 @@ public class MyAPP extends BaseApplication {
     public static String secretId;
 
 
-    public static String mobCourseId="";
+    public static String mobCourseId = "";
 
     //微信APP id
-    private static String wcAppId = "wxb3c0d81ce83e5636";
-    //是否初始化融云
-    public static boolean isInit;
+    public static String wcAppId = "wx9f81f7c83ead9d5d";
 
-    //融云APP key
-    public static final String RECOLE_APP_KEY = "8luwapkv8lzrl";//上线环境
-//    public static final String RECOLE_APP_KEY = AES.get().decrypt("HZZxQqOo8yT6GDUPel+tpA==");//上线环境
-//    public static final String RECOLE_APP_KEY = "uwd1c0sxuwbv1";//开发环境
 
     //音频播放服务管理类
     public static ServiceManager mServiceManager = null;
@@ -97,6 +110,27 @@ public class MyAPP extends BaseApplication {
     //友盟设备token
     private static String deviceToken;
     private static UserInfo userInfo;
+    private static ACache mCache;
+    private static Gson g;
+
+    public static UserBean.DataBean getmUserBean() {
+        if(mUserBean!=null){
+            return mUserBean;
+        }else {
+            return g.fromJson(mCache.getAsString("mUserBean"),  UserBean.DataBean.class);
+        }
+    }
+
+    public static void setmUserBean(UserBean.DataBean mUserBean) {
+        String json = g.toJson(mUserBean);
+        mCache.put("mUserBean",json);
+        MyAPP.mUserBean = mUserBean;
+    }
+
+    private static UserBean.DataBean mUserBean;
+    private Context context;
+    private static String THUMP_PICTURE_DIR;
+    private LocationService locationService;
 
 
     //分包处理
@@ -106,72 +140,91 @@ public class MyAPP extends BaseApplication {
         MultiDex.install(this);
     }
 
-    //Android 4.0会调用此方法获取数据库。
-    @Override
-    public SQLiteDatabase openOrCreateDatabase(String name, int mode, SQLiteDatabase.CursorFactory factory,
-                                               DatabaseErrorHandler errorHandler) {
-        SQLiteDatabase result = SQLiteDatabase.openOrCreateDatabase(getDatabasePath(name), null);
-        return result;
-    }
-    @Override
-    public File getDatabasePath(String name) {
-        File parentFile = new File(Environment.getExternalStorageDirectory() + File.separator +
-                "smartDB" + File.separator);
-        if(!parentFile.exists()){
-            boolean mkParentRes = parentFile.mkdirs();
+    public static String getUserId() {
+        if(userId==null||userId.length()==0){
+            userId= SPUtils.getString(AppConstant.SPKey.USERID);
         }
+            return userId;
 
-        File realDBFile = new File(parentFile,name);
-        if(!realDBFile.exists()){
-            try {
-                realDBFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return realDBFile;
     }
+
+    public static void setUserId(String userId) {
+        MyAPP.userId = userId;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 //        initHotfix();
+        ViewTarget.setTagId(R.id.glide_tag);
         //初始化数据库
         DbCore.init(this);
         //初始化服务管理器
+        BGAImage.setImageLoader(new BGAGlideImageLoader3());
+        context = getApplicationContext();
         mServiceManager = new ServiceManager(this);
         //安装异常处理
         initCockroach();
         //友盟初始化
-//        UMengKit.init(this);
-        MyAPP.initLiveKit(this);
-        WpyxConfig.isDowning=true;
+        UMengKit.init(this);
+        //闪验SDK配置debug开关 （必须放在初始化之前，开启后可打印闪验SDK更加详细日志信息）
+        OneKeyLoginManager.getInstance().setDebug(true);
+        //闪验SDK初始化（建议放在Application的onCreate方法中执行）
+        initShanyanSDK(getApplicationContext());
+        MeiliaoConfig.isDowning = true;
         //java代码
         //是否开启友盟日志
         Config.DEBUG = BuildConfig.DEBUG;
         LogUtils.logInit(BuildConfig.DEBUG);
         setOffLine(false);
-        OkHttpClientManager.setDebug(true);
-        MobLink.setRestoreSceneListener(new SceneListener());
+        g = new Gson();
+        mCache = ACache.get(this);
+        OkHttpClientManager.setDebug(false);
+        initIm();
+        TTAdManagerHolder.init(this);
     }
 
-    //Java代码
-     class SceneListener extends Object implements RestoreSceneListener {
-        @Override
-        public Class<? extends Activity> willRestoreScene(Scene scene) {
 
-            return null;
-        }
-        @Override
-        public void notFoundScene(Scene scene) {
-            //TODO 未找到处理scene的activity时回调
-            MyAPP.setMobCourseId(scene.getParams().get("courseId")+"");
-            Log.e("mobCourseId3",""+scene.getParams().get("courseId")+"");
-        }
-        @Override
-        public void completeRestore(Scene scene) {
-            // TODO 在"拉起"处理场景的Activity之后调用
-        }
+    private void initIm() {
+        THUMP_PICTURE_DIR = context.getFilesDir().getAbsolutePath() + "/JChatDemo";
+        JGApplication.setThumpPictureDir(THUMP_PICTURE_DIR);
+        StorageUtil.init(context, null);
+        Fresco.initialize(getApplicationContext());
+        SDKInitializer.initialize(getApplicationContext());
+        locationService = new LocationService(getApplicationContext());
+        JMessageClient.init(getApplicationContext(), true);
+        JMessageClient.setDebugMode(true);
+        SharePreferenceManager.init(getApplicationContext(), JGApplication.JCHAT_CONFIGS);
+        //设置Notification的模式
+        JMessageClient.setNotificationFlag(JMessageClient.FLAG_NOTIFY_WITH_SOUND | JMessageClient.FLAG_NOTIFY_WITH_LED | JMessageClient.FLAG_NOTIFY_WITH_VIBRATE);
+        //注册Notification点击的接收器
+        new NotificationClickEventReceiver(getApplicationContext());
+        initImagePicker();
+        ActiveAndroid.initialize(context);
     }
+
+    private void initImagePicker() {
+        ImagePicker imagePicker = ImagePicker.getInstance();
+        imagePicker.setImageLoader(new GlideImageLoader());   //设置图片加载器
+        imagePicker.setShowCamera(true);                      //显示拍照按钮
+        imagePicker.setCrop(true);                           //允许裁剪（单选才有效）
+        imagePicker.setSaveRectangle(true);                   //是否按矩形区域保存
+        imagePicker.setSelectLimit(JGApplication.maxImgCount);              //选中数量限制
+        imagePicker.setStyle(CropImageView.Style.RECTANGLE);  //裁剪框的形状
+        imagePicker.setFocusWidth(800);                       //裁剪框的宽度。单位像素（圆形自动取宽高最小值）
+        imagePicker.setFocusHeight(800);                      //裁剪框的高度。单位像素（圆形自动取宽高最小值）
+        imagePicker.setOutPutX(1000);                         //保存文件的宽度。单位像素
+        imagePicker.setOutPutY(1000);                         //保存文件的高度。单位像素
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        ActiveAndroid.dispose();
+    }
+
+
+
     //Java代码
     private void initCockroach() {
         Cockroach.install(new Cockroach.ExceptionHandler() {
@@ -184,8 +237,8 @@ public class MyAPP extends BaseApplication {
                         try {
                             LogUtils.logd(thread + "\n" + throwable.toString());
                             throwable.printStackTrace();
-                            if (BuildConfig.DEBUG){
-                            ToastUitl.showShort(thread + "\n" + throwable.toString());
+                            if (BuildConfig.DEBUG) {
+                                ToastUitl.showShort(thread + "\n" + throwable.toString());
                             }
                         } catch (Throwable e) {
                             e.printStackTrace();
@@ -195,49 +248,44 @@ public class MyAPP extends BaseApplication {
             }
         });
     }
-    public static String getMobCourseId() {
-        return mobCourseId;
-    }
 
-    public static void setMobCourseId(String mobCourseId) {
-        MyAPP.mobCourseId = mobCourseId;
-    }
 
 
     private void initHotfix() {
-        if (!getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext()))) return;
+        if (!getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())))
+            return;
         String appVersion;
         try {
             appVersion = this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
         } catch (Exception e) {
             appVersion = "1.0.0";
         }
-
-        SophixManager.getInstance().setContext(this)
-                .setAppVersion(appVersion)
-                .setAesKey(null)
-                //.setAesKey("0123456789123456")
-                .setEnableDebug(BuildConfig.DEBUG)
-                .setPatchLoadStatusStub(new PatchLoadStatusListener() {
-                    @Override
-                    public void onLoad(final int mode, final int code, final String info, final int handlePatchVersion) {
-                        String msg = new StringBuilder("").append("Mode:").append(mode)
-                                .append(" Code:").append(code)
-                                .append(" Info:").append(info)
-                                .append(" HandlePatchVersion:").append(handlePatchVersion).toString();
-                       LogUtils.logd("PatchLoadStatusListener:"+msg);
-                    }
-                }).initialize();
-
-        SophixManager.getInstance().queryAndLoadNewPatch();
+//
+//        SophixManager.getInstance().setContext(this)
+//                .setAppVersion(appVersion)
+//                .setAesKey(null)
+//                //.setAesKey("0123456789123456")
+//                .setEnableDebug(BuildConfig.DEBUG)
+//                .setPatchLoadStatusStub(new PatchLoadStatusListener() {
+//                    @Override
+//                    public void onLoad(final int mode, final int code, final String info, final int handlePatchVersion) {
+//                        String msg = new StringBuilder("").append("Mode:").append(mode)
+//                                .append(" Code:").append(code)
+//                                .append(" Info:").append(info)
+//                                .append(" HandlePatchVersion:").append(handlePatchVersion).toString();
+//                        LogUtils.logd("PatchLoadStatusListener:" + msg);
+//                    }
+//                }).initialize();
+//
+//        SophixManager.getInstance().queryAndLoadNewPatch();
     }
 
 
     //各个平台的配置，建议放在全局Application或者程序入口
     {
-        PlatformConfig.setWeixin("wxb3c0d81ce83e5636", AES.get().decrypt("bYYIl2Usv00zdru6yiVWj8FZDH/DLc3xlzFVTjzn/lLRIszZ+WmBWF7aO1gZ2i3F"));
-        PlatformConfig.setSinaWeibo("1819414227", AES.get().decrypt("wlM5kjycuUmjrXoIr/odsvkebRtFng5+EWNlXPh0tzwtd8zmrRwh08+fPVrP78JP"), "http://sns.whalecloud.com");
-        PlatformConfig.setQQZone("101370185", AES.get().decrypt("nXVg37X2CJy3soy/noSGtX6GUbr0dCQzHfcbtO2pZqTF070k0ggVJzDYrZzf0r87"));
+        PlatformConfig.setWeixin("wx9f81f7c83ead9d5d", "568ced93be85a80376e3d4d822e35af3");
+//        PlatformConfig.setSinaWeibo("1819414227", AES.get().decrypt("wlM5kjycuUmjrXoIr/odsvkebRtFng5+EWNlXPh0tzwtd8zmrRwh08+fPVrP78JP"), "http://sns.whalecloud.com");
+        PlatformConfig.setQQZone("101865253", "4cadff1a78775740c1f0073e6b736f1b");
     }
 
     //获取当前进程的名称
@@ -252,16 +300,6 @@ public class MyAPP extends BaseApplication {
         return null;
     }
 
-
-    //初始化融云
-    public static void initLiveKit(Context context) {
-        if (!isInit) {
-            if (context.getApplicationInfo().packageName.equals(getCurProcessName(context))) {
-                LiveKit.init(context, MyAPP.RECOLE_APP_KEY);
-                isInit = true;
-            }
-        }
-    }
 
     //判断用户是否登录
     public static boolean isLogin() {
@@ -278,46 +316,45 @@ public class MyAPP extends BaseApplication {
         return true;
     }
 
+
     //登出
     public static void logout(Context context) {
-        logout(context, NewLoginActivity.class);
+
+        OkHttpClientManager.deleteAsync(ApiKey.AUTH_TOKEN_LOGOUT,MapUtils.getDefMap(true), "",new
+                NewRequestCallBack<Result>(Result.class) {
+                    @Override
+                    public void onSuccess(Result result) {
+                        logout(context, SplashActivity.class);
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+                        logout(context, SplashActivity.class);
+                    }
+                });
     }
 
     //登出
     public static void logout(Context context, Class cls) {
-        MyAPP.mServiceManager.stop();
         setAccessToken(null);
         setIsLogout(true);
         setmUserInfo(null);
+        JMessageClient.logout();
+        mCache.remove("mUserBean");
         AppManager.getAppManager().finishAllActivity();
         SPUtils.remove(AppConstant.SPKey.TOKEN);
+        SPUtils.remove(AppConstant.SPKey.USERID);
         Intent intent = new Intent(context, cls);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
-    //登出
-    public static void logout(Context context, boolean showDialog) {
-        MyAPP.mServiceManager.stop();
-        setAccessToken(null);
-        setIsLogout(true);
-        setmUserInfo(null);
 
-//        SimpleDialog simpleDialog = new SimpleDialog(getContext());
-        
-        AppManager.getAppManager().finishAllActivity();
-        SPUtils.remove(AppConstant.SPKey.TOKEN);
-        Intent intent = new Intent(context, NewLoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-    }
 
-    //登录
+//    //登录
     public static void loadUserInfo(final OnLoadDataListener<UserInfo> listener) {
         if (!isLogin()) {    //如果没有登录则
             String token = SPUtils.getString(AppConstant.SPKey.TOKEN);
             if (TextUtils.isEmpty(token)) {  //如果当期token为空则表示没有登录过,返回游客
-                listener.loadSuccess(UserInfo.GUSET());
-                LogUtils.logd(StringUtils.getText(R.string.not_login));
                 return;
             } else {
                 setAccessToken(token);
@@ -342,7 +379,7 @@ public class MyAPP extends BaseApplication {
 
                 @Override
                 public void onError(String msg, int code) {
-                    if (code==-1){
+                    if (code == -1) {
                         listener.loadSuccess(null);
                     }
                 }
@@ -359,14 +396,64 @@ public class MyAPP extends BaseApplication {
         }
     }
 
+    public static void imLogin(Context context) {
+        //检测账号是否登陆
+        if(JMessageClient.getMyInfo()!=null&&JMessageClient.getMyInfo().getUserName().equals(MyAPP.getUserInfo())){
+            goToMainActivity(context);
+        }else {
+            jmLogin(context);
+        }
+    }
+
+    private static void jmLogin(Context context) {
+        JMessageClient.login(MyAPP.getUserId(), MeiliaoConfig.IMUserPwd, new BasicCallback() {
+            @Override
+            public void gotResult(int responseCode, String responseMessage) {
+                if (responseCode == 0) {
+                    SharePreferenceManager.setCachedPsw(MeiliaoConfig.IMUserPwd);
+                    cn.jpush.im.android.api.model.UserInfo myInfo = JMessageClient.getMyInfo();
+                    File avatarFile = myInfo.getAvatarFile();
+                    //登陆成功,如果用户有头像就把头像存起来,没有就设置null
+                    if (avatarFile != null) {
+                        SharePreferenceManager.setCachedAvatarPath(avatarFile.getAbsolutePath());
+                    } else {
+                        SharePreferenceManager.setCachedAvatarPath(null);
+                    }
+                    String username = myInfo.getUserName();
+                    String appKey = myInfo.getAppKey();
+                    UserEntry user = UserEntry.getUser(username, appKey);
+                    if (null == user) {
+                        user = new UserEntry(username, appKey);
+                        user.save();
+                    }
+                    goToMainActivity(context);
+                }else {
+                    ToastUitl.showShort("正在重试");
+                    jmLogin(context);
+
+                }
+            }
+        });
+    }
+
+    public static void goToMainActivity(Context context) {
+        MainActivity.startAction( "");
+        if(!(((Activity)context) instanceof SplashActivity)){
+            ((Activity)context).finish();
+        }
+        OneKeyLoginManager.getInstance().finishAuthActivity();
+        OneKeyLoginManager.getInstance().removeAllListener();
+        OneKeyLoginManager.getInstance().setLoadingVisibility(false);
+    }
+
     //判断数据库是否有该用户,没有则添加进去
     public static UserInfo getDBUserInfo(UserInfo result) {
         final UserInfoDao userInfoDao = DbCore.getDaoSession().getUserInfoDao();
 
-        try{
-        //代码区
-             userInfo = userInfoDao.load(1L);
-        }catch(Exception e){
+        try {
+            //代码区
+            userInfo = userInfoDao.load(1L);
+        } catch (Exception e) {
             //异常处理
         }
         if (userInfo == null) {
@@ -385,29 +472,6 @@ public class MyAPP extends BaseApplication {
         return userInfo;
     }
 
-    //启动页面初始化
-    public static void init() {
-        HandlerUtil.runTask(new Runnable() {
-            @Override
-            public void run() {
-                //获取推广大使信息
-                OkHttpClientManager.getAsync(ApiKey.USER_HOME_RES, MapUtils.getDefMap(false), new NewRequestCallBack<ResBean>(ResBean.class) {
-                    @Override
-                    public void onSuccess(ResBean result) {
-                        WpyxConfig.setResBean(result);
-                    }
-                });
-                //创建文件夹
-                FileUtil.makeDirs();
-                //链接音乐播放服务
-                MyAPP.mServiceManager.connectService();
-                PracticeDataUtil.init();
-                UpdateVersionUtil.updateVersion();
-                //注册服务
-                FileUtil.delete(FileUtil.getDownApkFile());
-            }
-        });
-    }
 
     //获取当前登录的用户信息
     public static UserInfo getUserInfo() {
@@ -420,6 +484,9 @@ public class MyAPP extends BaseApplication {
 
 
     public static String getAccessToken() {
+        if(accessToken==null||accessToken.length()==0){
+            accessToken = SPUtils.getString(AppConstant.SPKey.TOKEN);
+        }
         return accessToken;
     }
 
@@ -439,16 +506,66 @@ public class MyAPP extends BaseApplication {
         }
     }
 
-    //BeeCloud初始化
-    public static void setSecretId(String secretId) {
-        MyAPP.secretId = secretId;
-        BeeCloud.setSandbox(false);
-        Config.DEBUG = true;
-        String appId = AES.get().decrypt("FcdZjVtfj7TMwi1TwLYfKFY0PG5xzDBAujwNOGGdYdQc2qcQPWp+XWp68+YdEIBz");
-        BeeCloud.setAppIdAndSecret(appId, secretId);
-        String initInfo = BCPay.initWechatPay(getAppContext(), wcAppId);
-        if (initInfo != null) {
-            LogUtils.logd("微信初始化失败：" + initInfo);
+
+    private void initShanyanSDK(Context context) {
+        OneKeyLoginManager.getInstance().init(context, "tN4dhmtp", new InitListener() {
+            @Override
+            public void getInitStatus(int code, String result) {
+                //闪验SDK初始化结果回调
+                Log.e("VVV", "初始化： code==" + code + "   result==" + result);
+            }
+        });
+    }
+
+    public static int saveMoney(UserAccountBean result) {
+        if(result!=null&&result.getData()!=null){
+            double gold = result.getData().getRecharge() + result.getData().getCurrency();
+            MyAPP.getmUserBean().setUserAccount(result);
+            return (int)gold;
+        }else {
+            UserAccountBean userAccount = MyAPP.getmUserBean().getUserAccount();
+            if(userAccount!=null){
+                UserAccountBean.DataBean data = userAccount.getData();
+                if(data!=null){
+                    double gold = data.getRecharge() +data.getCurrency();
+                    return (int)gold;
+                }else {
+                    return 0;
+                }
+            }else {
+                return 0;
+            }
+        }
+    }
+
+
+    public static void saveUserLoginData(LoginBean loginBean) {
+        SPUtils.setString(AppConstant.SPKey.TOKEN, loginBean.getAccess_token());
+        SPUtils.setString(AppConstant.SPKey.USERID, loginBean.getId());
+        MyAPP.setAccessToken(loginBean.getAccess_token());
+        MyAPP.setUserId(loginBean.getId());
+        SPUtils.setString(AppConstant.SPKey.R_TOKEN, loginBean.getRefresh_token());
+        PrefUtils.putString("phone", loginBean.getUsername(), getContext());
+    }
+
+    public static void refreshToken() {
+        String RToken = SPUtils.getString(AppConstant.SPKey.R_TOKEN);
+        if (RToken != null && !RToken.equals("")) {
+            Map<String, String> defMap = MapUtils.getDefMap(false);
+            defMap.put("grant_type", "refresh_token");
+            defMap.put("refresh_token", RToken);
+            defMap.put("scope", "server");
+            OkHttpClientManager.postAsyncAddHead(ApiKey.AUTH_OAUTH_TOKEN, defMap, "?grant_type=refresh_token", new
+                    NewRequestCallBack<LoginBean>(LoginBean.class) {
+                        @Override
+                        public void onSuccess(LoginBean loginBean) {
+                            MyAPP.saveUserLoginData(loginBean);
+                        }
+
+                        @Override
+                        public void onError(String msg, int code) {
+                        }
+                    });
         }
     }
 
@@ -465,18 +582,8 @@ public class MyAPP extends BaseApplication {
     }
 
 
-    public static void setIsVip(CheckVipLevelBean isVip) {
-        MyAPP.vipLevelBean = isVip;
-    }
-
-
     public static CheckVipLevelBean getVipLevelBean() {
         return vipLevelBean;
-    }
-
-    //是否是VIP
-    public static boolean isVip() {
-        return vipLevelBean != null && vipLevelBean.getData() != null && vipLevelBean.getData().isIsMember();
     }
 
 
@@ -487,5 +594,8 @@ public class MyAPP extends BaseApplication {
     public static void setDeviceToken(String deviceToken) {
         MyAPP.deviceToken = deviceToken;
     }
+
+
+
 
 }

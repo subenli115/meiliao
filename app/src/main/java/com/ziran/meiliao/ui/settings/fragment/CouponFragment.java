@@ -10,7 +10,6 @@ import com.ziran.meiliao.ui.base.CommonModel;
 import com.ziran.meiliao.ui.base.CommonPresenter;
 import com.ziran.meiliao.ui.base.CommonRefreshFragment;
 import com.ziran.meiliao.ui.bean.CouponBean;
-import com.ziran.meiliao.ui.settings.activity.ShareCouponActivity;
 import com.ziran.meiliao.ui.settings.adapter.CouponAdapter;
 import com.ziran.meiliao.utils.CheckUtil;
 import com.ziran.meiliao.utils.HtmlUtil;
@@ -48,10 +47,4 @@ public class CouponFragment extends CommonRefreshFragment<CommonPresenter, Commo
         updateData(result.getData());
     }
 
-    @OnClick(R.id.btn_me_coupon_receive)
-    public void onClick(View view) {
-        if (!CheckUtil.check(getContext(), view)) return;
-        // 分享优惠劵
-        startActivity(ShareCouponActivity.class);
-    }
 }

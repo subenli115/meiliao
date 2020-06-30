@@ -9,8 +9,8 @@ ext {
 //            buildToolsVersion: "26.0.2",
             minSdkVersion    : 23,
             targetSdkVersion : 26,
-            versionCode      : 52,
-            versionName      : "3.6.0"
+            versionCode      :  1,
+            versionName      : "1.0.0"
     ]
 
     dependencies = [
@@ -28,36 +28,24 @@ ext {
             //   okhttp3logging      :   'com.squareup.okhttp3:logging-interceptor:3.1.2'  ,
 //            rxjava                : 'io.reactivex.rxjava2:rxjava:2.0.7',
 //            rxandroid             : 'io.reactivex.rxjava2:rxandroid:2.0.1',
-            rxjava                : 'io.reactivex:rxjava:1.0.1',
-            rxandroid             : 'io.reactivex:rxandroid:1.0.1',
+            rxjava                : 'io.reactivex:rxjava:1.1.6',
+            rxandroid             : 'io.reactivex:rxandroid:1.2.1',
+
             retrofit2gson         : 'com.squareup.retrofit2:converter-gson:2.0.0-beta4',
             retrofit2adapterrxjava: 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4',
             //七牛
             qiniu                 : 'com.qiniu:happy-dns:0.2.7',
             qiniupili             : 'com.qiniu.pili:pili-android-qos:0.8.+',
+
             umeng             : 'com.umeng.analytics:analytics:latest.integration',
             butterknife             : 'com.jakewharton:butterknife:7.0.1',
             glide             : 'com.github.bumptech.glide:glide:3.6.1'
 
-
     ]
 
-
-    signingDebug = [
-            keyAlias     : 'smywpyxsigned',
-            keyPassword  : 'wpyx123ljg',
-            storeFile    : file('F:/conpanyproject/wpyx.jks'),
-            storePassword: 'wpyxljg123'
-    ]
-    signing = [
-            keyAlias     : 'smywpyxsigneddebug',
-            keyPassword  : 'wpyx123ljg',
-            storeFile    : file('F:/conpanyproject/wpyxdebug.jks'),
-            storePassword: 'wpyxljg123'
-    ]
 
     manifestPlaceholders = [
-            UMENG_APPKEY: "58c63e89c62dca7076001a6a",
+            UMENG_APPKEY: "5e9905aa570df3fa1a0001ef",
             //LINE_ENSURE: "***************"
             UMENG_MESSAGE_SECRET  : "c802f1ca9d87419d1c9a43f788f9497e",
             //LINE_ENSURE: "********************************"
@@ -72,4 +60,5 @@ ext {
             app_secret:"d4bc101bd6a1d0f1eaad53bb3854cc49",
             rea_secret:"MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDAGm//JV0yeBHa+EA+H3/3YkKZqOmSAeSmIFhzY6aw9sXl5i6b318fIIHI3fBm7YoTiOiEEA83BDfH3n2/yM4MXtBwyS8b6dhPjpnRDc1p83FjAGkQHl2K/T+m1dOIXDOHSK1vogbhEefTP08qKSgVD0UwvXPKR4aaJlCf1gXGooIPt65kyRxSOSRc0LHn7f/rBVawR8eDkiTSPKLzGVbwEcEnPkwU5Iucwc1n9utGluNxM1DlvlrQWI4m2jpw2yBe2gTsoz8ginh0/2vuaUDWF3SYZ2pSsoNN8gxtuVgCh42gPFaurvlAp/9jMYceTIvGCCohjEYrxtg4nBffFUcvAgMBAAECggEAKLbxub/virzL+/7VjtUaSBI5T1vvdRSVo2gDlyEtuR/0PY+VnU+wV2aKW0o+o3IA67b+oM7OiriIIgJT4Ivsr86Amwboxx++ys3MZ/Rm7ue7xmHV4qas6MJX9UIofSQdf7S1nY1Xq+ghnDI00xi5+Ayue3AL1HloW893EwlHXBvCR/Vscbav+yivfPHhMbgxiokzfQcCXD/bH5tYhlO+vrec4qbrnP8UdxwXE9IuKOeF/9XtXj/oKmW5AY2XzyOraCcTO7xYmXBqjw/91hlyH9DZx1NIdqUzThiBJWXTQV46l/sZIOD0l7ZwK9h4YOyMKDVMHImVDE044S9Rau53IQKBgQD/aDRw32KhTwepo3/43xCHvmK74LVj+dw1OP9RqZcdW5buugxOOzyIsgch4w7IfvhcSAdYMtj1BQtB7XNxHPnKF3yf/ltVvFJIIhmmnbv8oJWy4pY4cktoTq2MdP4A7CzW2dMrKRIf+cSEQh/UjDTZl2CxqDyeu9RE5mAGTwOpmQKBgQDAjJwKVkViiiEZ5Y9rvpCEZhZ+1D53rX+wIj5Pczr9VyxaJOCiZkS3t4TZcx3Xv15DM2ulKx0DaAmFcigPiNKCQd0XnkNokOnJDHuYKJ9BT4NGhHDOnG/qia8wkx/1dQ9VdT+bbrhuOFiqFb2v5Bdhlw4DHIAru9bobQdrf8dEBwKBgQDVgUW9SXAIyqjsLWpwIACQiR2+UtUvcxKbRz9gA7X4a7UbcVmSGEC9QJ1nvYiBIGr7sZa6Kx9ki8fiX94OI5vITaP3l0jAvgHGnQL2XotkXtVlSbcsDpds5cB8Vtxy5vuAy2yUeuvU4RVfPmufYWlYsAu715h9VSTYSADjpS+5mQKBgQC/XwD3hScQ+RhNFMum2o/oB070Xx529AmklWQ4st4+TRXXwi9BOUOzFMMFHFTcyWZ2g/TJBECh0hUkfIE0b1hJ/gwwHSwCEYVKPQ3Z/QXLc6uVuqwjrXfOM2nbbV6mJuJGnXHKmhDT+0ykP1d4KcrTQ765eOoqjVbbSwHE5gq2oQKBgQDgEnHxEequoz0A7+IMDeVG7jrXkvdn+BE/3qvgEcffLoyYZ/RKR8UmRpKOZeRY1bZaJFF9HwVLkUdMdSnH/FUtjiVFhcBvIY8srDD/tfhcfKtha4lim9MfUiC4BLpAkuSAmAuAr2EBT18z+vYYLfHhGrZaxsB50Hul3p8plO14DA==",
     ]
+
 }

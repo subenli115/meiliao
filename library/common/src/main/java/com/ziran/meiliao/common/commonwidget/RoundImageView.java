@@ -37,7 +37,7 @@ public class RoundImageView extends AppCompatImageView {
     /**
      * 圆角大小的默认值
      */
-    private static final int BODER_RADIUS_DEFAULT = 4;
+    private static final int BODER_RADIUS_DEFAULT = 18;
     /**
      * 圆角的大小
      */

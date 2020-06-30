@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:src="@mipmap/ic_live_video_bg"
     android:orientation="vertical">
     <com.ziran.meiliao.common.commonwidget.NormalTitleBar
         android:layout_width="match_parent"

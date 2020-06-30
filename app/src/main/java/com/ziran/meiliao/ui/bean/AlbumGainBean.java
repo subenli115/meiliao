@@ -13,7 +13,6 @@ public class AlbumGainBean extends Result {
 
 
     /**
-     * data : {"free":false,"qrcode":"/xx/fuck.html","pg":"https://www.psytap.com/wpyx_longjg/static/home/images/shareAlbum/bg.png","number":1,"exist":false}
      */
 
     private DataBean data;
@@ -32,7 +31,6 @@ public class AlbumGainBean extends Result {
         /**
          * free : false
          * qrcode : /xx/fuck.html
-         * pg : https://www.psytap.com/wpyx_longjg/static/home/images/shareAlbum/bg.png
          * number : 1
          * exist : false
          */

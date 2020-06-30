@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
@@ -29,8 +28,13 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.WRITE_SMS" />
-
-    <!-- 录音 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <!-- ******************************闪验SDK建议权限*************************** -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     <!--
       android:clearTaskOnLaunch="true"
@@ -44,18 +48,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="allowBackup">
         <activity
             android:name="com.ziran.meiliao.ui.main.activity.LoginActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.main.activity.NewLoginActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>
-
 
 
         <activity
@@ -77,7 +76,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data android:scheme="wpyxapp">
+                <data android:scheme="meiliaoapp">
                 </data>
             </intent-filter>
 
@@ -86,7 +85,7 @@
                 <category android:name="android.intent.category.DEFAULT"></category>
                 <category android:name="android.intent.category.BROWSABLE"></category>
                 <data
-                    android:scheme="wpyxapp"
+                    android:scheme="meiliaoapp"
                     android:host="test">
                 </data>
             </intent-filter>
@@ -109,9 +108,9 @@
         <activity
             android:name="com.ziran.meiliao.ui.main.activity.MainNewActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+            android:theme="@style/myTransparent"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 
@@ -124,55 +123,56 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.ziran.meiliao.im.activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.MainActivity"
+            android:theme="@style/BaseThemes"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.EditUserInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.YouthModelActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetModePwdActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetPwdActivity"
+        android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetPhoneActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetRealNameActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name="com.ziran.meiliao.ui.main.activity.RegionActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name="com.ziran.meiliao.ui.main.activity.LabelActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.BuyOrderDetailsActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.CouponActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.MBuyCourseActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.DownloadActivity"/>
+        <activity
+            android:name="com.ziran.meiliao.ui.main.activity.NewLoginActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.FeekBackActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.MeCollectActivity2"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.ForgetPwdActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.BindPhoneActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.DownloadAlbumActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.MeEnrolActActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.JoinAppActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.ChangePhoneActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.ChangeInPutActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.SettingsActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.UserInfoActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.ShareCouponActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.EditUserInfoActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.MemberDetailsActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.MyMedalActivity"/>
-
+        <activity android:name="com.ziran.meiliao.ui.settings.activity.PayWebActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.MemberRuleActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.CollectZLItemActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.IntegralDetailsActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.InviteFriendsActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.InvitationRecordActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.NewUserInfoActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.ChangePhoneFinishActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.SuccessNewphoneActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.VideoActivity"
             android:launchMode="singleTask"
             />
-        <activity
-            android:name="com.ziran.meiliao.ui.settings.activity.WithDrawalsActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
-            />
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.ResWebActivity"/>
+        <activity android:name="com.ziran.meiliao.ui.settings.activity.RechargeDetailsActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.WalletActivity"
             android:launchMode="singleTask"
             />
         <activity android:name="com.ziran.meiliao.ui.settings.activity.RechargeActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.WalletDetailActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.DownloadVideoActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.MessageActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.AboutActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.InputPasswordActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:theme="@style/AppTheme2"
@@ -180,372 +180,51 @@
             />
         <activity android:name="com.ziran.meiliao.ui.settings.activity.IntputCodeActivity"
             android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.ForgetPasswordActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.settings.activity.RegisterActivity"
-            android:screenOrientation="portrait"
+            android:theme="@style/BaseThemes"
             />
 
         <activity android:name="com.ziran.meiliao.ui.settings.activity.MessageDetailActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.settings.activity.AddBankCardActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.settings.activity.GetGoalActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.MindfulnessHallActivity"/>
-
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.RecordVideoPlayerActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-
-
-
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.AlbumDetailActivity"
-
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.AlbumPlayerActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask"/>
 
         <activity android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.ShareAlbumActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.ListenGuideActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.TakeNotesActivity"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.RecordActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.RecordCourseActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.UpdateNotesActivity"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.decompressionmuseum.activity.DragPhotoActivity"
-            android:theme="@style/translucent"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.HorizontalLiveActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize"/>
         <!--
              <activity
              android:name=".ui.priavteclasses.activity.HorizontalLive1Activity"
              android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
              android:windowSoftInputMode="adjustResize"/>
         -->
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.HorizontalHistoryActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.VerticalLiveActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.MobileLiveOverActivity"
-            android:theme="@style/ViewBigPicTheme"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.GetVideoCouponActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.ZhuanLanDetailActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
         <!--jdx
 
         -->
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.PracticeHomeActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.PracticeStartActivity"
-            android:screenOrientation="portrait"
-            android:exported="true"
-            android:launchMode="singleTask"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.MbsrWorkbookMainActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.PracticeTaskActivity"
-            android:theme="@android:style/Theme.Light.Panel"
-            android:screenOrientation="portrait"
-        />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.PracticeRecordActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.FitnessExeActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.FitnessLoadActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.FitnessFinishActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.FitnessVideoPlayerActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
-            />
-
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.WeekNineDotActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.WeekDietHomeActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.WeekPracticeWithPlayerActicity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.FitnessPlayActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.WeekQuestionActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.WeekDietSaveActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.ziran.meiliao.ui.NewDecompressionmuseum.activity.WeekLiveHomeActivity"
-            android:screenOrientation="portrait"
-            />
-        <!--<activity-->
-            <!--android:name=".ui.priavteclasses.activity.ZhuanLanBigInAudioActivity"-->
-            <!--android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>-->
-        <!--<activity-->
-            <!--android:name=".ui.priavteclasses.activity.ZhuanLanBigInVideoActivity"-->
-            <!--android:configChanges="keyboardHidden|screenSize|orientation|keyboard"-->
-            <!--android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>-->
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.ZhuanLanCommentActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.SubscribeAudioActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.SubscribeVideoActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.NoBuyZLActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            />
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.ZLFreeZLActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            />
-
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.ZLAudioImageTextActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            />
-        <!--<activity-->
-            <!--android:name=".ui.priavteclasses.activity.ZhuanLanSubscribeActivity"-->
-            <!--android:configChanges="keyboardHidden|screenSize|orientation|keyboard"-->
-            <!--android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>-->
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.PrivateCourseActivity"
-            android:configChanges="keyboardHidden|screenSize|keyboard|orientation"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.NowLiveMoreActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.old.ZhuanLanBigInVideoActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.MyBankListActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.TrailerMoreActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.ZhuanLanMoreActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.AlbumMoreActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.AlbumMoreTwoActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.EmotionPlayerActicity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.EmotionActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.AlbumClassifyActivity"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
 
 
         <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.DefWebActivity"/>
         <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangMoreActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.TrailerWebActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.ExtCapStreamingActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:keepScreenOn="true"
-            android:theme="@style/ViewBigPicTheme"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.HistoryCourseMoreActivity"/>
         <!--             <activity android:name=".ui.priavteclasses.activity.ExtensionWebActivity"/> -->
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.ProfitActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.ProfitDetailActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.LiveRoomActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.TeacherDetailActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.FansListActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.WithDrawalsListActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.LiveListActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.DefVideoActivity"
-            android:configChanges="keyboardHidden|screenSize|keyboard|orientation"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppThemeFullscreen"/>
-
-        <!--
-              <activity
-              android:name=".ui.priavteclasses.activity.DefVideo2Activity"
-              android:configChanges="keyboardHidden|screenSize|keyboard|orientation"
-              android:screenOrientation="landscape"
-              android:theme="@style/AppThemeFullscreen"/>
-        -->
-
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.SearchActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustNothing|stateHidden">
-        </activity>
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.TrailerActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateHidden">
-        </activity>
 
 
-        <activity
-            android:name="com.ziran.meiliao.ui.priavteclasses.activity.SearchDetailActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateHidden">
-        </activity>
-        <activity android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryCrowdFundingBuyActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibrarySearchActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryTeamDetailActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryTeamSubmitMsgActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryCrowdFundingDetailActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateHidden">
-        </activity>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.MyActivityActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"
+            />
+        <activity android:name="com.ziran.meiliao.ui.me.activity.ReportSelectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"
+            />
+        <activity android:name="com.ziran.meiliao.ui.me.activity.ReportDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"
+            />
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetNoteActivity"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.UserBlackListActivity"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.EditUserInfoSafeActivity"/>
 
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.GuideTeamCustomActivity"
-            >
-        </activity>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryTeacherBuyActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryTeacherDetailActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryWorkshopsBuyActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity android:name="com.ziran.meiliao.ui.workshops.activity.CourseLibraryWorkshopsDetailActivity"/>
-        <!--
-               <activity android:name=".ui.workshops.activity.CourseLibraryWorkshopsTeamBuyActivity"
-                     android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-                     android:windowSoftInputMode="adjustPan|stateHidden"
-               />
-        -->
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CrowdFundingChooseTopicActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name="com.ziran.meiliao.ui.settings.activity.InputUserInfoActivity"/>
+        <activity android:name="com.ziran.meiliao.ui.settings.activity.SelectSexActivity"/>
+        <activity android:name="com.ziran.meiliao.ui.settings.activity.UploadUserPhotoAcitivty"/>
 
-        <!--
-         <activity android:name=".ui.workshops.activity.CrowdFundingOfficialofferActivity" />
-         <activity android:name=".ui.workshops.activity.CourseLibraryWorkshopsTeamTipsActivity" />
-        -->
-        <activity android:name="com.ziran.meiliao.ui.workshops.activity.CrowdFundingPreviewActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CrowdFundingProjectMsgActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name="com.ziran.meiliao.ui.workshops.activity.CrowdFundingUsedTemplateActivity"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.CrowdFundingUserMsgActivity"
-            android:configChanges="keyboardHidden|screenSize|keyboard|orientation"
-            android:windowSoftInputMode="adjustNothing|stateHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.WorkshopsMainActivity"
-            android:configChanges="keyboardHidden|screenSize|keyboard|orientation"
-            android:windowSoftInputMode="adjustNothing|stateHidden"/>
-        <activity
-            android:name="com.ziran.meiliao.ui.workshops.activity.TeamCustomActivity"
-            android:configChanges="keyboardHidden|screenSize|keyboard|orientation"
-            android:windowSoftInputMode="adjustNothing|stateHidden"/>
-        <activity android:name="com.ziran.meiliao.ui.me.activity.MyActivityActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.me.activity.MyTeamOrderActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.me.activity.MyWorkshopsOrderActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.WithDrawalsItemDetailActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.me.activity.MyCrowdFundingOrderActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.me.activity.MyCrowdFundingDetailActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.me.activity.MyApplyRefundActivity"/>
-        <activity android:name="com.ziran.meiliao.ui.me.activity.MyFollowActivity"/>
-        <activity
-            android:name="cn.beecloud.BCWechatPaymentActivity"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-        <activity-alias
-            android:name=".wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:targetActivity="cn.beecloud.BCWechatPaymentActivity"/>
-        <!-- WXPay sdk end -->
 
 
         <!-- alipay sdk begin -->
-        <activity
-            android:name="com.alipay.sdk.app.H5PayActivity"
-            android:configChanges="orientation|keyboardHidden|navigation"
-            android:exported="false"
-            android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <!-- alipay sdk end -->
 
         <activity
             android:name="com.ziran.meiliao.WBShareActivity"
@@ -557,37 +236,392 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity android:name="com.ziran.meiliao.im.activity.BaseActivity"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.FinishRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ResetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.PersonalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.NickSignActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchForAddFriendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchFriendInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.VerificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTransparent"/>
+        <activity
+            android:name="com.ziran.meiliao.ui.main.activity.PrivatePopActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTransparent"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchFriendDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseThemes"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchContactsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.utils.imagepicker.ImageBaseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.utils.imagepicker.ImageGridActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImagePickerTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.utils.imagepicker.ImageCropActivity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImagePickerTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.utils.imagepicker.ImagePreviewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImagePickerThemeFullScreen"/>
+        <activity
+            android:name="com.ziran.meiliao.im.utils.imagepicker.ImagePreviewDelActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImagePickerThemeFullScreen"/>
+        <activity
+            android:name="com.ziran.meiliao.im.pickerimage.PickerAlbumActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.pickerimage.PickerAlbumPreviewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ziran.meiliao.im.pickerimage.PickImageActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.BrowserViewPagerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.historyfile.activity.BrowserFileImageActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.WatchVideoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SendFileActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.historyfile.activity.HistoryFileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.PlayVideoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ziran.meiliao.im.location.activity.MapPickerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.FriendInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ChatDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.MembersInChatActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.GroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchMoreFriendsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchMoreGroupActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.FriendSettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SetNoteNameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ChooseAtMemberActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.GroupGridViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.GroupNotFriendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SelectFriendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.DownLoadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.CreateGroupActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="com.ziran.meiliao.im.utils.photovideo.takevideo.CameraActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseFullTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ContactsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchAtMemberActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ForwardMsgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.Person2CodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ScanResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.CommonScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.receiptmessage.ReceiptMessageListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchFriendBusinessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.FriendListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.NotFriendSettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ChatRoomDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.GroupMemberListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchAddOpenGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.GroupInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.VerificationGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.VerificationMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ChatRoomInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SelectCreateGroupTypeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ApplyGroupInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.GroupUserInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SetGroupSilenceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.ReleaseWechatActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name="com.ziran.meiliao.im.activity.WechatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name="com.ziran.meiliao.im.activity.RecommedPreviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseThemes"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.OtherUserHomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseThemes"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SilenceUsersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name="com.ziran.meiliao.im.activity.BaiduMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.SearchChatRoomActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTh"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.GroupAvatarActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTh"/>
+        <provider
+            android:name="com.activeandroid.content.ContentProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"/>
+        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.NewGongZuoFangActivity" />
+        <activity
+            android:name="com.chuanglan.shanyan_sdk.view.CmccLoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@style/dialogStyle" />
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="tencent101865253"/>
+            </intent-filter>
+        </activity>
+        <activity-alias
+            android:name="com.cmic.sso.sdk.activity.LoginAuthActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:targetActivity="com.chuanglan.shanyan_sdk.view.CmccLoginActivity"
+            android:theme="@style/dialogStyle" />
+        <activity
+            android:name="com.chuanglan.shanyan_sdk.view.ShanYanOneKeyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@style/dialogStyle" />
+        <activity
+            android:name="com.chuanglan.shanyan_sdk.view.CTCCPrivacyProtocolActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:theme="@style/dialogStyle" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+
         <activity
             android:name="com.ziran.meiliao.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.NewGongZuoFangActivity" />
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.CourseEnrollmentActivity" />
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.CoursePayActivity" />
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.CoursePaySuccessActivity" />
-        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.CoursePayFailedActivity" />
-
-        <service android:name="com.ziran.meiliao.service.MediaService">
-            <intent-filter>
-                <action android:name="com.ziran.meiliao.service.MediaService"/>
-            </intent-filter>
-        </service>
         <service android:name="com.ziran.meiliao.service.UpdateVersionDownloadService"/>
-        <service android:name="com.ziran.meiliao.service.AlarmNotifyService">
-            <intent-filter>
-                <action android:name="wzq.com.dingdingalarm.STOP_PLAYER"/>
-            </intent-filter>
-        </service>
         <service android:name="com.ziran.meiliao.service.AudioFocusService">
             <intent-filter>
                 <action android:name="com.ziran.meiliao.service.AudioService"/>
             </intent-filter>
         </service>
-        <service android:name="com.ziran.meiliao.service.HomeService"/>
-
+        <service
+            android:name="com.ziran.meiliao.service.MyService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="0zlfbyCVjWzmfmHnPEVevoIf8KopGT0f" >
+        </meta-data>
         <receiver android:name="com.ziran.meiliao.receiver.NotificationBroadcast"/>
         <!-- 应用渠道 -->
         <meta-data
@@ -600,7 +634,7 @@
         <meta-data android:name="android.notch_support" android:value="true"/>
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="58c63e89c62dca7076001a6a"/>
+            android:value="5e9905aa570df3fa1a0001ef"/>
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
             android:value="c802f1ca9d87419d1c9a43f788f9497e"/>
@@ -639,13 +673,21 @@
         <meta-data
             android:name="design_height"
             android:value="1334"/>
-    <!--    <activity android:name=".ui.main.activity.Test2Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>-->
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="jchat.db"/>
+        <meta-data
+            android:name="AA_MODELS"
+
+            android:value="com.ziran.meiliao.im.database.UserEntry, com.ziran.meiliao.im.database.FriendEntry,
+             com.ziran.meiliao.im.database.FriendRecommendEntry,com.ziran.meiliao.im.database.GroupApplyEntry
+                , com.ziran.meiliao.im.database.RefuseGroupEntry"/>
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1"/> <!-- Since JCore2.0.0 Required SDK核心功能 -->
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.ziran.meiliao.fileprovider"
@@ -655,6 +697,23 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <provider
+            android:name="com.activeandroid.content.ContentProvider"
+            android:authorities="${applicationId}"
+        android:exported="false"/>
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
     </application>
 
 </manifest>

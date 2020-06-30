@@ -1,12 +1,33 @@
 package com.ziran.meiliao.widget.pupop;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alipay.sdk.app.PayTask;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.zhy.autolayout.AutoLinearLayout;
 import com.ziran.meiliao.R;
-import com.ziran.meiliao.common.commonutils.ViewUtil;
-import com.ziran.meiliao.utils.PayUtil;
+import com.ziran.meiliao.app.MyAPP;
+import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
+import com.ziran.meiliao.envet.NewRequestCallBack;
+import com.ziran.meiliao.ui.bean.PayListBean;
+import com.ziran.meiliao.ui.settings.adapter.PayListAdapter;
+import com.ziran.meiliao.utils.PayUtils;
+
+import java.util.List;
+
+
 
 /**
  * @author 吴祖清
@@ -19,9 +40,18 @@ import com.ziran.meiliao.utils.PayUtil;
  */
 
 public class SimplePayPopupWindow extends BasePopupWindow {
-    private PayUtil payUtil;
 
-    private TextView tvConent;
+    private TextView tvMoney, tvGold;
+    private String mPrice;
+    private int mId;
+    private double mRecordsBeanPrice;
+
+    private TextView tvWx;
+    private TextView tvAi;
+    private AutoLinearLayout all_wx,all_ai;
+    private IWXAPI msgApi;
+    private RecyclerView recyclerView;
+    private PayUtils payUtils;
 
     public SimplePayPopupWindow(Context context) {
         super(context);
@@ -30,21 +60,37 @@ public class SimplePayPopupWindow extends BasePopupWindow {
     @Override
     protected void initViews(View contentView) {
         super.initViews(contentView);
-        setOnClickListener(R.id.tv_wechat_pay);
-        setOnClickListener(R.id.tv_aplipay_pay);
-        tvConent = ViewUtil.getView(contentView, R.id.tv_content);
-        payUtil = new PayUtil(mContext);
-        payUtil.setOnPayCallBack(new PayUtil.OnPayCallBack() {
-            @Override
-            public void onPaySuccess(int platform) {
-                if (mOnPayCallBack != null) mOnPayCallBack.onPaySuccess(platform);
-            }
+        touchDismiss(R.id.touch_outside);
+        tvGold = getView(R.id.tv_gold);
+        tvMoney = getView(R.id.tv_money);
+        recyclerView = getView(R.id.recyclerView);
+    }
 
+    private void initAdapter(List<PayListBean.DataBean.RecordsBean> records) {
+        PayListAdapter payListAdapter = new PayListAdapter(records,mContext);
+        payListAdapter.setOnItemClickListener(new PayListAdapter.OnItemClickListener() {
             @Override
-            public void onPayFailed() {
-                if (mOnPayCallBack != null) mOnPayCallBack.onPayFailed();
+            public void onItemClick(View v, int position, String type) {
+                switch (type){
+                    case "1":
+                        payUtils.ZfbH5Pay();
+                        break;
+                    case "2":
+                        payUtils.WxH5Pay();
+                        break;
+                    case "3":
+                        payUtils.ZfbPay();
+                        break;
+                    case "4":
+                        payUtils.WxPay();
+                        break;
+
+                }
+                dismiss();
             }
         });
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        recyclerView.setAdapter(payListAdapter);
     }
 
     @Override
@@ -55,27 +101,22 @@ public class SimplePayPopupWindow extends BasePopupWindow {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_wechat_pay:  //使用微信支付
-                payUtil.weChatPay();
-                break;
-            case R.id.tv_aplipay_pay:   //使用支付宝支付
-                payUtil.alipayPay();
-                break;
         }
-    }
-
-    private PayUtil.OnPayCallBack mOnPayCallBack;
-
-    public void setOnPayCallBack(PayUtil.OnPayCallBack onPayCallBack) {
-        mOnPayCallBack = onPayCallBack;
+        dismiss();
     }
 
 
-    public void setPamras(float price, String title, String id, String type) {
-        payUtil.setPrice(price);
-        payUtil.setTitle(title);
-        ViewUtil.setText(tvConent, title);
-        payUtil.setPayId(id);
-        payUtil.setType(type);
+    public void setPamras(String price, String money, int id, double recordsBeanPrice) {
+        mPrice = price+"";
+        tvGold.setText("充值" + price);
+        tvMoney.setText(money);
+        payUtils = new PayUtils(mContext,recordsBeanPrice,id);
+
     }
+
+    public void setPopList(List<PayListBean.DataBean.RecordsBean> records){
+        initAdapter(records);
+    }
+
+
 }

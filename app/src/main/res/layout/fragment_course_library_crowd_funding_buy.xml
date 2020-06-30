@@ -39,7 +39,6 @@
                 android:id="@+id/biv_name"
                 style="@style/BaseItemView"
                 android:layout_marginTop="2dp"
-                android:visibility="gone"
                 app:biv_content_must_need="true"
                 app:biv_content_type="edit"
                 app:biv_forword_show="false"

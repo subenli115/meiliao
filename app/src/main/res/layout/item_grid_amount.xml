@@ -7,29 +7,14 @@
 
     <RelativeLayout
         android:id="@+id/ll_recharge_bg"
-        android:layout_width="140dp"
-        android:layout_height="60dp"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="6dp"
-        android:background="@drawable/shape_grid_amount"
+        android:background="@drawable/normal_bg_gray_fa"
 
         >
 
-        <TextView
-            android:id="@+id/tv_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="积分不足"
-            android:paddingRight="2dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:textSize="7sp"
-            android:paddingLeft="5dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/normal_green_point"
-            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,24 +22,41 @@
             android:gravity="center"
             android:layout_centerInParent="true"
             >
+
+            <ImageView
+                android:id="@+id/iv_gold"
+                android:layout_marginTop="13.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_recharge_gold"
+                />
             <TextView
                 android:id="@+id/tv_recharge_gold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:drawablePadding="4dp"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:text="100金币"
+                android:layout_marginTop="11.5dp"
+                android:textColor="#4D4D4D"
+                android:text="1100金币"
                 android:layout_below="@+id/tv_recharge_amount"
-                android:textSize="13sp"/>
+                android:textSize="12sp"/>
+
             <TextView
                 android:id="@+id/tv_recharge_amount"
-                android:layout_width="wrap_content"
+                android:layout_width="69dp"
+
                 android:layout_height="wrap_content"
-                android:text="200元"
-                android:textColor="@color/textColor_f333"
-                android:textSize="11sp"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="17dp"
+                android:background="@drawable/normal_bg_red"
+                android:paddingTop="3dp"
+                android:gravity="center"
+                android:paddingBottom="3dp"
+                android:text="￥2008"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </RelativeLayout>

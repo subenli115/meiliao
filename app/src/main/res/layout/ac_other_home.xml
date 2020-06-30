@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:id="@+id/nsv"
+        android:layout_above="@+id/all_bottom"
+        android:layout_marginBottom="33px"
+        android:layout_height="match_parent">
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/lay_header"
+        android:layout_width="match_parent"
+        android:layout_height="750px"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+            android:id="@+id/iv_bg"
+            android:background="@drawable/home_gradient_bg"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent"
+            />
+        
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:navigationIcon="@drawable/back_white1"
+            app:layout_collapseMode="pin">
+
+        </android.support.v7.widget.Toolbar>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="640px"
+        android:background="@color/transparent"
+        android:layout_height="wrap_content">
+        <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_marginTop="60px"
+            android:paddingBottom="50px"
+            android:background="@drawable/normal_bg_white60_half"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_head"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="64px"
+            android:scaleType="centerCrop"
+            app:roundimageview_borderRadius="4dp"
+            app:roundimageview_border_color="@color/black"
+            app:roundimageview_border_width="2dp"
+            app:roundimageview_type="circle" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:visibility="gone"
+        app:navigationIcon="@drawable/back1"
+        app:layout_collapseMode="pin"/>
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/all_bottom"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="32px"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="54px"
+            android:id="@+id/all_gift"
+            android:gravity="center"
+            android:background="@drawable/normal_bg_red_pop"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_other_chat"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="送礼物"
+                android:paddingTop="22px"
+                android:paddingBottom="22px"
+                android:textSize="30px"
+                android:textColor="@color/white"
+                />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="54px"
+            android:id="@+id/all_chat"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginRight="42px"
+            android:background="@drawable/normal_bg_bule"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_other_chat"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="聊天"
+                android:paddingTop="22px"
+                android:paddingBottom="22px"
+                android:textSize="30px"
+                android:textColor="@color/white"
+                />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

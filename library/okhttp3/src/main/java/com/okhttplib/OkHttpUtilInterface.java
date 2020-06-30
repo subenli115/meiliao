@@ -26,6 +26,13 @@ public interface OkHttpUtilInterface {
     void doPostAsync(HttpInfo info, CallbackOk callback);
 
     /**
+     * 异步Post请求
+     * @param info 请求信息体
+     * @param callback 回调接口
+     */
+    void doPutAsync(HttpInfo info, CallbackOk callback);
+
+    /**
      * 同步Get请求
      * @param info 请求信息体
      * @return HttpInfo
@@ -45,6 +52,11 @@ public interface OkHttpUtilInterface {
      */
     void doUploadFileAsync(final HttpInfo info);
 
+    /**
+     * 异步delete请求
+     * @param info 请求信息体
+     */
+    void doDeleteAsync(final HttpInfo info, CallbackOk callback);
     /**
      * 同步上传文件
      * @param info 请求信息体

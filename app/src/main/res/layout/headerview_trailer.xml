@@ -17,7 +17,6 @@
             android:id="@+id/iv_tralier_headPic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_loading_square_big"
             android:visibility="gone"
             app:roundimageview_height_ratio="0.4267"
             />

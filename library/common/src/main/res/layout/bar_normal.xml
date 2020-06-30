@@ -12,15 +12,16 @@
         android:id="@+id/tv_back"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="0dp"
+        android:paddingRight="12dp"
         android:background="@drawable/selector_tran_gray"
         android:drawableLeft="@drawable/back1"
         android:gravity="center"
         android:paddingLeft="12dp"
-        android:paddingRight="12dp"
         android:textColor="@color/textColor_666"
-        android:textSize="16sp"
-        />
+        android:textSize="16sp" />
 
 
     <View
@@ -38,10 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="12dp"
         android:layout_toRightOf="@+id/verLine"
         android:gravity="center"
-        android:textColor="@color/textColor_333"
+        android:textColor="@color/black"
         android:textSize="18sp"
         />
     <TextView

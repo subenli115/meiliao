@@ -22,8 +22,6 @@ public class LiveRoomBean extends Result {
 
     /**
      * data : {"historyList":[],"heraldList":[{"picture":"https://www.dgli.net/resource/images/course/course_teacher_zhangshijie.png","id":136,"title":"舒志凌要开直播了，各位看官请注意",
-     * "status":1,"dateTime":1527148766000,"url":"rtmp://pili-live-rtmp.dgli.net/wpyx/teaher10"},{"picture":"https://www.dgli.net/resource/images/course/course_banner_zhang
-     * .png","id":46,"title":"测试","status":0,"dateTime":1526377422000,"url":"rtmp://pili-live-rtmp.dgli.net/wpyx/teaher10"}],"picture":"https://www.dgli
      * .net/resource/images/subscription/course_teacher_hu.png","teacherName":"舒志凌","teacherId":10,"fansNumbers":0}
      */
 
@@ -41,8 +39,6 @@ public class LiveRoomBean extends Result {
         /**
          * historyList : []
          * heraldList : [{"picture":"https://www.dgli.net/resource/images/course/course_teacher_zhangshijie.png","id":136,"title":"舒志凌要开直播了，各位看官请注意","status":1,
-         * "dateTime":1527148766000,"url":"rtmp://pili-live-rtmp.dgli.net/wpyx/teaher10"},{"picture":"https://www.dgli.net/resource/images/course/course_banner_zhang.png",
-         * "id":46,"title":"测试","status":0,"dateTime":1526377422000,"url":"rtmp://pili-live-rtmp.dgli.net/wpyx/teaher10"}]
          * picture : https://www.dgli.net/resource/images/subscription/course_teacher_hu.png
          * teacherName : 舒志凌
          * teacherId : 10
@@ -112,7 +108,6 @@ public class LiveRoomBean extends Result {
              * title : 舒志凌要开直播了，各位看官请注意
              * status : 1
              * dateTime : 1527148766000
-             * url : rtmp://pili-live-rtmp.dgli.net/wpyx/teaher10
              */
 
             private String picture;
