@@ -3,8 +3,9 @@ package com.ziran.meiliao.common.commonwidget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.ziran.meiliao.common.R;
 import com.ziran.meiliao.common.commonwidget.helper.BackgroundHelper;

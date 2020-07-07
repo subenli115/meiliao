@@ -1074,4 +1074,25 @@ public interface ApiKey {
      */
     String ACCOUNT_ACCOUNTLISTING_PAGE= "account/accountlisting/page";
 
+    /**
+     * 新增用户关注
+     */
+    String ADMIN_USERFOLLOW_ADD= "admin/userfollow/add";
+
+    /**
+     * 取消用户关注
+     */
+    String ADMIN_USERFOLLOW_DEL= "admin/userfollow/del";
+
+    /**
+     * APP分页查询用户关注或者关注用户的列表记录
+     */
+    String ADMIN_USERFOLLOW_PAGEUSERTYPE= "admin/userfollow/pageUserType";
+
+
+    /**
+     * APP分页查询用户关注和关注了用户的记录
+     */
+    String ADMIN_USERFOLLOW_PAGEBYUSERID= "admin/userfollow/pageByUserId";
+
 }

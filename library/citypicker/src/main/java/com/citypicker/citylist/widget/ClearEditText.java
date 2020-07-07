@@ -10,7 +10,6 @@ package com.citypicker.citylist.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -20,6 +19,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.citypicker.R;
 
@@ -42,6 +43,7 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
      * 手指抬起时的X坐标
      */
     private int xUp = 0;
+    private Drawable right1;
 
     public ClearEditText(Context context) {
         this(context, null);
@@ -66,6 +68,7 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
             //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
             left = getCompoundDrawables()[0];
             right = getCompoundDrawables()[2];
+            right1=getCompoundDrawables()[1];
             if (right == null) {
                 right = getResources().getDrawable(R.drawable.ic_code_del);
             }
@@ -184,8 +187,9 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
                     setCompoundDrawablesWithIntrinsicBounds(left, null, right, null);
                 }
             }
-            if (!hasFocus) {
-                setCompoundDrawablesWithIntrinsicBounds(left, null, null, null);
+            if (!hasFocus&&msg.length()==11 ) {
+                right1 = getResources().getDrawable(R.drawable.ic_code_right);
+                setCompoundDrawablesWithIntrinsicBounds(left, null, right1, null);
             }
 
         } catch (Exception e) {

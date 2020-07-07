@@ -30,7 +30,6 @@ import com.ziran.meiliao.common.receiver.NetUtil;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.entry.LoginBean;
-import com.ziran.meiliao.entry.UserRegBean;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.envet.ThreeLoginCallBack;
 import com.ziran.meiliao.im.utils.DialogCreator;
@@ -80,6 +79,9 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
     ImageView ivOther;
     @Bind(R.id.arl_login)
     AutoRelativeLayout arlLogin;
+    @Bind(R.id.tv_other)
+    TextView tvOther;
+
 
 
     @Bind(R.id.ntb)
@@ -210,15 +212,12 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
     }
 
     //点击监听
-    @OnClick({R.id.tv_login, R.id.tv_sjdl, R.id.iv_wechat, R.id.iv_qq,R.id.arl_down})
+    @OnClick({R.id.tv_login, R.id.iv_wechat, R.id.iv_qq,R.id.arl_down,R.id.iv_pwd})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
                 //提交
                 login();
-                break;
-            case R.id.tv_sjdl:
-                InputPasswordActivity.startAction(this);
                 break;
             case R.id.iv_wechat:
                 //微信登录
@@ -230,14 +229,15 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
                 shareString = "QQ";
                 LoginApi.get().login(this, SHARE_MEDIA.QQ, threeLoginCallBack);
                 break;
+            case R.id.iv_pwd:
+                InputPasswordActivity.startAction(this);
+                break;
+
             case R.id.arl_down:
-                    if(arlLogin.getVisibility()==View.INVISIBLE){
-                        arlLogin.setVisibility(View.VISIBLE);
-                        ivOther.setImageResource(R.mipmap.icon_other_top);
-                    }else {
-                        arlLogin.setVisibility(View.INVISIBLE);
-                        ivOther.setImageResource(R.mipmap.icon_other_down);
-                    }
+                tvOther.setVisibility(View.INVISIBLE);
+                arlLogin.setVisibility(View.VISIBLE);
+                view.setVisibility(View.INVISIBLE);
+                break;
 
 
         }

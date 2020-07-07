@@ -13,9 +13,8 @@ import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -76,8 +75,6 @@ import com.ziran.meiliao.R;
 import com.ziran.meiliao.im.activity.BrowserViewPagerActivity;
 import com.ziran.meiliao.im.activity.ChatActivity;
 import com.ziran.meiliao.im.activity.DownLoadActivity;
-import com.ziran.meiliao.im.activity.FriendInfoActivity;
-import com.ziran.meiliao.im.activity.GroupNotFriendActivity;
 import com.ziran.meiliao.im.activity.MainActivity;
 import com.ziran.meiliao.im.adapter.ChattingListAdapter;
 import com.ziran.meiliao.im.adapter.ChattingListAdapter.ViewHolder;
@@ -89,7 +86,6 @@ import com.ziran.meiliao.im.utils.FileUtils;
 import com.ziran.meiliao.im.utils.HandleResponseCode;
 import com.ziran.meiliao.im.utils.SimpleCommonUtils;
 import com.ziran.meiliao.im.utils.ToastUtil;
-import com.ziran.meiliao.widget.GlideCircleTransform;
 
 import org.jetbrains.annotations.NotNull;
 

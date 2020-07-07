@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/arl"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ntb_tv_left="showAndFinish"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80px"
+            android:layout_marginTop="73px"
+            android:text="完善资料"
+            android:textColor="@color/textColor_4c"
+            android:textSize="48px"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80px"
+            android:layout_marginTop="28px"
+            android:text="请填写基本信息"
+            android:textColor="#7c7c7c"
+            android:textSize="26px" />
+
+        <ImageView
+            android:id="@+id/iv_user_avatar"
+            android:layout_width="180px"
+            android:layout_height="180px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80px"
+            android:src="@mipmap/info_photo_head" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="75px"
+            android:layout_marginTop="52px"
+            android:layout_marginRight="75px"
+            android:layout_height="wrap_content">
+
+
+            <com.citypicker.citylist.widget.ClearEditText
+                android:id="@+id/ed_nick"
+                android:layout_width="match_parent"
+                android:layout_height="96px"
+                android:layout_below="@+id/afl"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:background="@drawable/normal_bg_tran"
+                android:hint="@string/nick_name_title"
+                android:lines="1"
+                android:maxLength="11"
+                android:paddingLeft="49px"
+                android:paddingRight="23px"
+                android:singleLine="true"
+                android:textColorHint="@color/textColor_b2"
+                android:textSize="30px" />
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/all_red"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:background="@drawable/normal_bg_red_tran30"
+                android:layout_height="96px"/>
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+
+        <com.citypicker.citylist.widget.ClearEditText
+            android:id="@+id/ed_age"
+            android:layout_width="match_parent"
+            android:layout_height="96px"
+            android:layout_below="@+id/afl"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="75px"
+            android:layout_marginRight="75px"
+            android:layout_marginTop="36px"
+            android:background="@drawable/normal_bg_tran"
+            android:hint="@string/info_age"
+            android:inputType="number"
+            android:maxLength="2"
+            android:paddingLeft="49px"
+            android:singleLine="true"
+            android:textColorHint="@color/textColor_b2"
+            android:textSize="30px" />
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_marginLeft="75px"
+    android:layout_marginTop="36px"
+    android:layout_marginRight="75px"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_man"
+        android:layout_width="wrap_content"
+        android:background="@drawable/normal_bg_tran"
+        android:layout_gravity="center_vertical"
+        android:layout_height="96px">
+
+        <ImageView
+            android:id="@+id/iv_sex_man"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="90px"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_sex_man"
+            />
+        <TextView
+            android:id="@+id/tv_man"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_sex_man"
+            android:layout_width="wrap_content"
+            android:textSize="30px"
+            android:layout_marginRight="90px"
+            android:layout_marginLeft="13px"
+            android:textColor="#BFBFBF"
+            android:layout_height="wrap_content"
+            android:text="男神"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/arl_woman"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/normal_bg_tran"
+        android:layout_height="96px">
+
+        <ImageView
+            android:id="@+id/iv_sex_woman"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="90px"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_sex_woman"
+            />
+        <TextView
+            android:id="@+id/tv_woman"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_sex_woman"
+            android:layout_width="wrap_content"
+            android:textSize="30px"
+            android:layout_marginRight="90px"
+            android:layout_marginLeft="13px"
+            android:textColor="#BFBFBF"
+            android:layout_height="wrap_content"
+            android:text="女神"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="match_parent"
+            android:layout_height="88px"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="88px"
+            android:layout_marginTop="60px"
+            android:layout_marginRight="88px"
+            android:layout_marginBottom="60px"
+            android:background="@drawable/normal_bg_bule50"
+            android:gravity="center"
+            android:paddingLeft="92px"
+            android:paddingRight="92px"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="30px" />
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

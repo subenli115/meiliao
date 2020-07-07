@@ -7,12 +7,13 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.google.gson.Gson;
 import com.zhy.autolayout.AutoRelativeLayout;
@@ -30,7 +31,6 @@ import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.entry.MusicEntry;
 import com.ziran.meiliao.envet.NewRequestCallBack;
-import com.ziran.meiliao.service.ServiceManager;
 import com.ziran.meiliao.ui.base.CommonModel;
 import com.ziran.meiliao.ui.base.CommonRefreshFragment;
 import com.ziran.meiliao.ui.bean.ActisData;
@@ -162,14 +162,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
                return;
             }
         }
-        MyAPP.mServiceManager.refreshMusicList(mMusicList);
-        MyAPP.mServiceManager.setAlbumPicture(albumBean.getRoundPic());
-        MyAPP.mServiceManager.setAlbumName1(albumBean.getTitle());
-
-        MyAPP.mServiceManager.setClickFrom(ServiceManager.CLICK_FROM_ALBUM);
-        MyAPP.mServiceManager.setAlbumId(id+"");
-        MyAPP.mServiceManager.setIsbuy(albumBean.isBuy());
-        MyAPP.mServiceManager.setAlbum(albumBean);
         MyValueTempCache.get().put(AppConstant.SPKey.PLAY_DATA,mMusicList);
     }
 

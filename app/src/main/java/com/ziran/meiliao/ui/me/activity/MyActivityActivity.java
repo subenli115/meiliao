@@ -132,7 +132,7 @@ public class MyActivityActivity extends BaseActivity {
     //点击监听
     @OnClick({R.id.tv_me_main_new_info, R.id.tv_me_main_new_black, R.id.tv_me_main_new_wallet, R.id.tv_me_main_new_safe, R.id
             .tv_me_main_new_model, R.id.tv_me_main_new_version, R.id.tv_me_main_new_privacy, R.id
-            .tv_me_main_new_agreement, R.id.tv_me_main_new_lsgy,R.id.tv_me_main_new_report, R.id.tv_logut})
+            .tv_me_main_new_agreement, R.id.tv_me_main_new_lsgy,R.id.tv_me_main_new_report,R.id.tv_me_main_new_follow, R.id.tv_logut})
     public void onClick(View view) {
 //        if (!MyAPP.isLogin(mContext)) { //如果没有登录则跳转到登录界面
 //            return;
@@ -174,6 +174,10 @@ public class MyActivityActivity extends BaseActivity {
             case R.id.tv_me_main_new_report:
                 ReportSelectActivity.startAction();
                 break;
+            case R.id.tv_me_main_new_follow:
+                MyFollowActivity.startAction(mContext);
+                break;
+
             case R.id.tv_logut:
                 //退出登录
                 showPopWindow();

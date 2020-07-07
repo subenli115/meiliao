@@ -1,8 +1,6 @@
 package com.ziran.meiliao.im.activity.historyfile.view;
 
 import android.content.Context;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +8,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.im.utils.SharePreferenceManager;

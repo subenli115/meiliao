@@ -1,10 +1,11 @@
 package com.ziran.meiliao.im.utils.imagepicker.adapter;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import com.ziran.meiliao.im.utils.imagepicker.util.Utils;
 import com.ziran.meiliao.im.utils.imagepicker.view.SuperCheckBox;
 
 
-public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class ImageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     private static final int ITEM_TYPE_CAMERA = 0;  //第一个条目是相机
@@ -66,7 +67,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ITEM_TYPE_CAMERA){
             return new CameraViewHolder(mInflater.inflate(R.layout.adapter_camera_item,parent,false));
         }
@@ -74,7 +75,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof CameraViewHolder){
             ((CameraViewHolder)holder).bindCamera();
         }else if (holder instanceof ImageViewHolder){
@@ -107,7 +108,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    private class ImageViewHolder extends ViewHolder {
+    private class ImageViewHolder extends RecyclerView.ViewHolder {
 
         View rootView;
         ImageView ivThumb;
@@ -132,6 +133,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
                 }
             });
             cbCheck.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("StringFormatMatches")
                 @Override
                 public void onClick(View v) {
                     int selectLimit = imagePicker.getSelectLimit();
@@ -164,7 +166,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     }
 
-    private class CameraViewHolder extends ViewHolder {
+    private class CameraViewHolder extends RecyclerView.ViewHolder {
 
         View mItemView;
 

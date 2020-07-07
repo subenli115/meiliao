@@ -1,9 +1,10 @@
 package com.ziran.meiliao.im.utils.keyboard.adpater;
 
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
 

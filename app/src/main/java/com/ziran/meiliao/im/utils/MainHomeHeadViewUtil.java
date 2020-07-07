@@ -2,12 +2,13 @@ package com.ziran.meiliao.im.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonutils.AdViewpagerUtil;

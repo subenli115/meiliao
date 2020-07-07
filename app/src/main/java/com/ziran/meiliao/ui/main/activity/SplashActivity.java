@@ -3,38 +3,28 @@ package com.ziran.meiliao.ui.main.activity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowInsets;
-import android.widget.Toast;
 
-import com.umeng.qq.tencent.Tencent;
-import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.soexample.LoginApi;
 import com.ziran.meiliao.app.MeiliaoConfig;
-import com.ziran.meiliao.common.commonutils.NetWorkUtils;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
-import com.ziran.meiliao.entry.UserRegBean;
 import com.ziran.meiliao.envet.NewRequestCallBack;
-import com.ziran.meiliao.envet.OnLoadDataListener;
 import com.ziran.meiliao.envet.ThreeLoginCallBack;
-import com.ziran.meiliao.im.activity.MainActivity;
 
 import com.chuanglan.shanyan_sdk.OneKeyLoginManager;
 import com.chuanglan.shanyan_sdk.listener.GetPhoneInfoListener;
@@ -61,9 +51,9 @@ import com.ziran.meiliao.ui.main.model.LoginModel;
 import com.ziran.meiliao.ui.main.presenter.LoginPresenter;
 import com.ziran.meiliao.ui.main.util.ConfigUtils;
 import com.ziran.meiliao.ui.settings.activity.BindPhoneActivity;
+import com.ziran.meiliao.ui.settings.activity.InputUserInfo2Activity;
 import com.ziran.meiliao.ui.settings.activity.InputUserInfoActivity;
 import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
-import com.ziran.meiliao.ui.settings.activity.UploadUserPhotoAcitivty;
 import com.ziran.meiliao.utils.ExitUtil;
 import com.ziran.meiliao.utils.MapUtils;
 

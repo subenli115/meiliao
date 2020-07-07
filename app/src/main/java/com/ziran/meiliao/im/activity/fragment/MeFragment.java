@@ -10,11 +10,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -312,7 +314,6 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     public void getGiftList() {
         Map<String, String> defMap = MapUtils.getDefMap(true);
         defMap.put("receiveUserId", MyAPP.getUserId());
-        defMap.put("size", "30");
         OkHttpClientManager.getAsyncMore(ApiKey.ADMIN_GIFTRECORD_PAGE, defMap, new
                 NewRequestCallBack<GiftsReceivedBean>(GiftsReceivedBean.class) {
                     @Override
@@ -612,8 +613,8 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
         }else {
             switch (view.getId()) {
                 case R.id.iv_bg:
+                    pop.setTitle("更换主页封面",false);
                     PopupWindowUtil.show(mContext, pop);
-                    pop.setTitle("更换主页封面");
                     type=UPDATE_BG;
                     break;
                 case R.id.iv_more:
@@ -621,6 +622,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
                     MyActivityActivity.startAction(mContext);
                     break;
                 case R.id.iv_head:
+                    pop.setTitle("修改头像",false);
                     PopupWindowUtil.show(mContext, pop);
                     type=UPDATE_HEAD;
                     break;

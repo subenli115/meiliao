@@ -26,11 +26,12 @@
             android:visibility="invisible"></View>
 
         <TextView
+            android:id="@+id/tv_other"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="22px"
             android:layout_marginRight="22px"
-            android:text="其它登录方式"
+            android:text="选择其它登录方式"
             android:textColor="@color/textColor_999"
             android:textSize="24px" />
 
@@ -64,26 +65,84 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:layout_below="@+id/arl_down"
         android:id="@+id/arl_login"
-        android:visibility="invisible"
         android:layout_marginTop="4px"
         android:gravity="center">
 
-        <ImageView
-            android:id="@+id/iv_wechat"
-            android:layout_width="80px"
-            android:layout_height="80px"
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/ll_wechat"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:layout_height="wrap_content">
 
-            android:src="@mipmap/login_wechat" />
+    <ImageView
+        android:id="@+id/iv_wechat"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:src="@mipmap/login_wechat" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17px"
+        android:layout_below="@+id/iv_wechat"
+        android:text="微信"
+        android:textSize="20px"
+        android:textColor="#B2B2B2"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_qq"
-            android:layout_width="80px"
-            android:layout_height="80px"
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/ll_qq"
             android:layout_marginLeft="58px"
-            android:layout_toRightOf="@+id/iv_wechat"
-            android:src="@mipmap/login_qq" />
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/ll_wechat"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_qq"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:src="@mipmap/login_qq" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17px"
+                android:layout_below="@+id/iv_wechat"
+                android:text="QQ"
+                android:textSize="20px"
+                android:textColor="#B2B2B2"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_marginLeft="58px"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/ll_qq"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_pwd"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:src="@mipmap/login_pwd" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17px"
+                android:layout_below="@+id/iv_wechat"
+                android:text="密码"
+                android:textSize="20px"
+                android:textColor="#B2B2B2"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+
 
     </com.zhy.autolayout.AutoRelativeLayout>
 </com.zhy.autolayout.AutoRelativeLayout>

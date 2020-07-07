@@ -58,7 +58,7 @@
                         android:orientation="horizontal"/>
                 </RelativeLayout>
 
-                <android.support.v7.widget.Toolbar
+                <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_common_height"
@@ -102,7 +102,7 @@
                             android:layout_marginRight="12dp"
                             android:src="@mipmap/index_nav_message"/>
                     </LinearLayout>
-                </android.support.v7.widget.Toolbar>
+                </androidx.appcompat.widget.Toolbar>
 
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>

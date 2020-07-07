@@ -26,6 +26,7 @@ import com.ziran.meiliao.im.activity.MainActivity;
 import com.ziran.meiliao.ui.bean.StringDataBean;
 import com.ziran.meiliao.ui.main.activity.SplashActivity;
 import com.ziran.meiliao.ui.settings.activity.BindPhoneActivity;
+import com.ziran.meiliao.ui.settings.activity.InputPasswordActivity;
 import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
 import com.ziran.meiliao.utils.MapUtils;
 
@@ -97,8 +98,9 @@ public class ConfigUtils {
 
                 //授权页号码栏：
                 .setNumberColor(Color.parseColor("#4C4C4C"))  //设置手机号码字体颜色
-                .setNumFieldOffsetBottomY(478)    //设置号码栏相对于标题栏下边缘y偏移
-                .setNumberSize(19)
+                .setNumFieldOffsetBottomY(468)    //设置号码栏相对于标题栏下边缘y偏移
+                .setNumberSize(21)
+                .setNumberBold(true)
                 .setNumFieldHeight(50)
 
 
@@ -109,7 +111,7 @@ public class ConfigUtils {
                 .setLogBtnImgPath(logBtnImgPath)   //设置登录按钮图片
                 .setLogBtnTextSize(15)
                 .setLogBtnHeight(44)
-                .setLogBtnOffsetBottomY(420)
+                .setLogBtnOffsetBottomY(410)
                 .setLogBtnWidth(AbScreenUtils.getScreenWidth(context, true) - 89)
 
                 //授权页隐私栏：
@@ -154,20 +156,15 @@ public class ConfigUtils {
     public static void otherLogin(final Context context, RelativeLayout relativeLayout, SplashActivity activity) {
         ImageView weixin = relativeLayout.findViewById(R.id.iv_wechat);
         ImageView qq = relativeLayout.findViewById(R.id.iv_qq);
-        ImageView ivOther = relativeLayout.findViewById(R.id.iv_other);
+        ImageView ivPwd = relativeLayout.findViewById(R.id.iv_pwd);
+        TextView tvOther = relativeLayout.findViewById(R.id.tv_other);
         AutoRelativeLayout arlDown = relativeLayout.findViewById(R.id.arl_down);
         AutoRelativeLayout arlLogin = relativeLayout.findViewById(R.id.arl_login);
         arlDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(arlLogin.getVisibility()==View.INVISIBLE){
-                    arlLogin.setVisibility(View.VISIBLE);
-                    ivOther.setImageResource(R.mipmap.icon_other_top);
-                }else {
-                    arlLogin.setVisibility(View.INVISIBLE);
-                    ivOther.setImageResource(R.mipmap.icon_other_down);
-                }
-
+                arlLogin.setVisibility(View.VISIBLE);
+                view.setVisibility(View.INVISIBLE);
             }
         });
         weixin.setOnClickListener(v -> {
@@ -177,6 +174,11 @@ public class ConfigUtils {
         qq.setOnClickListener(v -> {
             shareString = "QQ";
             activity.loginQQ();
+
+        });
+        ivPwd.setOnClickListener(v -> {
+            tvOther.setVisibility(View.INVISIBLE);
+            InputPasswordActivity.startAction(context);
 
         });
     }

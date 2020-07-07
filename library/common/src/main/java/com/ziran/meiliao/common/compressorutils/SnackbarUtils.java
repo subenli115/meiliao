@@ -1,11 +1,12 @@
 package com.ziran.meiliao.common.compressorutils;
 
-import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.ziran.meiliao.common.R;
 
 import java.lang.ref.WeakReference;

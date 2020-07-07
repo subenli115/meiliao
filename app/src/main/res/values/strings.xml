@@ -88,12 +88,12 @@
     <string name="input_email">请输入邮箱</string>
     <string name="input_name">请输入昵称</string>
     <string name="input_username">请输入姓名</string>
-    <string name="nick_name_title">昵称</string>
+    <string name="nick_name_title">请输入昵称</string>
     <string name="edit_userinfo">编辑资料</string>
     <string name="myfavorites">我的收藏</string>
     <string name="my_message">我的消息</string>
     <string name="change_phone">更换手机号</string>
-    <string name="info_age">年龄</string>
+    <string name="info_age">请输入年龄</string>
     <string name="reighter">注册</string>
 
 

@@ -16,20 +16,40 @@
         android:id="@+id/contentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical">
+<LinearLayout
+    android:id="@+id/ll_headView"
+    android:layout_width="match_parent"
+    android:visibility="gone"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
 
+
+    <ImageView
+        android:id="@+id/iv_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_hint_head"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#fafafa"
+        />
+</LinearLayout>
         <TextView
             android:id="@+id/tv_update"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_common_height"
+            android:layout_height="50dp"
             android:background="@drawable/selector_white_gray"
             android:gravity="center"
             android:text="修改头像"
             android:textColor="@color/textColor_333"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
         <View
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="20px"
             android:background="#fafafa"
             />
         <TextView

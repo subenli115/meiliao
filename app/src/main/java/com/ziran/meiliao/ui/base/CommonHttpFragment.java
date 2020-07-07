@@ -1,9 +1,10 @@
 package com.ziran.meiliao.ui.base;
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseFragment;

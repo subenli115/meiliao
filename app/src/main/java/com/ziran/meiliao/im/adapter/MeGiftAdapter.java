@@ -40,12 +40,6 @@ public class MeGiftAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void update1(Context context,List<GiftsReceivedBean.DataBean.RecordsBean> data) {
-        mDdata.clear();
-        mDdata.addAll(data);
-        this.inflater = LayoutInflater.from(context);
-        notifyDataSetChanged();
-    }
 
     public interface OnItemClickListener<T> {
         void onItemClick(ViewGroup container, T item, int position);

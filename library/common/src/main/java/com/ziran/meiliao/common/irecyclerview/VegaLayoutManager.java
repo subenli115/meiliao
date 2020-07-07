@@ -12,10 +12,11 @@ package com.ziran.meiliao.common.irecyclerview;
 
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by xmuSistone on 2017/9/20.

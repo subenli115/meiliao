@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.Spannable;
@@ -21,6 +20,9 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatEditText;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,7 +34,7 @@ import com.ziran.meiliao.im.adapter.TextWatcherAdapter;
  * 具有Tag删除判断，和光标定位判断；预防用户胡乱篡改
  *
  */
-public class RichEditText extends android.support.v7.widget.AppCompatEditText {
+public class RichEditText extends AppCompatEditText {
     public static final String MATCH_MENTION = "@([^@^\\s^:^,^;^'，'^'；'^>^<]{1,})";//@([^@^\\s^:]{1,})([\\s\\:\\,\\;]{0,1})");//@.+?[\\s:]
     public static final String MATCH_TOPIC = "#.+?#";
     public static boolean DEBUG = false;

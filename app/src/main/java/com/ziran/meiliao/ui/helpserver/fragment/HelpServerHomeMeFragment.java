@@ -1,10 +1,10 @@
 package com.ziran.meiliao.ui.helpserver.fragment;
 
-import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonwidget.ViewPagerFixed;
 import com.ziran.meiliao.ui.base.CommonHttpFragment;

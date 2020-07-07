@@ -113,7 +113,6 @@ public class MemberRuleActivity extends CommonHttpActivity<CommonPresenter, Comm
                     webView.loadUrl(url);
                     return true;
                 }else if(url.contains("wpyx://back")){
-                        onBackPressed();
                     return true;
                 }else if(url.contains("wpyx://share")){
                     share();

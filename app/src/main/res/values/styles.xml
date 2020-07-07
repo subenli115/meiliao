@@ -13,7 +13,9 @@
         <item name="colorAccent">#FF4081</item>
 
     </style>
-
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/textsizi</item>
+    </style>
     <style name="jmui_default_dialog_style">
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">true</item>

@@ -2,7 +2,6 @@ package com.ziran.meiliao.ui.settings.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.TabLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.base.BaseActivity;

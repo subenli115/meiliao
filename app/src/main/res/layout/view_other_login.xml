@@ -15,6 +15,5 @@
     android:gravity="center"
     android:textColor="@color/textColor_4c"
     android:layout_below="@+id/afl"
-    android:background="@drawable/normal_bg_e0"
     xmlns:android="http://schemas.android.com/apk/res/android" />
 </RelativeLayout>

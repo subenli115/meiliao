@@ -1,6 +1,7 @@
 package com.ziran.meiliao.ui.bean;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.ziran.meiliao.constant.AppConstant;
 

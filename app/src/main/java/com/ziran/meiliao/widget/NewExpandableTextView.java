@@ -4,12 +4,14 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.irecyclerview.SimpleAnimatorListener;
@@ -25,7 +27,7 @@ import com.ziran.meiliao.common.irecyclerview.SimpleAnimatorListener;
  * @updateDes ${TODO}
  */
 
-public class NewExpandableTextView extends TextView {
+public class NewExpandableTextView extends AppCompatTextView {
 
 
     private boolean isUsedAnimator = false;

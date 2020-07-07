@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -42,9 +43,7 @@ import com.ziran.meiliao.im.utils.DialogCreator;
 import com.ziran.meiliao.im.utils.NativeImageLoader;
 import com.ziran.meiliao.im.utils.SharePreferenceManager;
 import com.ziran.meiliao.im.utils.ViewHolder;
-import com.ziran.meiliao.im.utils.photochoose.SelectableRoundedImageView;
 import com.ziran.meiliao.im.view.SwipeLayout;
-import com.ziran.meiliao.widget.GlideCircleTransform;
 
 /**
  * Created by ${chenyn} on 2017/3/20.

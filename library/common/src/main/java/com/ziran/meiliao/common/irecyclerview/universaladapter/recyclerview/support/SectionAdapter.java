@@ -1,7 +1,8 @@
 package com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.support;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ziran.meiliao.common.irecyclerview.universaladapter.ViewHolderHelper;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.MultiItemRecycleViewAdapter;

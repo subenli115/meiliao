@@ -5,9 +5,10 @@ package com.ziran.meiliao.common.behavior;
  */
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 /**
  * Bye Bye Burger Android Title Bar Behavior

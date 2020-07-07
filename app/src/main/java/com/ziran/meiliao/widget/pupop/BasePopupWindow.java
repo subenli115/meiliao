@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -13,13 +12,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
+import androidx.fragment.app.Fragment;
+
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.commonutils.ViewUtil;
 import com.ziran.meiliao.common.irecyclerview.SimpleAnimatorListener;
 import com.ziran.meiliao.utils.AnimationUtil;
-import com.ziran.meiliao.utils.HandlerUtil;
 
 /**
  * @author 吴祖清

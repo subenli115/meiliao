@@ -42,7 +42,6 @@ public class ExitUtil {
         TrailerCollectConfig.clear();
         UMengKit.trackMsgDismissed(context);
         MeiliaoConfig.setMusicPanelHide(false);
-        MyAPP.mServiceManager.exit();
         HandlerUtil.onDestroy();
         PracticeDataUtil.onDestroy();
         AppManager.getAppManager().AppExit(context, false);

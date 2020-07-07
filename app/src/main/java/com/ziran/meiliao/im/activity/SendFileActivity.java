@@ -2,8 +2,9 @@ package com.ziran.meiliao.im.activity;
 
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.im.controller.SendFileController;

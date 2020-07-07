@@ -238,6 +238,7 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
                         SetRealNameActivity.startAction("ThirdPay", REQUEST_CODE_C);
                     }
                 } else if (type == 1) {
+                    popupWindow.dismiss();
                      capitalextractAdd(recordsBean);
                 } else {
                     //去实名

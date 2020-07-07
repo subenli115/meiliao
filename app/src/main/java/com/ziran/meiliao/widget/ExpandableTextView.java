@@ -17,7 +17,6 @@ package com.ziran.meiliao.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.support.v7.widget.AppCompatTextView;
 import android.text.DynamicLayout;
 import android.text.Layout;
 import android.text.Selection;
@@ -33,6 +32,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.commonutils.ViewUtil;
@@ -42,7 +43,7 @@ import java.lang.reflect.Field;
 /**
  *  展开收缩的TextView
  */
-public class ExpandableTextView extends AppCompatTextView{
+public class ExpandableTextView extends AppCompatTextView {
 
     public static final int STATE_SHRINK = 0;
     public static final int STATE_EXPAND = 1;

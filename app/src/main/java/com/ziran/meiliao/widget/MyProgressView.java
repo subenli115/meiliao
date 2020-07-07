@@ -511,12 +511,6 @@ public class MyProgressView extends View implements OnProgressChangeListener {
      * 当换另一个APP时,需要更换里面的调用方法
      */
     public void setSeekTo() {
-        if (isAutoSeek) {
-            int duration = MyAPP.mServiceManager.duration();
-            int i = (int) (duration * getProgressRatio());
-            LogUtils.logd("duration:"+duration + " progress:"+progress + " max:"+max  + " progress:"+i);
-            MyAPP.mServiceManager.seekTo(progress*1000);
-        }
     }
 
     public float getProgressRatio(){

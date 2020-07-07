@@ -2,7 +2,7 @@ package com.ziran.meiliao.im.utils.photovideo.takevideo.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v4.content.SharedPreferencesCompat;
+import androidx.core.content.SharedPreferencesCompat;
 
 
 

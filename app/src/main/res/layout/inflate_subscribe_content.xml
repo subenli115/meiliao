@@ -16,7 +16,7 @@
         app:tabTextColor="@color/textColor_9f"
         />
 
-    <android.support.v4.view.ViewPager
+    <androidx.core.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

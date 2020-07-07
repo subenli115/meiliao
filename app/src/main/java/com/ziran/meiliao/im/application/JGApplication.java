@@ -1,7 +1,8 @@
 package com.ziran.meiliao.im.application;
 
 import android.content.Context;
-import android.support.multidex.MultiDex;
+
+import androidx.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
 import com.baidu.mapapi.SDKInitializer;

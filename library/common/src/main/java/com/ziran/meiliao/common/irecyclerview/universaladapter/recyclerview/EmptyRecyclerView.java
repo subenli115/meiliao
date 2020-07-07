@@ -1,9 +1,10 @@
 package com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * https://gist.github.com/adelnizamutdinov/31c8f054d1af4588dc5c

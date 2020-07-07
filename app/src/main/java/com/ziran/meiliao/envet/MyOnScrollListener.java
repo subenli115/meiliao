@@ -1,11 +1,11 @@
 package com.ziran.meiliao.envet;
 
 import android.graphics.Color;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.nostra13.universalimageloader.utils.L;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ziran.meiliao.common.baserx.RxManagerUtil;
 import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.irecyclerview.IRecyclerView;

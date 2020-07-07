@@ -120,26 +120,7 @@ public class ProgressUtil {
 
 
     private Message getMessage() {
-        if (playMode == PLAY_MODE_MUSIC) {
-            if (MyAPP.mServiceManager.isPlaying()) {
-                if (max == 0) {
-                    LogUtils.logd( "max:"+max + " currProgress:"+currProgress + " duration:"+MyAPP.mServiceManager.duration() + " position:" +MyAPP.mServiceManager.position());
-                    max = MyAPP.mServiceManager.duration() / 1000;
-                }
-                currProgress =  MyAPP.mServiceManager.position()/1000;
-            }
-//            LogUtils.logd( "max:"+max + " currProgress:"+currProgress + " duration:"+MyAPP.mServiceManager.duration() + " position:" +MyAPP.mServiceManager.position() + " handler:"+mHandle);
-        } else {
-            currProgress++;
-            //处理间隔提醒事件
-            if (spanTime > 30 && currProgress % spanTime == 0) {
-                RxManagerUtil.post(AppConstant.RXTag.EXERCISE_PLAY, HandlerUtil.obj(WHAT_SPAN_DING));
-            }
-        }
-        Message message = mHandle.obtainMessage();
-        message.arg1 = currProgress;
-        message.arg2 = max;
-        return message;
+        return null;
     }
 
     public void startUpdateAsTime(long delayMillis) {
@@ -226,30 +207,7 @@ public class ProgressUtil {
     }
 
 
-    public void setSpanTime(int spanTime) {
-        this.spanTime = spanTime;
-    }
 
-    public void registerProgressListener(OnProgressChangeListener view) {
-        if (view != null && !updateViews.contains(view)) {
-            updateViews.add(view);
-        }
-        if (view != null && currProgress > 0) view.setProgress(currProgress);
-        if (!isRuning && MyAPP.mServiceManager.isPlaying()) {
-            startUpdate();
-        }
-    }
-
-    public void registerProgressListener(OnProgressChangeListener view, String url) {
-        if ( !MyAPP.mServiceManager.checkUrl(url)) return;
-        if (view != null && !updateViews.contains(view)) {
-            updateViews.add(view);
-        }
-        if (view != null && currProgress > 0) view.setProgress(currProgress);
-        if (!isRuning && MyAPP.mServiceManager.isPlaying() ) {
-            startUpdate();
-        }
-    }
 
     public void unRegisterProgressListener(OnProgressChangeListener view) {
         if (view != null && updateViews.contains(view)) {

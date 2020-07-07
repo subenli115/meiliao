@@ -2,12 +2,15 @@ package com.ziran.meiliao.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonutils.KeyBordUtil;
@@ -25,8 +28,11 @@ import com.ziran.meiliao.envet.SimpleTextWatcher;
  */
 
 
-public class CustomEditText extends AppCompatEditText {
-    
+public class CustomEditText extends AppCompatEditText implements View.OnFocusChangeListener{
+    /**
+     * 是否获取焦点，默认没有焦点
+     */
+    private boolean hasFocus = false;
     /**
      * 删除按钮的图片资源显示和隐藏密码的图片资源id
      */
@@ -98,9 +104,9 @@ public class CustomEditText extends AppCompatEditText {
         delDrawable = typedArray.getDrawable(R.styleable.CustomEditText_rightIconDel);
         showPwdDrawable = typedArray.getDrawable(R.styleable.CustomEditText_rightIconShowPwd);
         hidePwdDrawable = typedArray.getDrawable(R.styleable.CustomEditText_rightIconHidePwd);
-        type = typedArray.getInteger(R.styleable.CustomEditText_type, 2);
+        type = typedArray.getInteger(R.styleable.CustomEditText_type, -1);
         typedArray.recycle();
-//        setType(type);
+        setType(type);
 //        if(type==3){
 //            setRightIcon(R.mipmap.jdx_voice_question);
 //        }
@@ -148,7 +154,8 @@ public class CustomEditText extends AppCompatEditText {
             }
         });
     }
-    
+
+
     @Override
     public boolean onTouchEvent (MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -185,13 +192,26 @@ public class CustomEditText extends AppCompatEditText {
         }else {
         }
     }
-    
+    @Override
+    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+        if (hasFocus) {
+            if (TextUtils.isEmpty(text)) {
+
+
+            } else {
+
+
+            }
+        }
+    }
+
     /**
      * 设置右侧图标
      *
      * @param drawable
      */
     public void setRightIcon (int drawable) {
+        setPadding(0,0,23,0);
         setCompoundDrawablesWithIntrinsicBounds(0, 0, drawable, 0);
     }
     
@@ -231,7 +251,12 @@ public class CustomEditText extends AppCompatEditText {
     public void setOnContentChangeListener (OnContentChangeListener onContentChangeListener) {
         this.mOnContentChangeListener = onContentChangeListener;
     }
-    
+
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        this.hasFocus=b;
+    }
+
     /**
      * 文本内容发生变化的借口
      */

@@ -2,10 +2,11 @@ package com.ziran.meiliao.im.activity.historyfile.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 import java.io.File;
 import java.util.ArrayList;

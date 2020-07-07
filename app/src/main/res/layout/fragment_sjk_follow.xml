@@ -4,13 +4,30 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabGravity="fill"
+        app:tabGravity="center"
+        android:background="@color/white"
+        app:tabTextColor="@color/black"
         app:tabMode="fixed"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
         />
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="32dp"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"/>
+    
+    <View
+        android:id="@+id/view"
+        android:layout_below="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#FAFAFA"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,13 +40,13 @@
         android:textSize="16sp"
         />
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_below="@+id/tabLayout"
+        android:layout_below="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#ffffff"
+        android:background="#FAFAFA"
         />
 
     <TextView

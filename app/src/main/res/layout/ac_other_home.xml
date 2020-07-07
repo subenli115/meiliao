@@ -5,7 +5,7 @@
     android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:id="@+id/nsv"
@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             />
         
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             app:navigationIcon="@drawable/back_white1"
             app:layout_collapseMode="pin">
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -78,8 +78,8 @@
             app:roundimageview_type="circle" />
     </com.zhy.autolayout.AutoRelativeLayout>
 </com.zhy.autolayout.AutoRelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
-    <android.support.v7.widget.Toolbar
+    </androidx.core.widget.NestedScrollView>
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

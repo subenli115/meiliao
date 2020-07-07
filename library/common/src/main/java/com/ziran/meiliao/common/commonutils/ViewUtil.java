@@ -9,9 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,7 +17,11 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.androidkun.xtablayout.XTabLayout;
+import com.google.android.material.tabs.TabLayout;
 import com.ziran.meiliao.common.R;
 import com.ziran.meiliao.common.base.BaseModel;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;

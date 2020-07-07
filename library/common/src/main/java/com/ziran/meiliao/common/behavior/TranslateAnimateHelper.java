@@ -1,8 +1,9 @@
 package com.ziran.meiliao.common.behavior;
 
 import android.animation.ValueAnimator;
-import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 /**
  * A Animate Helper to control view's visibility

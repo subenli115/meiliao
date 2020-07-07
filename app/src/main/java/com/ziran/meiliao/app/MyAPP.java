@@ -6,9 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
 import com.baidu.mapapi.SDKInitializer;
@@ -44,18 +45,15 @@ import com.ziran.meiliao.im.entity.NotificationClickEventReceiver;
 import com.ziran.meiliao.im.location.service.LocationService;
 import com.ziran.meiliao.im.pickerimage.utils.StorageUtil;
 import com.ziran.meiliao.im.utils.SharePreferenceManager;
-import com.ziran.meiliao.im.utils.ThreadUtil;
 import com.ziran.meiliao.im.utils.imagepicker.GlideImageLoader;
 import com.ziran.meiliao.im.utils.imagepicker.ImagePicker;
 import com.ziran.meiliao.im.utils.imagepicker.view.CropImageView;
-import com.ziran.meiliao.service.ServiceManager;
 import com.ziran.meiliao.ui.bean.CheckVipLevelBean;
 import com.ziran.meiliao.ui.bean.UserAccountBean;
 import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.bean.UserInfoBean;
 import com.ziran.meiliao.ui.main.activity.NewLoginActivity;
 import com.ziran.meiliao.ui.main.activity.SplashActivity;
-import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.PrefUtils;
 import com.ziran.meiliao.utils.StringUtils;
@@ -101,8 +99,6 @@ public class MyAPP extends BaseApplication {
     public static String wcAppId = "wx9f81f7c83ead9d5d";
 
 
-    //音频播放服务管理类
-    public static ServiceManager mServiceManager = null;
 
     //是否是VIP会员
     private static CheckVipLevelBean vipLevelBean;
@@ -162,7 +158,6 @@ public class MyAPP extends BaseApplication {
         //初始化服务管理器
         BGAImage.setImageLoader(new BGAGlideImageLoader3());
         context = getApplicationContext();
-        mServiceManager = new ServiceManager(this);
         //安装异常处理
         initCockroach();
         //友盟初始化

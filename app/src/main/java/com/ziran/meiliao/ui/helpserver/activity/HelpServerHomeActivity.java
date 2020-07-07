@@ -1,8 +1,9 @@
 package com.ziran.meiliao.ui.helpserver.activity;
 
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentTransaction;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseActivity;

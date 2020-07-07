@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -30,7 +30,6 @@ import com.ziran.meiliao.common.base.BaseActivity;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.commonwidget.LoadingDialog;
 import com.ziran.meiliao.common.commonwidget.NormalTitleBar;
-import com.ziran.meiliao.common.compressorutils.FileSizeUtil;
 import com.ziran.meiliao.common.compressorutils.FileUtil;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
@@ -43,7 +42,6 @@ import com.ziran.meiliao.im.utils.ThreadUtil;
 import com.ziran.meiliao.ui.bean.UpdateUserNewHeadBean;
 import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.utils.DeviceUtil;
-import com.ziran.meiliao.utils.HandlerUtil;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.widget.GlideCircleTransform;
 
@@ -54,7 +52,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
@@ -267,7 +264,6 @@ public class UploadUserPhotoAcitivty extends BaseActivity {
                         ToastUitl.showShort(msg);
                     }
                 });
-
     }
     public static String getChannelName(Context ctx){
         String channelName = AnalyticsConfig.getChannel(ctx);

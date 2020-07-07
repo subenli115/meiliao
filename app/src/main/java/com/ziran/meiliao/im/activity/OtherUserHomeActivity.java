@@ -5,20 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.os.Build;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.squareup.picasso.Picasso;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.ziran.meiliao.R;
@@ -27,7 +23,6 @@ import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.common.base.BaseActivity;
 import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.common.baserx.RxManager;
-import com.ziran.meiliao.common.baserx.RxManagerUtil;
 import com.ziran.meiliao.common.commonutils.ACache;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.irecyclerview.IRecyclerView;
@@ -40,7 +35,6 @@ import com.ziran.meiliao.im.application.JGApplication;
 import com.ziran.meiliao.im.view.SimpleAppsGridView;
 import com.ziran.meiliao.ui.bean.GiftsReceivedBean;
 import com.ziran.meiliao.ui.bean.MeSpaceBean;
-import com.ziran.meiliao.ui.bean.RechargeBean;
 import com.ziran.meiliao.ui.bean.UserAccountBean;
 import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.main.util.NewMainHomeHeadViewUtil;
@@ -55,8 +49,6 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.OnClick;
 import rx.functions.Action1;
-
-import static com.ziran.meiliao.constant.ApiKey.ADMIN_GIFTRECORD_ADD;
 
 public class OtherUserHomeActivity extends BaseActivity {
 
@@ -154,7 +146,7 @@ public class OtherUserHomeActivity extends BaseActivity {
             UserAccountBean.DataBean data = dataBean.getUserAccount().getData();
             if(data!=null){
                 String gold = (int) (data.getRecharge() + data.getCurrency()) + "";
-                simplePayPopupWindow.setTvMoney(gold,userId);
+                simplePayPopupWindow.setTvMoney(gold,userId,dataBean.getNickname());
             }
         }
         mRxManager = new RxManager();
@@ -244,7 +236,6 @@ public class OtherUserHomeActivity extends BaseActivity {
     public void getGiftList() {
         Map<String, String> defMap = MapUtils.getDefMap(true);
         defMap.put("receiveUserId", userId);
-        defMap.put("size", "30");
         OkHttpClientManager.getAsyncMore(ApiKey.ADMIN_GIFTRECORD_PAGE, defMap, new
                 NewRequestCallBack<GiftsReceivedBean>(GiftsReceivedBean.class) {
                     @Override

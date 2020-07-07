@@ -14,6 +14,12 @@
         app:ntb_title_text="更多"
         app:ntb_tv_left="showAndFinish" />
 
+    <com.ziran.meiliao.widget.ObservableScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/ntb"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
     <LinearLayout
         android:id="@+id/ll"
@@ -94,6 +100,17 @@
             app:showRightArrow="true" />
 
         <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_follow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:background="@color/white"
+            app:itemView_leftText="关注"
+            app:itemView_leftText_color="@color/textColor_333"
+            app:itemView_rightTextSize="11sp"
+            app:itemView_rightText_color="@color/red"
+            app:showRightArrow="true" />
+
+        <com.ziran.meiliao.widget.ItemGroupView
             android:id="@+id/tv_me_main_new_privacy"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_common_height"
@@ -116,25 +133,26 @@
             android:background="@color/white"
             app:itemView_leftText="绿色公约"
             app:itemView_leftText_color="@color/textColor_333" />
+        <TextView
+            android:id="@+id/tv_logut"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/normal_bg_bule"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:layout_marginTop="33dp"
+            android:layout_below="@+id/ll"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="14dp"
+            android:layout_marginBottom="10dp"
+            android:text="退出登录"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/tv_logut"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/normal_bg_bule"
-        android:gravity="center"
-        android:paddingTop="14dp"
-        android:layout_marginTop="33dp"
-        android:layout_below="@+id/ll"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="14dp"
-        android:text="退出登录"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
 
-
+    </com.ziran.meiliao.widget.ObservableScrollView>
 </RelativeLayout>

@@ -2,10 +2,10 @@ package com.ziran.meiliao.im.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.baserx.RxManager;

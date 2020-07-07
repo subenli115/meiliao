@@ -3,10 +3,11 @@ package com.ziran.meiliao.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.TypedValue;
 
+
+import androidx.annotation.NonNull;
 
 import com.ziran.meiliao.app.MyAPP;
 

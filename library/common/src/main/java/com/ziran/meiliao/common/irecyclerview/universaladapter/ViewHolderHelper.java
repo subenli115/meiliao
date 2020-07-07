@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
@@ -21,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ziran.meiliao.common.R;
 import com.ziran.meiliao.common.commonutils.ImageLoaderUtils;

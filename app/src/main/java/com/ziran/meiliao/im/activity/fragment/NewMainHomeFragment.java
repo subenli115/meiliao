@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +15,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -32,15 +33,12 @@ import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.activity.ChatActivity;
 import com.ziran.meiliao.im.activity.OtherUserHomeActivity;
 import com.ziran.meiliao.im.activity.RecommedPreviewActivity;
-import com.ziran.meiliao.im.activity.WechatActivity;
 import com.ziran.meiliao.im.application.JGApplication;
 import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.RecommendUserBean;
-import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.Utils;
 import com.ziran.meiliao.widget.CardAdapter;
-import com.ziran.meiliao.widget.CardItemView;
 import com.ziran.meiliao.widget.CardSlidePanel;
 import com.ziran.meiliao.widget.GlideCircleTransform;
 

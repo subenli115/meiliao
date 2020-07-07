@@ -2,10 +2,8 @@ package com.ziran.meiliao.im.controller;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
 
 import com.activeandroid.ActiveAndroid;
 

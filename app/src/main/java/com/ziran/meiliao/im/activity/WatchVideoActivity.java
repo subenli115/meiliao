@@ -2,8 +2,9 @@ package com.ziran.meiliao.im.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.widget.VideoView;
+
+import androidx.annotation.Nullable;
 
 import com.ziran.meiliao.R;
 

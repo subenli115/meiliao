@@ -1,10 +1,11 @@
 package com.ziran.meiliao.widget;
 
         import android.content.Context;
-        import android.support.v7.widget.AppCompatEditText;
         import android.text.InputFilter;
         import android.text.Spanned;
         import android.util.AttributeSet;
+
+        import androidx.appcompat.widget.AppCompatEditText;
 
         import com.ziran.meiliao.common.commonutils.ToastUitl;
 

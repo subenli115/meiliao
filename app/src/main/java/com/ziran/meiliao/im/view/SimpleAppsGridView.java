@@ -2,6 +2,7 @@ package com.ziran.meiliao.im.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
@@ -38,7 +39,9 @@ import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.activity.ChatActivity;
 import com.ziran.meiliao.im.adapter.AppsAdapter;
+import com.ziran.meiliao.im.application.JGApplication;
 import com.ziran.meiliao.ui.bean.RechargeBean;
+import com.ziran.meiliao.ui.bean.RecommendUserBean;
 import com.ziran.meiliao.ui.bean.UserAccountBean;
 import com.ziran.meiliao.ui.settings.activity.RechargeActivity;
 import com.ziran.meiliao.utils.DownloadUtil;
@@ -62,6 +65,8 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
     private String mUserId;
     public ChatActivity mChatActivity;
     private Conversation mConv;
+    private String mNickName="";
+
 
 
     public SimpleAppsGridView(Context context) {
@@ -145,7 +150,15 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
                 break;
         }
     }
-
+    private void gotoChatActivity() {
+            Intent intent = new Intent();
+            intent.putExtra(JGApplication.CONV_TITLE, mNickName);
+            intent.putExtra("targetId", mUserId);
+            intent.putExtra("targetAppKey", MeiliaoConfig.IM_APPKEY);
+            intent.putExtra("draft", "");
+            intent.setClass(getContext(), ChatActivity.class);
+            getContext().startActivity(intent);
+    }
     /**
      *
      * 送礼物
@@ -165,7 +178,6 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
                         tvBalance.setText(gold+"");
                         RxManagerUtil.post(AppConstant.RXTag.UPDATE_OTHERUSER, "");
                         ToastUitl.showShort("赠送成功");
-//                        mChatActivity.next("送你一个"+bean.getName());
                         mConv = JMessageClient.getSingleConversation(mUserId, MeiliaoConfig.IM_APPKEY);
                         CustomContent   content = new CustomContent();
                         content.setStringValue("text","送你一个"+bean.getName());
@@ -177,6 +189,9 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
                         }
                         Message msg = mConv.createSendMessage(content);
                         mChatActivity.handleSendMsg(msg);
+                        if(mNickName.length()>0){
+                            gotoChatActivity();
+                        }
                             }
 
                     @Override
@@ -185,4 +200,7 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
                 });
     }
 
+    public void setNickName(String nickName) {
+        mNickName=nickName;
+    }
 }

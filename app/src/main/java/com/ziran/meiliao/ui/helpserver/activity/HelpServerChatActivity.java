@@ -1,7 +1,7 @@
 package com.ziran.meiliao.ui.helpserver.activity;
 
-import android.support.design.widget.TabLayout;
 
+import com.google.android.material.tabs.TabLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseActivity;
 import com.ziran.meiliao.common.commonwidget.NormalTitleBar;

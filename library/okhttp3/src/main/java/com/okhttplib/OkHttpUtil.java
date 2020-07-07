@@ -495,9 +495,9 @@ public class OkHttpUtil implements OkHttpUtilInterface{
             }else{
                 setCachedDir(Environment.getExternalStorageDirectory());
             }
-            setConnectTimeout(30);
-            setReadTimeout(30);
-            setWriteTimeout(30);
+            setConnectTimeout(50);
+            setReadTimeout(50);
+            setWriteTimeout(50);
             setRetryOnConnectionFailure(true);
             setCacheSurvivalTime(0);
             setCacheType(CACHE_THEN_NETWORK);

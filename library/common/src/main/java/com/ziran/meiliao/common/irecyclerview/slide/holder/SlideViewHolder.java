@@ -1,8 +1,9 @@
 package com.ziran.meiliao.common.irecyclerview.slide.holder;
 
 import android.animation.ValueAnimator;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ziran.meiliao.common.irecyclerview.slide.ISlide;
 import com.ziran.meiliao.common.irecyclerview.slide.helper.SlideAnimationHelper;

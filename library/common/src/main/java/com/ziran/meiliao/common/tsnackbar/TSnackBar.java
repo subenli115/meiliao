@@ -3,9 +3,11 @@ package com.ziran.meiliao.common.tsnackbar;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
+
+import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;

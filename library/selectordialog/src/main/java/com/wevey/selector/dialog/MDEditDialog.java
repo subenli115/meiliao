@@ -3,8 +3,9 @@ package com.wevey.selector.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.ColorRes;
-import android.support.v4.content.ContextCompat;
+
+import androidx.annotation.ColorRes;
+import androidx.core.content.ContextCompat;
 import android.text.InputFilter;
 import android.view.Gravity;
 import android.view.View;

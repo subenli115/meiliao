@@ -13,28 +13,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.common.base.BaseActivity;
 import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.compressorutils.FileUtil;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.envet.NewRequestCallBack;
-import com.ziran.meiliao.ui.bean.RecommendUserBean;
 import com.ziran.meiliao.ui.bean.UpdateUserNewHeadBean;
 import com.ziran.meiliao.ui.bean.UserBean;
-import com.ziran.meiliao.ui.me.activity.SetModePwdActivity;
 import com.ziran.meiliao.utils.MapUtils;
-import com.ziran.meiliao.widget.GlideCircleTransform;
 import com.ziran.meiliao.widget.pupop.PopupWindowUtil;
 import com.ziran.meiliao.widget.pupop.UpdatePopupWindow;
 
@@ -112,7 +107,7 @@ public class RecommedPreviewActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.card_top_layout:
-                pop.setTitle("更换形象照");
+                pop.setTitle("更换形象照",false);
                 PopupWindowUtil.show(this, pop);
                 break;
         }

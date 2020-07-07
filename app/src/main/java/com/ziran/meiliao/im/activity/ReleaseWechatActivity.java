@@ -184,9 +184,7 @@ public class ReleaseWechatActivity extends BaseActivity implements BGASortableNi
     }
 
     private void uploadFiles() {
-        Looper.prepare();
         startProgressDialog("正在发布...");
-        Looper.loop();
         OkHttpClientManager.upLoadFiles(ApiKey.ADMIN_SYS_FILE_UPLOADS, MyAPP.getAccessToken(),paths, new
                 NewRequestCallBack<FileListBean>(FileListBean.class) {
 

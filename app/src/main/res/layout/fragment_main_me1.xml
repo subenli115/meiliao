@@ -6,7 +6,7 @@
     android:id="@+id/arl_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:id="@+id/nsv"
@@ -34,7 +34,7 @@
                     android:scaleType="centerCrop"
                     android:layout_height="match_parent"
                     />
-                <android.support.v7.widget.Toolbar
+                <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                             android:src="@mipmap/icon_more_white"
                             />
                     </com.zhy.autolayout.AutoRelativeLayout>
-                </android.support.v7.widget.Toolbar>
+                </androidx.appcompat.widget.Toolbar>
                 <com.zhy.autolayout.AutoLinearLayout
                     android:id="@+id/all"
                     android:layout_width="wrap_content"
@@ -140,8 +140,8 @@
                     />
             </com.zhy.autolayout.AutoRelativeLayout>
         </com.zhy.autolayout.AutoRelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
-    <android.support.v7.widget.Toolbar
+    </androidx.core.widget.NestedScrollView>
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -162,6 +162,6 @@
                 android:src="@mipmap/icon_me_more"
                 />
         </com.zhy.autolayout.AutoRelativeLayout>
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
 </com.zhy.autolayout.AutoRelativeLayout>

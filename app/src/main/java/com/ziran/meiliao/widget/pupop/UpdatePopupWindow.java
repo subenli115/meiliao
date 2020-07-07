@@ -1,15 +1,15 @@
 package com.ziran.meiliao.widget.pupop;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.yuyh.library.imgsel.ImgSelActivity;
 import com.yuyh.library.imgsel.ImgSelConfig;
 import com.ziran.meiliao.R;
-import com.ziran.meiliao.utils.StringUtils;
-import com.ziran.meiliao.widget.ItemGroupView;
 
 /**
  * @author 吴祖清
@@ -27,6 +27,8 @@ public class UpdatePopupWindow extends BasePopupWindow {
 
     private final FragmentActivity activity;
     private TextView tv_update;
+    private LinearLayout ll_headView;
+
 
     public UpdatePopupWindow(Context context, FragmentActivity activity) {
         super(context);
@@ -43,12 +45,16 @@ public class UpdatePopupWindow extends BasePopupWindow {
     protected void initViews(View contentView) {
         touchDismiss(R.id.touch_outside);
         tv_update = getView(R.id.tv_update);
+        ll_headView = getView(R.id.ll_headView);
         setOnClickListener(R.id.tv_update);
         setOnClickListener(R.id.tv_cancel);
     }
 
 
-public void setTitle(String title){
+public void setTitle(String title,boolean is){
+        if(is){
+            ll_headView.setVisibility(View.VISIBLE);
+        }
     tv_update.setText(title);
 }
 

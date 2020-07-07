@@ -135,7 +135,7 @@ class HttpHelper extends BaseHelper {
 
             @Override
             public void onResponse(Call call, Response res) throws IOException {
-                Log.e("meiliaoonFailure", res.toString());
+                Log.e("onResponse",""+res.code()+"      "+res.message());
                 //主线程回调
                 Message msg = new CallbackMessage(OkMainHandler.RESPONSE_CALLBACK,
                         callback,
@@ -231,9 +231,7 @@ class HttpHelper extends BaseHelper {
 
             requestBuilder.url(url).delete();
         }
-        if (Build.VERSION.SDK_INT > 13) {
-            requestBuilder.addHeader("Connection", "close");
-        }
+
         addHeadsToRequest(info, requestBuilder);
         request = requestBuilder.build();
         return request;
@@ -306,11 +304,10 @@ class HttpHelper extends BaseHelper {
      * 封装请求结果
      */
     HttpInfo retInfo(HttpInfo info, int netCode, int code, String resDetail) {
-        Log.e("retInfo", +netCode + code + resDetail);
-        info.packInfo(netCode, code, unicodeToString(resDetail));
+        Log.e("retInfo", netCode+"  "+info.getUrl()+"     "+resDetail);
+        HttpInfo httpInfo = info.packInfo(netCode, code, unicodeToString(resDetail));
         //拦截请求结果
         dealInterceptor(info);
-        showLog("Response: " + info.getRetDetail());
         return info;
     }
 

@@ -41,7 +41,7 @@
             android:textColor="#333333"
             android:textSize="18sp"
             tools:text="2017-06"/>
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -8,16 +8,16 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -66,7 +66,7 @@ public class ImgSelActivity extends FragmentActivity implements View.OnClickList
         activity.startActivityForResult(intent, RequestCode);
     }
 
-    public static void startActivity(Fragment fragment, ImgSelConfig config, int RequestCode,int fromType) {
+    public static void startActivity(Fragment fragment, ImgSelConfig config, int RequestCode, int fromType) {
         config.fromType = fromType;
         Intent intent = new Intent(fragment.getActivity(), ImgSelActivity.class);
         Constant.config = config;

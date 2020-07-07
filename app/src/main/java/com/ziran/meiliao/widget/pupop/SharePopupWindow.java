@@ -2,10 +2,11 @@ package com.ziran.meiliao.widget.pupop;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonutils.LogUtils;

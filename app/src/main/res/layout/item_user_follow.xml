@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <com.ziran.meiliao.common.commonwidget.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="100px"
+        app:roundimageview_type="circle"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="33px"
+        android:layout_marginBottom="33px"
+        android:layout_height="100px"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="24px"
+        />
+
+
+<TextView
+    android:id="@+id/tv_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="21px"
+    android:text="sdfdf"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:textSize="32px"
+    android:layout_alignTop="@+id/iv_head"
+    android:layout_toRightOf="@+id/iv_head"
+    />
+<TextView
+    android:id="@+id/tv_sign"
+    android:layout_alignLeft="@+id/tv_name"
+    android:layout_width="wrap_content"
+    android:layout_marginTop="15px"
+    android:layout_below="@+id/tv_name"
+    android:layout_height="wrap_content"
+    android:text="dddd"
+    android:textColor="#808080"
+    android:textSize="26px"
+    />
+
+</com.zhy.autolayout.AutoRelativeLayout>

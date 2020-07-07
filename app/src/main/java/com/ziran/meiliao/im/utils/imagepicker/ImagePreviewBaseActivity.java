@@ -1,5 +1,6 @@
 package com.ziran.meiliao.im.utils.imagepicker;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
     protected ImagePageAdapter mAdapter;
     protected boolean isFromItems = false;
 
+    @SuppressLint("StringFormatMatches")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,8 +5,6 @@ package com.ziran.meiliao.common.permission;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.support.annotation.AttrRes;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,6 +14,9 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.Nullable;
 
 import com.ziran.meiliao.common.commonutils.LogUtils;
 

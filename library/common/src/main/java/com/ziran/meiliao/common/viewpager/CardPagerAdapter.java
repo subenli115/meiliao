@@ -1,11 +1,12 @@
 package com.ziran.meiliao.common.viewpager;
 
 import android.annotation.SuppressLint;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 

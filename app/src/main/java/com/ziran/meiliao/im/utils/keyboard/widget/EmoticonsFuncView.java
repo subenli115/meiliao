@@ -1,8 +1,9 @@
 package com.ziran.meiliao.im.utils.keyboard.widget;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.ziran.meiliao.im.utils.keyboard.adpater.PageSetAdapter;
 import com.ziran.meiliao.im.utils.keyboard.data.PageSetEntity;

@@ -3,9 +3,10 @@ package com.ziran.meiliao.widget;
 import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.ziran.meiliao.R;
 

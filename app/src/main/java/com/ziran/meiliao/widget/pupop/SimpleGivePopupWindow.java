@@ -44,9 +44,10 @@ public class SimpleGivePopupWindow extends BasePopupWindow {
         dismiss();
     }
 
-    public void setTvMoney( String gold,String userId){
+    public void setTvMoney(String gold, String userId, String nickName){
         gridView = getView(R.id.gridView);
         gridView.setBalance(gold, userId, null);
+        gridView.setNickName(nickName);
     }
 
 

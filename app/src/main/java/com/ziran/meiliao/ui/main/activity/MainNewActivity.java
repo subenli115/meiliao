@@ -38,7 +38,6 @@ import java.util.Map;
 
 import butterknife.Bind;
 
-import static com.ziran.meiliao.app.MyAPP.mServiceManager;
 
 
 /**
@@ -181,7 +180,6 @@ public class MainNewActivity extends BaseActivity<LoginPresenter, LoginModel> im
     @Override
     protected void onDestroy() {
         FileUtil.deleteGlideCache();
-        mServiceManager.stop();
         super.onDestroy();
     }
 

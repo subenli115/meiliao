@@ -2,9 +2,10 @@ package com.ziran.meiliao.ui.main.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentTransaction;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+
+import androidx.fragment.app.FragmentTransaction;
 
 import com.citypicker.citylist.sortlistview.SortModel;
 import com.ziran.meiliao.R;
@@ -13,7 +14,6 @@ import com.ziran.meiliao.common.commonutils.DisplayUtil;
 import com.ziran.meiliao.common.compressorutils.EmptyUtils;
 import com.ziran.meiliao.common.permission.PermissionUtil;
 import com.ziran.meiliao.ui.base.PermissionActivity;
-import com.ziran.meiliao.ui.main.contract.LoginContract;
 import com.ziran.meiliao.ui.main.fragment.LoginFragment;
 import com.umeng.socialize.UMShareAPI;
 

@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="短信登录"
-        android:layout_marginLeft="88px"
+        android:layout_marginLeft="75px"
         android:textSize="48px"
         android:textStyle="bold"
         android:textColor="@color/textColor_4c"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="未注册过的手机号验证后自动登录"
-        android:layout_marginLeft="88px"
+        android:layout_marginLeft="75px"
         android:textSize="26px"
         android:textColor="#808080"
         android:layout_marginTop="28px"
@@ -37,8 +37,8 @@
     <com.citypicker.citylist.widget.ClearEditText
         android:id="@+id/ed_phone"
         android:layout_width="match_parent"
-        android:layout_marginLeft="88px"
-        android:layout_marginRight="88px"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
         android:layout_height="88px"
         android:hint="@string/input_phone"
         android:paddingLeft="49px"
@@ -55,9 +55,9 @@
     <com.ziran.meiliao.widget.SmsCodeView
         android:id="@+id/smsCodeView"
         android:layout_width="match_parent"
-        android:layout_marginLeft="88px"
+        android:layout_marginLeft="75px"
         android:layout_marginTop="50px"
-        android:layout_marginRight="88px"
+        android:layout_marginRight="75px"
         android:layout_below="@+id/tv_86"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_86"
@@ -67,8 +67,8 @@
     <TextView
         android:id="@+id/tv_login"
         android:layout_width="match_parent"
-        android:layout_marginLeft="88px"
-        android:layout_marginRight="88px"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
         android:layout_height="80px"
         android:layout_marginTop="72px"
         android:text="@string/login_text"
@@ -77,27 +77,15 @@
         android:enabled="false"
         android:layout_gravity="center"
         android:textSize="30px"
-        android:layout_marginBottom="60px"
+        android:layout_marginBottom="160px"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:textColor="@color/white"
         android:layout_below="@+id/afl"
         android:background="@drawable/normal_bg_bule50"
+
         />
 
-
-    <TextView
-        android:id="@+id/tv_sjdl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/all_wechat"
-        android:textSize="30px"
-        android:text="使用密码登录"
-        android:layout_marginLeft="89px"
-        android:layout_alignLeft="@+id/all_wechat"
-        android:textColor="#4C4C4C"
-        android:layout_marginBottom="153px"
-        />
     <include
         layout="@layout/shanyan_demo_other_login_item"/>
 

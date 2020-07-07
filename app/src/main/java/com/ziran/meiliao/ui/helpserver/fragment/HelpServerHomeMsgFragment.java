@@ -1,10 +1,11 @@
 package com.ziran.meiliao.ui.helpserver.fragment;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.tabs.TabLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseFragmentAdapter;
 import com.ziran.meiliao.common.commonutils.ViewUtil;

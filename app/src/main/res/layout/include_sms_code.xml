@@ -2,36 +2,40 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 android:background="@drawable/normal_bg_tran"
     >
 
     <EditText
         android:id="@+id/et_sms_code"
         android:layout_width="match_parent"
-        android:layout_height="88px"
+        android:layout_height="96px"
+        android:background="@drawable/normal_bg_tran"
         android:layout_centerVertical="true"
         android:textColorHint="@color/textColor_b2"
         android:paddingLeft="49px"
-        android:background="@null"
         android:gravity="center_vertical"
         android:hint="@string/phone_code_intput"
         android:singleLine="true"
         android:inputType="number"
+        android:layout_toLeftOf="@+id/tv_sms_getcode"
         android:maxLength="4"
+        android:layout_marginRight="30px"
         android:textColor="@color/textColor_333"
         android:textSize="30px"
         />
 
     <TextView
         android:id="@+id/tv_sms_getcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220px"
+        android:layout_height="96px"
         android:layout_alignParentRight="true"
+        android:background="@drawable/normal_bg_bule"
         android:gravity="center"
         android:layout_centerVertical="true"
-        android:layout_marginRight="12dp"
+        android:paddingTop="30px"
+        android:paddingBottom="30px"
+
         android:text="@string/get_code"
-        android:textColor="@color/textColor_main_bule"
+        android:textColor="@color/white"
         android:textSize="28px"/>
 
 </com.zhy.autolayout.AutoRelativeLayout>

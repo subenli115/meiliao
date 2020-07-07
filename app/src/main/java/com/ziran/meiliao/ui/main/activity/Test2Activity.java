@@ -1,7 +1,8 @@
 package com.ziran.meiliao.ui.main.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.widget.NewExpandableTextView;
