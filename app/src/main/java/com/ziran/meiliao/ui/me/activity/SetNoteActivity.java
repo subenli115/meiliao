@@ -111,6 +111,12 @@ public class SetNoteActivity extends BaseActivity {
         }
     }
     private void checkNick() {
+        if(editText.getText().toString().equals("")){
+            tvHint.setText("昵称不能为空");
+            tvHint.setTextColor(Color.parseColor("#FF4F68"));
+            return;
+        }
+
         OkHttpClientManager.getAsyncHead(ApiKey.ADMIN_USER_EXISTENCE,editText.getText().toString(), MyAPP.getAccessToken(),new
                 NewRequestCallBack<CheckNameBean>(CheckNameBean.class) {
                     @Override

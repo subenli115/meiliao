@@ -182,6 +182,10 @@ public class InputUserInfoActivity extends BaseActivity {
 
     }
     private void checkNick() {
+        if(edNick.getText().toString().equals("")){
+            allRed.setVisibility(View.VISIBLE);
+            return;
+        }
         OkHttpClientManager.getAsyncHead(ApiKey.ADMIN_USER_EXISTENCE,edNick.getText().toString(), MyAPP.getAccessToken(),new
                 NewRequestCallBack<CheckNameBean>(CheckNameBean.class) {
                     @Override
@@ -275,6 +279,16 @@ public class InputUserInfoActivity extends BaseActivity {
                 PopupWindowUtil.show(this, pop);
                 break;
             case R.id.tv_next:
+                if(cameraScalePath.equals("")){
+                    ToastUitl.showShort("请上传头像");
+                    return;
+                }else if(nickName.length()<=2 ){
+                    ToastUitl.showShort("请填写正确昵称");
+                    return;
+                }else if(age.equals("") ){
+                    ToastUitl.showShort("请填写年龄");
+                    return;
+                }
                 registerIm();
                 break;
 
@@ -401,10 +415,8 @@ public class InputUserInfoActivity extends BaseActivity {
     private void updateButton() {
         if (age.length() > 0 && nickName.length()>=2 && allRed.getVisibility()==View.INVISIBLE&& !sex.equals("")&&cameraScalePath.length()>0) {
             tvNext.setBackgroundResource(R.drawable.normal_bg_bule);
-            tvNext.setEnabled(true);
         } else {
             tvNext.setBackgroundResource(R.drawable.normal_bg_bule50);
-            tvNext.setEnabled(false);
         }
     }
 
@@ -457,7 +469,6 @@ public class InputUserInfoActivity extends BaseActivity {
             MyAPP.getUserInfo().setHeadImg(cameraScalePath);
         }
         tvNext.setBackgroundResource(R.drawable.normal_bg_bule);
-        tvNext.setEnabled(true);
     }
     private void imHeadUpload() {
         ThreadUtil.runInThread(new Runnable() {
