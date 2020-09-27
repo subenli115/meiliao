@@ -2,6 +2,7 @@ package com.ziran.meiliao.im.view;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +37,7 @@ public class ConversationListView {
     private LinearLayout mSearch;
     private TextView mAllUnReadMsg;
     private ConversationListFragment mFragment;
+    private View numTv;
 
     public ConversationListView(View view, Context context, ConversationListFragment fragment) {
         this.mConvListFragment = view;
@@ -59,6 +61,7 @@ public class ConversationListView {
 //        mConvListView.addHeaderView(mSearchHead);
         mConvListView.addHeaderView(mHeader);
     }
+
 
     public void setConvListAdapter(ListAdapter adapter) {
         mConvListView.setAdapter(adapter);
@@ -110,12 +113,15 @@ public class ConversationListView {
     }
 
 
-    public void setUnReadMsg(final int count) {
+    public void setUnReadMsg(final int count, View numTv) {
         ThreadUtil.runInUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mAllUnReadMsg != null) {
                     if (count > 0) {
+                        if(numTv!=null){
+                            numTv.setVisibility(View.VISIBLE);
+                        }
                         mAllUnReadMsg.setVisibility(View.VISIBLE);
                         if (count < 100) {
                             mAllUnReadMsg.setText(count + "");
@@ -124,6 +130,11 @@ public class ConversationListView {
                         }
                     } else {
                         mAllUnReadMsg.setVisibility(View.GONE);
+                        Log.e("ccccccccccc","12");
+                        if(numTv!=null){
+                            Log.e("ccccccccccc","21");
+                            numTv.setVisibility(View.GONE);
+                        }
                     }
                 }
             }
@@ -131,4 +142,7 @@ public class ConversationListView {
     }
 
 
+    public void setView(View numTv) {
+        this.numTv=numTv;
+    }
 }

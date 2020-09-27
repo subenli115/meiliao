@@ -6,7 +6,7 @@
     android:background="@color/transparent_helf">
 <com.zhy.autolayout.AutoRelativeLayout
     android:id="@+id/rl_content"
-    android:layout_width="600px"
+    android:layout_width="700px"
     android:layout_height="wrap_content"
 android:layout_centerHorizontal="true"
     android:layout_marginTop="300px"
@@ -82,7 +82,7 @@ android:layout_centerHorizontal="true"
 
 </com.zhy.autolayout.AutoRelativeLayout>
     <ImageView
-        android:layout_width="600px"
+        android:layout_width="700px"
         android:layout_height="252px"
         android:scaleType="fitXY"
         android:layout_marginTop="243px"

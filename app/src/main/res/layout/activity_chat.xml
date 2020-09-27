@@ -3,83 +3,157 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#f5f5f5"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/jmui_menu_title_bar"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        >
 
+        <ImageButton
+            android:id="@+id/jmui_return_btn"
+            android:layout_width="wrap_content"
+            android:padding="30px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/jmui_back_btn_bg"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"/>
+        <com.ziran.meiliao.widget.RoundImageView
+            android:id="@+id/iv_top_head"
+            android:layout_width="60px"
+            android:layout_height="60px"
+            android:layout_centerVertical="true"
+            app:layout_auto_baseheight="width"
+            app:roun_type="circle"
+            android:layout_toRightOf="@+id/jmui_return_btn"
+            />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/all_top"
+            android:layout_toRightOf="@+id/iv_top_head"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15px"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingRight="5px"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:textSize="26px"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxEms="8"
+                android:textColor="#292832"
+                android:id="@+id/tv_name"
+                />
+
+
+            <ImageView
+                android:id="@+id/iv_real_name"
+                android:layout_toRightOf="@+id/tv_name"
+                android:layout_width="24px"
+                android:layout_height="28px"
+                android:src="@mipmap/icon_real_name"
+                android:visibility="gone"
+                />
+            <ImageView
+                android:id="@+id/iv_real_person"
+                android:layout_toRightOf="@+id/iv_real_name"
+                android:layout_width="24px"
+                android:visibility="gone"
+                android:layout_marginLeft="8px"
+                android:layout_height="28px"
+                android:src="@mipmap/icon_real_person"
+                />
+            <TextView
+                android:id="@+id/tv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_toRightOf="@+id/iv_top_head"
+                android:layout_below="@+id/tv_name"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/jmui_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="190dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:textColor="#292832"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/jmui_group_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_other"
+            android:textSize="26px"
+            android:text="关注"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_toLeftOf="@+id/jmui_right_btn"
+            android:paddingLeft="20px"
+            android:layout_marginTop="6px"
+            android:paddingRight="20px"
+            android:layout_centerVertical="true"
+            android:textColor="#459BFF"
+            android:paddingTop="8px"
+            android:textStyle="bold"
+            android:paddingBottom="8px"
+            android:background="@drawable/normal_bg_bule_tran_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/jmui_right_btn"
+            android:padding="20px"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/jmui_back_btn_bg"
+            android:src="@drawable/jmui_chat_detail"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <com.ziran.meiliao.im.utils.keyboard.XhsEmoticonsKeyBoard
         android:id="@+id/ek_bar"
+        android:layout_below="@+id/jmui_menu_title_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/jmui_menu_title_bar"
-                android:layout_width="match_parent"
-                android:background="#F5F5F5"
-                android:layout_height="@dimen/title_bar_height"
-                >
 
-                <ImageButton
-                    android:id="@+id/jmui_return_btn"
-                    android:layout_width="@dimen/title_bar_height"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/jmui_back_btn_bg"
-                    android:src="@drawable/back"/>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/jmui_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:maxWidth="190dp"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="19sp"/>
-
-                    <TextView
-                        android:id="@+id/jmui_group_num_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20sp"/>
-                </LinearLayout>
-                <ImageView
-                    android:id="@+id/iv_get_money"
-                    android:layout_width="27dp"
-                    android:layout_centerVertical="true"
-                    android:layout_height="27dp"
-                    android:layout_toLeftOf="@+id/jmui_right_btn"
-                    android:src="@drawable/icon_get_money"/>
-                <ImageButton
-                    android:id="@+id/jmui_right_btn"
-                    android:layout_width="@dimen/title_bar_height"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/jmui_back_btn_bg"
-                    android:src="@drawable/jmui_chat_detail"/>
-            </RelativeLayout>
-
-            <FrameLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
 
                 <com.ziran.meiliao.im.view.listview.DropDownListView
                     android:id="@+id/lv_chat"
@@ -96,6 +170,185 @@
                     android:smoothScrollbar="true"
                     android:transcriptMode="normal"/>
 
+                <com.ziran.meiliao.widget.RoundImageView
+                    android:id="@+id/iv_recommend"
+                    android:layout_width="86px"
+                    android:layout_marginTop="62px"
+                    android:visibility="gone"
+                    android:layout_marginLeft="24px"
+                    android:layout_height="86px"
+                    app:roun_type="circle"
+                    android:layout_toRightOf="@+id/jmui_return_btn"
+                    android:src="@mipmap/ic_launcher"
+                    />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view"
+                    android:layout_width="430px"
+                    android:visibility="gone"
+                    app:layout_auto_baseheight="width"
+                    android:layout_toRightOf="@+id/iv_recommend"
+                    android:layout_alignTop="@+id/iv_recommend"
+                    android:layout_marginLeft="12px"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <com.zhy.autolayout.AutoRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.zhy.autolayout.AutoRelativeLayout
+                            android:layout_width="match_parent"
+                            android:id="@+id/arl"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                app:layout_auto_basewidth="height"
+                                android:layout_height="430px"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/icon_main_banner"
+                                />
+                            <com.freegeek.android.materialbanner.MaterialBanner
+                                android:id="@+id/material_banner"
+                                android:layout_below="@+id/tv_main"
+                                app:layout_auto_basewidth="height"
+                                android:layout_width="match_parent"
+                                app:match="true"
+                                android:layout_height="430px"
+                                />
+
+
+                            <ImageView
+                                android:id="@+id/iv_type"
+                                android:layout_width="40px"
+                                android:visibility="gone"
+                                android:layout_height="40px"
+                                android:layout_marginRight="20px"
+                                android:layout_marginTop="20px"
+                                android:layout_alignParentRight="true"
+                                android:src="@mipmap/icon_wechat_play"
+                                />
+                            <com.zhy.autolayout.AutoRelativeLayout
+                                android:id="@+id/arl_sound"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:background="@drawable/normal_bg_bule_half"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:id="@+id/iv_sound"
+                                    android:layout_width="wrap_content"
+                                    android:layout_marginTop="51px"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/icon_item_stagge_sound"
+                                    />
+                                <TextView
+                                    android:id="@+id/tv_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_below="@+id/iv_sound"
+                                    android:layout_marginTop="29px"
+                                    android:layout_marginBottom="44px"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_height="wrap_content"
+                                    android:text="00:44"
+                                    android:textColor="@color/white"
+
+                                    />
+
+                            </com.zhy.autolayout.AutoRelativeLayout>
+                        </com.zhy.autolayout.AutoRelativeLayout>
+                        <TextView
+                            android:layout_marginTop="24px"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@+id/arl"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20px"
+                            android:id="@+id/tv_username"
+                            android:textColor="#292832"
+                            android:layout_marginLeft="24px"
+                            android:textStyle="bold"
+                            android:textSize="36px"
+                            />
+                        <com.zhy.autolayout.AutoLinearLayout
+                            android:layout_width="wrap_content"
+                            android:id="@+id/all_age"
+                            android:layout_marginLeft="13px"
+                            android:layout_toRightOf="@+id/tv_username"
+                            android:layout_alignTop="@+id/tv_username"
+                            android:background="@drawable/normal_bg_bule_address"
+                            android:orientation="horizontal"
+                            android:paddingTop="5px"
+                            android:paddingBottom="5px"
+                            android:paddingLeft="12px"
+                            android:paddingRight="12px"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/iv_sex"
+                                android:layout_width="18px"
+                                android:layout_gravity="center_vertical"
+                                android:layout_height="20px"
+                                android:src="@mipmap/icon_home_sex_man"
+                                />
+                            <TextView
+                                android:id="@+id/tv_age"
+                                android:layout_width="wrap_content"
+                                android:layout_marginLeft="5px"
+                                android:layout_height="wrap_content"
+                                android:text="22岁"
+                                android:textColor="#459BFF"
+                                android:textSize="24px"
+                                />
+                        </com.zhy.autolayout.AutoLinearLayout>
+                        <TextView
+                            android:id="@+id/tv_content"
+                            android:layout_below="@+id/tv_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30px"
+                            android:text="记录我的平凡小生活~"
+                            android:textColor="#292832"
+                            android:layout_marginLeft="21px"
+                            android:maxLines="4"
+                            android:layout_marginBottom="25px"
+                            android:ellipsize="end"
+                            android:textSize="26px"
+                            />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:layout_below="@+id/tv_content"
+                                android:textColor="#F7931E"
+                                android:layout_marginBottom="30px"
+                                android:layout_toRightOf="@+id/roundIv"
+                                android:layout_marginLeft="24px"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:textSize="24px"
+                                android:id="@+id/tv_tag"
+                                />
+                    </com.zhy.autolayout.AutoRelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/iv_intimacy"
+                        android:layout_width="52.5dp"
+                        android:src="@mipmap/icon_level0"
+                        android:layout_alignParentRight="true"
+                        android:layout_height="47.5dp"
+                        android:layout_marginTop="30px"
+                        android:layout_marginRight="43px"
+                        />
+
+                <ImageView
+                    android:id="@+id/iv_intimacy_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/iv_intimacy"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/icon_intimacy_hint"
+                    />
                 <Button
                     android:id="@+id/jmui_at_me_btn"
                     android:layout_width="wrap_content"
@@ -115,11 +368,40 @@
                     app:autoPlay="true"
                     android:visibility="gone"
                     app:loopCount="1" />
-            </FrameLayout>
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    />
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
 
     </com.ziran.meiliao.im.utils.keyboard.XhsEmoticonsKeyBoard>
+    <LinearLayout
+        android:id="@+id/ll_status"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/iv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_chat_status"
+            />
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="17px"
+            android:text="该用户违规，已被冻结"
+            android:textColor="#B1B1B1"
+            />
+    </LinearLayout>
 </com.ziran.meiliao.im.view.ChatView>
 

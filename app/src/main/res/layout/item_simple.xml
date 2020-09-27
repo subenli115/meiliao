@@ -12,10 +12,10 @@
 
 <com.ziran.meiliao.common.commonwidget.RoundImageView
     android:id="@+id/iv"
-    android:layout_width="63dp"
+    android:layout_width="70dp"
     android:scaleType="center"
-    android:layout_height="63dp"
-    app:roundimageview_borderRadius="10dp"
+    android:layout_height="70dp"
+    app:roundimageview_borderRadius="5dp"
     app:roundimageview_type="round"
     android:src="@drawable/jmui_head_icon"
     />

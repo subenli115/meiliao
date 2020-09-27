@@ -91,6 +91,14 @@
     <color name="textColor_teshe2">#5DA7FA</color>
     <color name="textColor_teshe7">#FBAF6B</color>
     <color name="textColor_teshe5">#FC636B</color>
+
+    <color name="textColor_dynamic1">#FC636B</color>
+    <color name="textColor_dynamic2">#CFD6E6</color>
+    <color name="textColor_dynamic3">#459BFF</color>
+    <color name="textColor_dynamic4">#FFFC636B</color>
+    <color name="textColor_dynamic5">#69BA58</color>
+
+
     <color name="textColor_teshe_pre">#7cEF8C57</color>
     <color name="textColor_teshe_unsel">#c6cbcb</color>
     <color name="textColor_5392CC">#5392CC</color>

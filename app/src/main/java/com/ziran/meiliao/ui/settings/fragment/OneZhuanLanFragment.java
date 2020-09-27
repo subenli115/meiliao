@@ -1,9 +1,12 @@
 package com.ziran.meiliao.ui.settings.fragment;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
+import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.OnItemClickListener;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.ui.base.CommonContract;
 import com.ziran.meiliao.ui.base.CommonModel;
@@ -41,8 +44,7 @@ public class OneZhuanLanFragment extends CommonRefreshFragment<CommonPresenter, 
         iRecyclerView.setLoadMoreEnabled(true);
         iRecyclerView.setRefreshEnabled(true);
          zhuanLanTwoAdapter = new ZhuanLanTwoAdapter(getContext(), null,new ZhuanLanTwoAdapter.ActivityMultiItemType() {
-        });
-
+        },position,getBg());
         return zhuanLanTwoAdapter;
     }
 
@@ -51,8 +53,8 @@ public class OneZhuanLanFragment extends CommonRefreshFragment<CommonPresenter, 
 
     @Override
     protected void initView() {
-        super.initView();
         position = getArguments().getString("position");
+        super.initView();
 
     }
 
@@ -80,13 +82,13 @@ public class OneZhuanLanFragment extends CommonRefreshFragment<CommonPresenter, 
                 mPresenter.getData(ADMIN_USERFOLLOW_PAGEUSERTYPE,map,MyFollowBean.class);
             }else if(position.equals("1")){
                 map.put("followUserId", MyAPP.getUserId());
-                map.put("current",page+"");
-                mPresenter.getData(ADMIN_USERFOLLOW_PAGEUSERTYPE,map,MyFollowBean.class);
-            }else {
-                map.put("followUserId", MyAPP.getUserId());
                 map.put("userId", MyAPP.getUserId());
                 map.put("current",page+"");
                 mPresenter.getData(ADMIN_USERFOLLOW_PAGEBYUSERID,map,MyFollowBean.class);
+            }else {
+                map.put("followUserId", MyAPP.getUserId());
+                map.put("current",page+"");
+                mPresenter.getData(ADMIN_USERFOLLOW_PAGEUSERTYPE,map,MyFollowBean.class);
             }
     }
 

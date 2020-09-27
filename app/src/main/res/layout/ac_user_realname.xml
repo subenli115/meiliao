@@ -35,7 +35,7 @@
             android:textSize="15sp"
             android:layout_marginLeft="15dp"
             android:textColor="@color/black"
-            android:text="姓名"
+            android:text="真实姓名"
             />
 
         <com.citypicker.citylist.widget.ClearEditText
@@ -65,7 +65,7 @@
             android:textSize="15sp"
             android:layout_marginLeft="15dp"
             android:textColor="@color/black"
-            android:text="身份证"
+            android:text="身份证号"
             />
 
         <com.citypicker.citylist.widget.ClearEditText

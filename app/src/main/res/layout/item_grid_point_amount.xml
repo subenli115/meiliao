@@ -2,7 +2,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-
              android:orientation="vertical">
 
     <RelativeLayout
@@ -11,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="6dp"
-        android:background="@drawable/normal_bg_gray_fa"
+        android:background="@drawable/normal_bg_white_vertical"
 
         >
 
@@ -23,10 +22,10 @@
             android:paddingTop="2dp"
             android:paddingRight="2dp"
             android:layout_marginTop="19.5dp"
-            android:visibility="gone"
             android:paddingBottom="2dp"
             android:textSize="7sp"
             android:paddingLeft="5dp"
+            android:visibility="gone"
             android:gravity="center"
             android:textColor="@color/white"
             android:layout_alignParentRight="true"

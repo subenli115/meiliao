@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout style="@style/jmui_chat_item_receive_layout"
-              xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/jmui_send_time_txt"
@@ -11,9 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp">
 
-        <ImageView
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
             android:id="@+id/jmui_avatar_iv"
-            style="@style/jmui_chat_item_receiver_avatar_style"/>
+            app:roundimageview_type="circle"
+            style="@style/jmui_chat_item_sender_avatar_style"/>
 
         <TextView
             android:id="@+id/jmui_display_name_tv"

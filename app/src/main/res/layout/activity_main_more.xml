@@ -92,6 +92,7 @@
             android:id="@+id/tv_me_main_new_report"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_common_height"
+            android:visibility="gone"
             android:background="@color/white"
             app:itemView_leftText="举报"
             app:itemView_leftText_color="@color/textColor_333"
@@ -103,6 +104,7 @@
             android:id="@+id/tv_me_main_new_follow"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_common_height"
+            android:visibility="gone"
             android:background="@color/white"
             app:itemView_leftText="关注"
             app:itemView_leftText_color="@color/textColor_333"
@@ -138,7 +140,7 @@
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/normal_bg_bule"
+            android:background="@drawable/normal_bg_red_white"
             android:gravity="center"
             android:paddingTop="14dp"
             android:layout_marginTop="33dp"
@@ -147,7 +149,8 @@
             android:paddingBottom="14dp"
             android:layout_marginBottom="10dp"
             android:text="退出登录"
-            android:textColor="@color/white"
+            android:textColor="#F9636A"
+            android:textStyle="bold"
             android:textSize="15sp" />
 
     </LinearLayout>

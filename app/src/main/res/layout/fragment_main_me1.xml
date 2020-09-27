@@ -104,6 +104,7 @@
                     android:id="@+id/iv_get_money"
                     android:layout_width="152px"
                     android:layout_below="@+id/all"
+
                     android:layout_marginTop="32px"
                     android:layout_alignLeft="@+id/all"
                     app:autoPlay="true"

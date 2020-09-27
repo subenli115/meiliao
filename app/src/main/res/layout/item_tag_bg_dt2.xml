@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10px"
+    android:paddingLeft="30px"
+    android:paddingTop="10px"
+    android:layout_marginBottom="20px"
+    android:layout_marginRight="20px"
+    android:paddingRight="32px"
+    android:textSize="26px"
+    android:background="@drawable/normal_bg_gray_7fa"
+    android:text="阳光"
+    android:textColor="#474766"
+    >
+</TextView>
+</com.zhy.autolayout.AutoLinearLayout>

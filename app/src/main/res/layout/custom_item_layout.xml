@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="0dp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/arl"
+    android:layout_height="wrap_content">
+
+
+    <com.ziran.meiliao.widget.RoundImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/img"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:leftBottom_corner_radius="0dp"
+        app:leftTop_corner_radius="15dp"
+        app:rightBottom_corner_radius="0dp"
+        app:rightTop_corner_radius="15dp"
+        app:roun_type="round" />
+
+    <ImageView
+        android:id="@+id/iv_type"
+        android:layout_width="40px"
+        android:visibility="gone"
+        android:layout_height="40px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="20px"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/icon_wechat_play"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_sound"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:background="@drawable/normal_bg_bule_half"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_sound"
+            android:layout_width="match_parent"
+            android:layout_marginTop="51px"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_item_stagge_sound"
+            />
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/iv_sound"
+            android:layout_marginTop="29px"
+            android:layout_marginBottom="44px"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:text="00:44"
+            android:textColor="@color/white"
+
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_below="@+id/arl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30px"
+        android:text="记录我的平凡小生活~"
+        android:textColor="#292832"
+        android:layout_marginLeft="21px"
+        android:maxLines="4"
+       android:ellipsize="end"
+        android:textSize="28px"
+        android:layout_marginTop="24px"
+        />
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_below="@+id/tv_content"
+    android:layout_height="wrap_content">
+
+
+    <com.ziran.meiliao.widget.RoundImageView
+        android:id="@+id/roundIv"
+        android:layout_width="36px"
+        android:layout_height="36px"
+        app:roun_type="circle"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="25px"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="22px"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxEms="5"
+        android:layout_toRightOf="@+id/roundIv"
+        android:layout_marginLeft="9px"
+        android:layout_centerVertical="true"
+        android:ellipsize="end"
+        android:textSize="24px"
+        android:id="@+id/tv_name"
+        />
+    <TextView
+        android:id="@+id/tv_likes"
+        android:layout_width="wrap_content"
+        android:textSize="24px"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20px"
+        android:layout_toLeftOf="@+id/iv_more"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>
+  </com.zhy.autolayout.AutoRelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

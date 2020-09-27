@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ import com.ziran.meiliao.ui.bean.UserAccountBean;
 import com.ziran.meiliao.ui.settings.activity.RechargeActivity;
 import com.ziran.meiliao.utils.DownloadUtil;
 import com.ziran.meiliao.utils.MapUtils;
+import com.ziran.meiliao.utils.Utils;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.content.CustomContent;
@@ -66,7 +68,7 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
     public ChatActivity mChatActivity;
     private Conversation mConv;
     private String mNickName="";
-
+    private String spaceId;
 
 
     public SimpleAppsGridView(Context context) {
@@ -132,32 +134,32 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        if (Utils.isFastDoubleClick()) {
+            return;
+        }
         switch (v.getId()) {
             case R.id.iv_recharge:
                 RechargeActivity.startAction(getContext(), "");
                 break;
             case R.id.tv_popuw_give_gift_give:
+
                 RechargeBean.DataBean.RecordsBean mGiftAdapterSelect = adapter.getSelect();
                 if (mGiftAdapterSelect == null) {
                     ToastUitl.showShort("您还没有选中礼物");
                 } else if (Integer.parseInt(mGold) < mGiftAdapterSelect.getPrice()) {
                     ToastUitl.showShort("您的ML币不够,请前往充值");
+
                 } else {
-                    mGiftAdapterSelect.setUserId(mUserId);
-                    GiveGift(mGiftAdapterSelect);
+                    if(mUserId.equals(MyAPP.getUserId())){
+                        ToastUitl.showShort("自己不能给自己送礼");
+                        return;
+                    }else {
+                        GiveGift(mGiftAdapterSelect);
+                    }
                 }
                 //送礼物
                 break;
         }
-    }
-    private void gotoChatActivity() {
-            Intent intent = new Intent();
-            intent.putExtra(JGApplication.CONV_TITLE, mNickName);
-            intent.putExtra("targetId", mUserId);
-            intent.putExtra("targetAppKey", MeiliaoConfig.IM_APPKEY);
-            intent.putExtra("draft", "");
-            intent.setClass(getContext(), ChatActivity.class);
-            getContext().startActivity(intent);
     }
     /**
      *
@@ -169,6 +171,10 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
         defMap.put("giveUserId", MyAPP.getUserId());
         defMap.put("receiveUserId", mUserId);
         defMap.put("giftId", bean.getId()+"");
+        if(spaceId!=null&&spaceId.length()>0){
+            defMap.put("objectId", spaceId);
+            defMap.put("type", "2");
+        }
         OkHttpClientManager.postAsyncAddHead(ADMIN_GIFTRECORD_ADD, defMap, "", new
                 NewRequestCallBack<UserAccountBean>(UserAccountBean.class) {
 
@@ -188,9 +194,8 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
                             content.setStringValue("svga",bean.getAnimationImages());
                         }
                         Message msg = mConv.createSendMessage(content);
-                        mChatActivity.handleSendMsg(msg);
-                        if(mNickName.length()>0){
-                            gotoChatActivity();
+                        if(mChatActivity!=null){
+                            mChatActivity.handleSendMsg(msg);
                         }
                             }
 
@@ -202,5 +207,9 @@ public class SimpleAppsGridView extends RelativeLayout implements View.OnClickLi
 
     public void setNickName(String nickName) {
         mNickName=nickName;
+    }
+
+    public void setSpaceId(String spaceId) {
+        this.spaceId=spaceId;
     }
 }

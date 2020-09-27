@@ -41,9 +41,7 @@ public class WechatParentAdapter extends MultiItemRecycleViewAdapter<WechatParen
     public void convert(final ViewHolderHelper helper, final WechatParentBean bean, final int position) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(bean.getTime());
-
-        ((TextView) helper.getView(R.id.tv_day)).setText(calendar.get(Calendar.DATE) + "");
-        ((TextView) helper.getView(R.id.tv_month)).setText((calendar.get(Calendar.MONTH) +1) + "月");
+        ((TextView) helper.getView(R.id.tv_day)).setText((calendar.get(Calendar.MONTH) +1) + "月"+calendar.get(Calendar.DATE) + "日");
             ((RecyclerView) helper.getView(R.id.menu_info_recyclerview)).setLayoutManager(new LinearLayoutManager(mContext));
             RecordChildInfoAdapter recordChildInfoAdapter = new RecordChildInfoAdapter(mContext,mRxManager, bean.getList(),mIsSelf,this,position);
             ((RecyclerView) helper.getView(R.id.menu_info_recyclerview)).setAdapter(recordChildInfoAdapter);

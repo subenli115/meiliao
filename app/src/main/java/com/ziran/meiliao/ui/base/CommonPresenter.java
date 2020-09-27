@@ -32,7 +32,7 @@ public class CommonPresenter extends CommonContract.Presenter {
             @Override
             public void onError(String msg, int code) {
                 super.onError(msg, code);
-                ( (CommonHttpActivity)mView).stopProgressDialog();
+//                ( (CommonHttpActivity)mView).stopProgressDialog();
                 ToastUitl.showShort(msg);
 
             }

@@ -149,8 +149,10 @@ public class PopupWindowUtil {
 
     public static void show(Activity activity, PopupWindow popupWindow) {
         View decorView = activity.getWindow().getDecorView();
-        popupWindow.setClippingEnabled(false);
-        popupWindow.showAtLocation(decorView, Gravity.BOTTOM, 0, 0);
+        if(popupWindow!=null){
+            popupWindow.setClippingEnabled(false);
+            popupWindow.showAtLocation(decorView, Gravity.BOTTOM, 0, 0);
+        }
     }
     public static void showTop(Activity activity, PopupWindow popupWindow) {
         View decorView = activity.getWindow().getDecorView();

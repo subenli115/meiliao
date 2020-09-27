@@ -88,6 +88,7 @@
     <string name="input_email">请输入邮箱</string>
     <string name="input_name">请输入昵称</string>
     <string name="input_username">请输入姓名</string>
+    <string name="input_realcode">请输入身份证号码</string>
     <string name="nick_name_title">请输入昵称</string>
     <string name="edit_userinfo">编辑资料</string>
     <string name="myfavorites">我的收藏</string>
@@ -314,8 +315,6 @@
     <string name="behavior_sample_title">com.othershe.behaviortest.test1.SampleTitleBehavior</string>
 
     <!-- 新版 -->
-    <string name="header_scrolling_behavior">com.ziran.meiliao.widget.HeaderScrollingBehavior</string>
-    <string name="header_float_behavior">com.ziran.meiliao.widget.HeaderFloatBehavior</string>
     <string name="training_club">研习社</string>
     <string name="party_build">趣正念</string>
     <string name="Emotional_first_aid_kit">情绪急救包</string>
@@ -386,7 +385,8 @@
     <string name="actionbar_msg">聊天</string>
     <string name="cross_app_key">跨应用</string>
     <string name="actionbar_conversation">会话</string>
-    <string name="actionbar_contact">找朋友</string>
+    <string name="actionbar_comm">社区</string>
+    <string name="actionbar_contact">首页</string>
     <string name="actionbar_chatroom_btn">聊天室</string>
     <string name="actionbar_me">我的</string>
     <string name="search_friend_hit">邮箱/用户名/ID</string>
@@ -469,7 +469,7 @@
     <string name="jmui_location">位置</string>
     <string name="jmui_business_card">名片</string>
     <string name="group_notification">[群组消息]</string>
-    <string name="type_custom">[自定义消息]</string>
+    <string name="type_custom">[礼物]</string>
     <string name="hundreds_of_unread_msgs">..\.</string>
     <string name="jmui_time_format_year_month_day">yyyy年-MM月-dd日</string>
     <string name="jmui_time_format_accuracy">yyyy-MM-dd HH:mm:ss </string>
@@ -746,7 +746,7 @@
     <string name="picker_internalerror">发生错误</string>
     <string name="set_block_succeed_hint">群消息屏蔽成功</string>
     <string name="remove_block_succeed_hint">已移除群消息屏蔽</string>
-    <string name="btn_text_speak">按住录音</string>
+    <string name="btn_text_speak">按住说话</string>
     <string name="btn_text_speak_over">松开结束</string>
     <string name="btn_send">发送</string>
     <string name="set_to_block">屏蔽群消息</string>

@@ -4,6 +4,8 @@
     xmlns:toggle="http://schemas.android.com/apk/res-auto"
     android:layout_width="70dp"
     android:layout_height="wrap_content"
-    toggle:sb_checked="true"
+    toggle:sb_checked="false"
+        toggle:sb_checked_color="#459BFF"
+    toggle:sb_uncheck_color="#EBEBEB"
     toggle:sb_show_indicator="false"/>
 

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/rootFrame"
+    android:background="#F7F8FA"
+    android:layout_height="match_parent">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_tab"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageButton
+            android:id="@+id/ib_left"
+            android:layout_width="wrap_content"
+            android:padding="30px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/jmui_back_btn_bg"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"/>
+        <com.ziran.meiliao.widget.RoundImageView
+            android:id="@+id/iv_top_head"
+            android:layout_width="60px"
+            android:layout_height="60px"
+            app:layout_auto_baseheight="width"
+            android:layout_centerVertical="true"
+            app:roun_type="circle"
+            android:layout_toRightOf="@+id/ib_left"
+            />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/all_top"
+            android:layout_toRightOf="@+id/iv_top_head"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15px"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingRight="10px"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:textSize="26px"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxEms="8"
+                android:textColor="#292832"
+                android:id="@+id/tv_name"
+                />
+
+
+            <ImageView
+                android:id="@+id/iv_real_name"
+                android:layout_toRightOf="@+id/tv_name"
+                android:layout_width="24px"
+                android:visibility="gone"
+                android:layout_height="28px"
+                android:src="@mipmap/icon_real_name"
+                />
+            <TextView
+                android:id="@+id/tv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_toRightOf="@+id/iv_top_head"
+                android:layout_below="@+id/tv_name"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+        <TextView
+            android:id="@+id/tv_other"
+            android:textSize="13sp"
+            android:text="关注"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_toLeftOf="@+id/ib_right"
+            android:paddingLeft="20px"
+            android:layout_marginTop="6px"
+            android:paddingRight="20px"
+            android:layout_centerVertical="true"
+            android:textColor="#459BFF"
+            android:paddingTop="8px"
+            android:textStyle="bold"
+            android:paddingBottom="8px"
+            android:background="@drawable/normal_bg_bule_tran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/ib_right"
+            android:padding="20px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/jmui_back_btn_bg"
+            android:src="@drawable/jmui_chat_detail"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.ziran.meiliao.im.utils.keyboard.XhsEmoticonsKeyBoard2
+        android:id="@+id/ek_bar"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/arl_tab"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:id="@+id/scrollView"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+            <include
+                android:id="@+id/headView"
+                layout="@layout/headerview_sjk_subscribe_profit" />
+
+
+
+                <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="30px"
+                    />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </com.ziran.meiliao.im.utils.keyboard.XhsEmoticonsKeyBoard2>
+
+</com.zhy.autolayout.AutoRelativeLayout>

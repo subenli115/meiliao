@@ -44,6 +44,7 @@ import com.ziran.meiliao.im.utils.NativeImageLoader;
 import com.ziran.meiliao.im.utils.SharePreferenceManager;
 import com.ziran.meiliao.im.utils.ViewHolder;
 import com.ziran.meiliao.im.view.SwipeLayout;
+import com.ziran.meiliao.ui.priavteclasses.activity.UserHomeActivity;
 
 /**
  * Created by ${chenyn} on 2017/3/20.
@@ -228,7 +229,7 @@ public class FriendRecommendAdapter extends BaseAdapter {
 //                            }
 //                        }
 //                    });
-                    OtherUserHomeActivity.startAction(entry.username);
+                    UserHomeActivity.startAction(entry.username);
                     //3.自己拒绝、被对方拒绝、等待对方验证 --> 用户资料界面
                 } else {
                     intent = new Intent(mContext, GroupNotFriendActivity.class);

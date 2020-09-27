@@ -16,22 +16,13 @@ public class UserAccountBean extends Result {
 
     public static class DataBean {
 
-
-        /**
-         * id : d890d1730402a5fa4378f7de44814c2f
-         * userId : cb9143bfbd79c420a1859ceb039e982e
-         * money : 3.0
-         * currency : 100.0
-         * recharge : 1.0E7
-         * nickname : null
-         */
-
         private String id;
         private String userId;
         private double money;
         private double currency;
         private double recharge;
         private Object nickname;
+        private Object todayProfit;
 
         public String getId() {
             return id;
@@ -80,6 +71,15 @@ public class UserAccountBean extends Result {
         public void setNickname(Object nickname) {
             this.nickname = nickname;
         }
+
+        public Object getTodayProfit() {
+            return todayProfit;
+        }
+
+        public void setTodayProfit(Object todayProfit) {
+            this.todayProfit = todayProfit;
+        }
+
     }
 
 

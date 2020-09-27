@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,13 +37,17 @@ import com.ziran.meiliao.ui.bean.UserAccountBean;
 import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.bean.UserExternalAccountBean;
 import com.ziran.meiliao.ui.me.activity.SetRealNameActivity;
+import com.ziran.meiliao.ui.me.activity.SetRealPersonActivity;
 import com.ziran.meiliao.ui.settings.activity.RechargeDetailsActivity;
+import com.ziran.meiliao.ui.settings.activity.ResultActivity;
 import com.ziran.meiliao.ui.settings.adapter.AmountAdapter;
 import com.ziran.meiliao.ui.settings.adapter.AmountPointsAdapter;
 import com.ziran.meiliao.utils.MapUtils;
 import com.zhy.autolayout.AutoRelativeLayout;
+import com.ziran.meiliao.utils.NewCacheUtil;
 import com.ziran.meiliao.widget.pupop.SimplePayPopupWindow;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -62,12 +67,16 @@ import static com.ziran.meiliao.constant.ApiKey.ACCOUNT_EXTERNAL;
 public class RechargeFragment extends CommonHttpFragment<CommonPresenter, CommonModel> implements CommonContract.View<Result> {
 
 
+    @Bind(R.id.tv_selected)
+    TextView tvSelected;
+    @Bind(R.id.iv_type)
+    ImageView ivType;
+    @Bind(R.id.iv_account)
+    ImageView ivAccount;
     @Bind(R.id.tv_withdrawal)
     TextView tvWithdrawal;
     @Bind(R.id.tv_recharge)
     TextView tvRecharge;
-    @Bind(R.id.tv_recharge_gold)
-    TextView tvRechargeGold;
     @Bind(R.id.tv_recharge_money)
     TextView tvRechargeMoney;
     @Bind(R.id.gv_recharge_amount)
@@ -96,6 +105,10 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
     private String accessToken;
     private double currency;
     private SimplePayPopupWindow simplePayPopupWindow;
+    private int gold;
+    private boolean isRecharge = true;
+    private NewCacheUtil newCacheUtil;
+    private List rechargeData;
 
 
     @Override
@@ -113,6 +126,7 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
     protected void initView() {
         dataBean = MyAPP.getmUserBean();
         userId = MyAPP.getUserId();
+        newCacheUtil = new NewCacheUtil(getContext());
         accessToken = MyAPP.getAccessToken();
          simplePayPopupWindow = new SimplePayPopupWindow(getActivity());
         mAmountAdapter = new AmountAdapter(getContext(), R.layout.item_grid_amount);
@@ -128,8 +142,11 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
                 }
             }
         });
-        balance = getIntentExtra(AppConstant.ExtraKey.BALANCE);
-        if (balance == null || balance.equals("")) {
+      String  type = getIntentExtra(AppConstant.ExtraKey.FROM_TYPE);
+        if (type != null ) {
+            if(type.equals("2")){
+                changeType("2");
+            }
         }
         mAmountAdapterTwo = new AmountPointsAdapter(getContext(), R.layout.item_grid_point_amount, currency);
         gvRechargeAmountTwo.setAdapter(mAmountAdapterTwo);
@@ -138,7 +155,7 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mDataBeanTwo != null) {
                     RechargeBean.DataBean.RecordsBean recordsBean = mDataBeanTwo.get(position);
-                    if (mDataBeanTwo.get(position).getPrice() > money) {
+                    if (mDataBeanTwo.get(position).getPrice() > currency/1000) {
                         ToastUitl.showShort("余额不足");
                     } else {
                         if (MyAPP.getmUserBean().getIdCard() == null || MyAPP.getmUserBean().getIdCard().equals("")) {
@@ -154,7 +171,13 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
                 }
             }
         });
-        getCommodityList("2");
+         rechargeData = newCacheUtil.getDataList("recharge", RechargeBean.DataBean.RecordsBean.class);
+         if(rechargeData==null){
+             getCommodityList("2");
+         }else {
+             mDataBeanOne =rechargeData;
+             mAmountAdapter.replaceAll(mDataBeanOne);
+         }
         getCommodityList("3");
         getThreeAccount();
         getPayList();
@@ -188,6 +211,7 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
         switch (requestCode) {
             case REQUEST_CODE_C:
                 if (resultCode == Activity.RESULT_OK) {
+                    haveThreeAccount = true;
                     getThreeAccount();
                 }
             default:
@@ -243,7 +267,7 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
                 } else {
                     //去实名
                     popupWindow.dismiss();
-                    SetRealNameActivity.startAction("real", REQUEST_CODE_C);
+                    SetRealPersonActivity.startAction(REQUEST_CODE_C);
                 }
 
 
@@ -270,7 +294,8 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
 
                     @Override
                     public void onSuccess(StringDataV2Bean listBean) {
-                        ToastUitl.showShort(listBean.getResultMsg());
+//                        ToastUitl.showShort(listBean.getResultMsg());
+                        ResultActivity.startAction(getContext(),recordsBean.getPrice()+"");
                         stopProgressDialog();
                     }
 
@@ -280,9 +305,10 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
                         ToastUitl.showShort(msg);
                         if (code == 3000) {
                             //提现成功
-                            ToastUitl.showShort("提现成功");
-                            getCommodityList("3");
-                            mPresenter.getDataOneHead(ACCOUNT_ACCOUNT_INFO,userId,accessToken, UserAccountBean.class);
+                            ResultActivity.startAction(getContext(),recordsBean.getPrice()+"");
+//                            ToastUitl.showShort("提现成功");
+//                            getCommodityList("3");
+//                            mPresenter.getDataOneHead(ACCOUNT_ACCOUNT_INFO,userId,accessToken, UserAccountBean.class);
                         }
                     }
                 });
@@ -304,26 +330,30 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
             //充值列表返回
             mDataBean = ((RechargeBean) result).getData().getRecords();
             if (mDataBean != null && mDataBean.size() > 0) {
-
                 if (mDataBean.get(0).getType().equals("2")) {
                     mDataBeanOne = mDataBean;
                     mAmountAdapter.replaceAll(mDataBeanOne);
+                    newCacheUtil.saveRechargeBean(mDataBean);
                 } else {
                     mDataBeanTwo = mDataBean;
+
                     mAmountAdapterTwo.replaceAll(mDataBeanTwo);
 
                 }
             }
         } else if (result instanceof UserAccountBean) {
             mUserAccountBean = ((UserAccountBean) result).getData();
-            int gold = MyAPP.saveMoney(((UserAccountBean) result));
-            tvRechargeGold.setText(gold + "");
-            money=(int)mUserAccountBean.getMoney();
-             currency = mUserAccountBean.getCurrency()/1000+mUserAccountBean.getMoney();
+            MyAPP.saveMoney(((UserAccountBean) result));
+             gold = (int)mUserAccountBean.getRecharge();
+             currency =(int) mUserAccountBean.getCurrency();
              if(mAmountAdapterTwo!=null){
-                 mAmountAdapterTwo.update(currency);
+                 mAmountAdapterTwo.update(currency/1000);
              }
-            tvRechargeMoney.setText(money + "");
+             if(isRecharge){
+                 tvRechargeMoney.setText(new DecimalFormat("#,###").format(gold) + "");
+             }else {
+                 tvRechargeMoney.setText(new DecimalFormat("#,###").format(currency) + "");
+             }
         } else if (result instanceof UserExternalAccountBean) {
             mUserExternalBean = ((UserExternalAccountBean) result).getData();
             if(mUserExternalBean!=null){
@@ -336,10 +366,13 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
     }
 
 
-    @OnClick({R.id.iv_real_name, R.id.tv_withdrawal, R.id.tv_recharge,R.id.ll_details})
+    @OnClick({ R.id.tv_withdrawal, R.id.tv_recharge,R.id.tv_deatils,R.id.iv_account,R.id.back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_real_name:
+            case R.id.back:
+                finish();
+                break;
+            case R.id.iv_account:
                 if (MyAPP.getmUserBean().getIdCard() == null || MyAPP.getmUserBean().getIdCard().equals("")) {
                     showApplyPopWindow(null, 3);
                 } else {
@@ -351,27 +384,46 @@ public class RechargeFragment extends CommonHttpFragment<CommonPresenter, Common
                 }
                 break;
             case R.id.tv_recharge:
-                rll_one.setVisibility(View.VISIBLE);
-                rll_two.setVisibility(View.GONE);
-                setTextSize(tvRecharge, tvWithdrawal);
+                changeType("1");
                 break;
             case R.id.tv_withdrawal:
-                rll_one.setVisibility(View.GONE);
-                rll_two.setVisibility(View.VISIBLE);
-                setTextSize(tvWithdrawal, tvRecharge);
+                changeType("2");
                 break;
-           case  R.id.ll_details:
-               RechargeDetailsActivity.startAction(getContext());
-            break;
+            case  R.id.tv_deatils:
+                RechargeDetailsActivity.startAction(getContext());
+                break;
+
+        }
+    }
+
+    private void changeType(String type) {
+        if(type.equals("1")){
+            rll_one.setVisibility(View.VISIBLE);
+            rll_two.setVisibility(View.GONE);
+            tvSelected.setText("选择充值金额");
+            isRecharge=true;
+            tvRechargeMoney.setText(new DecimalFormat("#,###").format(gold) + "");
+            ivType.setImageResource(R.mipmap.ic_recharge_ml);
+            setTextSize(tvRecharge, tvWithdrawal);
+            ivAccount.setVisibility(View.GONE);
+        }else {
+            rll_one.setVisibility(View.GONE);
+            rll_two.setVisibility(View.VISIBLE);
+            tvSelected.setText("选择提现金额");
+            isRecharge=false;
+            tvRechargeMoney.setText(new DecimalFormat("#,###").format(currency) + "");
+            ivAccount.setVisibility(View.VISIBLE);
+            ivType.setImageResource(R.mipmap.ic_recharge_rmb);
+            setTextSize(tvWithdrawal, tvRecharge);
         }
     }
 
     private void setTextSize(TextView tv1, TextView tv2) {
         tv1.setTextColor(Color.parseColor("#000000"));
-        tv1.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+        tv1.setTextSize(TypedValue.COMPLEX_UNIT_SP,25);
         tv1.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         tv2.setTextColor(Color.parseColor("#808080"));
-        tv2.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+        tv2.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
         tv2.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
     }
 }

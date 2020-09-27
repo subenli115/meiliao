@@ -2,6 +2,9 @@ package com.ziran.meiliao.widget.pupop;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Adapter;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
@@ -13,6 +16,7 @@ import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.adapter.RecordChildInfoAdapter;
 import com.ziran.meiliao.ui.main.activity.NewLoginActivity;
+import com.ziran.meiliao.ui.main.adapter.ZLAudioOneAdapter;
 import com.ziran.meiliao.utils.MapUtils;
 
 /**
@@ -28,17 +32,17 @@ import com.ziran.meiliao.utils.MapUtils;
 
 public class DeletePopupWindow extends BasePopupWindow {
     private final int position;
-    private final RecordChildInfoAdapter recordChildInfoAdapter;
+    private final RecyclerView.Adapter mAdapter;
     private final String mid;
 
 
 //    private final FragmentActivity activity;
 
-    public DeletePopupWindow(Context context, String id, RecordChildInfoAdapter recordChildInfoAdapter, int position) {
+    public DeletePopupWindow(Context context, String id, RecyclerView.Adapter adapter, int position) {
         super(context);
         this.mid = id;
         this.position = position;
-        this.recordChildInfoAdapter = recordChildInfoAdapter;
+        this.mAdapter = adapter;
         this.mContext = context;
     }
 
@@ -60,27 +64,49 @@ public class DeletePopupWindow extends BasePopupWindow {
         switch (v.getId()) {
             case R.id.tv_delete:
                 delete();
-
                 break;
         }
         dismiss();
     }
 
-    //登出
     public void delete() {
-        OkHttpClientManager.deleteAsync(ApiKey.ADMIN_SPACE_DELETE, MapUtils.getDefMap(true), mid, new
-                NewRequestCallBack<Result>(Result.class) {
-                    @Override
-                    public void onSuccess(Result result) {
-                        recordChildInfoAdapter.removeData(position);
-                    }
+        if(mAdapter instanceof RecordChildInfoAdapter){
+            OkHttpClientManager.deleteAsync(ApiKey.ADMIN_SPACE_DELETE, MapUtils.getDefMap(true), mid, new
+                    NewRequestCallBack<Result>(Result.class) {
+                        @Override
+                        public void onSuccess(Result result) {
+                            ((RecordChildInfoAdapter)mAdapter).removeData(position);
+                        }
 
-                    @Override
-                    public void onError(String msg, int code) {
-                        ToastUitl.showShort(msg);
-                        super.onError(msg, code);
-                    }
-                });
+                        @Override
+                        public void onError(String msg, int code) {
+                            ToastUitl.showShort(msg);
+                            super.onError(msg, code);
+                        }
+                    });
+        }else {
+            OkHttpClientManager.deleteAsync(ApiKey.ADMIN_COMMENT_DELETE, MapUtils.getDefMap(true), mid, new
+                    NewRequestCallBack<Result>(Result.class) {
+                        @Override
+                        public void onSuccess(Result result) {
+                            ((ZLAudioOneAdapter)mAdapter).removeData(position);
+                        }
+
+                        @Override
+                        public void onError(String msg, int code) {
+                            ToastUitl.showShort(msg);
+                            super.onError(msg, code);
+                        }
+                    });
+        }
     }
+
+
+
+
+
+
+
+
 
 }

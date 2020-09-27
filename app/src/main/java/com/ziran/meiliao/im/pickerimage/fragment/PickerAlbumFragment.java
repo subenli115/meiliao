@@ -178,6 +178,7 @@ public class PickerAlbumFragment extends BaseFragment implements OnItemClickList
                             index = albumInfolist.indexOf(albumInfo);
                         photoInfo.setImageId(_id);
                         photoInfo.setFilePath(FILE_PREFIX + path);
+                        Log.e("MediaDAO",""+FILE_PREFIX + path);
                         photoInfo.setAbsolutePath(path);
                         photoInfo.setSize(size);
                         albumInfo.getList().add(photoInfo);

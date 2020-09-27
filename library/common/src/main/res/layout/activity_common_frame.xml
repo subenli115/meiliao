@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/rl_rootView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.ziran.meiliao.common.commonwidget.NormalTitleBar
         android:id="@+id/ntb"
         android:visibility="gone"
+        app:ntb_tv_left="showAndFinish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

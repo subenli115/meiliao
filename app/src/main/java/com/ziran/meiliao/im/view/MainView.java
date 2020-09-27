@@ -3,6 +3,7 @@ package com.ziran.meiliao.im.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class MainView extends RelativeLayout {
     private int[] mBtnListID;
     private ScrollControlViewPager mViewContainer;
     private TextView mAllContactNumber;
+    private ImageView ivfb;
 
     public MainView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -28,12 +30,13 @@ public class MainView extends RelativeLayout {
 
     public void initModule() {
         mBtnListID = new int[] {
-                R.id.actionbar_contact_btn,
+                R.id.actionbar_contact_btn,   R.id.actionbar_community_btn,
                 R.id.actionbar_msg_btn, R.id.actionbar_me_btn};
         mBtnList = new Button[mBtnListID.length];
         for (int i = 0; i < mBtnListID.length; i++) {
             mBtnList[i] = (Button) findViewById(mBtnListID[i]);
         }
+        ivfb = (ImageView) findViewById(R.id.iv_fb);
         mViewContainer = (ScrollControlViewPager) findViewById(R.id.viewpager);
         mViewContainer.setOffscreenPageLimit(2);
         mBtnList[0].setTextColor(getResources().getColor(R.color.actionbar_pres_color));
@@ -44,6 +47,7 @@ public class MainView extends RelativeLayout {
         for (int i = 0; i < mBtnListID.length; i++) {
             mBtnList[i].setOnClickListener(onclickListener);
         }
+        ivfb.setOnClickListener(onclickListener);
     }
 
     public void setOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener) {

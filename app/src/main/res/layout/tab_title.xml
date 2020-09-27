@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="50dp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<TextView android:id="@android:id/text1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="15sp"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:textColor="@color/gray"
+    android:text="2222"
+    android:layout_gravity="center"
+    app:autoSizeTextType="uniform"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+<TextView
+    android:id="@+id/all_unread_number"
+    android:layout_width="10dp"
+    android:layout_height="10dp"
+    android:visibility="gone"
+    android:layout_alignParentRight="true"
+    android:background="@drawable/unread_msg_red"
+    android:elevation="7dp"
+    android:gravity="center"
+    android:textColor="@android:color/white"
+    android:textSize="10sp"
+    />
+</RelativeLayout>

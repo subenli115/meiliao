@@ -44,7 +44,9 @@ public class WalletFragment extends CommonHttpFragment<CommonPresenter, CommonMo
         mRxManager.on(AppConstant.RXTag.BALANCE, new Action1<String>() {
             @Override
             public void call(String balance) {
+
                 tvWalletBalance.setText(balance);
+
             }
         });
     }

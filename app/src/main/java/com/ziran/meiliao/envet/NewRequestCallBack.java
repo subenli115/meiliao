@@ -1,6 +1,15 @@
 package com.ziran.meiliao.envet;
 
+import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import com.zhy.autolayout.AutoLinearLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.base.BaseView;
@@ -9,12 +18,18 @@ import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.ui.bean.StringDataBean;
+import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
+import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.StringUtils;
 import org.apache.http.conn.ConnectTimeoutException;
 
 import java.io.IOException;
 import java.net.ConnectException;
+import java.util.Map;
+
 import okhttp3.Request;
+
+import static com.ziran.meiliao.constant.ApiKey.ADMIN_USER_GETFROZEN;
 
 
 /**
@@ -24,6 +39,7 @@ import okhttp3.Request;
 public abstract class NewRequestCallBack<T extends Result> extends OkHttpClientManager.ResultCallback {
     private BaseView baseView;
     private Class<T> mClass,mClass1;
+    private View contentView;
 
     public NewRequestCallBack(Class<T> aClass) {
         mClass = aClass;
@@ -37,23 +53,36 @@ public abstract class NewRequestCallBack<T extends Result> extends OkHttpClientM
         this.baseView = view;
     }
 
-
-
     @Override
     public void onResponse(String response) {
         try {
              T result = JsonUtils.fromJsonToType(response, mClass);
             if (result == null) {
                 StringDataBean da = JsonUtils.fromJsonToType(response, StringDataBean.class);
-                if(da!=null&&da.getResultCode()==1001){
-                    MyAPP.refreshToken();
-                    onError("请重试", da.getResultCode());
+                if(da!=null){
+                    if(da.getResultCode()==1001){
+                            Map<String, String> defMap = MapUtils.getDefMap(false);
+                            defMap.put("id",MyAPP.getUserId());
+                            OkHttpClientManager.getAsyncMore(ADMIN_USER_GETFROZEN, defMap,new NewRequestCallBack<Result>(Result.class) {
+                                @Override
+                                protected void onSuccess(Result result) {
+                                        ToastUitl.showShort("请重试");
+                                        MyAPP.refreshToken();
+                                }
+                                @Override
+                                public void onError(String msg, int code) {
+                                    Intent intent = new Intent(MyAPP.context, IntputCodeActivity.class);
+                                    intent.putExtra("Connected", "false");
+                                    intent.putExtra("code", code);
+                                    MyAPP.context.startActivity(intent);
+                                }
+                            });
+                    }else {
+                        onError(da.getResultMsg(), da.getResultCode());
+                    }
                     return;
                 }
-                onError("服务器繁忙", -1);
-                return;
             }
-            Log.e("meiliaoresponse",result.toString());
             switch (result.getResultCode()) {
                 case 0:
                     if (baseView!=null) baseView.stopLoading();
@@ -65,10 +94,6 @@ public abstract class NewRequestCallBack<T extends Result> extends OkHttpClientM
                 case 10:
                     ToastUitl.showShort(result.getResultMsg());
                     showEmpty(result);
-                    break;
-                case 1001:
-                    ToastUitl.showShort("操作失败，请重试");
-                    MyAPP.refreshToken();
                     break;
                 case 1002:
                     onError(result.getResultMsg(), result.getResultCode());

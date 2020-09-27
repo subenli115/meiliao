@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout android:id="@+id/arl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.ziran.meiliao.widget.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        app:layout_auto_baseheight="width"
+        android:layout_marginTop="33px"
+
+        app:roun_type="circle"
+        android:layout_marginBottom="30px"
+        android:src="@mipmap/icon_system_msg"
+        android:layout_marginLeft="38px"
+        />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/all_top"
+        android:layout_marginTop="40px"
+
+        android:layout_toRightOf="@+id/iv_head"
+        android:layout_marginLeft="25px"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:paddingRight="10px"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="慈悲"
+            android:textSize="32px"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxEms="8"
+            android:textColor="#292832"
+            android:id="@+id/tv_name"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_real_name"
+            android:layout_toRightOf="@+id/tv_name"
+            android:layout_width="28px"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_height="32px"
+            android:src="@mipmap/icon_real_name"
+            />
+        <ImageView
+            android:id="@+id/iv_real_person"
+            android:layout_toRightOf="@+id/iv_real_name"
+            android:layout_width="28px"
+            android:layout_marginLeft="8px"
+            android:layout_height="32px"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_real_person"
+            />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/iv_real_person"
+            android:textSize="22px"
+            android:textColor="#ABAEB3"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="27px"
+            android:src="@mipmap/ic_right_white"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <TextView
+        android:id="@+id/tv_sign"
+        android:layout_alignLeft="@+id/all_top"
+        android:layout_below="@+id/all_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20px"
+        android:text=""
+        android:maxEms="15"
+        android:ellipsize="end"
+        android:layout_marginTop="10px"
+        android:textColor="#909399"
+        android:textSize="26px"
+        />
+    <TextView
+        android:id="@+id/all_unread_number"
+        android:layout_width="28px"
+        android:visibility="gone"
+        android:layout_height="28px"
+        android:layout_marginLeft="12dp"
+        android:background="@drawable/unread_msg_red"
+        android:gravity="center"
+        app:layout_auto_baseheight="width"
+        android:layout_alignBottom="@+id/tv_sign"
+        android:text="99"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="27px"
+        android:textColor="@android:color/white"
+        android:textSize="20px"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>

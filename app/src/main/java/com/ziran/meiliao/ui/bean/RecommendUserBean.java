@@ -23,6 +23,7 @@ public class RecommendUserBean extends Result {
     }
 
     public static class DataBean {
+
         /**
          * id : cb9143bfbd79c420a1859ceb039e9822
          * userId : 1
@@ -60,7 +61,7 @@ public class RecommendUserBean extends Result {
          * teenagersIsOpen : null
          * invitationCode : null
          */
-
+        private String isReal;
         private String id;
         private int userId;
         private String username;
@@ -280,7 +281,13 @@ public class RecommendUserBean extends Result {
         public void setLabel(Object label) {
             this.label = label;
         }
+        public String getIsReal() {
+            return isReal;
+        }
 
+        public void setIsReal(String isReal) {
+            this.isReal = isReal;
+        }
         public Object getUserAccount() {
             return userAccount;
         }

@@ -1,5 +1,4 @@
 package com.ziran.meiliao.common.irecyclerview;
-
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,13 +7,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Created by yungcs on 2016/1/7.
+ * author：luck
+ * project：PictureSelector
+ * package：com.luck.picture.ui
+ * email：893855882@qq.com
+ * data：16/12/31
  */
+
 public class FullyGridLayoutManager extends GridLayoutManager {
-
-    private int mwidth = 0;
-    private int mheight = 0;
-
     public FullyGridLayoutManager(Context context, int spanCount) {
         super(context, spanCount);
     }
@@ -24,22 +24,6 @@ public class FullyGridLayoutManager extends GridLayoutManager {
     }
 
     private int[] mMeasuredDimension = new int[2];
-
-    public int getMwidth() {
-        return mwidth;
-    }
-
-    public void setMwidth(int mwidth) {
-        this.mwidth = mwidth;
-    }
-
-    public int getMheight() {
-        return mheight;
-    }
-
-    public void setMheight(int mheight) {
-        this.mheight = mheight;
-    }
 
     @Override
     public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
@@ -88,16 +72,18 @@ public class FullyGridLayoutManager extends GridLayoutManager {
             case View.MeasureSpec.AT_MOST:
             case View.MeasureSpec.UNSPECIFIED:
         }
-        setMheight(height);
-        setMwidth(width);
+
         setMeasuredDimension(width, height);
     }
 
+    final RecyclerView.State mState = new RecyclerView.State();
+
     private void measureScrapChild(RecyclerView.Recycler recycler, int position, int widthSpec,
                                    int heightSpec, int[] measuredDimension) {
-        if (position < getItemCount()) {
+        int itemCount = mState.getItemCount();
+        if (position < itemCount) {
             try {
-                View view = recycler.getViewForPosition(0);//fix 动态添加时报IndexOutOfBoundsException
+                View view = recycler.getViewForPosition(0);
                 if (view != null) {
                     RecyclerView.LayoutParams p = (RecyclerView.LayoutParams) view.getLayoutParams();
                     int childWidthSpec = ViewGroup.getChildMeasureSpec(widthSpec,

@@ -5,7 +5,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/white">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -21,7 +21,7 @@
             app:titleTextAppearance="@style/Toolbar.TitleText">
 
         </androidx.appcompat.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,7 +39,8 @@
             android:id="@+id/picker_photos_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            />
     </FrameLayout>
 
     <RelativeLayout

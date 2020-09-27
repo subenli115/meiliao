@@ -74,13 +74,13 @@ public class DropDownListView extends ListView implements OnScrollListener {
 
     public DropDownListView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        getAttrs(context, attrs);
+//        getAttrs(context, attrs);
         init(context);
     }
 
     public DropDownListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        getAttrs(context, attrs);
+//        getAttrs(context, attrs);
         mDefStyle = defStyle;
         init(context);
     }
@@ -359,20 +359,20 @@ public class DropDownListView extends ListView implements OnScrollListener {
         child.measure(childWidthSpec, childHeightSpec);
     }
 
-    /**
-     * get attrs
-     *
-     * @param context
-     * @param attrs
-     */
-    private void getAttrs(Context context, AttributeSet attrs) {
-        int[] dropDownAttrArray = IdHelper.getResourceDeclareStyleableIntArray(context, "drop_down_list_attr");
-        if (dropDownAttrArray != null) {
-            TypedArray ta = context.obtainStyledAttributes(attrs, dropDownAttrArray, mDefStyle, 0);
-            isDropDownStyle = true;
-            ta.recycle();
-        }
-    }
+//    /**
+//     * get attrs
+//     *
+//     * @param context
+//     * @param attrs
+//     */
+//    private void getAttrs(Context context, AttributeSet attrs) {
+//        int[] dropDownAttrArray = IdHelper.getResourceDeclareStyleableIntArray(context, "drop_down_list_attr");
+//        if (dropDownAttrArray != null) {
+//            TypedArray ta = context.obtainStyledAttributes(attrs, dropDownAttrArray, mDefStyle, 0);
+//            isDropDownStyle = true;
+//            ta.recycle();
+//        }
+//    }
 
     public int getHeaderHeight() {
         return headerOriginalHeight;

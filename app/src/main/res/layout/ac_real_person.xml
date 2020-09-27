@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content">
+
+    </com.ziran.meiliao.common.commonwidget.NormalTitleBar>
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="实人认证"
+    android:layout_marginLeft="77px"
+    android:layout_marginTop="33px"
+    android:textStyle="bold"
+    android:textColor="@color/black"
+    android:textSize="56px"
+    />
+
+    <TextView
+        android:layout_marginLeft="77px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#808080"
+        android:layout_marginTop="24px"
+        android:textSize="26px"
+        android:text="请填写自己的真实信息，一旦认证将无法修改"
+        />
+
+    <com.citypicker.citylist.widget.ClearEditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:textColor="#999999"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
+        android:layout_height="88px"
+        android:hint="@string/input_username"
+        android:paddingLeft="49px"
+        android:inputType="textPersonName"
+        android:maxLength="10"
+        android:layout_marginTop="87px"
+        android:layout_gravity="center"
+        android:textSize="30px"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/textColor_b2"
+        android:layout_below="@+id/afl"
+        android:background="@drawable/normal_bg_tran"
+        />
+
+    <com.citypicker.citylist.widget.ClearEditText
+        android:id="@+id/et_id"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
+        android:layout_height="88px"
+        android:hint="@string/input_realcode"
+        android:paddingLeft="49px"
+        android:textColor="#999999"
+        android:maxLength="18"
+        android:maxLines="1"
+        android:layout_marginTop="40px"
+        android:layout_gravity="center"
+        android:textSize="30px"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/textColor_b2"
+        android:layout_below="@+id/afl"
+        android:background="@drawable/normal_bg_tran"
+        />
+
+    <com.ziran.meiliao.widget.RoundImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="380px"
+        app:roun_type="round"
+        app:layout_auto_baseheight="width"
+        android:src="@mipmap/ic_real_person_upload"
+        app:corner_radius="25dp"
+        android:layout_marginTop="60px"
+        />
+
+    <TextView
+        android:id="@+id/tv_qd"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
+        android:layout_marginTop="60px"
+        android:layout_marginBottom="60px"
+        android:background="@drawable/normal_bg_bule"
+        android:gravity="center"
+        android:paddingLeft="92px"
+        android:paddingRight="92px"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="30px" />
+</com.zhy.autolayout.AutoLinearLayout>

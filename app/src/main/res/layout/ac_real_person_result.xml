@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<com.ziran.meiliao.common.commonwidget.NormalTitleBar
+    android:id="@+id/ntb"
+    android:layout_width="match_parent"
+    app:ntb_tv_left="showAndFinish"
+    android:layout_height="wrap_content">
+</com.ziran.meiliao.common.commonwidget.NormalTitleBar>
+
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@+id/ntb"
+    android:id="@+id/all"
+    android:layout_marginTop="60px"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="66px"
+        android:layout_gravity="center_vertical"
+        android:layout_height="80px"
+        android:src="@mipmap/icon_realname"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已认证"
+        android:layout_gravity="center_vertical"
+        android:textStyle="bold"
+        android:layout_marginLeft="23px"
+        android:textColor="@color/black"
+        android:textSize="56px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_below="@+id/all"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="75px"
+        android:layout_marginRight="75px"
+        android:layout_marginTop="90px"
+        android:layout_marginBottom="60px"
+        android:background="@drawable/normal_bg_buleff"
+        android:gravity="center"
+        android:paddingLeft="92px"
+        android:paddingRight="92px"
+        android:text="张*三   500*************20"
+        android:textColor="#459BFF"
+        android:textSize="30px" />
+
+
+    <com.ziran.meiliao.widget.RoundImageView
+        android:id="@+id/img"
+        android:layout_width="380px"
+        android:layout_below="@+id/tv_info"
+        app:layout_auto_baseheight="width"
+        android:layout_height="380px"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        app:roun_type="round"
+        app:corner_radius="25dp"
+        android:layout_marginTop="60px"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/img"
+        android:textSize="24px"
+        android:layout_marginLeft="61px"
+        android:gravity="center"
+        android:layout_marginTop="70px"
+        android:layout_marginRight="42px"
+        android:layout_height="wrap_content"
+        android:text="您提供的证件信息将受到严格的保护，仅用于身份验证、提现打款，未经本人许可不会用于其他用途"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>

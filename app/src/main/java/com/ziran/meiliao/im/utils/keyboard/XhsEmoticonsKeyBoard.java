@@ -19,6 +19,9 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.common.commonwidget.OnNoDoubleClickListener;
+import com.ziran.meiliao.im.application.JGApplication;
+import com.ziran.meiliao.im.utils.event.ImageEvent;
 import com.ziran.meiliao.im.utils.keyboard.adpater.PageSetAdapter;
 import com.ziran.meiliao.im.utils.keyboard.data.PageSetEntity;
 import com.ziran.meiliao.im.utils.keyboard.utils.EmoticonsKeyboardUtils;
@@ -29,6 +32,8 @@ import com.ziran.meiliao.im.utils.keyboard.widget.EmoticonsIndicatorView;
 import com.ziran.meiliao.im.utils.keyboard.widget.EmoticonsToolBarView;
 import com.ziran.meiliao.im.utils.keyboard.widget.FuncLayout;
 import com.ziran.meiliao.im.view.RecordVoiceButton;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnClickListener, EmoticonsFuncView.OnEmoticonsPageViewListener,
         EmoticonsToolBarView.OnToolBarItemClickListener, EmoticonsEditText.OnBackKeyClickListener, FuncLayout.OnFuncChangeListener {
@@ -43,7 +48,7 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
     protected EmoticonsEditText mEtChat;
     protected ImageView mBtnFace;
     protected RelativeLayout mRlInput;
-    protected ImageView mBtnMultimedia;
+    protected ImageView mBtnMultimedia,mBtnPhoto;
     protected Button mBtnSend;
     protected FuncLayout mLyKvml;
 
@@ -53,6 +58,8 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
 
     protected boolean mDispatchKeyEventPreImeLock = false;
     private boolean flag=true;
+    private RelativeLayout rlFunction;
+    private int mLevel;
 
     public XhsEmoticonsKeyBoard(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -78,12 +85,20 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
         mRlInput = ((RelativeLayout) findViewById(R.id.rl_input));
         mBtnMultimedia = ((ImageView) findViewById(R.id.btn_multimedia));
         mBtnSend = ((Button) findViewById(R.id.btn_send));
+        mBtnPhoto = ((ImageView) findViewById(R.id.btn_photo));
         mLyKvml = ((FuncLayout) findViewById(R.id.ly_kvml));
-
+        rlFunction = ((RelativeLayout) findViewById(R.id.rl_function));
 //        mBtnVoiceOrText.setOnClickListener(this);
         mBtnFace.setOnClickListener(this);
         mBtnMultimedia.setOnClickListener(this);
         mEtChat.setOnBackKeyClickListener(this);
+    }
+
+    public void setLevel(int level){
+             mLevel = level;
+             if(mLevel>0){
+                 mBtnVoiceOrText.setImageResource(R.mipmap.icon_voice);
+             }
     }
 
     protected void initFuncView() {
@@ -94,6 +109,7 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
     protected void initEmoticonFuncView() {
         View keyboardView = inflateFunc();
         mLyKvml.addFuncView(FUNC_TYPE_EMOTION, keyboardView);
+
         mEmoticonsFuncView = ((EmoticonsFuncView) findViewById(R.id.view_epv));
         mEmoticonsIndicatorView = ((EmoticonsIndicatorView) findViewById(R.id.view_eiv));
         mEmoticonsToolBarView = ((EmoticonsToolBarView) findViewById(R.id.view_etv));
@@ -128,11 +144,15 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
                 if (!TextUtils.isEmpty(s)) {
                     mBtnSend.setVisibility(VISIBLE);
                     mBtnMultimedia.setVisibility(GONE);
+                    mBtnPhoto.setVisibility(GONE);
                     mBtnSend.setBackgroundResource(R.drawable.normal_bg_bule);
                 } else {
                     if(flag){
                         mBtnMultimedia.setVisibility(VISIBLE);
+                    }else {
+                        mBtnPhoto.setVisibility(VISIBLE);
                     }
+
                     mBtnSend.setVisibility(GONE);
                 }
             }
@@ -154,6 +174,9 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
     public void addFuncView(View view) {
         mLyKvml.addFuncView(FUNC_TYPE_APPPS, view);
     }
+    public void addFunView(View view) {
+        rlFunction.addView(view);
+    }
 
     public void reset() {
         EmoticonsKeyboardUtils.closeSoftKeyboard(this);
@@ -169,9 +192,9 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
 
     protected void checkVoice() {
         if (mBtnVoice.isShown()) {
-            mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text_keyboard);
+            mBtnVoiceOrText.setImageResource(R.mipmap.btn_voice_or_text_keyboard);
         } else {
-            mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text);
+            mBtnVoiceOrText.setImageResource(R.mipmap.icon_voice);
         }
     }
 
@@ -192,7 +215,7 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
         } else {
             mBtnFace.setImageResource(R.drawable.icon_face_nomal);
         }
-        checkVoice();
+//            checkVoice();
     }
 
     protected void setFuncViewHeight(int height) {
@@ -263,13 +286,27 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
 
     public  void setVideoText() {
         if (mRlInput.isShown()) {
-            mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text_keyboard);
+            mBtnVoiceOrText.setImageResource(R.mipmap.btn_voice_or_text_keyboard);
             showVoice();
         } else {
             showText();
-            mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text);
+            mBtnVoiceOrText.setImageResource(R.mipmap.icon_voice);
             EmoticonsKeyboardUtils.openSoftKeyboard(mEtChat);
         }
+    }
+
+
+
+    public void  setServiceStatus(){
+        mBtnPhoto.setVisibility(VISIBLE);
+        flag=false;
+        mBtnMultimedia.setVisibility(GONE);
+        mBtnPhoto.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                EventBus.getDefault().post(new ImageEvent(JGApplication.IMAGE_MESSAGE));
+            }
+        });
     }
 
     public ImageView getVoiceOrText() {
@@ -363,16 +400,5 @@ public class XhsEmoticonsKeyBoard extends AutoHeightLayout implements View.OnCli
     public void setBtnMultimedia() {
         flag=false;
         mBtnMultimedia.setVisibility(GONE);
-    }
-    public EmoticonsFuncView getEmoticonsFuncView() {
-        return mEmoticonsFuncView;
-    }
-
-    public EmoticonsIndicatorView getEmoticonsIndicatorView() {
-        return mEmoticonsIndicatorView;
-    }
-
-    public EmoticonsToolBarView getEmoticonsToolBarView() {
-        return mEmoticonsToolBarView;
     }
 }

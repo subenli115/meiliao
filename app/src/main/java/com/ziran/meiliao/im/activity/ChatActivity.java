@@ -15,6 +15,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -28,18 +30,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bytedance.sdk.openadsdk.AdSlot;
-import com.bytedance.sdk.openadsdk.TTAdConstant;
-import com.bytedance.sdk.openadsdk.TTAdManager;
-import com.bytedance.sdk.openadsdk.TTAdNative;
-import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
-import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
+import com.freegeek.android.materialbanner.MaterialBanner;
+import com.freegeek.android.materialbanner.view.indicator.CirclePageIndicator;
 import com.opensource.svgaplayer.SVGAImageView;
 import com.sj.emoji.EmojiBean;
 
@@ -57,9 +57,7 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import cn.jpush.im.android.api.ChatRoomManager;
 import cn.jpush.im.android.api.JMessageClient;
-import cn.jpush.im.android.api.callback.GetGroupInfoCallback;
 import cn.jpush.im.android.api.content.EventNotificationContent;
 import cn.jpush.im.android.api.content.FileContent;
 import cn.jpush.im.android.api.content.ImageContent;
@@ -84,10 +82,12 @@ import com.zhy.autolayout.AutoLinearLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.app.TTAdManagerHolder;
 import com.ziran.meiliao.common.baserx.RxManager;
+import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
+import com.ziran.meiliao.common.commonwidget.OnNoDoubleClickListener;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
+import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.envet.NewRequestCallBack;
@@ -118,19 +118,29 @@ import com.ziran.meiliao.im.utils.keyboard.utils.EmoticonsKeyboardUtils;
 import com.ziran.meiliao.im.utils.keyboard.widget.FuncLayout;
 import com.ziran.meiliao.im.utils.photovideo.takevideo.CameraActivity;
 import com.ziran.meiliao.im.view.ChatView;
+import com.ziran.meiliao.im.view.FunctionGridView;
 import com.ziran.meiliao.im.view.SimpleAppsGridView;
 import com.ziran.meiliao.im.view.TipItem;
 import com.ziran.meiliao.im.view.TipView;
 import com.ziran.meiliao.im.view.listview.DropDownListView;
+import com.ziran.meiliao.ui.bean.IntimacyBean;
+import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.UserAccountBean;
 import com.ziran.meiliao.ui.bean.UserBean;
+import com.ziran.meiliao.ui.priavteclasses.activity.UserHomeActivity;
+import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
 import com.ziran.meiliao.ui.settings.activity.RechargeActivity;
 import com.ziran.meiliao.utils.MapUtils;
+import com.ziran.meiliao.utils.NewCacheUtil;
+import com.ziran.meiliao.widget.BannerUtil;
 
 import static com.ziran.meiliao.constant.ApiKey.ADMIN_GIFTRECORD_CHAT;
+import static com.ziran.meiliao.constant.ApiKey.ADMIN_INTIMACY_ADD;
+import static com.ziran.meiliao.constant.ApiKey.ADMIN_INTIMACY_INFO;
+import static com.ziran.meiliao.constant.ApiKey.ADMIN_USER_GETFROZEN;
 
 
-/**
+/**`
  * Created by ${chenyn} on 2017/3/26.
  */
 
@@ -177,20 +187,39 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
     private int mUnreadMsgCnt;
     private boolean mShowSoftInput = false;
     private List<UserInfo> forDel = new ArrayList<>();
-    private TTRewardVideoAd mttRewardVideoAd;
     Window mWindow;
     InputMethodManager mImm;
     private final UIHandler mUIHandler = new UIHandler(this);
     private boolean mAtAll = false;
     private boolean isChatRoom = false;
-    private TTAdNative mTTAdNative;
     private View contentView;
     private String gold="0";
     private SimpleAppsGridView gridView;
     private RxManager mRxManager;
     private TextContent content;
     public SVGAImageView svgaImage;
-
+    private ImageView ivHead,ivRealName;
+    private TextView tvName,tvDistance,tvOther,tvContent;
+    private ImageView ivRecommend;
+    private TextView tvTag;
+    private TextView tvUsername,tvAge;
+    private ImageView ivSex,ivIntimacy;
+    private AutoLinearLayout allAge;
+    private CardView cardView;
+    private int level;
+    private FunctionGridView functionGridView;
+    private UserBean.DataBean dataBean;
+    private MaterialBanner materialBanner;
+    private CirclePageIndicator circlePageIndicator;
+    private boolean isService;
+    private ImageView ivRealPerson;
+    private static int intimacy;
+    private ImageButton jrButton;
+    private NewCacheUtil newCacheUtil;
+    private ImageView ivHint;
+    private TextView tvHint;
+    private LinearLayout llStatus;
+    private ImageView ivStatusHint;
 
 
     @Override
@@ -203,29 +232,67 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
         getUserMoney();
         mRxManager = new RxManager();
         setContentView(R.layout.activity_chat);
-
+//
+        ivHint= (ImageView) findViewById(R.id.iv_intimacy_hint);
+        boolean intimacy = SPUtils.getBoolean("intimacy", false);
+        if(!intimacy){
+            ivHint.setVisibility(View.VISIBLE);
+            ivHint.setOnClickListener(new OnNoDoubleClickListener() {
+                @Override
+                protected void onNoDoubleClick(View v) {
+                    ivHint.setVisibility(View.GONE);
+                    SPUtils.setBoolean("intimacy",true);
+                }
+            });
+        }
+        llStatus = (LinearLayout) findViewById(R.id.ll_status);
+        tvHint = (TextView) findViewById(R.id.tv_hint);
+        ivStatusHint = (ImageView) findViewById(R.id.iv_hint);
+        ivHead = (ImageView) findViewById(R.id.iv_top_head);
+        tvName = (TextView) findViewById(R.id.tv_name);
+        tvDistance = (TextView) findViewById(R.id.tv_distance);
+        ivRealName = (ImageView) findViewById(R.id.iv_real_name);
+        ivRealPerson = (ImageView) findViewById(R.id.iv_real_person);
+        ivRecommend=(ImageView) findViewById(R.id.iv_recommend);
+        tvOther=(TextView) findViewById(R.id.tv_other);
+        jrButton=(ImageButton) findViewById(R.id.jmui_right_btn);
+        materialBanner = (MaterialBanner)findViewById(R.id.material_banner);
+        tvOther.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                follow();
+            }
+        });
+        tvContent=(TextView) findViewById(R.id.tv_content);
+        tvTag=(TextView) findViewById(R.id.tv_tag);
+        ivSex=(ImageView) findViewById(R.id.iv_sex);
+        tvAge=(TextView) findViewById(R.id.tv_age);
+        cardView=(CardView) findViewById(R.id.card_view);
+        allAge=(AutoLinearLayout) findViewById(R.id.all_age);
+        ivIntimacy=(ImageView) findViewById(R.id.iv_intimacy);
+        tvUsername=(TextView) findViewById(R.id.tv_username);
         svgaImage = (SVGAImageView) findViewById(R.id.svgaImage);
         mChatView = (ChatView) findViewById(R.id.chat_view);
         mChatView.initModule(mDensity, mDensityDpi);
         this.mWindow = getWindow();
         this.mImm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
         mChatView.setListeners(this);
-
+        newCacheUtil = new NewCacheUtil(mContext);
         ButterKnife.bind(this);
-
         initView();
-        initVideo();
-        //来自聊天室
+
         initData();
+        //来自聊天室
     }
     private void getUserMoney() {
-        UserBean.DataBean dataBean = MyAPP.getmUserBean();
+         dataBean = MyAPP.getmUserBean();
         if (dataBean != null&&dataBean.getUserAccount()!=null) {
-            UserAccountBean.DataBean data = dataBean.getUserAccount().getData();
+            UserAccountBean.DataBean data = dataBean.getUserAccount();
             gold = (int)(data.getRecharge() + data.getCurrency())+"";
         }else {
             OkHttpClientManager.getDataOneHead(ApiKey.ACCOUNT_ACCOUNT_INFO, MyAPP.getUserId(),MyAPP.getAccessToken(), new
                     NewRequestCallBack<UserAccountBean>(UserAccountBean.class) {
+
                         @Override
                         public void onSuccess(UserAccountBean result) {
                             gold = MyAPP.saveMoney(result)+"";
@@ -239,153 +306,175 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
         }
     }
 
-
-    private void initVideo() {
-        //step1:初始化sdk
-        TTAdManager ttAdManager = TTAdManagerHolder.get();
-        //step2:(可选，强烈建议在合适的时机调用):申请部分权限，如read_phone_state,防止获取不了imei时候，下载类广告没有填充的问题。
-        TTAdManagerHolder.get().requestPermissionIfNecessary(this);
-        //step3:创建TTAdNative对象,用于调用广告请求接口
-        mTTAdNative = ttAdManager.createAdNative(getApplicationContext());
+    public List<String>   getHomeBean(){
+        List dataList = newCacheUtil.getDataList("homeData" + mTargetId, String.class);
+        return dataList;
     }
+    private void follow() {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("followUserId", mTargetId);
+        defMap.put("userId", MyAPP.getUserId());
+        OkHttpClientManager.postAsyncAddHead(ApiKey.ADMIN_USERFOLLOW_ADD, defMap, "", new
+                NewRequestCallBack<StringDataV2Bean>(StringDataV2Bean.class) {
+
+                    @Override
+                    public void onSuccess(StringDataV2Bean listBean) {
+                        tvOther.setVisibility(View.GONE);
+                        dataBean.setIsFollow("1");
+                        saveDataBean(dataBean);
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+                        ToastUitl.showShort(msg);
+                    }
+                });
+    }
+    public void saveDataBean(UserBean.DataBean dataBean) {
+        newCacheUtil.saveUserBean(dataBean);
+    }
+//
+
+   public void  getFrozen(){
+           Map<String, String> defMap = MapUtils.getDefMap(false);
+           defMap.put("id",mTargetId);
+           OkHttpClientManager.getAsyncMore(ADMIN_USER_GETFROZEN, defMap,new NewRequestCallBack<Result>(Result.class) {
+               @Override
+               protected void onSuccess(Result result) {
+               }
+               @Override
+               public void onError(String msg, int code) {
+                   if(code==1004){
+                       //封号
+                       ekBar.setVisibility(View.GONE);
+                       llStatus.setVisibility(View.VISIBLE);
+                       ivStatusHint.setImageResource(R.mipmap.icon_chat_status_other);
+                       tvHint.setText("该用户违规，已被封号");
+                   }else if(code==1005){
+                       //冻结
+                       llStatus.setVisibility(View.VISIBLE);
+                       ekBar.setVisibility(View.GONE);
+                   }
+               }
+           });
+   }
+    private void getData() {
+        Object bean = newCacheUtil.getDataBean(mTargetId, UserBean.DataBean.class);
+        if(bean!=null){
+            initUserData((UserBean.DataBean) bean);
+        }else {
+            OkHttpClientManager.getAsyncHead(ApiKey.ADMIN_USER_COMPLETEOTHERSUSERINFO, mTargetId, MyAPP.getAccessToken(), new
+                    NewRequestCallBack<UserBean>(UserBean.class) {
+                        @Override
+                        public void onSuccess(UserBean result) {
+                            saveDataBean(result.getData());
+                            initUserData(result.getData());
+                        }
+
+                        @Override
+                        public void onError(String msg, int code) {
+                            ToastUitl.showShort(msg);
+                        }
+                    });
+        }
+
+    }
+
+    private void getIntimacy() {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("userId", MyAPP.getUserId());
+        defMap.put("toUserId", mTargetId);
+        OkHttpClientManager.postAsyncAddHead(ADMIN_INTIMACY_INFO, defMap, "", new
+                NewRequestCallBack<IntimacyBean>(IntimacyBean.class) {
+
+                    @Override
+                    public void onSuccess(IntimacyBean bean) {
+                        Glide.with(mContext).load(bean.getData().getLevelImg()).into(ivIntimacy);
+                        if(bean.getData().getLevel()!=null){
+                            level= Integer.parseInt(bean.getData().getLevel());
+                        }
+                        functionGridView.setLevel(level);
+                        ekBar.setLevel(level);
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+                    }
+                });
+    }
+
+
+    private void initUserData(UserBean.DataBean data) {
+        if(data!=null){
+            tvName.setText(data.getNickname());
+            tvUsername.setText(data.getNickname());
+            if(data.getSex() == 2){
+                ivSex.setImageResource(R.mipmap.icon_home_sex_woman);
+                tvAge.setTextColor(getResources().getColor(R.color.textColor_dynamic4));
+                allAge.setBackgroundResource(R.drawable.normal_bg_red_age);
+                tvAge.setText(data.getAge()+"岁");
+            }else {
+                ivSex.setImageResource(R.mipmap.icon_home_sex_man);
+                tvAge.setTextColor(getResources().getColor(R.color.textColor_dynamic3));
+                allAge.setBackgroundResource(R.drawable.normal_bg_bule_address);
+                tvAge.setText(data.getAge()+"岁");
+            }
+            if(data.getMore()!=null&&data.getMore().length()>0){
+                tvTag.setText("TA最喜欢"+data.getMore()+"哦");
+            }else {
+                tvTag.setVisibility(View.GONE);
+            }
+            Glide.with(mContext).load(data.getAvatar()).error(R.drawable.jmui_head_icon).into(ivRecommend);
+            Glide.with(mContext).load(data.getAvatar()).error(R.drawable.jmui_head_icon).into(ivHead);
+            ivHead.setOnClickListener(new OnNoDoubleClickListener() {
+                @Override
+                protected void onNoDoubleClick(View v) {
+                    UserHomeActivity.startAction(mTargetId);
+                }
+            });
+            ivRecommend.setOnClickListener(new OnNoDoubleClickListener() {
+                @Override
+                protected void onNoDoubleClick(View v) {
+                    UserHomeActivity.startAction(mTargetId);
+                }
+            });
+            if(data.getIsReal()!=null&&data.getIsReal().equals("1")){
+                ivRealPerson.setVisibility(View.VISIBLE);
+            }
+            if(data.getIntroduce()!=null&&data.getIntroduce().length()>0){
+                tvContent.setText(data.getIntroduce());
+            }else {
+                tvContent.setVisibility(View.GONE);
+            }
+                if(data.getDistance()!=null){
+                    if(data.getDistance().equals("0.0")){
+                        tvDistance.setText("距离 "+0+"m");
+                    }else {
+                        if(Double.parseDouble(data.getDistance())>1){
+                            tvDistance.setText("距离 "+data.getDistance()+"km");
+                        }else {
+                            tvDistance.setText("距离 "+(int)(Double.parseDouble(data.getDistance())*1000)+"m");
+                        }
+                    }
+                }
+
+                if(dataBean.getIsFollow()!=null&&dataBean.getIsFollow().equals("1")){
+                    tvOther.setVisibility(View.GONE);
+                 }else {
+                    tvOther.setVisibility(View.VISIBLE);
+                }
+
+            BannerUtil bannerUtil = new BannerUtil(this,materialBanner,data,false);
+        }
+    }
+
+
 
     @Override
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
         mRxManager.clear();
         super.onDestroy();
-    }
-
-    private void loadAd(final String codeId, int orientation) {
-        //step4:创建广告请求参数AdSlot,具体参数含义参考文档
-        AdSlot adSlot;
-        if (true) {
-            //个性化模板广告需要传入期望广告view的宽、高，单位dp，
-            adSlot = new AdSlot.Builder()
-                    .setCodeId(codeId)
-                    .setSupportDeepLink(true)
-                    .setRewardName("金币") //奖励的名称
-                    .setRewardAmount(50)  //奖励的数量
-                    //模板广告需要设置期望个性化模板广告的大小,单位dp,激励视频场景，只要设置的值大于0即可
-                    .setExpressViewAcceptedSize(500,500)
-                    .setUserID("user123")//用户id,必传参数
-                    .setMediaExtra("media_extra") //附加参数，可选
-                    .setOrientation(orientation) //必填参数，期望视频的播放方向：TTAdConstant.HORIZONTAL 或 TTAdConstant.VERTICAL
-                    .build();
-        } else {
-            //模板广告需要设置期望个性化模板广告的大小,单位dp,代码位是否属于个性化模板广告，请在穿山甲平台查看
-            adSlot = new AdSlot.Builder()
-                    .setCodeId(codeId)
-                    .setSupportDeepLink(true)
-                    .setRewardName("金币") //奖励的名称
-                    .setRewardAmount(50)  //奖励的数量
-                    .setUserID("user123")//用户id,必传参数
-                    .setMediaExtra("media_extra") //附加参数，可选
-                    .setOrientation(orientation) //必填参数，期望视频的播放方向：TTAdConstant.HORIZONTAL 或 TTAdConstant.VERTICAL
-                    .build();
-        }
-
-
-        //step5:请求广告
-        mTTAdNative.loadRewardVideoAd(adSlot, new TTAdNative.RewardVideoAdListener() {
-            @Override
-            public void onError(int code, String message) {
-                Log.e(TAG, "onError: " + code + ", " + String.valueOf(message));
-            }
-
-            //视频广告加载后，视频资源缓存到本地的回调，在此回调后，播放本地视频，流畅不阻塞。
-            @Override
-            public void onRewardVideoCached() {
-                if (mttRewardVideoAd != null) {
-                    //step6:在获取到广告后展示,强烈建议在onRewardVideoCached回调后，展示广告，提升播放体验
-                    //该方法直接展示广告
-//                    mttRewardVideoAd.showRewardVideoAd(RewardVideoActivity.this);
-
-                    //展示广告，并传入广告展示的场景
-                    mttRewardVideoAd.showRewardVideoAd(mContext, TTAdConstant.RitScenes.CUSTOMIZE_SCENES, "scenes_test");
-                    mttRewardVideoAd = null;
-                } else {
-                    ToastUitl.showShort("请先加载广告");
-                }
-            }
-
-            //视频广告的素材加载完毕，比如视频url等，在此回调后，可以播放在线视频，网络不好可能出现加载缓冲，影响体验。
-            @Override
-            public void onRewardVideoAdLoad(TTRewardVideoAd ad) {
-                Log.e(TAG, "onRewardVideoAdLoad");
-
-                mttRewardVideoAd = ad;
-                mttRewardVideoAd.setRewardAdInteractionListener(new TTRewardVideoAd.RewardAdInteractionListener() {
-
-                    @Override
-                    public void onAdShow() {
-                    }
-
-                    @Override
-                    public void onAdVideoBarClick() {
-                    }
-
-                    @Override
-                    public void onAdClose() {
-                    }
-
-                    //视频播放完成回调
-                    @Override
-                    public void onVideoComplete() {
-                    }
-
-                    @Override
-                    public void onVideoError() {
-                    }
-
-                    //视频播放完成后，奖励验证回调，rewardVerify：是否有效，rewardAmount：奖励梳理，rewardName：奖励名称
-                    @Override
-                    public void onRewardVerify(boolean rewardVerify, int rewardAmount, String rewardName) {
-                        putGoldResult();
-                    }
-
-                    @Override
-                    public void onSkippedVideo() {
-                    }
-                });
-                mttRewardVideoAd.setDownloadListener(new TTAppDownloadListener() {
-                    @Override
-                    public void onIdle() {
-                        mHasShowDownloadActive = false;
-                    }
-
-                    @Override
-                    public void onDownloadActive(long totalBytes, long currBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadActive==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
-
-                        if (!mHasShowDownloadActive) {
-                            mHasShowDownloadActive = true;
-                        }
-                    }
-
-                    @Override
-                    public void onDownloadPaused(long totalBytes, long currBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadPaused===totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
-                    }
-
-                    @Override
-                    public void onDownloadFailed(long totalBytes, long currBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadFailed==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
-                    }
-
-                    @Override
-                    public void onDownloadFinished(long totalBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadFinished==totalBytes=" + totalBytes + ",fileName=" + fileName + ",appName=" + appName);
-                    }
-
-                    @Override
-                    public void onInstalled(String fileName, String appName) {
-                        Log.d("DML", "onInstalled==" + ",fileName=" + fileName + ",appName=" + appName);
-
-                    }
-                });
-            }
-        });
     }
 
     private void putGoldResult() {
@@ -446,7 +535,7 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
                     return;
                 }
                 popupWindow.dismiss();
-                loadAd(MeiliaoConfig.AdvertisementId, TTAdConstant.VERTICAL);
+
             }
         });
     }
@@ -476,85 +565,35 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
             }
         });
     }
-
     private void initData() {
         SimpleCommonUtils.initEmoticonsEditText(ekBar.getEtChat());
         Intent intent = getIntent();
         mTargetId = intent.getStringExtra(TARGET_ID);
         mTargetAppKey = intent.getStringExtra(TARGET_APP_KEY);
+        functionGridView = new FunctionGridView(this,level);
+        getIntimacy();
         mTitle = intent.getStringExtra(JGApplication.CONV_TITLE);
         mMyInfo = JMessageClient.getMyInfo();
-        initEmoticonsKeyBoardBar();
         if (!TextUtils.isEmpty(mTargetId)) {
             //单聊
             mIsSingle = true;
             mChatView.setChatTitle(mTitle);
+            if(mTitle.equals("在线客服")){
+                isService=true;
+                jrButton.setVisibility(View.GONE);
+                tvOther.setVisibility(View.GONE);
+                ekBar.getVoiceOrText().setVisibility(View.GONE);
+            }else {
+                getFrozen();
+                getData();
+            }
             mConv = JMessageClient.getSingleConversation(mTargetId, mTargetAppKey);
             if (mConv == null) {
                 mConv = Conversation.createSingleConversation(mTargetId, mTargetAppKey);
             }
-            mChatAdapter = new ChattingListAdapter(mContext, mConv, longClickListener);
-        } else {
-            //群聊
-            mIsSingle = false;
-            mGroupId = intent.getLongExtra(GROUP_ID, 0);
-            mTargetId = String.valueOf(mGroupId);
-            final boolean fromGroup = intent.getBooleanExtra("fromGroup", false);
-            if (fromGroup) {
-                mChatView.setChatTitle(mTitle, intent.getIntExtra(MEMBERS_COUNT, 0));
-                mConv = JMessageClient.getGroupConversation(mGroupId);
-                mChatAdapter = new ChattingListAdapter(mContext, mConv, longClickListener);//长按聊天内容监听
-            } else {
-                mAtMsgId = intent.getIntExtra("atMsgId", -1);
-                mAtAllMsgId = intent.getIntExtra("atAllMsgId", -1);
-                mConv = JMessageClient.getGroupConversation(mGroupId);
-                if (mConv != null) {
-                    GroupInfo groupInfo = (GroupInfo) mConv.getTargetInfo();
-                    UserInfo userInfo = groupInfo.getGroupMemberInfo(mMyInfo.getUserName(), mMyInfo.getAppKey());
-                    //如果自己在群聊中，聊天标题显示群人数
-                    if (userInfo != null) {
-                        if (!TextUtils.isEmpty(groupInfo.getGroupName())) {
-                            mChatView.setChatTitle(mTitle, groupInfo.getGroupMembers().size());
-                        } else {
-                            mChatView.setChatTitle(mTitle, groupInfo.getGroupMembers().size());
-                        }
-                        mChatView.showRightBtn();
-                    } else {
-                        if (!TextUtils.isEmpty(mTitle)) {
-                            mChatView.setChatTitle(mTitle);
-                        } else {
-                            mChatView.setChatTitle(R.string.group);
-                        }
-                        mChatView.dismissRightBtn();
-                    }
-                } else {
-                    mConv = Conversation.createGroupConversation(mGroupId);
-                }
-                //更新群名
-                JMessageClient.getGroupInfo(mGroupId, new GetGroupInfoCallback(false) {
-                    @Override
-                    public void gotResult(int status, String desc, GroupInfo groupInfo) {
-                        if (status == 0) {
-                            mGroupInfo = groupInfo;
-                            mUIHandler.sendEmptyMessage(REFRESH_CHAT_TITLE);
-                        }
-                    }
-                });
-                if (mAtMsgId != -1) {
-                    mUnreadMsgCnt = mConv.getUnReadMsgCnt();
-                    // 如果 @我 的消息位于屏幕显示的消息之上，显示 有人@我 的按钮
-                    if (mAtMsgId + 8 <= mConv.getLatestMessage().getId()) {
-                        mChatView.showAtMeButton();
-                    }
-                    mChatAdapter = new ChattingListAdapter(mContext, mConv, longClickListener, mAtMsgId);
-                } else {
-                    mChatAdapter = new ChattingListAdapter(mContext, mConv, longClickListener);
-                }
-
-            }
-            //聊天信息标志改变
-            mChatView.setGroupIcon();
+            mChatAdapter = new ChattingListAdapter(mContext, mConv, longClickListener,mRxManager);
         }
+        initEmoticonsKeyBoardBar();
 
         String draft = intent.getStringExtra(DRAFT);
         if (draft != null && !TextUtils.isEmpty(draft)) {
@@ -569,13 +608,29 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
                 mUIHandler.sendEmptyMessageDelayed(REFRESH_LAST_PAGE, 1000);
             }
         });
+        cardView.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                UserHomeActivity.startAction(mTargetId);
+            }
+        });
         mChatView.setToBottom();
         mChatView.setConversation(mConv);
     }
 
+
+
+   public void setView(boolean isVis){
+        if(isVis&&!isService){
+            cardView.setVisibility(View.VISIBLE);
+            ivRecommend.setVisibility(View.VISIBLE);
+        }else {
+            cardView.setVisibility(View.GONE);
+            ivRecommend.setVisibility(View.GONE);
+        }
+    }
+
     private void initView() {
-        ImageView iv = (ImageView) findViewById(R.id.iv_get_money);
-        Glide.with(this).load(R.mipmap.money_gif).into(iv);
         lvChat = (DropDownListView) findViewById(R.id.lv_chat);
         ekBar = (XhsEmoticonsKeyBoard) findViewById(R.id.ek_bar);
         initListView();
@@ -657,21 +712,23 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
     private void initEmoticonsKeyBoardBar() {
         ekBar.setAdapter(SimpleCommonUtils.getCommonAdapter(this, emoticonClickListener));
         ekBar.addOnFuncKeyBoardListener(this);
-
          gridView = new SimpleAppsGridView(this);
         ekBar.addFuncView(gridView);
+        if(!isService){
+            ekBar.addFunView(functionGridView);
+        }else {
+            ekBar.setServiceStatus();
+        }
         gridView.setBalance(gold,mTargetId,this);
 
         ekBar.getEtChat().setOnSizeChangedListener((w, h, oldw, oldh) -> scrollToBottom());
         //发送按钮
         //发送文本消息
         ekBar.getBtnSend().setOnClickListener(v -> {
-
-            UserInfo userInfo = (UserInfo)mConv.getTargetInfo();
-            if(userInfo.isFriend()||MyAPP.getmUserBean().getSex()==2){
-                    next();
-            }else {
+            if(dataBean.getSex()==1){
                 chatPayment();
+            }else {
+                checkSecurity();
             }
 
         });
@@ -680,16 +737,38 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
             @Override
             public void onClick(View v) {
                 int i = v.getId();
-                if (i == R.id.btn_voice_or_text) {
+                if (i == R.id.btn_voice_or_text&&level>0) {
                     ekBar.setVideoText();
                     ekBar.getBtnVoice().initConv(mConv, mChatAdapter, mChatView);
+                }else {
+                    ToastUitl.showShort("亲密度达到1级时解锁");
                 }
             }
         });
 
     }
+    private void checkSecurity() {
+        String mcgContent = ekBar.getEtChat().getText().toString();
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("content",mcgContent);
+        OkHttpClientManager.getAsyncMore(ApiKey.ADMIN_TOOL_IMSECURITY,defMap, new
+                NewRequestCallBack<Result>(Result.class) {
+                    @Override
+                    public void onSuccess(Result result) {
+                        if(result.getResultCode()==0){
+                            next();
+                        }
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+
+                    }
+                });
+    }
 
     public void next() {
+        addIntimacy();
         String mcgContent = ekBar.getEtChat().getText().toString();
         scrollToBottom();
         if (mcgContent.equals("")) {
@@ -737,6 +816,7 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
         defMap.put("giveUserId", MyAPP.getUserId());
         defMap.put("receiveUserId", mTargetId);
         defMap.put("giveUserName", MyAPP.getmUserBean().getNickname());
+
         OkHttpClientManager.postAsyncAddHead(ADMIN_GIFTRECORD_CHAT, defMap, "", new
                 NewRequestCallBack<UserAccountBean>(UserAccountBean.class) {
 
@@ -746,13 +826,36 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
                         if(bean!=null&&bean.getData()!=null){
                             int gold = MyAPP.saveMoney(bean);
                             gridView.setBalance(gold+"", mTargetId,null);
-                            next();
+                            checkSecurity();
                         }
                     }
 
                     @Override
                     public void onError(String msg, int code) {
                         showPopNoMoneyWindow();
+                    }
+                });
+    }
+
+    /**
+     *
+     * 增加亲密度
+     *
+     */
+    private void addIntimacy() {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("userId", MyAPP.getUserId());
+        defMap.put("toUserId", mTargetId);
+        OkHttpClientManager.postAsyncAddHead(ADMIN_INTIMACY_ADD, defMap, "", new
+                NewRequestCallBack<Result>(Result.class) {
+                    @Override
+                    public void onSuccess(Result bean) {
+//                        intimacy++;
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+
                     }
                 });
     }
@@ -801,12 +904,6 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_get_money:
-                if (isFastLoadAdDoubleClick()) {
-                    return;
-                }
-                loadAd(MeiliaoConfig.AdvertisementId, TTAdConstant.VERTICAL);
-                break;
             case R.id.jmui_return_btn:
                 returnBtn();
                 break;
@@ -858,18 +955,7 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
             }
             JGApplication.delConversation = mConv;
         }
-        if (isChatRoom) {
-            ChatRoomManager.leaveChatRoom(Long.valueOf(mTargetId), new BasicCallback() {
-                @Override
-                public void gotResult(int i, String s) {
-                    ChatActivity.this.finish();
-                    ChatActivity.super.onBackPressed();
-                }
-            });
-        } else {
             finish();
-            super.onBackPressed();
-        }
     }
 
     private void dismissSoftInput() {
@@ -996,6 +1082,7 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
     @Override
     protected void onResume() {
         String targetId = getIntent().getStringExtra(TARGET_ID);
+
         if (mIsSingle) {
             if (null != targetId) {
                 String appKey = getIntent().getStringExtra(TARGET_APP_KEY);
@@ -1542,7 +1629,7 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
                 String path = data.getStringExtra("path");
                 LocationContent locationContent = new LocationContent(latitude,
                         longitude, mapview, street);
-                locationContent.setStringExtra("path", path);
+//                locationContent.setStringExtra("path", path);
                 Message message = mConv.createSendMessage(locationContent);
                 MessageSendingOptions options = new MessageSendingOptions();
                 options.setNeedReadReceipt(true);
@@ -1658,6 +1745,13 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
      * @param msg
      */
     public void handleSendMsg(Message msg) {
+//        String svga =((CustomContent) msg.getContent()).getStringValue("svga");
+//        if(svga!=null&&svga.length()>0){
+//            mChatAdapter.setSendMsgs(msg);
+//            mChatView.setToBottom();
+//        }else {
+//        }
+        setView(false);
         mChatAdapter.setSendMsgs(msg);
         mChatView.setToBottom();
     }
@@ -1672,6 +1766,8 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
         @Override
         public void handleMessage(android.os.Message msg) {
             super.handleMessage(msg);
+            intimacy=0;
+            Log.e("","");
             ChatActivity activity = mActivity.get();
             if (activity != null) {
                 switch (msg.what) {

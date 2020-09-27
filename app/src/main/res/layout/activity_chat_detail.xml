@@ -428,6 +428,19 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/group_chat_del_jb"
+                style="@style/ChatDetailItem">
+
+                <TextView
+                    style="@style/ChatDetailItemHit"
+                    android:text="举报"
+                    />
+
+                <TextView style="@style/ChatDetailItemContent"/>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/detail_add_friend"
@@ -453,6 +466,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:visibility="gone"
                 android:layout_marginTop="20dp">
 
                 <Button

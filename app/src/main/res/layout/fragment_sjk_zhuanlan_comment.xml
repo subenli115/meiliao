@@ -21,19 +21,18 @@
 
         <EditText
             android:id="@+id/input_editor"
-            android:layout_width="0dp"
+            android:layout_width="368dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:gravity="center_vertical"
             android:hint="说点什么吧"
-            android:paddingLeft="12dp"
             android:imeActionLabel="发送"
             android:imeOptions="actionSend"
             android:maxLines="1"
+            android:paddingLeft="12dp"
             android:textColor="#666666"
-            android:textSize="14sp"
-            />
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/iv_sjk_fulllive_send"

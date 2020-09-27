@@ -1,12 +1,10 @@
 package com.ziran.meiliao.im.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseActivity;
-import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.im.activity.fragment.WechatFragment;
 
 /**
@@ -16,10 +14,8 @@ import com.ziran.meiliao.im.activity.fragment.WechatFragment;
 public class WechatActivity extends BaseActivity {
 
 
-    public static void startAction(Context mContext, String homepageImages, String avatar, String userId, boolean mIsSelf) {
+    public static void startAction(Context mContext, String userId, boolean mIsSelf) {
         Intent intent = new Intent(mContext, WechatActivity.class);
-        intent.putExtra("homepageImages",homepageImages);
-        intent.putExtra("avatar",avatar);
         intent.putExtra("userId",userId);
         if(mIsSelf){
             intent.putExtra("isSelf","1");

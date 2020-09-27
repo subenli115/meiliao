@@ -56,12 +56,14 @@ public class ReportDetailActivity  extends CommonHttpActivity<CommonPresenter, C
     private String title;
     @Bind(R.id.snpl_moment_add_photos)
     BGASortableNinePhotoLayout mPhotosSnpl;
+    private String id;
 
 
-    public static void startAction(String title) {
+    public static void startAction(String title, String id) {
         Activity activity = AppManager.getAppManager().currentActivity();
         Intent intent = new Intent(activity, ReportDetailActivity.class);
         intent.putExtra("title",title);
+        intent.putExtra("id",id);
         activity.startActivity(intent);
     }
 
@@ -83,16 +85,23 @@ public class ReportDetailActivity  extends CommonHttpActivity<CommonPresenter, C
         if(getIntent()!=null){
              title = getIntent().getStringExtra("title");
             igv.setRigthText(title);
+            id = getIntent().getStringExtra("id");
         }
         mPhotosSnpl.setDelegate(this);
     }
 
     private void treport(ArrayList<String> list) {
         Map<String, String> defMap = MapUtils.getDefMap(true);
-        if (list != null) {
-            String str = String.join(",", list);
-            defMap.put("img", str);
+        if (list != null&&list.size()>0) {
+            if(list.size()>1){
+                String str = String.join(",", list);
+                defMap.put("img", str);
+            }else {
+                defMap.put("img", list.get(0));
+            }
         }
+        defMap.put("dataType","1");
+        defMap.put("reportContentId",id);
         defMap.put("reportUserId", MyAPP.getUserId());
         defMap.put("remarks",et_content.getContent());
         defMap.put("reportReason",title);

@@ -1,99 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="33px"
-
     android:layout_marginRight="30px"
     android:layout_marginTop="31px"
-    android:background="@drawable/normal_bg_gray_fc"
+    android:background="@drawable/normal_bg_white4"
     android:layout_height="wrap_content">
-    <ImageView
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:id="@+id/iv_item_sjk_act_img"
-        android:layout_margin="20px"
-        android:layout_width="206px"
-        android:layout_height="234px"
-        >
-    </ImageView>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/fl"
+        android:layout_margin="24px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.ziran.meiliao.common.commonwidget.RoundImageView
+            android:id="@+id/iv_item_sjk_act_img"
+            android:layout_width="160px"
+            app:roundimageview_type="round"
+            app:roundimageview_borderRadius="10dp"
+            android:layout_height="160px"
+            app:layout_auto_baseheight="width"
+            />
+        <TextView
+            android:id="@+id/tv_real"
+            android:layout_width="100px"
+            android:layout_marginTop="140px"
+            android:text="真人"
+            android:paddingTop="5px"
+            app:layout_auto_baseheight="width|marginTop"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5px"
+            android:textSize="22px"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_gradient"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
     <TextView
         android:id="@+id/iv_item_sjk_act_label"
         android:layout_width="88px"
         android:layout_height="36px"
-        android:text="热门"
-        android:visibility="gone"
-        android:gravity="center"
-        android:layout_marginTop="20px"
+        android:layout_alignEnd="@+id/recyclerView"
         android:layout_marginLeft="20px"
-        android:textSize="24px"
-        android:textColor="@color/white"
+        android:layout_marginTop="20px"
+        android:layout_marginEnd="0dp"
         android:background="@drawable/normal_bg_orange"
+        android:gravity="center"
+        android:text="热门"
+        android:textColor="@color/white"
+        android:textSize="24px"
+        android:visibility="gone" />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/all_top"
+        android:layout_toRightOf="@+id/fl"
+        android:layout_marginTop="5px"
+        android:layout_alignTop="@+id/fl"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:paddingRight="10px"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="慈悲"
+            android:textSize="36px"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxEms="8"
+            android:textColor="#3E3E59"
+            android:id="@+id/tv_name"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_real_name"
+            android:layout_toRightOf="@+id/tv_name"
+            android:layout_width="28px"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_height="32px"
+            android:src="@mipmap/icon_real_name"
+            />
+        <ImageView
+            android:id="@+id/iv_real_person"
+            android:layout_toRightOf="@+id/iv_real_name"
+            android:layout_width="28px"
+            android:visibility="gone"
+            android:layout_marginLeft="8px"
+            android:layout_height="32px"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_real_person"
+            />
+            <TextView
+                android:id="@+id/tv_other"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:textSize="18px"
+                android:paddingLeft="14px"
+                android:paddingTop="5px"
+                android:paddingBottom="5px"
+                android:layout_marginRight="24px"
+                android:paddingRight="14px"
+                android:textColor="@color/white"
+                android:background="@drawable/normal_bg_gray_4d"
+                />
+        <TextView
+            android:id="@+id/tv_other2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:textSize="24px"
+            android:visibility="gone"
+            android:paddingLeft="14px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:layout_marginRight="10px"
+            android:paddingRight="14px"
+            android:textColor="#474766"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all_info"
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="10px"
+    android:layout_alignLeft="@+id/all_top"
+    android:layout_below="@+id/all_top"
+    android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all_age"
+    android:paddingTop="10px"
+    android:paddingBottom="10px"
+    android:layout_width="wrap_content"
+    android:layout_marginRight="10px"
+    android:background="@drawable/normal_bg_bule_address"
+    android:orientation="horizontal"
+    android:paddingLeft="12px"
+    android:paddingRight="12px"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_age"
+        android:layout_width="18px"
+        android:layout_gravity="center_vertical"
+        android:layout_height="20px"
+        android:src="@mipmap/icon_home_sex_man"
         />
     <TextView
+        android:id="@+id/tv_age"
         android:layout_width="wrap_content"
-        android:paddingRight="10px"
-        android:textStyle="bold"
+        android:layout_marginLeft="5px"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/iv_item_sjk_act_img"
-        android:layout_alignTop="@+id/iv_item_sjk_act_img"
-        android:text="慈悲疗愈力元旦"
+        android:text="22岁"
+        android:textColor="#459BFF"
+        android:textSize="24px"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:id="@+id/tv_constellation"
+        android:background="@drawable/normal_bg_gray_f7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10px"
+        android:paddingBottom="10px"
+        android:paddingLeft="12px"
+        android:paddingRight="12px"
         android:layout_marginRight="10px"
-        android:textSize="32px"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:maxEms="9"
-        android:textColor="@color/textColor_333"
-        android:id="@+id/tv_title"
+        android:text="射手座"
+        android:textColor="#474766"
+        android:textSize="24px"
         />
 
     <TextView
-        android:id="@+id/tv_teacher_name"
+        android:id="@+id/tv_height"
+        android:background="@drawable/normal_bg_gray_f7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24px"
+        android:paddingTop="10px"
+        android:paddingBottom="10px"
+        android:layout_marginRight="10px"
+        android:paddingLeft="12px"
+        android:paddingRight="12px"
+
+        android:text="185cm"
+        android:textColor="#474766"
         android:textSize="24px"
-        android:text="导师:胡君梅"
+        />
+    <TextView
+        android:id="@+id/tv_shape"
+        android:background="@drawable/normal_bg_gray_f7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10px"
+        android:paddingBottom="10px"
+        android:paddingLeft="12px"
+        android:paddingRight="12px"
+        android:text="偏瘦"
+        android:textColor="#474766"
+        android:textSize="24px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="14px"
+            android:layout_alignLeft="@+id/all_info"
+            android:layout_below="@+id/all_info"
+            android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26px"
+        android:layout_marginTop="14px"
+        android:text="期待认识有趣的人和事"
         android:maxEms="11"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/textColor_666666"
-        android:layout_alignLeft="@+id/tv_title"
-        android:layout_below="@+id/tv_title"
+        android:textColor="#474766"
+        android:layout_alignLeft="@+id/all_info"
+        android:layout_below="@+id/all_info"
         />
 
     <TextView
-        android:id="@+id/tv_address"
-        android:textColor="@color/textColor_666666"
+        android:id="@+id/tv_other1"
+        android:layout_alignParentRight="true"
+        android:textSize="26px"
+        android:text="关注"
+        android:gravity="center"
+        android:paddingLeft="19px"
+        android:layout_marginTop="7px"
+        android:layout_marginRight="24px"
+        android:paddingRight="19px"
+        android:layout_alignBottom="@+id/all_top"
+        android:textColor="#469CFF"
+        android:paddingTop="6px"
+        android:paddingBottom="6px"
+        android:background="@drawable/normal_bg_bule_tran"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11px"
-        android:text="深圳"
-        android:textSize="24px"
-        android:layout_alignLeft="@+id/tv_teacher_name"
-        android:layout_below="@+id/tv_teacher_name"
-        />
-    <TextView
-        android:id="@+id/tv_time"
-        android:textColor="@color/textColor_666666"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="20px"
-        android:layout_marginLeft="20px"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_address"
-        android:layout_marginTop="11px"
-        android:text="1月1日开课"
-        android:textSize="24px"
-        android:paddingRight="15px"
-        android:layout_below="@+id/tv_teacher_name"
-        />
-
+        android:layout_height="wrap_content" />
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="wrap_content"
         android:id="@+id/all_num"
         android:layout_height="wrap_content"
         android:background="@drawable/normal_bg_read_7460"
-        android:layout_alignBottom="@+id/iv_item_sjk_act_img"
+        android:layout_alignBottom="@+id/fl"
         android:layout_alignLeft="@+id/tv_teacher_name"
         >
 
@@ -105,37 +270,9 @@
     android:orientation="horizontal"
     android:layout_marginLeft="110px"
     android:layout_marginRight="40px"
-    android:layout_alignBottom="@+id/iv_item_sjk_act_img"
+    android:layout_alignBottom="@+id/fl"
     android:id="@+id/autoLinearLayout2">
-    <TextView
-        android:id="@+id/tv_fh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="￥"
-        android:textSize="26px"
-        android:textColor="#ED7460"
-        />
-    <TextView
-        android:id="@+id/tv_price"
-        android:textColor="#ED7460"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="8888"
-        android:textSize="26px"
-        />
 </com.zhy.autolayout.AutoLinearLayout>
 
-    <TextView
-        android:id="@+id/tv_remain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/autoLinearLayout2"
-        android:layout_gravity="center"
-        android:layout_toEndOf="@+id/iv_item_sjk_act_img"
-        android:padding="2px"
-        android:text="仅限7位"
-        android:background="@drawable/normal_bg_red_tran"
-        android:textColor="#ED7460"
-        android:textSize="26px" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

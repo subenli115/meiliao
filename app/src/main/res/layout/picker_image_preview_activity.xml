@@ -60,7 +60,7 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -77,6 +77,6 @@
             <include layout="@layout/action_bar_right_picker_preview" />
 
         </androidx.appcompat.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 </FrameLayout>

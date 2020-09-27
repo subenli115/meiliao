@@ -550,7 +550,7 @@ public class FileUtil {
      * 复制整个文件夹内容
      *
      * @param oldPath String 原文件路径 如：c:/fqf
-     * @param newPath String 复制后路径 如：f:/fqf/ff
+     * @param newPath String 复制后路径 如：f:/fqf/blue_btn_selector
      * @return boolean
      */
     public static void copyFolder(String oldPath, String newPath) {

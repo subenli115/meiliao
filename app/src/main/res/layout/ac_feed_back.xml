@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_title_text="意见反馈"
+        app:ntb_tv_left="showAndFinish" />
+<LinearLayout
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_below="@+id/ntb"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <View style="@style/hor_match_line_8dp" />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="上传图片"
+    android:paddingTop="8dp"
+    android:paddingLeft="12dp"
+    android:textColor="@color/textColor_333"
+    android:textSize="16sp"
+    />
+
+
+
+    <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
+        android:id="@+id/snpl_moment_add_photos"
+        style="@style/WrapWrap"
+        android:layout_below="@+id/common_title"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="15dp"
+        app:bga_snpl_deleteDrawable="@mipmap/bga_pp_ic_delete"
+        app:bga_snpl_deleteDrawableOverlapQuarter="false"
+        app:bga_snpl_editable="true"
+        app:bga_snpl_itemCornerRadius="10dp"
+        app:bga_snpl_itemSpanCount="3"
+        app:bga_snpl_itemWhiteSpacing="4dp"
+        app:bga_snpl_itemWidth="0dp"
+        app:bga_snpl_maxItemCount="5"
+        app:bga_snpl_otherWhiteSpacing="100dp"
+        app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
+        app:bga_snpl_plusDrawable="@mipmap/icon_report_add"
+        app:bga_snpl_plusEnable="true"
+        app:bga_snpl_sortable="true" />
+
+    <View
+        android:id="@+id/view_item_group_bottom_line"
+        style="@style/hor_match_line"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentBottom="true"/>
+
+
+    <com.ziran.meiliao.widget.CustomEditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/common_title"
+        android:scrollbars="vertical"
+        android:lines="4"
+        android:hint="文字说明"
+        android:maxLength="100"
+        android:paddingLeft="12dp"
+        android:paddingTop="25px"
+        android:textSize="16sp"
+        android:paddingRight="30px"
+        android:paddingBottom="24px"
+        android:textColor="@color/black"
+        android:textColorHint="@color/textColor_b2"
+            />
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_qd"
+
+        android:layout_width="match_parent"
+        android:layout_marginBottom="36px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/ll"
+        android:text="确定"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:background="@drawable/normal_bg_bule_px"
+        />
+</RelativeLayout>

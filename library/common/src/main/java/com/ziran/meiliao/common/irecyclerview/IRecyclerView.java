@@ -11,6 +11,7 @@ import androidx.core.view.MotionEventCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -65,7 +66,7 @@ public class IRecyclerView extends RecyclerView {
     private LinearLayout mHeaderViewContainer;
 
 
-    private LinearLayout mFooterViewContainer;
+    public LinearLayout mFooterViewContainer;
 
     private View mRefreshHeaderView;
 
@@ -91,7 +92,6 @@ public class IRecyclerView extends RecyclerView {
         int refreshFinalMoveOffset = -1;
         boolean refreshEnabled;
         boolean loadMoreEnabled;
-
         try {
             refreshEnabled = a.getBoolean(R.styleable.IRecyclerView_refreshEnabled, false);
             loadMoreEnabled = a.getBoolean(R.styleable.IRecyclerView_loadMoreEnabled, false);
@@ -334,7 +334,9 @@ public class IRecyclerView extends RecyclerView {
     }
 
     public void setHeadView(View headView) {
+        Log.e("setHeadView","2");
         if (!hasHeaderView && headView != null) {
+            Log.e("setHeadView","1");
             addHeaderView(headView);
         }
     }

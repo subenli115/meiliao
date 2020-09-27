@@ -30,6 +30,7 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
@@ -100,14 +101,23 @@ public class SetNoteActivity extends BaseActivity {
                 ntb.setTitleText("昵称");
                 editText.setText(bean.getNickname());
                 tvHint.setVisibility(View.VISIBLE);
-            }else {
-                ntb.setTitleText("年龄");
-                editText.setText(bean.getAge()+"");
-                InputFilter[] filters = {new InputFilter.LengthFilter(2)};
-                editText.setFilters(filters);
-                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-                tv_length.setText("请输入1-99的数字");
+            }else if(type.equals("school")){
+                if(bean.getSchool()!=null){
+                    editText.setText(bean.getSchool()+"");
+                }
+                editText.setHint("请输入你的毕业院校");
+            }else if(type.equals("job")){
+                if(bean.getJob()!=null){
+                    editText.setText(bean.getJob()+"");
+                }
+                editText.setHint("请输入你的岗位");
+            }else if(type.equals("major")){
+                if(bean.getMajor()!=null){
+                    editText.setText(bean.getMajor()+"");
+                }
+                editText.setHint("请输入你的专业");
             }
+
         }
     }
     private void checkNick() {
@@ -149,7 +159,6 @@ public class SetNoteActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_save:
                 if(type.equals("nick")){
-
                     checkNick();
                 }else{
                     edit();
@@ -177,9 +186,14 @@ public class SetNoteActivity extends BaseActivity {
             defMap.put("nickname",editText.getText().toString());
         }else if(type.equals("sign")){
             defMap.put("introduce",et_content.getContent());
-        }else {
-            defMap.put("age",editText.getText().toString());
+        }else if(type.equals("major")){
+            defMap.put("major",editText.getText().toString());
+        }else if(type.equals("school")){
+            defMap.put("school",editText.getText().toString());
+        }else if(type.equals("job")){
+            defMap.put("job",editText.getText().toString());
         }
+        defMap.put("registrationId",JPushInterface.getRegistrationID(mContext));
         OkHttpClientManager.putAsyncAddHead(ApiKey.ADMIN_USER_UPDATE, defMap, new
                 NewRequestCallBack<UserBean>(UserBean.class) {
                     @Override

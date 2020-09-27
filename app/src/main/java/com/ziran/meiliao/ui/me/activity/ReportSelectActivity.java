@@ -51,12 +51,13 @@ public class ReportSelectActivity extends  CommonHttpActivity<CommonPresenter, C
     ItemGroupView igv6;
     private List<ReportListBean.DataBean> listData;
     private ArrayList<ItemGroupView> list;
+    private String id;
 
 
-
-    public static void startAction() {
+    public static void startAction(String id) {
         Activity activity = AppManager.getAppManager().currentActivity();
         Intent intent = new Intent(activity, ReportSelectActivity.class);
+        intent.putExtra("id",id);
         activity.startActivity(intent);
     }
 
@@ -75,6 +76,10 @@ public class ReportSelectActivity extends  CommonHttpActivity<CommonPresenter, C
 
     @Override
     public void initView() {
+        if(getIntent()!=null){
+            Intent intent = getIntent();
+             id = intent.getStringExtra("id");
+        }
          list = new ArrayList<>();
         list.add(igv1);
         list.add(igv2);
@@ -98,7 +103,7 @@ public class ReportSelectActivity extends  CommonHttpActivity<CommonPresenter, C
            gotoActivity(((ItemGroupView)view).gettvLeftText().getText().toString());
     }
         public void gotoActivity(String title){
-            ReportDetailActivity.startAction(title);
+            ReportDetailActivity.startAction(title,id);
         }
 
     @Override

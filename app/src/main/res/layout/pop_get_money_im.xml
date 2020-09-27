@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent60"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent60">
 
 <ImageView
     android:id="@+id/iv_star"
@@ -23,6 +22,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="400px"
     android:layout_centerHorizontal="true"
+    app:layout_auto_baseheight="width"
     android:layout_gravity="center"
     android:orientation="vertical">
 <com.zhy.autolayout.AutoLinearLayout
@@ -40,7 +40,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="领取ML币成功"
+        android:text="领取奖励"
         android:textSize="56px"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/black"
@@ -90,12 +90,12 @@ android:gravity="center_horizontal"
         android:layout_marginTop="65px"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
-        android:text="确定"
+        android:text="愉快收下"
         android:paddingTop="20px"
         android:paddingBottom="20px"
         android:textSize="30px"
         android:gravity="center"
-        android:background="@drawable/normal_bg_yellow"
+        android:background="@drawable/normal_bg_orange_44"
         />
 
 
@@ -103,7 +103,8 @@ android:gravity="center_horizontal"
 </com.zhy.autolayout.AutoRelativeLayout>
     <ImageView
         android:layout_width="347px"
-        android:layout_height="248px"
+        app:layout_auto_baseheight="width"
+        android:layout_height="278px"
         android:layout_alignBottom="@+id/iv_star"
         android:layout_centerHorizontal="true"
         android:background="@mipmap/icon_gold"

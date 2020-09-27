@@ -25,6 +25,7 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.CreateGroupCallback;
@@ -40,6 +41,12 @@ import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
 
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MyAPP;
+import com.ziran.meiliao.common.commonutils.ToastUitl;
+import com.ziran.meiliao.common.commonwidget.LoadingDialog;
+import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
+import com.ziran.meiliao.constant.ApiKey;
+import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.activity.ChatDetailActivity;
 import com.ziran.meiliao.im.activity.GroupAvatarActivity;
 import com.ziran.meiliao.im.activity.GroupMemberListActivity;
@@ -63,6 +70,10 @@ import com.ziran.meiliao.im.utils.ToastUtil;
 import com.ziran.meiliao.im.utils.dialog.LoadDialog;
 import com.ziran.meiliao.im.view.ChatDetailView;
 import com.ziran.meiliao.im.view.SlipButton;
+import com.ziran.meiliao.ui.bean.StringDataV2Bean;
+import com.ziran.meiliao.ui.me.activity.ReportSelectActivity;
+import com.ziran.meiliao.ui.priavteclasses.activity.UserHomeActivity;
+import com.ziran.meiliao.utils.MapUtils;
 
 
 public class ChatDetailController implements OnClickListener, OnItemClickListener,
@@ -446,7 +457,9 @@ public class ChatDetailController implements OnClickListener, OnItemClickListene
                 intent.putExtra("note", mUserInfo.getNotename());
                 mContext.startActivityForResult(intent, 1);
                 break;
-
+            case R.id.group_chat_del_jb:
+                ReportSelectActivity.startAction(mTargetId);
+                break;
 
         }
     }
@@ -564,7 +577,7 @@ public class ChatDetailController implements OnClickListener, OnItemClickListene
             //单聊
         } else if (position < mCurrentNum) {
             //会话中点击右上角进入拉人进群界面,点击add按钮之前的user头像.
-            OtherUserHomeActivity.startAction(mTargetId);
+                UserHomeActivity.startAction(mTargetId);
         }
 
     }
@@ -723,6 +736,7 @@ public class ChatDetailController implements OnClickListener, OnItemClickListene
                             dialog1.dismiss();
                             if (responseCode == 0) {
                                 ToastUtil.shortToast(mContext, "添加成功");
+                                    add(userName);
                             } else {
                                 ChatDetailView.mBlockBtn.setChecked(false);
                                 ToastUtil.shortToast(mContext, "添加失败" + responseMessage);
@@ -735,6 +749,7 @@ public class ChatDetailController implements OnClickListener, OnItemClickListene
                         public void gotResult(int responseCode, String responseMessage) {
                             dialog1.dismiss();
                             if (responseCode == 0) {
+                                delete(userName);
                                 ToastUtil.shortToast(mContext, "移除成功");
                             } else {
                                 ChatDetailView.mBlockBtn.setChecked(true);
@@ -747,6 +762,43 @@ public class ChatDetailController implements OnClickListener, OnItemClickListene
                 break;
         }
     }
+
+    private void add(String userName) {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("targetUserId",""+userName);
+        defMap.put("userId",""+ MyAPP.getUserId());
+        OkHttpClientManager.postAsyncAddHead(ApiKey.ADMIN_BLACKLIST_ADD, defMap,"",new NewRequestCallBack<StringDataV2Bean>(StringDataV2Bean.class) {
+            @Override
+            protected void onSuccess(StringDataV2Bean result) {
+
+            }
+
+            @Override
+            public void onError(String msg, int code) {
+                super.onError(msg, code);
+            }
+        });
+
+    }
+
+    private void delete(String userName) {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("targetUserId",""+userName);
+        defMap.put("userId",""+ MyAPP.getUserId());
+        OkHttpClientManager.putAsyncAddHead(ApiKey.ADMIN_BLACKLIST_DELETE, defMap, new NewRequestCallBack<StringDataV2Bean>(StringDataV2Bean.class) {
+            @Override
+            protected void onSuccess(StringDataV2Bean result) {
+
+            }
+
+            @Override
+            public void onError(String msg, int code) {
+                super.onError(msg, code);
+            }
+        });
+    }
+
+
 
     public void getNoDisturb() {
         if (mUserInfo != null) {

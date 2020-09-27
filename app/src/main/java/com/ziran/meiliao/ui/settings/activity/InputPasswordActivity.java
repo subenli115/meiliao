@@ -24,6 +24,7 @@ import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonwidget.LoadingDialog;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.entry.LoginBean;
+import com.ziran.meiliao.im.utils.CommonUtils;
 import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.CheckPhoneBean;
 import com.ziran.meiliao.ui.bean.TagCheckBean;
@@ -186,6 +187,7 @@ public class InputPasswordActivity extends BaseActivity<LoginPresenter, LoginMod
             codeNumber = intent.getStringExtra("CodeNumber");
         }
         DisplayUtil.measureSoftKeyBoardHeight(this);
+
         etPwd.setOnEditorActionListener(mOnEditorActionListener);
         etPwd.addTextChangedListener(textWatcher);
         edPhone.addTextChangedListener(textWatcher);
@@ -221,6 +223,7 @@ public class InputPasswordActivity extends BaseActivity<LoginPresenter, LoginMod
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
+                CommonUtils.hideKeyboard(this);
                 login();
                 break;
         }

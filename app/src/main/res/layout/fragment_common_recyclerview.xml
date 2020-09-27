@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:id="@+id/rootFrame"
-    android:background="@color/white"
+    android:background="#F7F8FA"
     android:layout_height="match_parent">
+
 
     <com.ziran.meiliao.common.irecyclerview.IRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/arl_tab"
         app:loadMoreEnabled="true"
         app:refreshEnabled="true"
-
         />
 
     <com.ziran.meiliao.common.commonwidget.LoadingTip
         android:id="@+id/loadedTip"
         android:layout_width="match_parent"
+        android:layout_below="@+id/arl_tab"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center" />
@@ -26,4 +28,5 @@
 
 
 
-</FrameLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

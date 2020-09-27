@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/main"
     android:layout_height="match_parent"
     >
 
+    <FrameLayout
+        android:id="@+id/fl_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+<com.zhy.autolayout.AutoFrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_common_height"
+        android:background="@color/white"
+        android:paddingTop="9dp"
+        app:tl_underline_color="@color/white"
+        app:tl_underline_gravity="TOP"
+        tl:tl_iconHeight="22dp"
+        tl:tl_iconWidth="22dp"
+        tl:tl_textSelectColor="#2C8AF5"
+        tl:tl_textUnselectColor="#B8CDE6"
+        tl:tl_textsize="9sp"
+        tl:tl_underline_height="1dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_fb"
+        android:layout_width="80px"
+        android:paddingTop="3dp"
+        android:paddingBottom="6dp"
+        android:layout_gravity="center"
+        android:layout_height="80px"
+        app:layout_auto_baseheight="width"
+        android:layout_marginTop="3dp"
+        android:src="@mipmap/tab_release"
+        />
+
+</com.zhy.autolayout.AutoFrameLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>

@@ -111,9 +111,6 @@ public class CardItemView extends FrameLayout {
     public void bindLayoutResId(int layoutResId) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         LinearLayout ll =(LinearLayout) inflater.inflate(layoutResId, null);
-        RelativeLayout childAt1 = (RelativeLayout) ll.getChildAt(0);
-        RelativeLayout rl = (RelativeLayout) childAt1.getChildAt(4);
-        ImageView iv = (ImageView) rl.getChildAt(2);
         addView(ll, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
     }
 

@@ -34,21 +34,38 @@
             android:layout_marginBottom="28px"
             android:text="身心净化水元素"
             android:textColor="@color/textColor_333"
-            android:textSize="38px"
+            android:textSize="36px"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_item_main_home_more"
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv_item_main_home_title"
+            android:orientation="horizontal"
+            android:padding="11px"
+            android:layout_marginTop="51px"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30px"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="更多"
-            android:textColor="@color/textColor_999"
-            android:textSize="13sp" />
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_item_main_home_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="更多"
+                android:textColor="@color/black"
+                android:textSize="24px" />
+            <ImageView
+                android:layout_width="8px"
+                android:layout_marginLeft="11px"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:layout_alignBottom="@+id/tv_item_main_home_more"
+                android:layout_height="14px"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/icon_more_right"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>

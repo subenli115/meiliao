@@ -70,6 +70,24 @@ public class MeiliaoConfig {
     private static String privacyUrl = "http://39.98.216.174/privacy.html";
     private static String greenUrl = "http://39.98.216.174/green.html";
 
+    public static String getLatitude() {
+        return latitude;
+    }
+
+    public static void setLatitude(String latitude) {
+        MeiliaoConfig.latitude = latitude;
+    }
+
+    public static String getLongitude() {
+        return longitude;
+    }
+
+    public static void setLongitude(String longitude) {
+        MeiliaoConfig.longitude = longitude;
+    }
+
+    public static String latitude;
+    public static String longitude;
 
     public static String getGreenUrl() {
         return greenUrl;

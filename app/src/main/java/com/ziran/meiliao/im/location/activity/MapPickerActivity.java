@@ -2,11 +2,17 @@ package com.ziran.meiliao.im.location.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,6 +61,7 @@ import cn.jpush.im.android.api.enums.ConversationType;
 import cn.jpush.im.android.api.model.Conversation;
 
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.im.application.JGApplication;
 import com.ziran.meiliao.im.location.adapter.MapPickerAdapter;
 import com.ziran.meiliao.im.location.service.LocationService;
@@ -107,18 +114,15 @@ public class MapPickerActivity extends AppCompatActivity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.picker_activity_map_picker);
-        locationService = JGApplication.locationService;
+        locationService = MyAPP.locationService;
         locationService.registerListener(mListener);//是否应该在onStart中注册
-
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         mDensity = dm.density;
         mDensityDpi = dm.densityDpi;
         mWidth = dm.widthPixels;
         mHeight = dm.heightPixels;
-
         mPopupView = LayoutInflater.from(this).inflate(R.layout.location_popup_layout, null);
-
         linearLayout = (LinearLayout) findViewById(R.id.listNearbyHolder);
         relativeLayout = (RelativeLayout) findViewById(R.id.mapholder);
         defineMyLocationButton = findViewById(R.id.define_my_location);
@@ -276,13 +280,14 @@ public class MapPickerActivity extends AppCompatActivity implements AdapterView.
 
         if (id == R.id.menu_send) {
             if (mLoactionLatLng != null) {
-//                Intent returnIntent = new Intent();
-//                returnIntent.putExtra("latitude", mLoactionLatLng.latitude);
-//                returnIntent.putExtra("longitude", mLoactionLatLng.longitude);
-//                returnIntent.putExtra("street", mStreet);
-//                returnIntent.putExtra("place", mName);
-//                setResult(RESULT_OK, returnIntent);
-//                finish();
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("latitude", mLoactionLatLng.latitude);
+                returnIntent.putExtra("longitude", mLoactionLatLng.longitude);
+                returnIntent.putExtra("street", mStreet);
+                returnIntent.putExtra("mapview", mMapView.getMapLevel());
+                returnIntent.putExtra("place", mName);
+                setResult(JGApplication.RESULT_CODE_SEND_LOCATION, returnIntent);
+                finish();
                 int left = mWidth / 4;
                 int top = (int) (mHeight - 1.1 * mWidth);
                 Rect rect = new Rect(left, top, mWidth - left, mHeight - (int) (1.2 * top));
@@ -290,10 +295,10 @@ public class MapPickerActivity extends AppCompatActivity implements AdapterView.
                     @Override
                     public void onSnapshotReady(Bitmap bitmap) {
                         if (null != bitmap && null != conv) {
+                            Log.e("cccccccccccc","334");
                             String fileName = UUID.randomUUID().toString();
                             String path = BitmapLoader.saveBitmapToLocal(bitmap, fileName);
                             Intent intent = new Intent();
-
                             intent.putExtra("latitude", mLatitude);
                             intent.putExtra("longitude", mLongitude);
                             intent.putExtra("mapview", mMapView.getMapLevel());
@@ -303,6 +308,7 @@ public class MapPickerActivity extends AppCompatActivity implements AdapterView.
                             setResult(JGApplication.RESULT_CODE_SEND_LOCATION, intent);
                             finish();
                         } else {
+                            Log.e("cccccccccccccc","656");
                             Toast.makeText(context, context.getString(R.string.send_location_error),
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -311,6 +317,34 @@ public class MapPickerActivity extends AppCompatActivity implements AdapterView.
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public static Bitmap GetRoundedCornerBitmap(Bitmap bitmap) {
+        try {
+            Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                    bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(output);
+            final Paint paint = new Paint();
+            final Rect rect = new Rect(0, 0, bitmap.getWidth(),
+                    bitmap.getHeight());
+            final RectF rectF = new RectF(new Rect(0, 0, bitmap.getWidth(),
+                    bitmap.getHeight()));
+            final float roundPx = 14;
+            paint.setAntiAlias(true);
+            canvas.drawARGB(0, 0, 0, 0);
+            paint.setColor(Color.BLACK);
+            canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+            final Rect src = new Rect(0, 0, bitmap.getWidth(),
+                    bitmap.getHeight());
+            canvas.drawBitmap(bitmap, src, rect, paint);
+            return output;
+        } catch (Exception e) {
+            return bitmap;
+
+        }
+
     }
 
     @Override

@@ -3,152 +3,148 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/arl_bg"
+    android:background="#FAFAFA"
     android:layout_height="match_parent">
+
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/arl_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30px"
-        android:background="@drawable/normal_bg_red10">
+        android:layout_below="@+id/rl_tab"
+        android:background="@mipmap/recharge_bg">
 
-        <TextView
-            android:id="@+id/tv_gold"
+        <ImageView
+            android:id="@+id/iv_type"
+            android:layout_marginLeft="50px"
+            android:layout_marginTop="50px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="43px"
-            android:layout_marginTop="49px"
-            android:text="ML币"
-            android:textColor="@color/white"
-            android:textSize="30px"
-            android:textStyle="bold" />
+            android:src="@mipmap/ic_recharge_ml"
+         />
 
-        <TextView
-            android:id="@+id/tv_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="43px"
-            android:layout_marginTop="49px"
-            android:layout_marginRight="226px"
-            android:text="现金"
-            android:textColor="@color/white"
-            android:textSize="30px"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_recharge_gold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_gold"
-            android:layout_alignLeft="@+id/tv_gold"
-            android:layout_marginTop="20px"
-            android:layout_marginBottom="61px"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="60px"
-            android:textStyle="bold" />
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_money"
-            android:layout_alignLeft="@+id/tv_money"
-            android:layout_alignTop="@+id/tv_recharge_gold"
+            android:layout_below="@+id/iv_type"
+            android:layout_marginTop="15px"
+            android:layout_alignLeft="@+id/iv_type"
+            android:layout_marginBottom="47px"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="￥"
-                android:textColor="@color/white"
-                android:textSize="47px"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_recharge_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_money"
-                android:layout_alignLeft="@+id/tv_money"
-                android:text="0"
-                android:textColor="@color/white"
-                android:textSize="60px"
-                android:textStyle="bold" />
-        </com.zhy.autolayout.AutoLinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_details"
+        <TextView
+            android:id="@+id/tv_recharge_money"
             android:layout_width="wrap_content"
-            android:layout_marginTop="55px"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/normal_bg_black_half"
-            android:layout_height="wrap_content">
-
-
-            <TextView
-                android:id="@+id/tv_mx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:paddingTop="6px"
-                android:paddingBottom="6px"
-                android:paddingLeft="20px"
-                android:textStyle="bold"
-                android:layout_marginRight="15px"
-                android:text="明细"
-
-                android:textColor="@color/white"
-                />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_money"
+            android:layout_alignLeft="@+id/tv_money"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="60px"
+            android:textStyle="bold" />
+        </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoRelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/all"
+    <TextView
+        android:id="@+id/tv_selected"
+        android:layout_below="@+id/arl_top"
+        android:layout_marginLeft="31px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="36px"
+        android:text="选择充值金额"
+        android:textStyle="bold"
+        android:textColor="#292832"
+
+        />
+    
+    
+    
+    
+    <ImageView
+        android:id="@+id/iv_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/arl_top"
+        android:layout_marginRight="29px"
+        android:src="@mipmap/icon_account_set"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rl_tab"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12px"
-        android:layout_below="@+id/arl_top"
         android:layout_marginTop="20px">
-        <TextView
-            android:id="@+id/tv_recharge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_centerVertical="true"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="充值"
-            />
-
-        <TextView
-            android:id="@+id/tv_withdrawal"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="提现"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/tv_recharge"
-            android:textSize="15sp"
-            android:textColor="#808080"
-            />
 
         <ImageView
-            android:id="@+id/iv_real_name"
+            android:id="@+id/back"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/back1"
+            />
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_recharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:text="充值"
+                />
+
+            <TextView
+                android:id="@+id/tv_withdrawal"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提现"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_recharge"
+                android:textSize="18sp"
+                android:textColor="#808080"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_deatils"
             android:layout_alignParentRight="true"
+            android:textSize="24px"
             android:layout_centerVertical="true"
-            android:padding="20px"
-            android:src="@mipmap/icon_get_money_real" />
-    </RelativeLayout>
+            android:text="明细"
+            android:gravity="center"
+            android:paddingLeft="17px"
+            android:layout_marginTop="7px"
+
+            android:layout_marginRight="30px"
+            android:paddingRight="17px"
+            android:textColor="#459BFF"
+            android:paddingTop="6px"
+            android:paddingBottom="6px"
+            android:background="@drawable/normal_bg_bule_tran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/all">
+        android:layout_below="@+id/tv_selected">
 
         <RelativeLayout
             android:id="@+id/rll_one"
@@ -161,6 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll_title"
                 android:verticalSpacing="9dp"
+                android:horizontalSpacing="9dp"
                 android:layout_marginTop="20px"
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
@@ -189,6 +186,7 @@
                 android:layout_below="@+id/tv_hint_exchange"
                 android:layout_marginTop="20px"
                 android:layout_marginLeft="10dp"
+                android:horizontalSpacing="9dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:listSelector="@android:color/transparent"
@@ -217,7 +215,11 @@
                 android:layout_marginTop="9.5dp"
                 android:textColor="#808080"
                 android:layout_alignLeft="@+id/tv_tx"
-                android:text="支付宝账号必须为本人账户，否则无法提现\n提现申请将在1个工作日内审核到账，请耐心等待\n新人专享福利提现，每个账号仅可享受一次"
+                android:text="充值的金币不能直接提现\n
+支付宝账号必须为本人账户，否则无法提现\n
+提现申请将在1个工作日内审核到账，请耐心等待\n
+每个账号仅可享受一次新人专享提现福利
+                            "
                 />
 
         </com.zhy.autolayout.AutoRelativeLayout>

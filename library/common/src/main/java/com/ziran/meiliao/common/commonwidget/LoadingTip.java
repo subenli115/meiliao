@@ -1,6 +1,7 @@
 package com.ziran.meiliao.common.commonwidget;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -29,6 +30,7 @@ public class LoadingTip extends LinearLayout {
     private onReloadListener onReloadListener;
     private String emptyMsg;
     private Spanned emptySpanned;
+    private LinearLayout ll_content;
 
     public LoadingTip(Context context) {
         super(context);
@@ -56,6 +58,8 @@ public class LoadingTip extends LinearLayout {
     private void initView(Context context) {
 
         View.inflate(context, R.layout.dialog_loading_tip, this);
+
+        ll_content = (LinearLayout) findViewById(R.id.ll_content);
         img_tip_logo = (ImageView) findViewById(R.id.img_tip_logo);
         progress = (ProgressBar) findViewById(R.id.progress);
         tv_tips = (TextView) findViewById(R.id.tv_tips);
@@ -77,7 +81,9 @@ public class LoadingTip extends LinearLayout {
             tv_tips.setText(tips);
         }
     }
-
+    public void setbg(){
+        ll_content.setBackgroundColor(Color.parseColor("#F7F8FA"));
+    }
     private int logeEmpty = R.drawable.no_content_tip;
 
     /**
@@ -165,7 +171,6 @@ public class LoadingTip extends LinearLayout {
     }
 
     private String operateText;
-
     public void setEmptyMsg(String emptyMsg, int iconId, String operateText) {
         this.emptyMsg = emptyMsg;
         this.logeEmpty = iconId;

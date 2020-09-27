@@ -1,37 +1,17 @@
 package com.ziran.meiliao.ui.me.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 
 import com.ziran.meiliao.R;
-import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.base.BaseActivity;
-import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.common.commonwidget.NormalTitleBar;
-import com.ziran.meiliao.common.okhttp.Result;
-import com.ziran.meiliao.ui.base.CommonContract;
-import com.ziran.meiliao.ui.base.CommonHttpActivity;
-import com.ziran.meiliao.ui.base.CommonModel;
-import com.ziran.meiliao.ui.base.CommonPresenter;
-import com.ziran.meiliao.ui.bean.ReportListBean;
-import com.ziran.meiliao.ui.settings.activity.RechargeDetailsActivity;
 import com.ziran.meiliao.ui.settings.fragment.MyFollowFragment;
-import com.ziran.meiliao.ui.settings.fragment.RechargeDetailsFragment;
-import com.ziran.meiliao.utils.Utils;
-import com.ziran.meiliao.widget.ItemGroupView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
-import butterknife.OnClick;
-
-import static com.ziran.meiliao.constant.ApiKey.ADMIN_DICT_TYPE;
 
 /**
- * 举报内容列表
+ * 关注列表
  * Created by Administrator on 2017/1/4.
  */
 

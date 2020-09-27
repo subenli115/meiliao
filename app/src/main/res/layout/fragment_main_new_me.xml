@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FC"
+    android:id="@+id/arl_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/arl_top"
+    android:background="@mipmap/icon_me_bg"
+    android:layout_height="488px"
+    >
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_marginTop="77px"
+    android:id="@+id/arl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.ziran.meiliao.widget.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        app:roun_type="circle"
+        android:layout_marginLeft="38px"
+        app:border_color1="@color/white"
+        app:border_width1="1dp"
+        />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/all_top"
+        android:layout_marginTop="10px"
+        android:layout_toRightOf="@+id/iv_head"
+        android:layout_marginLeft="29px"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:paddingRight="10px"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="慈悲"
+            android:textSize="48px"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxEms="8"
+            android:textColor="@color/white"
+            android:id="@+id/tv_name"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_real_name"
+            android:layout_toRightOf="@+id/tv_name"
+            android:layout_width="28px"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_height="32px"
+            android:src="@mipmap/icon_real_name"
+            />
+        <ImageView
+            android:id="@+id/iv_real_person"
+            android:layout_toRightOf="@+id/iv_real_name"
+            android:layout_width="28px"
+            android:visibility="gone"
+            android:layout_marginLeft="8px"
+            android:layout_height="32px"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_real_person"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <TextView
+        android:id="@+id/tv_sign"
+        android:layout_alignLeft="@+id/all_top"
+        android:layout_below="@+id/all_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxEms="11"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="19px"
+        android:textColor="@color/white"
+        android:textSize="28px"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="49px"
+        android:src="@mipmap/ic_right_white"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:id="@+id/all"
+    android:layout_marginTop="51px"
+    android:layout_below="@+id/arl"
+    android:layout_height="wrap_content">
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_recharge"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="11px"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="190px"
+            android:background="@mipmap/icon_me_ml_bg"
+            />
+        <ImageView
+            android:id="@+id/iv_ml"
+            android:layout_width="152px"
+            android:layout_height="43px"
+            android:src="@mipmap/icon_me_ml"
+            android:layout_marginTop="40px"
+            android:layout_marginLeft="34px"
+            />
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_alignLeft="@+id/iv_ml"
+            android:layout_below="@+id/iv_ml"
+            android:layout_marginTop="10px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="48px"
+            android:textColor="#804200"
+            android:textStyle="bold"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_profit"
+        android:layout_width="0dp"
+        android:layout_marginRight="30px"
+        android:layout_marginLeft="11px"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="190px"
+            android:background="@mipmap/icon_me_profit_bg"
+            />
+        <ImageView
+            android:id="@+id/iv_profit"
+            android:layout_width="152px"
+            android:layout_height="43px"
+            android:src="@mipmap/icon_me_profit"
+            android:layout_marginTop="40px"
+            android:layout_marginLeft="34px"
+            />
+        <TextView
+            android:id="@+id/tv_profit"
+            android:layout_alignLeft="@+id/iv_profit"
+            android:layout_below="@+id/iv_profit"
+            android:layout_marginTop="10px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="48px"
+            android:textColor="#804200"
+            android:textStyle="bold"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>
+    <ImageView
+        android:id="@+id/iv_get_money"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="164px"
+        android:layout_below="@+id/arl_top"
+        android:layout_marginTop="20px"
+        android:background="@mipmap/icon_get_gold"
+        />
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="33px"
+    android:orientation="vertical"
+    android:layout_marginLeft="30px"
+    android:layout_marginRight="30px"
+    android:background="@drawable/normal_bg_white_vertical"
+    android:layout_below="@+id/iv_get_money"
+    android:layout_height="wrap_content">
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/tv_me_main_new_visiter"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:background="@drawable/normal_bg_white60_half"
+        app:itemView_leftText="访客"
+        app:leftIcon="@mipmap/icon_me_visiter"
+        app:itemView_leftText_color="#292832"
+        app:itemView_rightTextSize="30px"
+        app:itemView_rightText_color="#A8ABB3"
+        app:showRightArrow="true"
+        />
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/tv_me_main_new_likes"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:background="@color/white"
+        app:leftIcon="@mipmap/icon_me_likes"
+        app:itemView_leftText="喜欢我"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:itemView_rightTextSize="30px"
+        app:itemView_rightText_color="#A8ABB3"
+        app:showRightArrow="true" />
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/tv_me_main_new_opinion"
+        android:layout_width="match_parent"
+        app:leftIcon="@mipmap/icon_me_opinion"
+        android:layout_height="120px"
+        android:background="@color/white"
+        app:itemView_leftText="意见反馈"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:itemView_rightTextSize="30px"
+        app:itemView_rightText_color="@color/red"
+        app:showRightArrow="true" />
+
+    <com.ziran.meiliao.widget.ItemGroupView
+        android:id="@+id/tv_me_main_new_setting"
+        android:layout_width="match_parent"
+        app:leftIcon="@mipmap/icon_me_setting"
+        android:layout_height="120px"
+        app:itemView_rightTextSize="30px"
+        android:background="@drawable/normal_bg_white60_half_re"
+        app:itemView_leftText="设置"
+        app:itemView_leftText_color="@color/textColor_333" />
+
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -15,6 +15,7 @@ import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.base.BaseActivity;
 import com.ziran.meiliao.common.baseapp.AppManager;
+import com.ziran.meiliao.common.commonutils.TimeUtil;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.common.okhttp.Result;
@@ -42,6 +43,9 @@ public class EditUserInfoSafeActivity extends BaseActivity {
     private static final int REQUEST_CODE_A = 2;
     @Bind(R.id.tv_me_main_new_realname)
     ItemGroupView tv_me_main_new_realname;
+
+    @Bind(R.id.tv_me_main_new_realperson)
+    ItemGroupView tv_me_main_new_realperson;
     @Bind(R.id.tv_me_main_new_phone)
     ItemGroupView tv_me_main_new_phone;
     @Bind(R.id.tv_me_main_new_pwd)
@@ -51,6 +55,7 @@ public class EditUserInfoSafeActivity extends BaseActivity {
     @Bind(R.id.tv_me_main_new_qq)
     ItemGroupView tv_me_main_new_qq;
     public final int REQUEST_CODE_B = 1;
+    public final int REQUEST_CODE_D = 4;
     private UserBean.DataBean bean;
     private String shareString;
     private UserInfo userInfo;
@@ -89,7 +94,7 @@ public class EditUserInfoSafeActivity extends BaseActivity {
 
     //点击监听
     @OnClick({R.id.tv_me_main_new_realname, R.id.tv_me_main_new_phone, R.id.tv_me_main_new_pwd, R.id.tv_me_main_new_wechat, R.id
-            .tv_me_main_new_qq})
+            .tv_me_main_new_qq,R.id.tv_me_main_new_realperson})
     public void onClick(View view) {
 //        if (!MyAPP.isLogin(mContext)) { //如果没有登录则跳转到登录界面
 //            return;
@@ -119,11 +124,20 @@ public class EditUserInfoSafeActivity extends BaseActivity {
                     LoginApi.get().login(this, SHARE_MEDIA.QQ,threeLoginCallBack);
                 }
                 break;
+            case R.id.tv_me_main_new_realperson:
+                if(bean.getIsReal()==null||bean.getIsReal().equals("0")){
+                    SetRealPersonActivity.startAction(REQUEST_CODE_D);
+                }else {
+                    SetRealPersonResultActivity.startAction();
+                }
+                break;
         }
     }
 
     private void wxBind(ItemGroupView tv) {
         tv.setRigthText("已绑定");
+        tv.showHot();
+        tv.getivRight().setImageResource(R.mipmap.info_sex);
         tv.setRigthColor(Color.parseColor("#459BFF"));
         tv.getRightTextView().setEnabled(false);
     }
@@ -161,12 +175,21 @@ public class EditUserInfoSafeActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case REQUEST_CODE_B: //返回的结果是来自于Activity B
                 if (resultCode == Activity.RESULT_OK) {
                     tv_me_main_new_realname.setRigthText("已认证");
                     tv_me_main_new_realname.setRigthColor(Color.parseColor("#459BFF"));
+                }
+
+
+                break;
+            case REQUEST_CODE_D: //返回的结果是来自于Activity B
+                if (resultCode == Activity.RESULT_OK) {
+                    tv_me_main_new_realperson.setRigthText("已认证");
+                    tv_me_main_new_realperson.setRigthColor(Color.parseColor("#459BFF"));
                 }
                 break;
             case REQUEST_CODE_A:
@@ -176,7 +199,7 @@ public class EditUserInfoSafeActivity extends BaseActivity {
                 }
                 break;
             case REQUEST_CODE_C:
-                tv_me_main_new_pwd.setRigthText(" ");
+                tv_me_main_new_pwd.setRigthText("上次修改时间："+TimeUtil.formatDate(bean.getUpdateTime()));
                 break;
             default:
                 break;
@@ -194,12 +217,20 @@ public class EditUserInfoSafeActivity extends BaseActivity {
         if (bean != null) {
             if (bean.getPassword() == null || bean.getPassword().equals("")) {
                 tv_me_main_new_pwd.setRigthText("未设置密码");
+            }else {
+                tv_me_main_new_pwd.setRigthText("上次修改时间："+TimeUtil.formatDate(bean.getUpdateTime()));
             }
             if (bean.getIdCard() == null || bean.getIdCard().equals("")) {
                 tv_me_main_new_realname.setRigthText("未认证");
             } else {
                 tv_me_main_new_realname.setRigthText("已认证");
                 tv_me_main_new_realname.setRigthColor(Color.parseColor("#459BFF"));
+            }
+            if(bean.getIsReal()==null||bean.getIsReal().equals("0")){
+                tv_me_main_new_realperson.setRigthText("未认证");
+            }else {
+                tv_me_main_new_realperson.setRigthText("已认证");
+                tv_me_main_new_realperson.setRigthColor(Color.parseColor("#459BFF"));
             }
             if (bean.getPhone() != null) {
                 setPhone(bean.getPhone());

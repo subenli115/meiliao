@@ -11,6 +11,7 @@ import com.ziran.meiliao.common.baserx.RxManager;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
+import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.utils.MapUtils;
@@ -73,6 +74,7 @@ public class VideoCouponTipsPopupWindow extends BasePopupWindow {
                         ToastUitl.showShort("修改成功");
                         MyAPP.setmUserBean(result.getData());
                         rxManager.post("updateCard","");
+                        rxManager.post(AppConstant.RXTag.UPDATE_USER, "");
                     }
 
                     @Override

@@ -21,9 +21,9 @@ public class RechargeActivity extends BaseActivity {
     @Bind(R.id.ntb)
     public NormalTitleBar ntb;
 
-    public static void startAction(Context mContext,String balance) {
+    public static void startAction(Context mContext,String type) {
         Intent intent = new Intent(mContext, RechargeActivity.class);
-        intent.putExtra(AppConstant.ExtraKey.BALANCE, balance);
+        intent.putExtra(AppConstant.ExtraKey.FROM_TYPE, type);
         mContext.startActivity(intent);
     }
 
@@ -51,7 +51,7 @@ public class RechargeActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        ntb.setVisibility(View.VISIBLE);
+        ntb.setVisibility(View.GONE);
         ntb.setTvLeftVisiable(true, true);
         ntb.setTitleText(getString(R.string.wallet));
         initFragment(new RechargeFragment());

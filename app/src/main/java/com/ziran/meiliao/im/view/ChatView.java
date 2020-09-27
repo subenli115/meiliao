@@ -48,7 +48,6 @@ public class ChatView extends RelativeLayout {
         mReturnButton = (ImageButton) findViewById(R.id.jmui_return_btn);
         mGroupNumTv = (TextView) findViewById(R.id.jmui_group_num_tv);
             mRightBtn = (ImageButton) findViewById(R.id.jmui_right_btn);
-            mIvGoldBtn = (ImageView) findViewById(R.id.iv_get_money);
         mChatTitle = (TextView) findViewById(R.id.jmui_title);
         mAtMeBtn = (Button) findViewById(R.id.jmui_at_me_btn);
         if (densityDpi <= 160) {
@@ -101,7 +100,6 @@ public class ChatView extends RelativeLayout {
         mReturnButton.setOnClickListener(listeners);
         mRightBtn.setOnClickListener(listeners);
         mAtMeBtn.setOnClickListener(listeners);
-        mIvGoldBtn.setOnClickListener(listeners);
     }
 
     public void dismissRightBtn() {
@@ -135,7 +133,10 @@ public class ChatView extends RelativeLayout {
     }
 
     public void setChatTitle(String title) {
-        mChatTitle.setText(title);
+        if(title.equals("在线客服")){
+            mChatTitle.setVisibility(VISIBLE);
+            mChatTitle.setText(title);
+        }
     }
 
     public void setTitle(String title) {

@@ -8,7 +8,6 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,7 +39,6 @@ import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 
-import com.bumptech.glide.Glide;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.commonwidget.LoadingTip;
 import com.ziran.meiliao.im.application.JGApplication;
@@ -53,7 +50,6 @@ import com.ziran.meiliao.im.utils.TimeFormat;
 import com.ziran.meiliao.im.utils.ViewHolder;
 import com.ziran.meiliao.im.view.ConversationListView;
 import com.ziran.meiliao.im.view.SwipeLayoutConv;
-import com.ziran.meiliao.widget.GlideCircleTransform;
 
 /**
  * 消息会话列表
@@ -74,17 +70,14 @@ public class ConversationListAdapter extends BaseAdapter {
     private UserInfo mUserInfo;
     private GroupInfo mGroupInfo;
     private ConversationListView mConversationListView;
+    private View numTv;
 
-    public ConversationListAdapter(Activity context, List<Conversation> data, ConversationListView convListView, LoadingTip loadedTip) {
+    public ConversationListAdapter(Activity context, List<Conversation> data, ConversationListView convListView, LoadingTip loadedTip, View numTv) {
         this.mContext = context;
         this.loadedTip=loadedTip;
         this.mDatas = data;
+        this.numTv=numTv;
         this.mConversationListView = convListView;
-    }
-    public void update(List<Conversation> data){
-
-        this.mDatas = data;
-        notifyDataSetChanged();
     }
 
     /**
@@ -235,7 +228,7 @@ public class ConversationListAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         final Conversation convItem = mDatas.get(position);
-        mConversationListView.setUnReadMsg(JMessageClient.getAllUnReadMsgCount());
+        mConversationListView.setUnReadMsg(JMessageClient.getAllUnReadMsgCount(), numTv);
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_conv_list, null);
         }

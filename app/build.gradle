@@ -43,7 +43,7 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "x86"
         }
         manifestPlaceholders = [
-                JPUSH_PKGNAME: applicationId,
+                JPUSH_PKGNAME: "com.ziran.meiliao",
                 JPUSH_APPKEY : "4489647e39f201bd3c1304ca", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
@@ -92,16 +92,6 @@ android {
             signingConfig signingConfigs.meiliao
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //apk命名
-//            applicationVariants.all { variant ->
-//                variant.outputs.each { output ->
-//                    def outputFile = output.outputFile
-//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-//                        //def fileName = "app_v${defaultConfig.versionName}_${releaseTime()}.apk"
-//                        def fileName = "5P医学${defaultConfig.versionName}_${variant.productFlavors[0].name}-${releaseTime()}release.apk"
-//                        output.outputFile = new File(outputFile.parent, fileName)
-//                    }
-//                }
-//            }
         }
     }
 //    //设置虚拟机堆内存空间大小，避免在编译期间OOM
@@ -176,6 +166,7 @@ dependencies {
     //    compile project(':library:zxingScan')//二维码扫码
     //二维码扫码
     implementation project(':library:citypicker')
+    implementation 'com.iqiyi.xcrash:xcrash-android-lib:2.4.9'
     annotationProcessor rootProject.ext.dependencies.butterknife
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.greenrobot:greendao-generator:3.2.2'
@@ -192,7 +183,7 @@ dependencies {
     implementation files('libs/BaiduLBS_Android.jar')
     implementation 'cn.jiguang.sdk:jmessage:2.9.0'
     // 此处以JMessage 2.9.0 版本为例。
-    implementation 'cn.jiguang.sdk:jcore:2.0.0'
+    implementation 'cn.jiguang.sdk:jcore:2.4.2'
     // 此处以JCore 2.0.0 版本为例。
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-26'
@@ -204,16 +195,34 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:0.8.1'
     implementation 'com.facebook.rebound:rebound:0.3.8'
     implementation 'com.zhy:base-rvadapter:3.0.3'
-    implementation 'cn.bingoogolapple:bga-photopicker:1.2.7@aar'
-    implementation 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
+    implementation 'cn.bingoogolapple:bga-photopicker:2.0.2@aar'
+    implementation 'cn.bingoogolapple:bga-baseadapter:2.0.0@aar'
     implementation 'pub.devrel:easypermissions:1.0.1'
     implementation files('libs/activeandroid-3.1.0.jar')
     implementation project(path: ':library:photoPicker')
     implementation 'com.wgd.gdcp.gdcplibrary:ImageCompress:1.0.10'
-    implementation 'com.github.yalantis:ucrop:2.2.2'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     implementation 'com.github.yyued:SVGAPlayer-Android:2.0.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.bigkoo:convenientbanner:2.1.5'
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+    implementation 'com.github.rtugeek:materialbanner:1.0.2'
+    implementation 'com.gcssloop.recyclerview:pagerlayoutmanager:2.3.8'
+    implementation 'com.github.angcyo.DslTablayout:TabLayout:1.5.4'
+    //可选
+    implementation 'com.github.angcyo.DslTablayout:ViewPager1Delegate:1.5.4'
+    implementation project(path: ':staggerdrv')
+    implementation 'com.alivc.conan:AlivcConan:0.9.5'
+    compile project(path: ':ucrop')
+    compile project(path: ':picture_library')
+    implementation 'com.aliyun.video.android:upload:1.6.0'
+    implementation 'com.github.xfans:VoiceWaveView:1.0.2'
+    implementation 'com.carlos.voiceline:mylibrary:1.0.6'
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+    implementation 'cn.jiguang.sdk:jpush:3.7.0'
+    implementation 'com.github.Jay-Goo:RangeSeekBar:3.0.0'
+    implementation 'com.aliyun.sdk.android:AliyunPlayer:5.1.5-full'
 }
 greendao {
     schemaVersion 7 //数据库版本号

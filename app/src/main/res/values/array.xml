@@ -304,12 +304,15 @@
     </string-array>
     <string-array name="main_bottom_tabs_new">
         <item>首页</item>
-        <item>我</item>
+        <item>社区</item>
+        <item>  </item>
+        <item>消息</item>
+        <item>我的</item>
     </string-array>
     <string-array name="private_course">
         <item>我关注</item>
         <item>好友</item>
-          <item>关注我</item>
+        <item>关注我</item>
 </string-array>
 
     <string-array name="home_main">

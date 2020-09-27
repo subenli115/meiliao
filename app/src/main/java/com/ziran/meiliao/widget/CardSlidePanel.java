@@ -299,8 +299,8 @@ public class CardSlidePanel extends ViewGroup {
         if(changedView!=null){
             LinearLayout child1= (LinearLayout) changedView.getChildAt(0);
             RelativeLayout child2 = (RelativeLayout) child1.getChildAt(0);
-            child2.getChildAt(1).setAlpha(0);
             child2.getChildAt(2).setAlpha(0);
+            child2.getChildAt(3).setAlpha(0);
         }
     }
 
@@ -335,11 +335,11 @@ public class CardSlidePanel extends ViewGroup {
         LinearLayout child1= (LinearLayout) changedView.getChildAt(0);
         RelativeLayout child2 = (RelativeLayout) child1.getChildAt(0);
         if(changeViewLeft - initCenterViewX>0){
-            child2.getChildAt(1).setAlpha(rate1);
-            child2.getChildAt(2).setAlpha(0);
-        }else {
-            child2.getChildAt(1).setAlpha(0);
             child2.getChildAt(2).setAlpha(rate1);
+            child2.getChildAt(3).setAlpha(0);
+        }else {
+            child2.getChildAt(2).setAlpha(0);
+            child2.getChildAt(3).setAlpha(rate1);
         }
     }
 

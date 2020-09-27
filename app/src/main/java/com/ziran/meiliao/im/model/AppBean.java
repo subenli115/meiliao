@@ -46,9 +46,14 @@ public class AppBean {
         return id;
     }
 
-    public AppBean(int icon, String funcName,String gold){
+    public AppBean(int icon, String funcName,boolean select){
         this.icon = icon;
         this.funcName = funcName;
-        this.gold = gold;
+        this.isSelect = select;
+    }
+
+    public AppBean(int icon, String funcName){
+        this.icon = icon;
+        this.funcName = funcName;
     }
 }

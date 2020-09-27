@@ -1,109 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:com.lzy.widget="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_marginBottom="57px"
+    android:background="#F7F8FA"
+    android:layout_marginBottom="40px"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all_time"
+    android:layout_width="wrap_content"
+    android:layout_alignTop="@+id/arl"
+    android:gravity="center"
+    android:layout_marginRight="24px"
+    android:orientation="vertical"
+    android:layout_alignBottom="@+id/arl"
     android:layout_height="wrap_content">
 
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17:30"
+        android:textColor="@color/black"
+        android:textSize="26px"
+        />
+
+    <View
+        android:layout_width="1px"
+        android:layout_marginTop="10px"
+        android:layout_centerHorizontal="true"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_time"
+        android:background="#E6E6E6"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_marginRight="30px"
+    android:id="@+id/arl"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="30px"
+    android:layout_toRightOf="@+id/all_time"
+
+    android:paddingTop="30px"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="35px"
+    android:background="@drawable/normal_bg_white20"
+    android:layout_height="wrap_content">
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_toLeftOf="@+id/iv_more"
+    android:id="@+id/arl_content"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:layout_marginRight="33px"
+        android:layout_marginBottom="30px"
+        android:text="232323232"
+        android:layout_marginRight="77px"
         android:textSize="26px"
         />
-    <cn.bingoogolapple.photopicker.widget.BGANinePhotoLayout
-
-        android:id="@+id/npl_item_moment_photos"
-        style="@style/MatchWrap"
-        android:layout_marginTop="27px"
-        android:layout_below="@+id/tv_content"
-        app:bga_npl_itemCornerRadius="10dp"
-        app:bga_npl_itemSpanCount="3"
-        app:bga_npl_itemWhiteSpacing="7dp"
-        android:layout_marginRight="33px"
-        app:bga_npl_itemWidth="0dp"
-        app:bga_npl_otherWhiteSpacing="100dp"
-        app:bga_npl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
-        app:bga_npl_showAsLargeWhenOnlyOne="true"/>
-    <com.zhy.autolayout.AutoRelativeLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="24px"
-        android:layout_alignLeft="@+id/tv_content"
-        android:layout_below="@+id/npl_item_moment_photos"
+        android:layout_below="@+id/tv_content"
+        android:orientation="vertical"
         android:layout_height="wrap_content">
-
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:id="@+id/all"
-            android:layout_width="wrap_content"
-            android:paddingLeft="16px"
-            android:background="@drawable/normal_bg_bule_address"
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/arl_sound"
+            android:layout_width="match_parent"
+            android:layout_marginRight="50px"
+            android:layout_marginBottom="30px"
+            android:visibility="gone"
+            android:background="@drawable/normal_bg_bule_suond"
             android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="13px"
-                android:layout_gravity="center_vertical"
-                android:layout_height="16px"
 
-                android:src="@mipmap/icon_address_wechat"
-                />
-            <TextView
-                android:id="@+id/tv_address"
-                android:layout_marginLeft="8px"
+
+
+            <ImageView
+                android:id="@+id/iv_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="重庆观音桥"
-                android:textSize="18px"
-                android:paddingRight="16px"
-                android:paddingTop="12px"
-                android:paddingBottom="12px"
-                android:textColor="#459BFF"
+                android:layout_margin="12px"
+                android:src="@mipmap/icon_record_play"
                 />
-        </com.zhy.autolayout.AutoLinearLayout>
-        <com.zhy.autolayout.AutoLinearLayout
-            android:id="@+id/all_private"
-            android:layout_width="wrap_content"
-            android:paddingLeft="16px"
-            android:layout_toRightOf="@+id/all"
-            android:layout_marginLeft="8px"
-            android:layout_alignTop="@+id/all"
-            android:background="@drawable/normal_bg_bule_private"
-            android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="13px"
-                android:layout_gravity="center_vertical"
-                android:layout_height="16px"
+                android:id="@+id/view"
+                android:layout_width="229px"
+                android:src="@mipmap/icon_wechat_soundbg"
+                android:layout_toRightOf="@+id/iv_play"
+                android:layout_centerVertical="true"
+                android:layout_height="40px"/>
 
-                android:src="@mipmap/icon_private_wechat"
-                />
             <TextView
-                android:id="@+id/tv_private"
-                android:layout_marginLeft="8px"
+                android:id="@+id/tv_sound_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="仅自己可见"
-                android:paddingRight="16px"
-                android:textSize="18px"
-                android:paddingTop="12px"
-                android:paddingBottom="12px"
-                android:textColor="#FC636B"
+                android:text="00:00"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:layout_marginRight="34px"
+                android:textSize="24px"
+                android:layout_centerVertical="true"
                 />
-        </com.zhy.autolayout.AutoLinearLayout>
-        <ImageView
-            android:id="@+id/iv_more"
-            android:paddingRight="36px"
-            android:paddingTop="20px"
-            android:paddingLeft="36px"
-            android:paddingBottom="20px"
+        </com.zhy.autolayout.AutoRelativeLayout>
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/arl_video"
+                android:visibility="gone"
+                android:layout_marginBottom="30px"
+                android:layout_height="wrap_content">
+
+                <com.ziran.meiliao.widget.RoundImageView
+                    android:id="@+id/iv_video"
+                    android:scaleType="centerCrop"
+                    app:roun_type="round"
+                    app:corner_radius="10dp"
+                    android:layout_below="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/iv__play"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_wechat_play"
+                    />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        <cn.bingoogolapple.photopicker.widget.BGANinePhotoLayout
+            android:id="@+id/npl_item_moment_photos"
+            style="@style/MatchWrap"
+            android:layout_marginTop="27px"
+            android:layout_below="@+id/tv_content"
+            app:bga_npl_itemCornerRadius="10dp"
+            app:bga_npl_itemSpanCount="3"
+            android:layout_marginBottom="30px"
+            app:bga_npl_itemWhiteSpacing="7dp"
+            app:bga_npl_itemWidth="0dp"
+            app:bga_npl_otherWhiteSpacing="136dp"
+            app:bga_npl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
+            app:bga_npl_showAsLargeWhenOnlyOne="true"/>
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/arl_info"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/icon_more_wechat"
-            />
-    </com.zhy.autolayout.AutoRelativeLayout>
+            android:layout_marginBottom="30px"
+            android:layout_alignLeft="@+id/tv_content"
+            android:layout_below="@+id/npl_item_moment_photos"
+            android:layout_height="wrap_content">
+
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/all"
+                android:layout_width="wrap_content"
+                android:paddingLeft="16px"
+                android:background="@drawable/normal_bg_bule_address"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="13px"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="16px"
+
+                    android:src="@mipmap/icon_address_wechat"
+                    />
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_marginLeft="8px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重庆观音桥"
+                    android:textSize="18px"
+                    android:paddingRight="16px"
+                    android:paddingTop="12px"
+                    android:paddingBottom="12px"
+                    android:textColor="#459BFF"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/all_private"
+                android:layout_width="wrap_content"
+                android:paddingLeft="16px"
+                android:layout_toRightOf="@+id/all"
+                android:layout_marginLeft="8px"
+                android:layout_alignTop="@+id/all"
+                android:background="@drawable/normal_bg_bule_private"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="13px"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="16px"
+
+                    android:src="@mipmap/icon_private_wechat"
+                    />
+                <TextView
+                    android:id="@+id/tv_private"
+                    android:layout_marginLeft="8px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="仅自己可见"
+                    android:paddingRight="16px"
+                    android:textSize="18px"
+                    android:paddingTop="12px"
+                    android:paddingBottom="12px"
+                    android:textColor="#595980"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>
+    <ImageView
+        android:id="@+id/iv_more"
+        android:paddingRight="36px"
+        android:paddingTop="20px"
+        android:paddingLeft="36px"
+        android:paddingBottom="30px"
+
+        android:layout_alignBottom="@+id/arl_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/icon_stagger_more"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>
 </com.zhy.autolayout.AutoRelativeLayout>

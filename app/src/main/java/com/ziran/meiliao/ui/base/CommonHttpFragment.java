@@ -36,7 +36,7 @@ public abstract class CommonHttpFragment<T extends BasePresenter, E extends Base
     /**
      * 网络加载的状态控件
      */
-    protected LoadingTip loadedTip;
+    public LoadingTip loadedTip;
     
     /**
      * 是否已经加载过数据

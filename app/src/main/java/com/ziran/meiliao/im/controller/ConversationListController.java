@@ -3,7 +3,6 @@ package com.ziran.meiliao.im.controller;
 import android.app.Dialog;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -47,19 +46,19 @@ public class ConversationListController implements View.OnClickListener,
     private Dialog mDialog;
 
     public ConversationListController(ConversationListView listView, ConversationListFragment context,
-                                      int width, LoadingTip loadedTip) {
+                                      int width, LoadingTip loadedTip, View numTv) {
         this.mConvListView = listView;
         this.mContext = context;
         this.loadedTip=loadedTip;
         this.mWidth = width;
-        initConvListAdapter();
+        initConvListAdapter(numTv);
     }
 
     List<Conversation> topConv = new ArrayList<>();
     List<Conversation> forCurrent = new ArrayList<>();
     List<Conversation> delFeedBack = new ArrayList<>();
 
-    public void initConvListAdapter() {
+    public void initConvListAdapter(View numTv) {
         forCurrent.clear();
         topConv.clear();
         delFeedBack.clear();
@@ -94,7 +93,7 @@ public class ConversationListController implements View.OnClickListener,
                 i++;
             }
         }
-        mListAdapter = new ConversationListAdapter(mContext.getActivity(), mDatas, mConvListView,loadedTip);
+        mListAdapter = new ConversationListAdapter(mContext.getActivity(), mDatas, mConvListView,loadedTip,numTv);
         mConvListView.setConvListAdapter(mListAdapter);
     }
 
@@ -204,4 +203,5 @@ public class ConversationListController implements View.OnClickListener,
     public void delConversation() {
         mDatas.remove(JGApplication.delConversation);
     }
+
 }

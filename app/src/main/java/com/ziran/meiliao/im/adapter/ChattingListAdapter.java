@@ -20,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -46,6 +48,8 @@ import cn.jpush.im.api.BasicCallback;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
+import com.ziran.meiliao.common.baserx.RxManager;
+import com.ziran.meiliao.im.activity.ChatActivity;
 import com.ziran.meiliao.im.activity.OtherUserHomeActivity;
 import com.ziran.meiliao.im.activity.receiptmessage.ReceiptMessageListActivity;
 import com.ziran.meiliao.im.application.JGApplication;
@@ -53,6 +57,7 @@ import com.ziran.meiliao.im.controller.ChatItemController;
 import com.ziran.meiliao.im.utils.DialogCreator;
 import com.ziran.meiliao.im.utils.HandleResponseCode;
 import com.ziran.meiliao.im.utils.TimeFormat;
+import com.ziran.meiliao.ui.priavteclasses.activity.UserHomeActivity;
 
 /**
  * 消息对话列表
@@ -61,6 +66,9 @@ import com.ziran.meiliao.im.utils.TimeFormat;
 public class ChattingListAdapter extends BaseAdapter {
 
     public static final int PAGE_MESSAGE_COUNT = 18;
+    private final RxManager mRxManager;
+    private  ImageView mIvRecommend;
+    private  CardView mCardView;
     private long mGroupId;
 
     //文本
@@ -106,9 +114,10 @@ public class ChattingListAdapter extends BaseAdapter {
     private boolean mHasLastPage = false;
     private boolean isChatRoom = false;
 
-    public ChattingListAdapter(Activity context, Conversation conv, ContentLongClickListener longClickListener) {
+    public ChattingListAdapter(Activity context, Conversation conv, ContentLongClickListener longClickListener, RxManager rxManager) {
         this.mContext = context;
         mActivity = context;
+        mRxManager=rxManager;
         DisplayMetrics dm = new DisplayMetrics();
         mActivity.getWindowManager().getDefaultDisplay().getMetrics(dm);
         mWidth = dm.widthPixels;
@@ -144,32 +153,6 @@ public class ChattingListAdapter extends BaseAdapter {
         checkSendingImgMsg();
     }
 
-    public ChattingListAdapter(Context context, Conversation conv, ContentLongClickListener longClickListener,
-                               int msgId) {
-        this.mContext = context;
-        mActivity = (Activity) context;
-        DisplayMetrics dm = new DisplayMetrics();
-        mActivity.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        mWidth = dm.widthPixels;
-
-        mInflater = LayoutInflater.from(mContext);
-        this.mConv = conv;
-        if (mConv.getUnReadMsgCnt() > PAGE_MESSAGE_COUNT) {
-            this.mMsgList = mConv.getMessagesFromNewest(0, mConv.getUnReadMsgCnt());
-            mStart = mConv.getUnReadMsgCnt();
-        } else {
-            this.mMsgList = mConv.getMessagesFromNewest(0, mOffset);
-            mStart = mOffset;
-        }
-        reverse(mMsgList);
-        mLongClickListener = longClickListener;
-        this.mController = new ChatItemController(this, mActivity, conv, mMsgList, dm.density,
-                longClickListener);
-        GroupInfo groupInfo = (GroupInfo) mConv.getTargetInfo();
-        mGroupId = groupInfo.getGroupID();
-        checkSendingImgMsg();
-
-    }
 
     private void reverse(List<Message> list) {
         if (list.size() > 0) {
@@ -297,16 +280,19 @@ public class ChattingListAdapter extends BaseAdapter {
     public void addMsgToList(Message msg) {
         mMsgList.add(msg);
         incrementStartPosition();
+        ((ChatActivity)mActivity).setView(false);
         notifyDataSetChanged();
     }
 
     public void addMsgListToList(List<Message> singleOfflineMsgList) {
         mMsgList.addAll(singleOfflineMsgList);
+        ((ChatActivity)mActivity).setView(false);
         notifyDataSetChanged();
     }
 
     public void addMsgFromReceiptToList(Message msg) {
         mMsgList.add(msg);
+        ((ChatActivity)mActivity).setView(false);
         msg.setOnSendCompleteCallback(new BasicCallback() {
             @Override
             public void gotResult(int i, String s) {
@@ -337,6 +323,9 @@ public class ChattingListAdapter extends BaseAdapter {
         }
         mMsgList.removeAll(forDel);
         mMsgList.add(i, msg);
+        if(mMsgList.size()==0){
+            ((ChatActivity)mActivity).setView(false);
+        }
         notifyDataSetChanged();
     }
 
@@ -361,11 +350,15 @@ public class ChattingListAdapter extends BaseAdapter {
             }
         }
         mMsgList.removeAll(del);
+            ((ChatActivity)mActivity).setView(false);
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
+        if(mMsgList.size()==0){
+            ((ChatActivity)mActivity).setView(true);
+        }
         return mMsgList.size();
     }
 
@@ -467,6 +460,7 @@ public class ChattingListAdapter extends BaseAdapter {
     public void clearMsgList() {
         mMsgList.clear();
         mStart = 0;
+        ((ChatActivity)mActivity).setView(false);
         notifyDataSetChanged();
     }
 
@@ -605,7 +599,7 @@ public class ChattingListAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View arg0) {
                     if(userInfo.getUserName()!= MyAPP.getUserId()){
-                        OtherUserHomeActivity.startAction(userInfo.getUserName());
+                        UserHomeActivity.startAction(userInfo.getUserName());
                     }
                 }
             });

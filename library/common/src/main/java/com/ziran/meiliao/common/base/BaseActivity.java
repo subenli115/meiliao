@@ -7,9 +7,13 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -87,6 +91,12 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     @Override
     public void onCreate(Bundle savedInstanceState) {
 //        initSwipeBackFinish();
+        Window window =getWindow();
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.white));
+        }
         super.onCreate(savedInstanceState);
         //初始化RxBus管理器
         mRxManager = new RxManager();
@@ -116,6 +126,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         TAG = this.getClass().getSimpleName();
         // 延伸显示区域到刘海
     }
+
 
     protected void initBundle(Bundle extras) {
 

@@ -28,6 +28,7 @@ public class MediaDAO {
 
     public static Cursor getAllMediaPhotos(final Context context) {
         final Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+
         Cursor cursor = null;
         try {
             cursor = context.getContentResolver().query(images, null, null,

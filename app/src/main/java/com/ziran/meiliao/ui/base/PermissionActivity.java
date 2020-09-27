@@ -60,7 +60,6 @@ public abstract class PermissionActivity<L extends LoginContract.Presenter, L1> 
             finish();
             return;
         }
-        JMessageClient.registerEventReceiver(this);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         mWidth = dm.widthPixels;
@@ -72,55 +71,7 @@ public abstract class PermissionActivity<L extends LoginContract.Presenter, L1> 
 
 
 
-    public void onEventMainThread(LoginStateChangeEvent event) {
-        final LoginStateChangeEvent.Reason reason = event.getReason();
-        UserInfo myInfo = event.getMyInfo();
-        if (myInfo != null) {
-            String path;
-            File avatar = myInfo.getAvatarFile();
-            if (avatar != null && avatar.exists()) {
-                path = avatar.getAbsolutePath();
-            } else {
-                path = FileHelper.getUserAvatarPath(myInfo.getUserName());
-            }
-            SharePreferenceManager.setCachedUsername(myInfo.getUserName());
-            SharePreferenceManager.setCachedAvatarPath(path);
-            JMessageClient.logout();
-        }
-        switch (reason) {
-            case user_logout:
-                JMessageClient.logout();
-                View.OnClickListener listener = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        switch (v.getId()) {
-                            case R.id.jmui_cancel_btn:
-                                Intent intent = new Intent(mContext, SplashActivity.class);
-                                startActivity(intent);
-                                break;
-                            case R.id.jmui_commit_btn:
-                                JMessageClient.login(SharePreferenceManager.getCachedUsername(), SharePreferenceManager.getCachedPsw(), new BasicCallback() {
-                                    @Override
-                                    public void gotResult(int responseCode, String responseMessage) {
-                                        if (responseCode == 0) {
-                                            Intent intent = new Intent(mContext, SplashActivity.class);
-                                            startActivity(intent);
-                                        }
-                                    }
-                                });
-                                break;
-                        }
-                    }
-                };
-                dialog = DialogCreator.createLogoutStatusDialog(mContext, "您的账号在其他设备上登陆", listener);
-                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                dialog.getWindow().setLayout((int) (0.8 * mWidth), WindowManager.LayoutParams.WRAP_CONTENT);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
-                break;
-        }
-    }
-    
+
     //获取权限成功回调
     @Override
     public void onSuccess () {
@@ -141,7 +92,6 @@ public abstract class PermissionActivity<L extends LoginContract.Presenter, L1> 
         if (dialog != null) {
             dialog.dismiss();
         }
-        JMessageClient.unRegisterEventReceiver(this);
         if (permissionManager != null) {
             permissionManager.onDestroy();
         }

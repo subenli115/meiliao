@@ -69,7 +69,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             arl.setLayoutParams(lp);
         }
         final NewHomeDataBean.DataBean.ActivityBean activityBean = data.get(position);
-        Glide.with(context).load(activityBean.getPicture()).transform(new GlideRoundTransform(context)).into(holder.ivCourse);
+        Glide.with(context).load(activityBean.getPicture()).into(holder.ivCourse);
         if(activityBean.getTagName()!=null&&activityBean.getTagName().equals("")){
             holder.tvTag.setVisibility(View.INVISIBLE);
         }else {

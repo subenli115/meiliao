@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="未实名认证"
+        android:text="未实人认证"
         android:textSize="22sp"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/black"
@@ -47,7 +47,7 @@
         android:layout_marginRight="31dp"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="请先完成实名认证后申请提现"
+        android:text="请先完成实人认证后申请提现"
         android:textColor="@color/black"
         android:textSize="15sp"
         />

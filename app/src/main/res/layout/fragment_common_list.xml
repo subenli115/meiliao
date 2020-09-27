@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20px"
+        app:ntb_tv_left="showAndFinish"
+        android:layout_height="wrap_content"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/arl"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_alignBottom="@+id/ntb_title"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all_location"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+
+
+            android:layout_toLeftOf="@+id/all_sx"
+
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:layout_width="30px"
+                android:layout_gravity="center_vertical"
+                android:layout_height="34px"
+                android:src="@mipmap/icon_home_location"
+                />
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重庆"
+                android:layout_marginLeft="5px"
+                android:paddingTop="10px"
+                android:paddingBottom="10px"
+                android:layout_marginRight="19px"
+                android:textStyle="bold"
+                android:textColor="#3E3E59"
+                android:textSize="32px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all_sx"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:layout_width="30px"
+                android:layout_height="34px"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/icon_home_screen"
+                />
+            <TextView
+                android:id="@+id/tv_sx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="筛选"
+                android:layout_marginLeft="5px"
+                android:paddingTop="10px"
+                android:paddingBottom="10px"
+                android:layout_marginRight="36px"
+                android:textStyle="bold"
+                android:textColor="#3E3E59"
+                android:textSize="32px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+        android:id="@+id/recyclerView"
+        android:background="#F7F8FA"
+        app:loadMoreEnabled="true"
+        app:refreshEnabled="true"
+        android:layout_below="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_below="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

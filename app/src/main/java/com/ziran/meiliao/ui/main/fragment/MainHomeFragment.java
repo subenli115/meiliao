@@ -1,7 +1,9 @@
 package com.ziran.meiliao.ui.main.fragment;
 
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 

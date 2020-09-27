@@ -3,8 +3,8 @@
     android:id="@+id/main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
 
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -28,6 +28,7 @@
                 <Button
                     android:id="@+id/actionbar_contact_btn"
                     style="@style/ActionBarItem"
+                    android:drawablePadding="5px"
                     android:drawableTop="@drawable/actionbar_contact_drawable_bg"
                     android:text="@string/actionbar_contact" />
 
@@ -40,8 +41,36 @@
                 android:layout_weight="1">
 
                 <Button
+                    android:id="@+id/actionbar_community_btn"
+                    style="@style/ActionBarItem"
+                    android:drawablePadding="5px"
+                    android:drawableTop="@drawable/actionbar_msg_drawable_bg"
+                    android:text="@string/actionbar_comm" />
+
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/iv_fb"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/tab_release"
+                    />
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <Button
                     android:id="@+id/actionbar_msg_btn"
                     style="@style/ActionBarItem"
+                    android:drawablePadding="5px"
                     android:drawableTop="@drawable/actionbar_conversation_bg"
                     android:text="@string/actionbar_msg" />
 
@@ -58,20 +87,8 @@
                     android:text="99+"
                     android:textColor="@android:color/white"
                     android:textSize="10sp"
-                    android:visibility="gone" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:visibility="gone">
-
-                <Button
-                    android:id="@+id/actionbar_chatroom_btn"
-                    style="@style/ActionBarItem"
-                    android:drawableTop="@drawable/actionbar_msg_drawable_bg"
-                    android:text="@string/actionbar_chatroom_btn" />
+                    android:visibility="gone"
+                    />
             </FrameLayout>
 
             <FrameLayout
@@ -82,6 +99,7 @@
                 <Button
                     android:id="@+id/actionbar_me_btn"
                     style="@style/ActionBarItem"
+                    android:drawablePadding="5px"
                     android:drawableTop="@drawable/actionbar_me_drawable_bg"
                     android:text="@string/actionbar_me" />
 

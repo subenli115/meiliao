@@ -2,12 +2,14 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/common_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
+
         android:background="@color/white">
         <!-- 公共的的标题栏 -->
 
@@ -63,39 +65,162 @@
         android:hint="分享或记录美好瞬间~"
         android:maxLength="100"
         android:paddingLeft="50px"
-        android:text=""
+        android:background="@color/white"
         android:paddingTop="25px"
         android:paddingRight="30px"
         android:paddingBottom="24px"
         android:textColor="@color/black"
         android:textColorHint="@color/textColor_b2"
         android:textSize="30px" />
-    <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
-        android:id="@+id/snpl_moment_add_photos"
-        style="@style/WrapWrap"
-        android:layout_marginTop="243px"
-        android:layout_below="@+id/common_title"
-        android:layout_marginLeft="50px"
-        app:bga_snpl_deleteDrawable="@mipmap/bga_pp_ic_delete"
-        app:bga_snpl_deleteDrawableOverlapQuarter="false"
-        app:bga_snpl_editable="true"
-        app:bga_snpl_itemCornerRadius="10dp"
-        app:bga_snpl_itemSpanCount="3"
-        app:bga_snpl_itemWhiteSpacing="4dp"
-        app:bga_snpl_itemWidth="0dp"
-        app:bga_snpl_maxItemCount="9"
-        app:bga_snpl_otherWhiteSpacing="100dp"
-        app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
-        app:bga_snpl_plusDrawable="@mipmap/icon_select_photo"
-        app:bga_snpl_plusEnable="true"
-        app:bga_snpl_sortable="true" />
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/all"
+    android:layout_marginTop="150px"
+    android:layout_below="@+id/et_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    >
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/all_select"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/iv_sound"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="49px"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_select_sound"
+
+            />
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_marginLeft="24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_select_pic"
+
+            />
+
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_marginLeft="24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_select_video"
+
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/arl"
+        android:layout_height="wrap_content">
+
+
+        <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
+            android:id="@+id/snpl_moment_add_photos"
+            style="@style/WrapWrap"
+            android:visibility="gone"
+            android:layout_alignTop="@+id/all_select"
+            android:layout_below="@+id/common_title"
+            android:layout_marginLeft="50px"
+            app:bga_snpl_deleteDrawable="@mipmap/bga_pp_ic_delete"
+            app:bga_snpl_deleteDrawableOverlapQuarter="false"
+            app:bga_snpl_editable="true"
+            app:bga_snpl_itemCornerRadius="10dp"
+            app:bga_snpl_itemSpanCount="3"
+            app:bga_snpl_itemWhiteSpacing="4dp"
+            app:bga_snpl_itemWidth="0dp"
+            app:bga_snpl_maxItemCount="9"
+            app:bga_snpl_otherWhiteSpacing="100dp"
+            app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
+            app:bga_snpl_plusDrawable="@mipmap/icon_more_dynamic"
+            app:bga_snpl_plusEnable="true"
+            app:bga_snpl_sortable="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_below="@+id/snpl_moment_add_photos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="8dp"
+            android:overScrollMode="never" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/arl_sound"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:visibility="gone"
+            android:layout_marginTop="17px"
+            android:background="@drawable/normal_bg_bule_suond"
+            android:layout_height="wrap_content">
+
+
+
+            <ImageView
+                android:id="@+id/iv_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12px"
+                android:src="@mipmap/icon_record_play"
+                />
+            <me.xfans.lib.voicewaveview.VoiceWaveView
+                android:id="@+id/voiceWaveView4"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@+id/iv_play"
+                android:layout_centerVertical="true"
+                android:layout_height="20dp"
+                app:lineColor="@color/white"
+                android:layout_toLeftOf="@+id/tv_time"
+                android:gravity="center"
+                app:lineWidth="2dp"
+                android:layout_marginRight="22px"
+                app:lineSpace="2dp"
+                app:waveMode="left_right"
+                />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:layout_marginRight="34px"
+                android:textSize="24px"
+                android:layout_centerVertical="true"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="38px"
+            android:visibility="gone"
+            android:layout_height="38px"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="34px"
+            android:src="@mipmap/icon_cancel"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="40px"
+        android:layout_marginRight="50px"
+        android:background="#F0F0F0"
+        android:layout_below="@+id/all"
+        />
     <com.ziran.meiliao.widget.ItemGroupView
         android:id="@+id/igv_address"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_common_height"
-        android:layout_below="@+id/snpl_moment_add_photos"
-        android:layout_marginTop="31px"
+        android:layout_below="@+id/view1"
         android:background="@color/white"
         app:itemView_leftText="位置"
         app:itemView_leftText_color="@color/black"
@@ -105,13 +230,23 @@
         app:leftIcon="@mipmap/icon_release_adress"
         app:showRightArrow="true" />
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:background="#F0F0F0"
+        android:layout_below="@+id/igv_address"
+        />
     <com.ziran.meiliao.widget.ItemGroupView
         android:id="@+id/igv_private"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_common_height"
-        android:layout_below="@+id/igv_address"
+        android:layout_below="@+id/view2"
         android:background="@color/white"
         app:itemView_leftText="谁可以看"
+
         app:itemView_leftText_color="@color/black"
         app:itemView_rightText="所有人"
         app:itemView_rightTextSize="11sp"

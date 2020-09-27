@@ -48,6 +48,7 @@ import com.ziran.meiliao.im.activity.OtherUserHomeActivity;
 import com.ziran.meiliao.im.application.JGApplication;
 import com.ziran.meiliao.im.database.FriendEntry;
 import com.ziran.meiliao.im.utils.photochoose.SelectableRoundedImageView;
+import com.ziran.meiliao.ui.priavteclasses.activity.UserHomeActivity;
 import com.ziran.meiliao.widget.GlideCircleTransform;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
@@ -430,7 +431,7 @@ public class StickyListAdapter extends BaseAdapter implements StickyListHeadersA
             holder.itemLl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    OtherUserHomeActivity.startAction(friend.username);
+                   UserHomeActivity.startAction(friend.username);
                 }
             });
         }

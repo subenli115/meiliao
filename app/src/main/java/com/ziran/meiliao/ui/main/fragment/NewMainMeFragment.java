@@ -361,19 +361,6 @@ public class NewMainMeFragment extends CommonHttpFragment<MainMePresenter, MainM
         if(data!=null){
 
         tvMeLevel.setText(data.getLevel());
-        Glide.with(getContext())
-                .load(data.getPic())
-                .asBitmap() //这句不能少，否则下面的方法会报错
-                .centerCrop()
-                .into(new BitmapImageViewTarget(ivMeLevel) {
-                    @Override
-                    protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable =
-                                RoundedBitmapDrawableFactory.create(getResources(), resource);
-                        circularBitmapDrawable.setCircular(true);
-                        ivMeLevel.setImageDrawable(circularBitmapDrawable);
-                    }
-                });
         tv_progress.setText(data.getNextLevelPercent()+"%");
         progressBarHorizontal.setProgress(data.getNextLevelPercent());
         }

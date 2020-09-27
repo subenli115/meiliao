@@ -40,6 +40,15 @@ public class Utils {
         return false;
     }
 
+    public static boolean isOtherFastDoubleClick() {
+        long time = System.currentTimeMillis();
+        long timeD = time - lastClickTime;
+        if ( 0 < timeD && timeD < 300) {
+            return true;
+        }
+        lastClickTime = time;
+        return false;
+    }
 
     public static int dp2px(float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, MyAPP.getContext().getResources().getDisplayMetrics());

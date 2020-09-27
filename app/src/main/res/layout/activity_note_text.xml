@@ -25,15 +25,14 @@
         <RelativeLayout
             android:id="@+id/rl_nike"
             android:layout_width="match_parent"
+            android:paddingLeft="15dp"
             android:gravity="center_vertical"
-            android:paddingLeft="22dp"
             android:layout_height="wrap_content">
             <com.citypicker.citylist.widget.ClearEditText
                 android:id="@+id/ed_text"
                 android:maxLength="8"
                 android:lines="1"
-                android:paddingLeft="16dp"
-                android:text="2232222222222222"
+                android:paddingLeft="15dp"
                 android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:layout_toLeftOf="@+id/tv_hint"

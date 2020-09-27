@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.ziran.meiliao.common.commonutils.ViewUtil;
 import com.yuyh.easyadapter.recyclerview.EasyRVAdapter;
 import com.yuyh.easyadapter.recyclerview.EasyRVHolder;
@@ -57,7 +58,8 @@ public class ImageListAdapter extends EasyRVAdapter<Image> {
 
         final ImageView iv = viewHolder.getView(R.id.ivImage);
         final FrameLayout frameLayout=viewHolder.getView(R.id.pi_picture_choose_item_select);
-        config.loader.displayImage(context, item.path, iv);
+//        config.loader.displayImage(context, item.path, iv);
+        Glide.with(context).load(item.path).into(iv);
 
         ViewUtil.addOnGlobalLayoutListener(iv, new ViewUtil.BaseCallBack() {
             @Override

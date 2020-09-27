@@ -27,10 +27,19 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_common_height"
             android:background="@color/white"
-            app:itemView_leftText="身份认证"
+            app:itemView_leftText="实名认证"
+            android:visibility="gone"
             app:itemView_leftText_color="@color/textColor_333"
             />
-
+        <com.ziran.meiliao.widget.ItemGroupView
+            android:id="@+id/tv_me_main_new_realperson"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_common_height"
+            android:background="@color/white"
+            app:itemView_leftText="实人认证"
+            app:itemView_leftText_color="@color/textColor_333"
+            />
+        <View style="@style/hor_match_line_8dp"/>
         <com.ziran.meiliao.widget.ItemGroupView
             android:id="@+id/tv_me_main_new_phone"
             android:layout_width="match_parent"
@@ -47,7 +56,7 @@
             app:itemView_leftText="修改密码"
             app:itemView_leftText_color="@color/textColor_333"
             />
-
+        <View style="@style/hor_match_line_8dp"/>
         <com.ziran.meiliao.widget.ItemGroupView
             android:id="@+id/tv_me_main_new_wechat"
             android:layout_width="match_parent"

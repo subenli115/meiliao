@@ -57,6 +57,7 @@ public class ChatDetailView extends LinearLayout {
     private SlipButton btnAddBlack;
     private RelativeLayout setNoteName;
     public static TextView tvNoteName;
+    private View mReport;
 
     public ChatDetailView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -65,6 +66,7 @@ public class ChatDetailView extends LinearLayout {
     }
 
     public void initModule() {
+
         mGroupDescLL = (LinearLayout) findViewById(R.id.group_desc_ll);
         mGroupDesc = (TextView) findViewById(R.id.chat_detail_group_desc);
         mGroupNameLL = (LinearLayout) findViewById(R.id.group_name_ll);
@@ -77,6 +79,7 @@ public class ChatDetailView extends LinearLayout {
 //        mChatFile = (LinearLayout) findViewById(R.id.chat_file);
         mChat_silence = findViewById(R.id.chat_silence);
         setNoteName = findViewById(R.id.setNoteName);
+        mReport = findViewById(R.id.group_chat_del_jb);
         tvNoteName = findViewById(R.id.tv_noteName);
         mReturnBtn = (ImageButton) findViewById(R.id.return_btn);
         mTitle = (TextView) findViewById(R.id.title);
@@ -97,8 +100,6 @@ public class ChatDetailView extends LinearLayout {
         mAddFriend = (Button) findViewById(R.id.chat_detail_add_friend);
         mDetailAddFriend = (LinearLayout) findViewById(R.id.detail_add_friend);
         mClear_rl = (RelativeLayout) findViewById(R.id.clear_rl);
-
-
         mTitle.setText(mContext.getString(R.string.chat_detail_title));
         mMenuBtn.setVisibility(View.GONE);
         //自定义GridView点击背景为透明色
@@ -119,6 +120,7 @@ public class ChatDetailView extends LinearLayout {
         mMoreGroupMember.setOnClickListener(onClickListener);
         mAddFriend.setOnClickListener(onClickListener);
         mClear_rl.setOnClickListener(onClickListener);
+        mReport.setOnClickListener(onClickListener);
 //        mChatFile.setOnClickListener(onClickListener);
         mChat_silence.setOnClickListener(onClickListener);
         mBlockBtn.setOnClickListener(onClickListener);
@@ -167,10 +169,8 @@ public class ChatDetailView extends LinearLayout {
         if (friend) {
             setNoteName.setVisibility(VISIBLE);
             mDelGroupBtn.setVisibility(VISIBLE);
-            mDetailAddFriend.setVisibility(GONE);
         } else {
             setNoteName.setVisibility(GONE);
-            mDetailAddFriend.setVisibility(VISIBLE);
             mDelGroupBtn.setVisibility(GONE);
         }
         mGroupDescLL.setVisibility(View.GONE);

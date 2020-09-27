@@ -1,50 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/arl_bg"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <com.zhy.autolayout.AutoRelativeLayout android:layout_width="match_parent"
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:id="@+id/rl"
-        android:layout_marginTop="10dp"
+        android:padding="10px"
         xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView
-            android:id="@+id/main_title_bar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="14dp"
-            android:textStyle="bold"
-            android:text="找朋友"
-            android:textColor="#000000"
-            android:textSize="25sp"/>
 
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/back1"
+                        android:padding="20px"
+                        android:layout_marginLeft="20px"
+                        android:layout_centerVertical="true"
+                        />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/arl"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:text="谁喜欢我:"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="30px"
+            />
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/arl_like"
+                android:layout_toRightOf="@+id/tv_like"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_height="wrap_content">
+                <com.ziran.meiliao.widget.RoundImageView
+                    app:roun_type="circle"
+                    android:id="@+id/riv1"
+                    android:visibility="gone"
+                    app:border_color1="@color/white"
+                    app:border_width1="1dp"
+                    android:layout_width="58px"
+                    android:layout_height="58px"
+                    android:src="@mipmap/tab_release"
+                    />
+                <com.ziran.meiliao.widget.RoundImageView
+                    app:roun_type="circle"
+                    android:id="@+id/riv2"
+                    android:layout_width="58px"
+                    app:border_color1="@color/white"
+                    app:border_width1="1dp"
+                    android:visibility="gone"
+                    android:layout_marginLeft="45px"
+                    android:layout_height="58px"
+                    android:src="@mipmap/tab_release"
+                    />
+                <com.ziran.meiliao.widget.RoundImageView
+                    app:roun_type="circle"
+                    android:id="@+id/riv3"
+                    android:visibility="gone"
+                    android:layout_marginLeft="34px"
+                    android:layout_toRightOf="@+id/riv1"
+                    android:layout_width="58px"
+                    android:layout_height="58px"
+                    android:src="@mipmap/tab_release"
+                    />
+                <ImageView
+                    android:layout_width="36px"
+                    android:visibility="gone"
+                    android:layout_toRightOf="@+id/riv1"
+                    android:layout_marginLeft="71px"
+                    android:layout_height="24px"
+                    android:src="@mipmap/icon_more_people"
+                    />
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
             <TextView
                 android:id="@+id/tv_preview"
                 android:layout_toRightOf="@+id/main_title_bar_title"
                 android:layout_width="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="#7C9CBF"
-                android:background="@drawable/normal_bg_bule_e5"
+                android:padding="20px"
+                android:layout_alignParentRight="true"
+                android:textColor="#459BFF"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25px"
+                android:textStyle="bold"
                 android:paddingLeft="13px"
                 android:paddingTop="6px"
                 android:paddingBottom="6px"
                 android:paddingRight="13px"
-                android:textSize="25px"
-                android:text="预览"
+                android:textSize="30px"
+                android:text="我的形象"
                 />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <com.ziran.meiliao.widget.CardSlidePanel
         android:layout_below="@+id/rl"
         android:id="@+id/image_slide_panel"
+        android:background="@color/white"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         />
 

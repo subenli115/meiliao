@@ -4,7 +4,10 @@
           package="com.ziran.meiliao">
 
     <uses-sdk tools:overrideLibrary="com.umeng.socialize.evernote,com.umeng.socialize.pinterest"/>
-
+    <permission
+        android:name="com.ziran.meiliao.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.ziran.meiliao.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -28,12 +31,13 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.WRITE_SMS" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <!-- 打开MICROPHONE -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <!-- ******************************闪验SDK建议权限*************************** -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     <!--
@@ -63,7 +67,6 @@
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -132,8 +135,11 @@
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:replace="android:theme" />
         <activity android:name="com.ziran.meiliao.ui.me.activity.EditUserInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.HomeImageSelectActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.ziran.meiliao.ui.me.activity.YouthModelActivity"
             android:screenOrientation="portrait"/>
@@ -145,6 +151,19 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.ziran.meiliao.ui.me.activity.SetRealNameActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetRealPersonActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetRealPersonResultActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.FeedbackActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SelectTagFlowActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.HobbySelectActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name="com.ziran.meiliao.ui.main.activity.RegionActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
@@ -170,6 +189,7 @@
         <activity android:name="com.ziran.meiliao.ui.settings.activity.WalletActivity"
             android:launchMode="singleTask"
             />
+        <activity android:name="com.ziran.meiliao.ui.settings.activity.ResultActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.RechargeActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.WalletDetailActivity"/>
         <activity android:name="com.ziran.meiliao.ui.settings.activity.MessageActivity"/>
@@ -195,8 +215,15 @@
         <!--jdx
 
         -->
+        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.UserHomeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            />
+        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.RecommendCommonActivity"/>
+        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.SelectUserActivity"
+            android:configChanges="orientation|keyboardHidden"
 
-
+            />
+        <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.SearchActivity"/>
         <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.DefWebActivity"/>
         <activity android:name="com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangActivity"/>
         <!--             <activity android:name=".ui.priavteclasses.activity.ExtensionWebActivity"/> -->
@@ -242,6 +269,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.ziran.meiliao.im.activity.BaseActivity"/>
+
+
         <activity
             android:name="com.ziran.meiliao.im.activity.FinishRegisterActivity"
             android:screenOrientation="portrait"
@@ -253,7 +282,16 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
+            android:name="com.ziran.meiliao.im.activity.CommonGiftActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
             android:name="com.ziran.meiliao.im.activity.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.CommonActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
@@ -281,6 +319,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/myTransparent"/>
         <activity
+            android:name="com.ziran.meiliao.ui.main.activity.DynamicDeatilsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTransparent"/>
+        <activity
             android:name="com.ziran.meiliao.im.activity.SearchFriendDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
@@ -288,6 +331,12 @@
             android:name="com.ziran.meiliao.im.activity.ChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BaseThemes"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.PairActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/BaseThemes"/>
+
         <activity
             android:name="com.ziran.meiliao.im.activity.SearchContactsActivity"
             android:screenOrientation="portrait"
@@ -368,6 +417,10 @@
             android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
             android:name="com.ziran.meiliao.im.activity.GroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.ziran.meiliao.im.activity.CommonNoticeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
         <activity
@@ -528,6 +581,7 @@
         <activity
             android:name="com.ziran.meiliao.im.activity.WechatActivity"
             android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppTheme"/>
 
         <activity
@@ -607,6 +661,76 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!--<activity-->
+            <!--android:name="cn.jpush.android.ui.PushActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden"-->
+            <!--android:exported="false">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="cn.jpush.android.ui.PushActivity" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="com.ziran.meiliao" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            tools:node="replace"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.ziran.meiliao" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:exported="false"
+            tools:node="replace"
+            android:theme="@style/MyDialogStyle">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="cn.jpush.android.ui.PopWinActivity" />
+                <category android:name="com.ziran.meiliao" />
+            </intent-filter>
+        </activity>
+
+        <!-- User defined.  For test only  用户自定义的广播接收器-->
+
+        <!-- User defined.  For test only  用户自定义接收消息器,3.0.7开始支持,目前新tag/alias接口设置结果会在该广播接收器对应的方法中回调-->
+        <!--since 3.3.0 接收JPush相关事件-->
+        <receiver android:name="com.ziran.meiliao.receiver.PushMessageReceiver">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="${applicationId}"></category>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.ziran.meiliao.widget.BoardcastReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <!--Required 用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!--Required 用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!--Required 用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!--Required 用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/><!--开机广播-->
+                <action android:name="
+
+android.net.conn.CONNECTIVITY_CHANGE"/><!--网络状态改变广播-->
+                <category android:name="com.woman.RCTest" />
+            </intent-filter>
+        </receiver>
+
         <service android:name="com.ziran.meiliao.service.UpdateVersionDownloadService"/>
         <service
             android:name="com.ziran.meiliao.service.MyService"
@@ -629,7 +753,7 @@
             android:value="${UMENG_CHANNEL_VALUE}"/>
         <!--适配全面屏手机-->
         <meta-data android:name="android.max_aspect"
-            android:value="2.1"/>
+            android:value="2.4"/>
 
         <meta-data android:name="android.notch_support" android:value="true"/>
         <meta-data
@@ -641,18 +765,18 @@
         <meta-data
             android:name="com.openinstall.APP_KEY"
             android:value="tssa7c"/>
-        <meta-data
-            android:name="com.ziran.meiliao.module.MyGlideModule"
-            android:value="GlideModule"/>
-        <meta-data
-            android:name="com.taobao.android.hotfix.IDSECRET"
-            android:value="24697110-1"/>
-        <meta-data
-            android:name="com.taobao.android.hotfix.APPSECRET"
-            android:value="d4bc101bd6a1d0f1eaad53bb3854cc49"/>
-        <meta-data
-            android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDAGm//JV0yeBHa+EA+H3/3YkKZqOmSAeSmIFhzY6aw9sXl5i6b318fIIHI3fBm7YoTiOiEEA83BDfH3n2/yM4MXtBwyS8b6dhPjpnRDc1p83FjAGkQHl2K/T+m1dOIXDOHSK1vogbhEefTP08qKSgVD0UwvXPKR4aaJlCf1gXGooIPt65kyRxSOSRc0LHn7f/rBVawR8eDkiTSPKLzGVbwEcEnPkwU5Iucwc1n9utGluNxM1DlvlrQWI4m2jpw2yBe2gTsoz8ginh0/2vuaUDWF3SYZ2pSsoNN8gxtuVgCh42gPFaurvlAp/9jMYceTIvGCCohjEYrxtg4nBffFUcvAgMBAAECggEAKLbxub/virzL+/7VjtUaSBI5T1vvdRSVo2gDlyEtuR/0PY+VnU+wV2aKW0o+o3IA67b+oM7OiriIIgJT4Ivsr86Amwboxx++ys3MZ/Rm7ue7xmHV4qas6MJX9UIofSQdf7S1nY1Xq+ghnDI00xi5+Ayue3AL1HloW893EwlHXBvCR/Vscbav+yivfPHhMbgxiokzfQcCXD/bH5tYhlO+vrec4qbrnP8UdxwXE9IuKOeF/9XtXj/oKmW5AY2XzyOraCcTO7xYmXBqjw/91hlyH9DZx1NIdqUzThiBJWXTQV46l/sZIOD0l7ZwK9h4YOyMKDVMHImVDE044S9Rau53IQKBgQD/aDRw32KhTwepo3/43xCHvmK74LVj+dw1OP9RqZcdW5buugxOOzyIsgch4w7IfvhcSAdYMtj1BQtB7XNxHPnKF3yf/ltVvFJIIhmmnbv8oJWy4pY4cktoTq2MdP4A7CzW2dMrKRIf+cSEQh/UjDTZl2CxqDyeu9RE5mAGTwOpmQKBgQDAjJwKVkViiiEZ5Y9rvpCEZhZ+1D53rX+wIj5Pczr9VyxaJOCiZkS3t4TZcx3Xv15DM2ulKx0DaAmFcigPiNKCQd0XnkNokOnJDHuYKJ9BT4NGhHDOnG/qia8wkx/1dQ9VdT+bbrhuOFiqFb2v5Bdhlw4DHIAru9bobQdrf8dEBwKBgQDVgUW9SXAIyqjsLWpwIACQiR2+UtUvcxKbRz9gA7X4a7UbcVmSGEC9QJ1nvYiBIGr7sZa6Kx9ki8fiX94OI5vITaP3l0jAvgHGnQL2XotkXtVlSbcsDpds5cB8Vtxy5vuAy2yUeuvU4RVfPmufYWlYsAu715h9VSTYSADjpS+5mQKBgQC/XwD3hScQ+RhNFMum2o/oB070Xx529AmklWQ4st4+TRXXwi9BOUOzFMMFHFTcyWZ2g/TJBECh0hUkfIE0b1hJ/gwwHSwCEYVKPQ3Z/QXLc6uVuqwjrXfOM2nbbV6mJuJGnXHKmhDT+0ykP1d4KcrTQ765eOoqjVbbSwHE5gq2oQKBgQDgEnHxEequoz0A7+IMDeVG7jrXkvdn+BE/3qvgEcffLoyYZ/RKR8UmRpKOZeRY1bZaJFF9HwVLkUdMdSnH/FUtjiVFhcBvIY8srDD/tfhcfKtha4lim9MfUiC4BLpAkuSAmAuAr2EBT18z+vYYLfHhGrZaxsB50Hul3p8plO14DA=="/>
+        <!--<meta-data-->
+            <!--android:name="com.ziran.meiliao.module.MyGlideModule"-->
+            <!--android:value="GlideModule"/>-->
+        <!--<meta-data-->
+            <!--android:name="com.taobao.android.hotfix.IDSECRET"-->
+            <!--android:value="24697110-1"/>-->
+        <!--<meta-data-->
+            <!--android:name="com.taobao.android.hotfix.APPSECRET"-->
+            <!--android:value="d4bc101bd6a1d0f1eaad53bb3854cc49"/>-->
+        <!--<meta-data-->
+            <!--android:name="com.taobao.android.hotfix.RSASECRET"-->
+            <!--android:value="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDAGm//JV0yeBHa+EA+H3/3YkKZqOmSAeSmIFhzY6aw9sXl5i6b318fIIHI3fBm7YoTiOiEEA83BDfH3n2/yM4MXtBwyS8b6dhPjpnRDc1p83FjAGkQHl2K/T+m1dOIXDOHSK1vogbhEefTP08qKSgVD0UwvXPKR4aaJlCf1gXGooIPt65kyRxSOSRc0LHn7f/rBVawR8eDkiTSPKLzGVbwEcEnPkwU5Iucwc1n9utGluNxM1DlvlrQWI4m2jpw2yBe2gTsoz8ginh0/2vuaUDWF3SYZ2pSsoNN8gxtuVgCh42gPFaurvlAp/9jMYceTIvGCCohjEYrxtg4nBffFUcvAgMBAAECggEAKLbxub/virzL+/7VjtUaSBI5T1vvdRSVo2gDlyEtuR/0PY+VnU+wV2aKW0o+o3IA67b+oM7OiriIIgJT4Ivsr86Amwboxx++ys3MZ/Rm7ue7xmHV4qas6MJX9UIofSQdf7S1nY1Xq+ghnDI00xi5+Ayue3AL1HloW893EwlHXBvCR/Vscbav+yivfPHhMbgxiokzfQcCXD/bH5tYhlO+vrec4qbrnP8UdxwXE9IuKOeF/9XtXj/oKmW5AY2XzyOraCcTO7xYmXBqjw/91hlyH9DZx1NIdqUzThiBJWXTQV46l/sZIOD0l7ZwK9h4YOyMKDVMHImVDE044S9Rau53IQKBgQD/aDRw32KhTwepo3/43xCHvmK74LVj+dw1OP9RqZcdW5buugxOOzyIsgch4w7IfvhcSAdYMtj1BQtB7XNxHPnKF3yf/ltVvFJIIhmmnbv8oJWy4pY4cktoTq2MdP4A7CzW2dMrKRIf+cSEQh/UjDTZl2CxqDyeu9RE5mAGTwOpmQKBgQDAjJwKVkViiiEZ5Y9rvpCEZhZ+1D53rX+wIj5Pczr9VyxaJOCiZkS3t4TZcx3Xv15DM2ulKx0DaAmFcigPiNKCQd0XnkNokOnJDHuYKJ9BT4NGhHDOnG/qia8wkx/1dQ9VdT+bbrhuOFiqFb2v5Bdhlw4DHIAru9bobQdrf8dEBwKBgQDVgUW9SXAIyqjsLWpwIACQiR2+UtUvcxKbRz9gA7X4a7UbcVmSGEC9QJ1nvYiBIGr7sZa6Kx9ki8fiX94OI5vITaP3l0jAvgHGnQL2XotkXtVlSbcsDpds5cB8Vtxy5vuAy2yUeuvU4RVfPmufYWlYsAu715h9VSTYSADjpS+5mQKBgQC/XwD3hScQ+RhNFMum2o/oB070Xx529AmklWQ4st4+TRXXwi9BOUOzFMMFHFTcyWZ2g/TJBECh0hUkfIE0b1hJ/gwwHSwCEYVKPQ3Z/QXLc6uVuqwjrXfOM2nbbV6mJuJGnXHKmhDT+0ykP1d4KcrTQ765eOoqjVbbSwHE5gq2oQKBgQDgEnHxEequoz0A7+IMDeVG7jrXkvdn+BE/3qvgEcffLoyYZ/RKR8UmRpKOZeRY1bZaJFF9HwVLkUdMdSnH/FUtjiVFhcBvIY8srDD/tfhcfKtha4lim9MfUiC4BLpAkuSAmAuAr2EBT18z+vYYLfHhGrZaxsB50Hul3p8plO14DA=="/>-->
 
 
         <!--百度语音
@@ -669,10 +793,10 @@
         <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />
         <meta-data
             android:name="design_width"
-            android:value="750"/>
+            android:value="850"/>
         <meta-data
             android:name="design_height"
-            android:value="1334"/>
+            android:value="1511"/>
 
 
         <meta-data
@@ -701,19 +825,21 @@
             android:name="com.activeandroid.content.ContentProvider"
             android:authorities="${applicationId}"
         android:exported="false"/>
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
-            android:authorities="${applicationId}.TTFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="${applicationId}.TTMultiProvider"
-            android:exported="false" />
+        <!--<provider-->
+            <!--android:name="com.bytedance.sdk.openadsdk.TTFileProvider"-->
+            <!--android:authorities="${applicationId}.TTFileProvider"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/file_paths" />-->
+        <!--</provider>-->
+        <!--<provider-->
+            <!--android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"-->
+            <!--android:authorities="${applicationId}.TTMultiProvider"-->
+            <!--android:exported="false" />-->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="4489647e39f201bd3c1304ca" /> <!--  </>值来自开发者平台取得的AppKey-->
     </application>
 
 </manifest>

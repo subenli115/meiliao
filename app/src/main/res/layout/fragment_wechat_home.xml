@@ -5,88 +5,27 @@
     android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.core.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
         android:layout_width="match_parent"
-        android:id="@+id/nsv"
-        android:layout_above="@+id/all_bottom"
-        android:layout_marginBottom="33px"
-        android:layout_height="match_parent">
-
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-
-
-
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:id="@+id/lay_header"
-                android:layout_width="match_parent"
-                android:layout_height="750px"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-                <ImageView
-                    android:id="@+id/iv_bg"
-                    android:layout_width="match_parent"
-                    android:scaleType="centerCrop"
-                    android:layout_height="match_parent"
-                    />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/home_gradient_bg"
-                    />
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    app:navigationIcon="@drawable/back_white1"
-                    app:layout_collapseMode="pin">
-
-                </androidx.appcompat.widget.Toolbar>
-
-            </com.zhy.autolayout.AutoRelativeLayout>
-
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:id="@+id/arl_content"
-                android:layout_width="match_parent"
-                android:layout_marginTop="640px"
-                android:background="@color/transparent"
-                android:layout_height="wrap_content">
-                <com.ziran.meiliao.common.irecyclerview.IRecyclerView
-                    android:id="@+id/recyclerView"
-                    android:paddingBottom="50px"
-                    android:layout_marginTop="60px"
-                    android:paddingTop="40px"
-                    android:background="@drawable/normal_bg_white60_half"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-                <com.ziran.meiliao.common.commonwidget.RoundImageView
-                    android:id="@+id/iv_head"
-                    android:layout_width="120px"
-                    android:layout_marginRight="64px"
-                    android:scaleType="centerCrop"
-                    app:roundimageview_type="circle"
-                    app:roundimageview_border_color="@color/white"
-                    app:roundimageview_border_width="2dp"
-                    app:roundimageview_borderRadius="4dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_height="120px"
-                    />
-            </com.zhy.autolayout.AutoRelativeLayout>
-        </com.zhy.autolayout.AutoRelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1"
-        android:layout_width="match_parent"
+        app:ntb_tv_left="showAndFinish"
+        app:ntb_right_img1="@mipmap/icon_wechat_camera"
         android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:visibility="gone"
-        app:navigationIcon="@drawable/back1"
-        app:layout_collapseMode="pin"/>
+        />
+    <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+        android:id="@+id/recyclerView"
+        app:loadMoreEnabled="true"
+        app:refreshEnabled="true"
+        android:background="#F7F8FA"
+        android:layout_below="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
+        android:id="@+id/loadedTip"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20px"
+        android:layout_below="@+id/ntb_title"
+        android:layout_height="match_parent">
+    </com.ziran.meiliao.common.commonwidget.LoadingTip>
 </com.zhy.autolayout.AutoRelativeLayout>

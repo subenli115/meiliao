@@ -1,6 +1,7 @@
 package com.ziran.meiliao.im.pickerimage.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import com.bumptech.glide.Glide;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.im.pickerimage.fragment.PickerImageFragment;
 import com.ziran.meiliao.im.pickerimage.model.PhotoInfo;
 import com.ziran.meiliao.im.pickerimage.utils.PickerImageLoadTool;
@@ -29,7 +32,8 @@ public class PickerPhotoAdapter extends BaseAdapter {
 	private List<PhotoInfo> list;
 	private GridView gridView;
 	private int hasSelect = 0;
-	private int width = ScreenUtil.screenWidth / 4;
+	private int width ;
+
 	private boolean isMutiMode;
 	private int maxSelectSize;
 	
@@ -38,6 +42,7 @@ public class PickerPhotoAdapter extends BaseAdapter {
 	public PickerPhotoAdapter(Context context, List<PhotoInfo> list, GridView gridView,
                               boolean isMutiMode, int hasSelect, int maxSelectSize) {
 		mContext = context;
+		width=ScreenUtil.getDisplayWidth(context)/ 4;
 		mInflater = LayoutInflater.from(context);
 		this.list = list;
 		this.gridView = gridView;
@@ -142,6 +147,7 @@ public class PickerPhotoAdapter extends BaseAdapter {
 			String thumbPath = ThumbnailsUtil.getThumbnailWithImageID(photoInfo.getImageId(), photoInfo.getFilePath());
 			PickerImageLoadTool.disPlay(thumbPath, new RotateImageViewAware(viewHolder.image, photoInfo.getAbsolutePath()),
 					R.drawable.image_default);
+			Log.e("thumbPath","thumbPath"+thumbPath);
 		}
 		
 		return convertView;

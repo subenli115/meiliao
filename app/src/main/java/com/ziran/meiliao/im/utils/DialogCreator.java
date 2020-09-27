@@ -42,6 +42,7 @@ import com.ziran.meiliao.im.application.JGApplication;
 import com.ziran.meiliao.im.controller.ActivityController;
 import com.ziran.meiliao.im.entity.Event;
 import com.ziran.meiliao.im.entity.EventType;
+import com.ziran.meiliao.ui.main.activity.SplashActivity;
 
 
 public class DialogCreator {
@@ -261,7 +262,7 @@ public class DialogCreator {
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyAPP.logout(context);
+                MyAPP.logout(context, SplashActivity.class);
             }
         });
         dialog.setCancelable(true);

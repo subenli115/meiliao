@@ -13,6 +13,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import android.text.TextUtils;
 import android.view.View;
@@ -114,7 +116,8 @@ public class RecommedPreviewActivity extends BaseActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ImgSelConfig.RequestCode && data != null) {
             final ArrayList<String> imgPaths = data.getStringArrayListExtra(ImgSelActivity.INTENT_RESULT);
             startUCrop(this,imgPaths.get(0),RequestCrop);
@@ -189,9 +192,6 @@ public class RecommedPreviewActivity extends BaseActivity {
         //是否隐藏底部容器，默认显示
         options.setHideBottomControls(true);
         //设置toolbar颜色
-        options.setToolbarColor(ActivityCompat.getColor(activity, com.yuyh.library.imgsel.R.color.black));
-        //设置状态栏颜色
-        options.setStatusBarColor(ActivityCompat.getColor(activity, com.yuyh.library.imgsel.R.color.black));
         //是否能调整裁剪框
         options.setFreeStyleCropEnabled(true);
         //UCrop配置

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:background="@mipmap/icon_bg_follow"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_marginTop="67px"
+            android:layout_marginLeft="55px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你还没有关注的人哦"
+            android:textColor="#CC1F4799"
+            android:textSize="36px"
+            />
+        <TextView
+            android:layout_marginLeft="55px"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:textSize="26px"
+            android:layout_marginTop="24px"
+            android:layout_marginBottom="67px"
+            android:layout_height="wrap_content"
+            android:text="已经关注了？别着急，他们最近没有更新呢"
+            android:textColor="#CC5976B3"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="50px"
+        android:layout_height="wrap_content">
+
+
+        <View
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_marginRight="29px"
+            android:layout_marginLeft="50px"
+            android:layout_height="2px"
+            android:layout_gravity="center_vertical"
+            android:background="#DCE0E6"
+            />
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:textSize="24px"
+            android:textColor="#8F9FB3"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:text="为你推荐10个用户"
+
+            />
+        <View
+            android:layout_weight="1"
+            android:layout_width="0px"
+            android:layout_marginRight="50px"
+            android:layout_marginLeft="29px"
+            android:layout_gravity="center_vertical"
+            android:layout_height="2px"
+            android:background="#DCE0E6"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

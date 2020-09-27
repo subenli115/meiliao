@@ -85,43 +85,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
     public void convert(ViewHolderHelper holder, Object bean, final int position) {
         int itemViewType = getItemViewType(position);
         switch (itemViewType) {
-            case HeadData.Type.TOP_OTHER:
-               RecActivityBean  rabean = EmptyUtils.parseObject(bean);
-                final RelativeLayout aflb = (RelativeLayout) holder.getView(R.id.afl_banner);
-                if(rabean.getBeans()==null){
-                    aflb.setVisibility(View.GONE);
-                   return;
-               }
-                final AutoLinearLayout all_zztj = (AutoLinearLayout)holder.getView(R.id.all_zztj);
-                final AutoLinearLayout all_yxs =(AutoLinearLayout) holder.getView(R.id.all_yxs);
-                 final   ImageView ivbc = (ImageView) holder.getView(R.id.iv_banner_close);
-                final   View view_line = (View) holder.getView(R.id.view_line);
-                   CYRollPagerView cyRollPagerView = (CYRollPagerView) holder.getView(R.id.vp);
-                ivbc.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        aflb.setVisibility(View.GONE);
-//                        view_line.setVisibility(View.GONE);
-                    }
-                });
-                all_yxs.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (itemClickListener != null) {
-                            itemClickListener.itemClick(all_yxs.getId());
-                        }
-                    }
-                });
-                all_zztj.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (itemClickListener != null) {
-                            itemClickListener.itemClick(all_zztj.getId());
-                        }
-                    }
-                });
-                setLBLayout(cyRollPagerView,rabean);
-                break;
             case HeadData.Type.TITLE:
                 HeadData dataBean = EmptyUtils.parseObject(bean);
                 holder.setText(R.id.tv_item_main_home_title, dataBean.getTitle());
@@ -135,10 +98,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
                     }
                 }
                 break;
-            case HeadData.Type.GONGZUOFANG_LEFT:
-                break;
-            case HeadData.Type.GONGZUOFANG_TOP:
-                break;
             case HeadData.Type.ZHIBO:
                 ZhiBoData zhiBoData = EmptyUtils.parseObject(bean);
                 holder.setText(R.id.tv_item_main_home_zhibo_title, zhiBoData.getTitle());
@@ -146,7 +105,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
                 break;
             case HeadData.Type.ZHUANLAN:
                 setZuanLanAdapter(holder,bean);
-
                 break;
             case HeadData.Type.BOOTCAMP:
                 setBootCampAdapter(holder,bean);
@@ -158,30 +116,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
                 setHotAlbumAdapter(holder,bean);
                 break;
         }
-    }
-
-    private void setLBLayout(CYRollPagerView cyRollPagerView, RecActivityBean rabean) {
-        List<DataBean.RecActivityBean> beans = rabean.getBeans();
-        cyLoopPagerAdapter=new CYLoopPagerAdapter<DataBean.RecActivityBean>(cyRollPagerView,beans) {
-
-
-            @Override
-            public void bindDataToView(ViewHolder holder, int position, DataBean.RecActivityBean bean) {
-                ImageView view = holder.getView(R.id.iv);
-                Glide.with(mContext).load(bean.getPicture()).transform(new GlideRoundTransform(mContext,5)).into(view);
-            }
-
-
-            @Override
-            public int getItemLayoutID(int position, DataBean.RecActivityBean bean) {
-                return R.layout.item_layout_pager;
-            }
-            @Override
-            public void onItemClick(int position, DataBean.RecActivityBean bean) {
-                String url = bean.getUrl();
-            }
-        };
-        cyRollPagerView.setAdapter(cyLoopPagerAdapter,3000,new CYColorPointHintView(mContext));
     }
 
     private void setCourseAdapter(ViewHolderHelper holder, Object bean) {
@@ -229,10 +163,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
         @Override
         public int getLayoutId(int itemType) {
             switch (itemType) {
-                case HeadData.Type.TOP_OTHER:
-                    return R.layout.headerview_main_home_new_other;
-                case HeadData.Type.TOP:
-                    return R.layout.headerview_main_home_new;
                 case HeadData.Type.TITLE:
                     return R.layout.item_main_home_title;
                 case HeadData.Type.BOOTCAMP:
@@ -256,10 +186,6 @@ public class NewMainHomeAdapter extends MultiItemRecycleViewAdapter<Object> {
             return  HeadData.Type.ALBUM ;
         } else if(dataBean instanceof CourseGZLBean){
                 return  HeadData.Type.COURSE ;
-            }else if(dataBean instanceof ChartData){
-                return HeadData.Type.TOP;
-            }else if(dataBean instanceof RecActivityBean){
-                return HeadData.Type.TOP_OTHER;
             }
             return 0;
     }

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.common.commonwidget.NormalTitleBar;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
 import com.ziran.meiliao.im.activity.ReleaseWechatActivity;
 import com.ziran.meiliao.im.adapter.WechatParentAdapter;
@@ -27,6 +28,7 @@ import com.ziran.meiliao.ui.base.CommonRefreshFragment;
 import com.ziran.meiliao.ui.bean.WechatListDataBean;
 import com.ziran.meiliao.ui.bean.WechatParentBean;
 import com.ziran.meiliao.utils.MapUtils;
+import com.ziran.meiliao.utils.NewCacheUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,37 +52,26 @@ public class WechatFragment extends CommonRefreshFragment<CommonPresenter, Commo
     private static final int REQUEST_CODE_A = 2;
     private String tagId;
     private WechatParentAdapter wechatParentAdapter;
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-    @Bind(R.id.toolbar1)
-    Toolbar toolbar1;
-    @Bind(R.id.arl_content)
-    AutoRelativeLayout arl_content;
-    @Bind(R.id.iv_head)
-    ImageView ivHead;
-    @Bind(R.id.iv_bg)
-    ImageView ivBg;
-    @Bind(R.id.nsv)
-    NestedScrollView nsv;
+    @Bind(R.id.ntb_title)
+    NormalTitleBar ntb;
     private List<WechatParentBean> parentBeanList;
     List<WechatListDataBean.DataBean.RecordsBean> list1;
     private String isSelf;
     private String userId;
     private boolean isResult=false;
+    private NewCacheUtil newCacheUtil;
+    private List dataList;
 
     @Override
     public void returnData(WechatListDataBean result) {
         List<WechatListDataBean.DataBean.RecordsBean> records = result.getData().getRecords();
-        if(records.size()==0&&!isSelf.equals("1")){
-                iRecyclerView.setHeadView(LayoutInflater.from(getContext()).inflate(R.layout.item_wechat_empty, null));
-        }else {
             if(isResult){
                 mAdapter.replaceAll(dayList(records));
                 isResult=false;
             }else {
                 updateData(dayList(records));
-            }
         }
+
     }
 
     //获取日期列表
@@ -94,7 +85,6 @@ public class WechatFragment extends CommonRefreshFragment<CommonPresenter, Commo
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(date);
                 String time = calendar.get(Calendar.YEAR) + "年" + calendar.get(Calendar.MONTH) + "月" + calendar.get(Calendar.DATE);
-                Log.e("timetime", "" + time);
                 if (!listTemp.contains(time)) {
                     listTemp.add(time);
                     WechatParentBean wechatParentBean = new WechatParentBean();
@@ -131,6 +121,7 @@ public class WechatFragment extends CommonRefreshFragment<CommonPresenter, Commo
 
     @Override
     public CommonRecycleViewAdapter getAdapter() {
+        loadedTip.setEmptyMsg("TA还没有发动态哦",R.mipmap.icon_wechat_empty);
         wechatParentAdapter = new WechatParentAdapter(getContext(), mRxManager,null, new WechatParentAdapter.ActivityMultiItemType() {
         }, isSelf);
         return wechatParentAdapter;
@@ -138,40 +129,20 @@ public class WechatFragment extends CommonRefreshFragment<CommonPresenter, Commo
 
     @Override
     protected void initView() {
+         newCacheUtil = new NewCacheUtil(getContext());
+        dataList = newCacheUtil.getDataList("wechat"+userId, WechatParentBean.class);
         isSelf = getIntentExtra(getActivity().getIntent(), "isSelf");
         userId = getIntentExtra(getActivity().getIntent(), "userId");
-        String homepageImages = getIntentExtra(getActivity().getIntent(), "homepageImages");
-        String avatar = getIntentExtra(getActivity().getIntent(), "avatar");
         super.initView();
-        Context context = getContext();
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        if(homepageImages!=null){}
-        Glide.with(context).load(homepageImages).into(ivBg);
-        Glide.with(context).load(avatar).error(R.drawable.jmui_head_icon).into(ivHead);
-        if (isSelf!=null&&isSelf.equals("1")) {
-            View headView = LayoutInflater.from(context).inflate(R.layout.item_head_wechat, null);
-            ImageView iv = (ImageView) headView.findViewById(R.id.iv_add);
-            iv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ReleaseWechatActivity.startAction(REQUEST_CODE_A);
-                }
-            });
-            iRecyclerView.setHeadView(headView);
+        if(!isSelf.equals("1")){
+            ntb.setRightImagVisibility(false);
         }
-
-        setAvatorChange();
+        ntb.setOnRightImagListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ReleaseWechatActivity.startAction(REQUEST_CODE_A);
+            }
+        });
     }
 
 
@@ -191,40 +162,6 @@ public class WechatFragment extends CommonRefreshFragment<CommonPresenter, Commo
         }
     }
 
-    /**
-     * 根据百分比改变颜色透明度
-     */
-    public int changeAlpha(int color, float fraction) {
-        int red = Color.red(color);
-        int green = Color.green(color);
-        int blue = Color.blue(color);
-        int alpha = (int) (Color.alpha(color) * fraction);
-        return Color.argb(alpha, red, green, blue);
-    }
-    /**
-     * 渐变toolbar背景
-     */
-    private void setAvatorChange() {
-        nsv.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                float percent =scrollY * 1.0f/(arl_content.getY()-toolbar1.getHeight());
-                Rect scrollRect = new Rect();
-                nsv.getHitRect(scrollRect);
-                //子控件在可视范围内（至少有一个像素在可视范围内）
-                if (toolbar.getLocalVisibleRect(scrollRect)) {
-                    toolbar1.setVisibility(View.GONE);
-                } else {
-                    toolbar1.setVisibility(View.VISIBLE);
-                }
-                if(percent>1){
-                    percent=1;
-                }
-                int i = changeAlpha(Color.parseColor("#FAFAFA"),percent);
-                toolbar1.setBackgroundColor(i);
-            }
-        });
-    }
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_wechat_home;
@@ -232,20 +169,16 @@ public class WechatFragment extends CommonRefreshFragment<CommonPresenter, Commo
 
     @Override
     protected void initBundle(Bundle extras) {
-        try {
-
-        } catch (Exception e) {
-        }
     }
 
 
     @Override
     protected void loadData() {
-        Map<String, String> map = MapUtils.getDefMap(true);
-        map.put("userId", userId);
-        map.put("size", "10");
-        map.put("current", page + "");
-        mPresenter.getData(ADMIN_SPACE_APPPAGE, map, WechatListDataBean.class);
+            Map<String, String> map = MapUtils.getDefMap(true);
+            map.put("userId", userId);
+            map.put("current", page + "");
+            map.put("size", "10");
+            mPresenter.getData(ADMIN_SPACE_APPPAGE, map, WechatListDataBean.class);
     }
 
     @Override

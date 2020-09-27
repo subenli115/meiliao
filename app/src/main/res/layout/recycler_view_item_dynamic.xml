@@ -3,30 +3,47 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="110px"
-    android:layout_marginLeft="30px"
     android:layout_height="wrap_content">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:background="#F7F8FA"
+        />
 
 <com.zhy.autolayout.AutoRelativeLayout
     android:layout_width="match_parent"
+    android:layout_marginTop="40px"
+    android:layout_marginLeft="30px"
+    android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_dt"
+
+</com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="动态"
-        android:textSize="40px"
-        android:layout_centerVertical="true"
-        android:textStyle="bold"
-        android:layout_gravity="center_vertical"
-        android:textColor="@color/black"
-        />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_dt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最新动态"
+            android:textSize="36px"
+            android:background="@drawable/shape_text_line"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <TextView
         android:id="@+id/tv_dynamic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_gravity="center_vertical"
         android:layout_toRightOf="@+id/tv_dt"
         android:background="@drawable/normal_bg_gray_f7"
@@ -53,6 +70,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
+        android:layout_marginLeft="30px"
+        android:layout_marginBottom="40px"
         android:layout_height="wrap_content">
 
 
@@ -61,20 +80,23 @@
         android:id="@+id/iv_select"
         android:layout_width="63dp"
         android:layout_height="63dp"
-        android:layout_marginTop="41px"
         android:visibility="gone"
-        android:src="@mipmap/icon_select_photo"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="41px"
+        android:layout_marginBottom="40px"
+        android:src="@mipmap/icon_more_dynamic"
         />
     <TextView
         android:id="@+id/tv_empty"
         android:layout_width="wrap_content"
-        android:visibility="gone"
         android:layout_height="wrap_content"
-        android:text="TA还没有发动态照片哦"
+        android:text="TA还没有发动态哦"
+        android:visibility="gone"
         android:layout_marginTop="68px"
+        android:layout_marginLeft="30px"
         android:textColor="@color/textColor_b2"
         android:layout_marginBottom="100px"
-        android:textSize="30px"
+        android:textSize="32px"
         />
 
 </com.zhy.autolayout.AutoLinearLayout>

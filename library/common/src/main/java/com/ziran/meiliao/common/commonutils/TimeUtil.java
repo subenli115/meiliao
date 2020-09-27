@@ -32,6 +32,7 @@ public class TimeUtil {
     /**
      * 时间日期格式化到年月日时分秒.
      */
+    public static String dateFormatYMDHMS_q = "yyyy/MM/dd HH:mm:ss";
     public static String dateFormatYMDHMS = "yyyy-MM-dd HH:mm:ss";
     public static String dateFormatYMDHMS_f = "yyyyMMddHHmmss";
     public static String dateFormatMDHM = "MM-dd HH:mm";
@@ -114,6 +115,23 @@ public class TimeUtil {
             return new SimpleDateFormat("yyyy-MM-dd");
         }
     };
+
+    @SuppressLint("SimpleDateFormat")
+    private final static ThreadLocal<SimpleDateFormat> dateFormater3 = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("MM月dd日");
+        }
+    };
+
+    @SuppressLint("SimpleDateFormat")
+    private final static ThreadLocal<SimpleDateFormat> dateFormater4 = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat(dateFormatYMDofChinese);
+        }
+    };
+
 
     /**
      * 时间戳转特定格式时间
@@ -233,7 +251,7 @@ public class TimeUtil {
         String after;
         try {
             Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(before);
-            after = new SimpleDateFormat("MM-dd HH:mm", Locale.getDefault()).format(date);
+            after = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(date);
         } catch (ParseException e) {
             return before;
         }
@@ -751,7 +769,7 @@ public class TimeUtil {
      * @param sdate
      * @return
      */
-    private static Date toDate(String sdate) {
+    public static Date toDate(String sdate) {
         try {
             return dateFormater.get().parse(sdate);
         } catch (ParseException e) {
@@ -765,12 +783,8 @@ public class TimeUtil {
      * @param ms
      * @return
      */
-    public static String getfriendlyTime(Long ms) {
-        if (ms == null) return "";
-//		Date time = toDate(sdate);
-        Date time = new Date();
-        time.setTime(ms);
-
+    public static String getfriendlyTime(String ss) {
+        Date time = toDate(ss);
         if (time == null) {
             return "Unknown";
         }
@@ -811,6 +825,64 @@ public class TimeUtil {
             ftime = dateFormater2.get().format(time);
         }
         return ftime;
+    }
+
+
+    /**
+     * 将传入Date值转换为想要显示的字符串
+     * @param value 只允许java.util.Date 或 String 类型,其他类型不处理
+     * @return  几秒前，几分钟前，几小时前，几天前，几个月前，几年前，很久以前（10年前）
+     */
+    public static String convertToShowStr(String value) {
+        Date time = toDate(value);
+        String result = null;
+            result = convertDateToShowStr(time);
+        return result;
+    }
+
+
+
+
+
+    /**
+     * 转换日期到指定格式方便查看的描述说明
+     * @param date
+     * @return 几秒前，几分钟前，几小时前，几天前，几个月前，几年前，很久以前（10年前）,如果出现之后的时间，则提示：未知
+     */
+    private static String convertDateToShowStr(Date date) {
+        String showStr = "";
+        long yearSeconds = 31536000L;//365 * 24 * 60 * 60;
+        long monthSeconds = 2592000L;//30 * 24 * 60 * 60;
+        long daySeconds = 86400L;//24 * 60 * 60;
+        long hourSeconds = 3600L;//60 * 60;
+        long minuteSeconds = 60L;
+
+
+        long time = (new Date().getTime() - date.getTime()) / 1000;
+        if(time<=0){
+            showStr = "刚刚";
+            return showStr;
+        }
+        if (time / yearSeconds > 0) {
+            showStr = dateFormater4.get().format(date);
+        } else if (time / monthSeconds > 0) {
+            showStr = dateFormater4.get().format(date);
+        } else if (time / daySeconds > 0) {
+            if(time<2){
+                showStr =  "昨天";
+            }else {
+                showStr = dateFormater3.get().format(date);
+            }
+        } else if (time / hourSeconds > 0) {
+            showStr = time / hourSeconds + "小时前";
+        } else if (time / minuteSeconds > 0) {
+            showStr = time / minuteSeconds + "分钟前";
+        } else if (time > 0) {
+            showStr = "刚刚";
+        }
+
+
+        return showStr;
     }
 
     /**
@@ -965,6 +1037,18 @@ public class TimeUtil {
         int sec = (int) diff / 1000;
         if (sec > 0) return sec + "秒";
         return "1秒";
+    }
+
+
+    public static String getTimeFormLong(long time) {
+        if (time <= 0) {
+            return "00:00";
+        }
+        int secondnd = (int) ((time / 1000) / 60);
+        int million = (int) ((time / 1000) % 60);
+        String f = secondnd >= 10 ? String.valueOf(secondnd) : "0" + String.valueOf(secondnd);
+        String m = million >= 10 ? String.valueOf(million) : "0" + String.valueOf(million);
+        return f + ":" + m;
     }
 
     /**

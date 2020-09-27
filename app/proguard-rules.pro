@@ -80,7 +80,12 @@
 #    -keep public class * extends android.support.v4.**
 
 ####混淆保护自己项目的部分代码以及引用的第三方jar包library-end####
-
+-keep class com.alivc.**{*;}
+-keep class com.aliyun.**{*;}
+-keep class com.cicada.**{*;}
+-dontwarn com.alivc.**
+-dontwarn com.aliyun.**
+-dontwarn com.cicada.**
 
 
 #保持 native 方法不被混淆

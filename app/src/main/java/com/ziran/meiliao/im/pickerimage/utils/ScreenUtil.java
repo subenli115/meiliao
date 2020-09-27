@@ -8,6 +8,7 @@ import android.util.Log;
 
 import java.lang.reflect.Field;
 
+import com.weavey.utils.ScreenSizeUtils;
 import com.ziran.meiliao.im.application.JGApplication;
 
 public class ScreenUtil {
@@ -68,9 +69,9 @@ public class ScreenUtil {
         Log.d(TAG, "screenWidth=" + screenWidth + " screenHeight=" + screenHeight + " density=" + density);
     }
 
-    public static int getDisplayWidth() {
+    public static int getDisplayWidth(Context context) {
         if (screenWidth == 0) {
-            GetInfo(JGApplication.context);
+            GetInfo(context);
         }
         return screenWidth;
     }

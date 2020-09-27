@@ -79,8 +79,8 @@ public class OtherUserHomeActivity extends BaseActivity {
     private String gold;
     private SimpleGivePopupWindow simplePayPopupWindow;
     private ACache mCache;
-    private Gson g;
-    private List<String> data;
+    private Gson g;    private List<String> data;
+
     private boolean rxFlag;
 
     public static void startAction(String userId) {
@@ -123,7 +123,6 @@ public class OtherUserHomeActivity extends BaseActivity {
         iRecyclerView.setFocusable(false);
         iRecyclerView.setHasFixedSize(true);
         iRecyclerView.setNestedScrollingEnabled(false);
-        meMainAdapter = new UserSpaceAdapter(mContext, new ArrayList<>(), this.dataBean, new ArrayList<>(), false);
         iRecyclerView.setAdapter(meMainAdapter);
         newMainHomeHeadViewUtil = new NewMainHomeHeadViewUtil(iRecyclerView, dataBean, false);
 //        getGiftList();
@@ -143,7 +142,7 @@ public class OtherUserHomeActivity extends BaseActivity {
         simplePayPopupWindow = new SimpleGivePopupWindow(this);
         UserBean.DataBean dataBean = MyAPP.getmUserBean();
         if (dataBean.getUserAccount() != null) {
-            UserAccountBean.DataBean data = dataBean.getUserAccount().getData();
+            UserAccountBean.DataBean data = dataBean.getUserAccount();
             if(data!=null){
                 String gold = (int) (data.getRecharge() + data.getCurrency()) + "";
                 simplePayPopupWindow.setTvMoney(gold,userId,dataBean.getNickname());
@@ -165,24 +164,21 @@ public class OtherUserHomeActivity extends BaseActivity {
      * 渐变toolbar背景
      */
     private void setAvatorChange() {
-        nsv.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                float percent = scrollY * 1.0f / (arl_content.getY() - toolbar1.getHeight());
-                Rect scrollRect = new Rect();
-                nsv.getHitRect(scrollRect);
-                //子控件在可视范围内（至少有一个像素在可视范围内）
-                if (toolbar.getLocalVisibleRect(scrollRect)) {
-                    toolbar1.setVisibility(View.GONE);
-                } else {
-                    toolbar1.setVisibility(View.VISIBLE);
-                }
-                if (percent > 1) {
-                    percent = 1;
-                }
-                int i = changeAlpha(Color.parseColor("#FAFAFA"), percent);
-                toolbar1.setBackgroundColor(i);
+        nsv.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            float percent = scrollY * 1.0f / (arl_content.getY() - toolbar1.getHeight());
+            Rect scrollRect = new Rect();
+            nsv.getHitRect(scrollRect);
+            //子控件在可视范围内（至少有一个像素在可视范围内）
+            if (toolbar.getLocalVisibleRect(scrollRect)) {
+                toolbar1.setVisibility(View.GONE);
+            } else {
+                toolbar1.setVisibility(View.VISIBLE);
             }
+            if (percent > 1) {
+                percent = 1;
+            }
+            int i = changeAlpha(Color.parseColor("#FAFAFA"), percent);
+            toolbar1.setBackgroundColor(i);
         });
     }
 
@@ -194,8 +190,7 @@ public class OtherUserHomeActivity extends BaseActivity {
                     @Override
                     public void onSuccess(MeSpaceBean result) {
                          data = result.getData();
-                        meMainAdapter.update(data, dataBean, giftDatas);
-
+//                        meMainAdapter.update(data, dataBean, giftDatas, infoLists, objects);
                     }
 
                     @Override
@@ -203,7 +198,6 @@ public class OtherUserHomeActivity extends BaseActivity {
 
                     }
                 });
-
     }
 
     private void getData() {
@@ -288,7 +282,9 @@ public class OtherUserHomeActivity extends BaseActivity {
                 if (Utils.isFastDoubleClick()) {
                     return;
                 } else {
-                    gotoChatActivity(mContext);
+                    if(dataBean!=null){
+                        gotoChatActivity(mContext);
+                    }
                 }
                 break;
         }

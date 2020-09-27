@@ -5,21 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import cn.jiguang.api.JCoreInterface;
+import cn.jpush.android.api.JPushInterface;
 
 import com.zhy.autolayout.AutoLinearLayout;
 import com.ziran.meiliao.R;
@@ -36,25 +43,21 @@ import com.ziran.meiliao.ui.me.activity.YouthModelActivity;
 import com.ziran.meiliao.utils.HandlerUtil;
 import com.ziran.meiliao.utils.UpdateManager;
 
+import java.util.List;
+
 public class MainActivity extends FragmentActivity {
     private MainController mMainController;
     private MainView mMainView;
     private View contentView;
     private boolean flag;
+    public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
+    public static boolean isForeground = false;
 
-    private static final int MIN_DELAY_TIME= 500;  // 两次点击间隔不能少于1000ms
-    private static long lastClickTime;
     private InputMethodManager imm;
 
-    public static boolean isFastClick() {
-        boolean flag = true;
-        long currentClickTime = System.currentTimeMillis();
-        if ((currentClickTime - lastClickTime) >= MIN_DELAY_TIME) {
-            flag = false;
-        }
-        lastClickTime = currentClickTime;
-        return flag;
-    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -68,16 +71,6 @@ public class MainActivity extends FragmentActivity {
             }
         }
         return super.onTouchEvent(event);
-    }
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN){
-            // 判断连续点击事件时间差
-//            if (isFastClick()){
-//                return true;
-//            }
-        }
-        return super.dispatchTouchEvent(ev);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,27 +101,27 @@ public class MainActivity extends FragmentActivity {
             if(getIntent()!=null){
                 String type = getIntent().getStringExtra("type");
                 if(type!=null&&type.equals("First")){
-                    registerReward();
+                    showPopWindow();
                 }
             }
             flag=true;
         }
     }
 
-    private void registerReward() {
-        OkHttpClientManager.getAsyncHead(ApiKey.ADMIN_USER_REGISTERRE, MyAPP.getUserId(),MyAPP.getAccessToken(), new
-                NewRequestCallBack<Result>(Result.class) {
-                    @Override
-                    public void onSuccess(Result result) {
-                        showPopWindow();
-                    }
-
-                    @Override
-                    public void onError(String msg, int code) {
-                        ToastUitl.showShort(msg);
-                    }
-                });
-    }
+//    private void registerReward() {
+//        OkHttpClientManager.getAsyncHead(ApiKey.ADMIN_USER_REGISTERRE, MyAPP.getUserId(),MyAPP.getAccessToken(), new
+//                NewRequestCallBack<Result>(Result.class) {
+//                    @Override
+//                    public void onSuccess(Result result) {
+//                        showPopWindow();
+//                    }
+//
+//                    @Override
+//                    public void onError(String msg, int code) {
+//                        ToastUitl.showShort(msg);
+//                    }
+//                });
+//    }
     public static void startAction( String type) {
         Activity activity = AppManager.getAppManager().currentActivity();
         Intent intent = new Intent(activity, MainActivity.class);
@@ -139,7 +132,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        getSupportFragmentManger().getFragments().get(2).onActivityResult(requestCode, resultCode, data);
+        getSupportFragmentManger().getFragments().get(3).onActivityResult(requestCode, resultCode, data);
     }
 
     public FragmentManager getSupportFragmentManger() {
@@ -148,14 +141,15 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onPause() {
+        isForeground = false;
         JCoreInterface.onPause(this);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        isForeground = true;
         JCoreInterface.onResume(this);
-        mMainController.sortConvList();
         super.onResume();
     }
     @Override
@@ -184,13 +178,6 @@ public class MainActivity extends FragmentActivity {
         popupWindow.setBackgroundDrawable(new ColorDrawable());
         popupWindow.showAtLocation(mMainView, Gravity.CENTER, 0, 0);
         TextView qd = contentView.findViewById(R.id.tv_qd);
-//        setBackgroundAlpha(0.5f);
-//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-//            @Override
-//            public void onDismiss() {
-//                setBackgroundAlpha(1.0f);
-//            }
-//        });
         qd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,12 +186,6 @@ public class MainActivity extends FragmentActivity {
             }
         });
     }
-//    public void setBackgroundAlpha(float bgAlpha) {
-//        WindowManager.LayoutParams lp = (this).getWindow()
-//                .getAttributes();
-//        lp.alpha = bgAlpha;
-//        mMainView.setAlpha(bgAlpha);
-//    }
 private void showPopYouth() {
     // 一个自定义的布局，作为显示的内容
     int[] location = new int[2];
@@ -221,19 +202,13 @@ private void showPopYouth() {
     popupWindow.showAtLocation(mMainView, Gravity.CENTER, 0, 0);
     TextView zd = contentView.findViewById(R.id.tv_zd);
     TextView tvInto = contentView.findViewById(R.id.tv_into);
-//        setBackgroundAlpha(0.5f);
-//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-//            @Override
-//            public void onDismiss() {
-//                setBackgroundAlpha(1.0f);
-//            }
-//        });
     tvInto.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             YouthModelActivity.startAction();
         }
     });
+
     zd.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {

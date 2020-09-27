@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.common.baserx.RxManager;
 import com.ziran.meiliao.im.utils.keyboard.utils.EmoticonsKeyboardUtils;
 
 public abstract class AutoHeightLayout extends SoftKeyboardSizeWatchLayout implements SoftKeyboardSizeWatchLayout.OnResizeListener {
@@ -112,6 +113,8 @@ public abstract class AutoHeightLayout extends SoftKeyboardSizeWatchLayout imple
     public abstract void onSoftKeyboardHeightChanged(int height);
 
     private OnMaxParentHeightChangeListener maxParentHeightChangeListener;
+
+
 
     public interface OnMaxParentHeightChangeListener {
         void onMaxParentHeightChange(int height);

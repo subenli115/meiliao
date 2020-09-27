@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -12,6 +13,8 @@ import android.util.Log;
 import androidx.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
+import com.aliyun.player.AliPlayer;
+import com.aliyun.player.AliPlayerFactory;
 import com.baidu.mapapi.SDKInitializer;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.chuanglan.shanyan_sdk.OneKeyLoginManager;
@@ -54,6 +57,8 @@ import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.bean.UserInfoBean;
 import com.ziran.meiliao.ui.main.activity.NewLoginActivity;
 import com.ziran.meiliao.ui.main.activity.SplashActivity;
+import com.ziran.meiliao.ui.settings.activity.InputUserInfoActivity;
+import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.PrefUtils;
 import com.ziran.meiliao.utils.StringUtils;
@@ -62,13 +67,13 @@ import com.ziran.meiliao.utils.UMengKit;
 //import com.taobao.sophix.listener.PatchLoadStatusListener;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
-import com.ziran.meiliao.widget.BGAGlideImageLoader3;
 
 
 import java.io.File;
 import java.util.Map;
 
 import cn.bingoogolapple.photopicker.imageloader.BGAImage;
+import cn.jpush.android.api.JPushInterface;
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.api.BasicCallback;
 
@@ -80,7 +85,7 @@ public class MyAPP extends BaseApplication {
 
     //用户token
     private static String accessToken;
-
+    public static LocationService locationService;
 
     //用户id
     private static String userId;
@@ -108,32 +113,33 @@ public class MyAPP extends BaseApplication {
     private static UserInfo userInfo;
     private static ACache mCache;
     private static Gson g;
+    private MediaPlayer mMediaPlayer;
 
     public static UserBean.DataBean getmUserBean() {
         if(mUserBean!=null){
             return mUserBean;
         }else {
-            return g.fromJson(mCache.getAsString("mUserBean"),  UserBean.DataBean.class);
+            return g.fromJson(mCache.getAsString(""+userId),  UserBean.DataBean.class);
         }
+
     }
 
     public static void setmUserBean(UserBean.DataBean mUserBean) {
         String json = g.toJson(mUserBean);
-        mCache.put("mUserBean",json);
+        mCache.put(mUserBean.getId(),json);
         MyAPP.mUserBean = mUserBean;
     }
 
     private static UserBean.DataBean mUserBean;
-    private Context context;
+    public static Context context;
     private static String THUMP_PICTURE_DIR;
-    private LocationService locationService;
-
 
     //分包处理
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+        xcrash.XCrash.init(this);
     }
 
     public static String getUserId() {
@@ -156,14 +162,13 @@ public class MyAPP extends BaseApplication {
         //初始化数据库
         DbCore.init(this);
         //初始化服务管理器
-        BGAImage.setImageLoader(new BGAGlideImageLoader3());
         context = getApplicationContext();
         //安装异常处理
         initCockroach();
         //友盟初始化
         UMengKit.init(this);
         //闪验SDK配置debug开关 （必须放在初始化之前，开启后可打印闪验SDK更加详细日志信息）
-        OneKeyLoginManager.getInstance().setDebug(true);
+        OneKeyLoginManager.getInstance().setDebug(false);
         //闪验SDK初始化（建议放在Application的onCreate方法中执行）
         initShanyanSDK(getApplicationContext());
         MeiliaoConfig.isDowning = true;
@@ -176,7 +181,11 @@ public class MyAPP extends BaseApplication {
         mCache = ACache.get(this);
         OkHttpClientManager.setDebug(false);
         initIm();
-        TTAdManagerHolder.init(this);
+        JPushInterface.setDebugMode(false); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);     		// 初始化 JPush
+        mMediaPlayer=MediaPlayer.create(this, R.raw.music);
+        mMediaPlayer.setLooping(true);
+        mMediaPlayer.start();
     }
 
 
@@ -433,6 +442,8 @@ public class MyAPP extends BaseApplication {
 
     public static void goToMainActivity(Context context) {
         MainActivity.startAction( "");
+//        InputUserInfoActivity.startAction(context);
+//     com.ziran.meiliao.ui.main.activity.MainActivity.startAction((Activity) context, 1);
         if(!(((Activity)context) instanceof SplashActivity)){
             ((Activity)context).finish();
         }
@@ -514,15 +525,15 @@ public class MyAPP extends BaseApplication {
 
     public static int saveMoney(UserAccountBean result) {
         if(result!=null&&result.getData()!=null){
-            double gold = result.getData().getRecharge() + result.getData().getCurrency();
-            MyAPP.getmUserBean().setUserAccount(result);
+            double gold = result.getData().getRecharge()+result.getData().getCurrency() ;
+            MyAPP.getmUserBean().setUserAccount(result.getData());
             return (int)gold;
         }else {
-            UserAccountBean userAccount = MyAPP.getmUserBean().getUserAccount();
+            UserAccountBean.DataBean userAccount = MyAPP.getmUserBean().getUserAccount();
             if(userAccount!=null){
-                UserAccountBean.DataBean data = userAccount.getData();
+                UserAccountBean.DataBean data = userAccount;
                 if(data!=null){
-                    double gold = data.getRecharge() +data.getCurrency();
+                    double gold = data.getRecharge()+data.getCurrency();
                     return (int)gold;
                 }else {
                     return 0;
@@ -559,6 +570,10 @@ public class MyAPP extends BaseApplication {
 
                         @Override
                         public void onError(String msg, int code) {
+                            Intent intent = new Intent();
+                            intent.setClass(context, IntputCodeActivity.class);
+                            intent.putExtra("Connected", "false");
+                            context.startActivity(intent);
                         }
                     });
         }

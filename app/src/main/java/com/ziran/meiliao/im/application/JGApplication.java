@@ -170,12 +170,6 @@ public class JGApplication extends com.activeandroid.app.Application {
         imagePicker.setOutPutY(1000);                         //保存文件的高度。单位像素
     }
 
-    public static void setPicturePath(String appKey) {
-        if (!SharePreferenceManager.getCachedAppKey().equals(appKey)) {
-            SharePreferenceManager.setCachedAppKey(appKey);
-            PICTURE_DIR = "sdcard/JChatDemo/pictures/" + appKey + "/";
-        }
-    }
 
     public static UserEntry getUserEntry() {
         return UserEntry.getUser(JMessageClient.getMyInfo().getUserName(), JMessageClient.getMyInfo().getAppKey());

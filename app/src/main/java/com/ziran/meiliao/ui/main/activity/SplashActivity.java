@@ -103,16 +103,6 @@ public class SplashActivity extends PermissionActivity<LoginPresenter, LoginMode
         }else {
             requestPermission(Manifest.permission.READ_PHONE_STATE);
         }
-//        TTAdManagerHolder.get().requestPermissionIfNecessary(activity);
-//        if (!NetWorkUtils.isNetConnected(mContext)) {
-//            MyAPP.loadUserInfo(new OnLoadDataListener<UserBean>() {
-//                @Override
-//                public void loadSuccess(UserBean userInfo) {
-//                    goToMainActivity(mContext);
-//                }
-//            });
-//            return;
-//        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             View decorView = window.getDecorView();
@@ -303,12 +293,20 @@ public class SplashActivity extends PermissionActivity<LoginPresenter, LoginMode
     @Override
     public void showUserInfo(UserBean result) {
         UserBean.DataBean data = result.getData();
-        MyAPP.setmUserBean(data);
-        if(data.getNickname()!=null&&data.getNickname().length()>0){
-              MyAPP.imLogin(mContext);
+        if(data!=null){
+            MyAPP.setmUserBean(data);
+            if(data.getNickname()!=null&&data.getNickname().length()>0){
+                MyAPP.imLogin(mContext);
+            }else {
+                OneKeyLoginManager.getInstance().setLoadingVisibility(false);
+                InputUserInfoActivity.startAction(mContext);
+            }
         }else {
-            OneKeyLoginManager.getInstance().setLoadingVisibility(false);
-            InputUserInfoActivity.startAction(mContext);
+            //拉起授权页失败
+            intent.putExtra("Connected", "false");
+            intent.setClass(mContext, IntputCodeActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 

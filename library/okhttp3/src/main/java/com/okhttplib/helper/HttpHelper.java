@@ -182,7 +182,7 @@ class HttpHelper extends BaseHelper {
                 showLog(builder.toString());
             }
             if (info.getParams().get("userId") != null || info.getParams().get("giveUserId") != null||
-                    info.getParams().get("reportUserId") != null
+                    info.getParams().get("reportUserId") != null||info.getParams().get("commentUserId")!=null
             ) {
                 Gson gson = new GsonBuilder().create();
                 String content = gson.toJson(info.getParams());
@@ -260,22 +260,25 @@ class HttpHelper extends BaseHelper {
                     if (netCode == 416)//请求数据流范围错误
                         return retInfo(info, netCode, HttpInfo.Message, "请求Http数据流范围错误\n" + res.body().string());
                     if (netCode == 500)//服务器内部错误
-                        return retInfo(info, netCode, HttpInfo.NoResult);
+                        return retInfo(info, netCode, HttpInfo.SUCCESS, res.body().string());
+//                        return retInfo(info, netCode, HttpInfo.NoResult);
                     if (netCode == 502)//错误网关
                         return retInfo(info, netCode, HttpInfo.CheckNet);
                     if (netCode == 401)//错误网关
                         return retInfo(info, netCode, HttpInfo.SUCCESS, res.body().string());
                     if (netCode == 504)//网关超时
                         return retInfo(info, netCode, HttpInfo.CheckNet);
-                    if (netCode == 1001) {
-                        return retInfo(info, netCode, HttpInfo.SUCCESS, res.body().string());
-                    }else if(netCode==428){
+                    if(netCode==428){
                         return retInfo(info, netCode, HttpInfo.SUCCESS, res.body().string());
                     }
+
                     if (netCode == 2000)
                         return retInfo(info, netCode, HttpInfo.SUCCESS, res.body().string());
                     if (netCode == 3000)
                         return retInfo(info, netCode, HttpInfo.SUCCESS, res.body().string());
+                    if(netCode==503){
+                        return retInfo(info, netCode, HttpInfo.SUCCESS, res.body().string());
+                    }
                 }
             }
             return retInfo(info, HttpInfo.CheckURL);

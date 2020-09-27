@@ -4,318 +4,108 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.zhy.autolayout.AutoLinearLayout
-        android:id="@+id/ll_main_home_title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_common_height"
-        android:gravity="center_vertical|right"
-        android:orientation="horizontal"
-        >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <com.ziran.meiliao.widget.SlideSearchView
-            android:id="@+id/slideSearchView"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="16dp"
-            android:layout_weight="1"
-            />
+    <TextView
+        android:id="@+id/tv_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="首页"
+        android:textSize="50px"
+        android:layout_marginTop="27px"
+        android:textStyle="bold"
+        android:layout_marginLeft="38px"
+        android:textColor="@color/black"
+        />
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/arl"
+    android:layout_width="wrap_content"
+    android:layout_marginTop="37px"
+    android:layout_height="wrap_content">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/all_location"
+        android:layout_width="wrap_content"
+        android:layout_toLeftOf="@+id/all_sx"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
 
         <ImageView
-            android:id="@+id/iv_main_home_title_ba_message"
+            android:layout_width="30px"
+            android:layout_gravity="center_vertical"
+            android:layout_height="34px"
+            android:src="@mipmap/icon_home_location"
+            />
+        <TextView
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:src="@mipmap/index_nav_message"
+            android:text="重庆"
+            android:layout_marginLeft="5px"
+            android:paddingTop="10px"
+            android:textStyle="bold"
+            android:paddingBottom="10px"
+            android:layout_marginRight="19px"
+            android:layout_alignBottom="@+id/tv_main"
+            android:textColor="#3E3E59"
+
+            android:textSize="32px"
             />
     </com.zhy.autolayout.AutoLinearLayout>
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all_sx"
+    android:layout_width="wrap_content"
+    android:layout_alignParentRight="true"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
 
-    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/rl_main_home_root"
+
+    <ImageView
+        android:layout_width="30px"
+        android:layout_height="34px"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/icon_home_screen"
+        />
+    <TextView
+        android:id="@+id/tv_sx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="筛选"
+        android:textStyle="bold"
+        android:layout_marginLeft="5px"
+        android:paddingTop="10px"
+        android:paddingBottom="10px"
+        android:layout_marginRight="36px"
+        android:layout_alignBottom="@+id/tv_main"
+        android:textColor="#3E3E59"
+        android:textSize="32px"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.ziran.meiliao.common.irecyclerview.IRecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ll_main_home_title_bar"
-        android:background="#fff"
-        android:fitsSystemWindows="false"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
-
-        <com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/scrolling_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
-            <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/activity_main"
-                android:layout_width="match_parent"
-                android:layout_height="300px"
-                android:layout_marginBottom="30px"
-                android:layout_marginTop="90px">
-
-
-
-
-                    <View
-                        android:layout_width="15px"
-                        android:layout_height="1dp"
-                        android:background="#CCCCCC"
-                        android:layout_alignTop="@+id/num"
-                        android:layout_toLeftOf="@+id/num"
-                        />
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/num"
-                    android:paddingTop="14px"
-                    android:paddingBottom="30px"
-                    android:layout_marginLeft="32px"
-                    android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="right"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="18px"
-                        android:id="@+id/max_num"
-                        android:textColor="#CCCCCC"
-                        android:layout_gravity="right"
-                        />
-                    <View
-                        android:layout_marginTop="12px"
-                        android:layout_width="15px"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="5px"
-                        android:background="#CCCCCC"
-                        android:layout_toLeftOf="@+id/max_num"
-                        />
-                </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_gravity="right"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        >
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:id="@+id/mid_num"
-                            android:textSize="18px"
-                            android:textColor="#CCCCCC"
-                            />
-                        <View
-                            android:layout_width="15px"
-                            android:layout_marginLeft="5px"
-                            android:layout_height="1dp"
-                            android:background="#CCCCCC"
-                            />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="bottom"
-                        android:layout_gravity="right"
-
-                        android:orientation="horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="0"
-                            android:textSize="18px"
-                            android:textColor="#CCCCCC"
-                            />
-
-                        <View
-                            android:layout_width="15px"
-                            android:layout_height="1dp"
-                            android:layout_marginBottom="11px"
-                            android:layout_marginLeft="5px"
-                            android:background="#CCCCCC"
-                            />
-
-                    </LinearLayout>
-
-                </com.zhy.autolayout.AutoLinearLayout>
-
-
-            </com.zhy.autolayout.AutoRelativeLayout>
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/all_nodata"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="#F0F4F5"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone"
-                >
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/nodatabg" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="暂无数据"
-                    android:textColor="#CCCCCC"
-                    android:textSize="24px" />
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginRight="56px"
-                android:paddingTop="40px">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="X:"
-                    android:textColor="#CCCCCC"
-                    android:textSize="23px" />
-
-                <TextView
-                    android:id="@+id/tv_rq"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="日期"
-                    android:textColor="#CCCCCC"
-                    android:textSize="23px" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25px"
-                    android:text="Y:"
-                    android:textColor="#CCCCCC"
-                    android:textSize="23px" />
-
-                <TextView
-                    android:id="@+id/tv_fz"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="分钟"
-                    android:textColor="#CCCCCC"
-                    android:textSize="23px" />
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/all_js"
-                android:layout_width="wrap_content"
-                android:layout_height="68px"
-                android:layout_gravity="end|center_vertical"
-                android:background="@drawable/shape_small_label"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="35px"
-                    android:layout_marginRight="10px"
-                    android:gravity="center"
-                    android:text="去计时"
-                    android:textColor="@color/white"
-                    android:textSize="30px" />
-
-                <ImageView
-                    android:layout_width="15px"
-                    android:layout_height="20px"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="16px"
-                    android:src="@mipmap/play_with_green" />
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10px"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="20px"
-                android:background="@color/gray_fb" />
-        </com.zhy.autolayout.AutoFrameLayout>
-
-        <com.ziran.meiliao.common.irecyclerview.IRecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            android:descendantFocusability="blocksDescendants"
-            app:layoutManager="LinearLayoutManager"
-            app:layout_behavior="com.ziran.meiliao.widget.HeaderScrollingBehavior" />
-    </android.support.design.widget.CoordinatorLayout>
-    <com.zhy.autolayout.AutoFrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="#66000000"
-        android:id="@+id/all_action"
-        android:visibility="gone"
-        android:orientation="vertical"
+        android:layout_below="@+id/arl"
+        app:loadMoreEnabled="true"
+        app:refreshEnabled="true"
+        android:background="#F7F8FA"
+        android:descendantFocusability="blocksDescendants"
+        app:layoutManager="LinearLayoutManager"/>
+    <com.ziran.meiliao.common.commonwidget.LoadingTip
         android:layout_width="match_parent"
+        android:id="@+id/loadedTip"
+        android:layout_below="@+id/arl"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_height="match_parent">
 
 
+    </com.ziran.meiliao.common.commonwidget.LoadingTip>
 
 
-        <TextView
-            android:textSize="36px"
-            android:textColor="#FCFBFC"
-            android:layout_gravity="center"
-            android:layout_marginTop="100px"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="下滑可见【计时练习】"
-            />
-
-        <TextView
-            android:id="@+id/tv_know"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我知道了"
-            android:paddingLeft="36px"
-            android:layout_gravity="center"
-            android:layout_marginTop="220px"
-            android:paddingRight="36px"
-            android:textSize="36px"
-            android:background="@drawable/normal_bg_white_tran"
-            android:textColor="#FCFBFC"
-            />
-
-
-    </com.zhy.autolayout.AutoFrameLayout>
-        <com.ziran.meiliao.common.commonwidget.LoadingTip
-            android:id="@+id/loadedTip"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/ll_main_home_title_bar"
-            />
 
 </com.zhy.autolayout.AutoRelativeLayout>

@@ -17,16 +17,20 @@ import com.ziran.meiliao.utils.StringUtils;
 
 public class BillDetailsAdapter extends MultiItemRecycleViewAdapter<BillDetailsBean.DataBean.RecordsBean> {
 
+    private String money;
+
     public BillDetailsAdapter(Context context) {
         super(context, new CouponMultiItemType());
     }
 
     @Override
     public void convert(ViewHolderHelper holder, BillDetailsBean.DataBean.RecordsBean itemData, int position) {
+        money=(int)itemData.getMoney()+"币";
         if(itemData.getType()==1){
-            holder.setText(R.id.tv_gold,"+ "+ itemData.getMoney());
+            holder.setText(R.id.tv_gold,"+ "+ money);
+            holder.setTextColor(R.id.tv_gold, R.color.picture_color_4d);
         }else {
-            holder.setText(R.id.tv_gold,"- "+ itemData.getMoney());
+            holder.setText(R.id.tv_gold,"- "+ money+"");
             holder.setTextColor(R.id.tv_gold, R.color.textColor_teshe5);
         }
         holder.setText(R.id.tv_title, itemData.getRemarks());

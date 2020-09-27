@@ -311,7 +311,6 @@ public class NewLoginActivity extends BaseActivity<LoginPresenter, LoginModel> i
 //            MainActivity.startAction(this);
             finish();
         } else {
-            super.onBackPressed();
         }
     }
     //第三方登录数据的封装

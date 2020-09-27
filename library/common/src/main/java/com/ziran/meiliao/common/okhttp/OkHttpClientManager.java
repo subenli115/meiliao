@@ -44,8 +44,8 @@ public class OkHttpClientManager {
     private static String BASE_URL;
 
     private static final String OK_BASE_URL = "http://api.ziran518.com:9999/";
-//    private static final String TEST_BASE_URL = "http://192.168.1.5:9999/";
-    private static final String TEST_BASE_URL = "http://39.98.156.53:9999/";
+    private static final String TEST_BASE_URL = "http://192.168.1.3:9999/";
+//    private static final String TEST_BASE_URL = "http://39.98.156.53:9999/";
 
 
     private static OkHttpClientManager mInstance;
@@ -496,39 +496,6 @@ public class OkHttpClientManager {
             deliveryResult(callback, request);
     }
 
-
-    /**
-     * 批量上传文件操作
-     *
-     * @param url
-     * @param callback
-     */
-    public static void _postContentAndFiles(String url, String token, List<File> files, final OkHttpClientManager
-            .ResultCallback callback) {
-        /* form的分割线,自己定义 */
-        String boundary = "xx--------------------------------------------------------------xx";
-        MultipartBody.Builder builder = new MultipartBody.Builder(boundary);
-        builder.setType(MultipartBody.FORM);
-//        if (map != null && map.size() > 0) {
-//            Set<String> keySet = map.keySet();
-//            for (String key : keySet) {
-//                String value = map.get(key);
-//                if ("text".equals(key) || "content".equals(key)) {
-//                    value = EncodeUtil.encodeUTF(value);
-//                }
-//                builder.addFormDataPart(key, value);
-//            }
-//        }
-        if (files != null && files.size() > 0) {
-            for (int i = 0; i < files.size(); i++) {
-                okhttp3.RequestBody fileBody = okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/jpeg"), files.get(i));
-                builder.addFormDataPart("file", files.get(i).getName(), fileBody);
-            }
-        }
-        MultipartBody mBody = builder.build();
-        Request request = new Request.Builder().url(BASE_URL + url).addHeader("Authorization",token).post(mBody).build();
-        deliveryResult(callback, request);
-    }
 
 
     /**

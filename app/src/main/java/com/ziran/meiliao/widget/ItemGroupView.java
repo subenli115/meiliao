@@ -323,13 +323,15 @@ public class ItemGroupView extends RelativeLayout {
         ImageLoaderUtils.displayCircle(getContext(), ivRight, url, loadingRes);
     }
 
-    public void setImageRes(int resId) {
-        ImageLoaderUtils.display(getContext(), ivRight, resId);
-    }
 
-    public void setLeftImage(int resId) {
+    public void setLeftImage() {
         if (ivLeft != null) {
-            ivLeft.setImageResource(resId);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ivLeft.getLayoutParams();
+            params.height = (int) DisplayUtil.dp2px(getResources(), 17);
+            params.width = (int) DisplayUtil.dp2px(getResources(), 14);
+            params.leftMargin=(int) DisplayUtil.dp2px(getResources(), 25);
+            ivLeft.setLayoutParams(params);
+            ivLeft.setImageDrawable(leftDrawable);
         }
     }
 

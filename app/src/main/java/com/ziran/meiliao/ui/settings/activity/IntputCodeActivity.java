@@ -2,19 +2,26 @@ package com.ziran.meiliao.ui.settings.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.soexample.LoginApi;
 import com.umeng.soexample.UserInfo;
+import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MeiliaoConfig;
@@ -53,9 +60,6 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import cn.jpush.im.android.api.JMessageClient;
-import cn.jpush.im.android.api.event.LoginStateChangeEvent;
-import cn.jpush.im.api.BasicCallback;
 import rx.functions.Action1;
 
 import static com.ziran.meiliao.widget.SmsCodeView.TYPE_POST_LOGIN;
@@ -81,6 +85,8 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
     AutoRelativeLayout arlLogin;
     @Bind(R.id.tv_other)
     TextView tvOther;
+    @Bind(R.id.bg)
+    AutoLinearLayout bg;
 
 
 
@@ -94,6 +100,8 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
     private IntputCodeActivity codeActivity;
     private Dialog dialog;
     private int mWidth;
+    private View contentView;
+    private boolean flag;
 
     public UserInfo getUserInfo() {
         return userInfo;
@@ -188,6 +196,7 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
     public void showPwdLogin(LoginBean result) {
 
     }
+
 
     @Override
     public void showUserInfo(UserBean result) {
@@ -298,7 +307,6 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
         if (dialog != null) {
             dialog.dismiss();
         }
-        JMessageClient.unRegisterEventReceiver(this);
     }
 
 
@@ -307,58 +315,72 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
         mPresenter.setVM(this, mModel);
     }
 
-    public void onEventMainThread(LoginStateChangeEvent event) {
-        final LoginStateChangeEvent.Reason reason = event.getReason();
-        cn.jpush.im.android.api.model.UserInfo myInfo = event.getMyInfo();
-        if (myInfo != null) {
-            String path;
-            File avatar = myInfo.getAvatarFile();
-            if (avatar != null && avatar.exists()) {
-                path = avatar.getAbsolutePath();
-            } else {
-                path = FileHelper.getUserAvatarPath(myInfo.getUserName());
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if(!flag){
+            if(getIntent()!=null){
+                int code = getIntent().getIntExtra("code",0);
+                if(code==1005){
+                    showPopWindow(0);
+                }
             }
-            SharePreferenceManager.setCachedUsername(myInfo.getUserName());
-            SharePreferenceManager.setCachedAvatarPath(path);
-            JMessageClient.logout();
+
+            flag=true;
         }
-        switch (reason) {
-            case user_logout:
-                JMessageClient.logout();
-                View.OnClickListener listener = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        switch (v.getId()) {
-                            case R.id.jmui_cancel_btn:
-                                Intent intent = new Intent(mContext, SplashActivity.class);
-                                startActivity(intent);
-                                break;
-                            case R.id.jmui_commit_btn:
-                                JMessageClient.login(SharePreferenceManager.getCachedUsername(), SharePreferenceManager.getCachedPsw(), new BasicCallback() {
-                                    @Override
-                                    public void gotResult(int responseCode, String responseMessage) {
-                                        if (responseCode == 0) {
-                                            Intent intent = new Intent(mContext, SplashActivity.class);
-                                            startActivity(intent);
-                                        }
-                                    }
-                                });
-                                break;
-                        }
-                    }
-                };
-                dialog = DialogCreator.createLogoutStatusDialog(mContext, "您的账号在其他设备上登陆", listener);
-                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                dialog.getWindow().setLayout((int) (0.8 * mWidth), WindowManager.LayoutParams.WRAP_CONTENT);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
-                break;
+    }
+
+    private void showPopWindow(int type) {
+        // 一个自定义的布局，作为显示的内容
+        int[] location = new int[2];
+        contentView = LayoutInflater.from(MyAPP.context).inflate(R.layout.pop_login_result, null);
+        contentView.getLocationOnScreen(location);
+        final PopupWindow popupWindow = new PopupWindow(contentView,
+                AutoLinearLayout.LayoutParams.MATCH_PARENT, AutoLinearLayout.LayoutParams.MATCH_PARENT, true);
+        popupWindow.setTouchable(true);
+        popupWindow.setOutsideTouchable(true);// 设置同意在外点击消失
+        popupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        // 如果不设置PopupWindow的背景，有些版本就会出现一个问题：无论是点击外部区域还是Back键都无法dismiss弹框
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
+        popupWindow.showAtLocation(bg, Gravity.CENTER, 0, 0);
+        TextView title = contentView.findViewById(R.id.tv_title);
+        TextView content = contentView.findViewById(R.id.tv_update_version_content);
+        TextView qd = contentView.findViewById(R.id.tv_qd);
+
+        TextView qx = contentView.findViewById(R.id.tv_qx);
+        if(type==1){
+            content.setText("账户违规，已被永久封号");
+            title.setText("封号");
+        }else if(type==3){
+            content.setText("请发邮件联系客服：meiliao@51sqbb.com");
+            title.setText("申述");
+            qx.setVisibility(View.GONE);
         }
+        qd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
+        qx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                showPopWindow(3);
+            }
+        });
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+            }
+        });
+
     }
 
     @Override
     public void initView() {
-        JMessageClient.registerEventReceiver(this);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         mWidth = dm.widthPixels;
@@ -366,9 +388,11 @@ public class IntputCodeActivity extends BaseActivity<LoginPresenter, LoginModel>
         if (getIntent() != null) {
             Intent intent = getIntent();
             String connected = intent.getStringExtra("Connected");
+            String code = intent.getStringExtra("code");
             if (connected != null && connected.equals("false")) {
                 ntb.setTvLeftVisiable(false);
             }
+
         }
         if (SPUtils.getBoolean("First", false)) {
             intent.setClass(mContext, PrivatePopActivity.class);

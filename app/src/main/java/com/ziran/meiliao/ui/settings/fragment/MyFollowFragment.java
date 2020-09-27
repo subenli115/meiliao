@@ -3,6 +3,7 @@ package com.ziran.meiliao.ui.settings.fragment;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.viewpager.widget.ViewPager;
@@ -10,10 +11,16 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseFragment;
+import com.ziran.meiliao.ui.priavteclasses.activity.SearchActivity;
 import com.ziran.meiliao.ui.settings.adapter.FollowTabadapter;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+
+/**
+ *
+ * 关注
+ */
 
 public class MyFollowFragment extends BaseFragment {
 
@@ -23,7 +30,6 @@ public class MyFollowFragment extends BaseFragment {
     ViewPager viewPager;
 
 
-    private static final int MAX_ZHUANLAN_COUNT = 8;
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_sjk_follow;
@@ -41,6 +47,7 @@ public class MyFollowFragment extends BaseFragment {
             tabLayout.addTab(tabLayout.newTab().setText(stringArray[i]));
         }
         tabLayout.setupWithViewPager(viewPager);
+
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#459BFF"));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -68,7 +75,15 @@ public class MyFollowFragment extends BaseFragment {
 
 
 
-    @OnClick(R.id.tv_fm_sjk_zhuanlan_change)
-    public void onViewClicked() {
+    @OnClick({R.id.iv_seach})
+    public void onViewClicked(View view) {
+
+        switch (view.getId()){
+            case R.id.iv_seach:
+
+                SearchActivity.startAction();
+                break;
+
+        }
     }
 }

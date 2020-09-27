@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:voiceView="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent60"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+
+    <View
+        android:id="@+id/touch_outside"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="60px"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textStyle="bold"
+            android:textSize="58px"
+            android:textColor="#B4C8E0"
+            />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="82px"
+            android:gravity="center"
+            android:layout_marginBottom="63px"
+            android:layout_height="wrap_content">
+            <com.ziran.meiliao.widget.VoiceLineView
+                android:id="@+id/voicLine"
+                android:layout_width="match_parent"
+                android:layout_height="100px"
+                android:background="@color/white"
+                voiceView:maxVolume="20"
+                voiceView:middleLine="#63BBFF"
+                voiceView:middleLineHeight="5dp"
+                voiceView:rectSpace="2dp"
+                voiceView:rectWidth="3dp"
+                voiceView:viewMode="rect"
+                voiceView:voiceLine="#63BBFF"
+                voiceView:rectInitHeight="3dp"
+                />
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_marginBottom="69px"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/all_cancle"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="66px"
+        android:layout_marginTop="58px"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:src="@mipmap/icon_record_cancle"
+            />
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textColor="#A8ABB3"
+            android:textSize="30px"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/iv_record"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:src="@mipmap/icon_record_start"
+            />
+        <TextView
+            android:id="@+id/tv_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击录音"
+            android:textColor="#A8ABB3"
+            android:textSize="30px"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/all_save"
+    android:visibility="gone"
+    android:layout_marginLeft="66px"
+    android:layout_marginTop="58px"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/iv_save"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:src="@mipmap/icon_record_select"
+        />
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        android:textColor="#A8ABB3"
+        android:textSize="30px"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>
+
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout >

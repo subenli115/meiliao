@@ -1,239 +1,114 @@
 package com.ziran.meiliao.ui.main.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
-import android.view.MotionEvent;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.annotation.Nullable;
 
-import com.google.gson.Gson;
-import com.zhy.autolayout.AutoRelativeLayout;
+import com.alibaba.fastjson.JSONArray;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.common.baserx.RxManagerUtil;
-import com.ziran.meiliao.common.commonutils.SPUtils;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
-import com.ziran.meiliao.common.compressorutils.EmptyUtils;
-import com.ziran.meiliao.common.compressorutils.FileUtil;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
-import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
+import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.constant.ApiKey;
-import com.ziran.meiliao.constant.AppConstant;
-import com.ziran.meiliao.entry.MusicEntry;
-import com.ziran.meiliao.envet.NewRequestCallBack;
+import com.ziran.meiliao.entry.UserSelectBean;
+import com.ziran.meiliao.im.utils.MainHomeHeadViewUtil;
+import com.ziran.meiliao.ui.base.CommonContract;
 import com.ziran.meiliao.ui.base.CommonModel;
+import com.ziran.meiliao.ui.base.CommonPresenter;
 import com.ziran.meiliao.ui.base.CommonRefreshFragment;
-import com.ziran.meiliao.ui.bean.ActisData;
-import com.ziran.meiliao.ui.bean.AlbumBean;
-import com.ziran.meiliao.ui.bean.BootCampBean;
-import com.ziran.meiliao.ui.bean.CourseGZLBean;
-import com.ziran.meiliao.ui.bean.Entity;
-import com.ziran.meiliao.ui.bean.HeadData;
-import com.ziran.meiliao.ui.bean.HomeAlbumBean;
-import com.ziran.meiliao.ui.bean.HomeDataBean;
-import com.ziran.meiliao.ui.bean.HotAlbumBean;
-import com.ziran.meiliao.ui.bean.NewHomeDataBean;
-import com.ziran.meiliao.ui.bean.PicsBean;
-import com.ziran.meiliao.ui.bean.PractiveChartBean;
-import com.ziran.meiliao.ui.bean.RecActivityBean;
-import com.ziran.meiliao.ui.bean.StringDataBean;
-import com.ziran.meiliao.ui.bean.TempActivityBean;
-import com.ziran.meiliao.ui.bean.ZhiBoData;
-import com.ziran.meiliao.ui.bean.ZhuanLanBean;
-import com.ziran.meiliao.ui.main.adapter.NewMainHomeAdapter;
-import com.ziran.meiliao.ui.main.contract.MainHomeContract;
-import com.ziran.meiliao.ui.main.presenter.MainHomePresenter;
-import com.ziran.meiliao.ui.main.util.NewMainHomeHeadViewUtil;
-import com.ziran.meiliao.ui.priavteclasses.activity.GongZuoFangActivity;
-import com.ziran.meiliao.ui.settings.activity.MessageActivity;
-import com.ziran.meiliao.utils.CheckUtil;
-import com.ziran.meiliao.utils.DeviceUtil;
+import com.ziran.meiliao.ui.bean.HomeBannerBean;
+import com.ziran.meiliao.ui.bean.HomeMenuBean;
+import com.ziran.meiliao.ui.bean.HomeRecommendBean;
+import com.ziran.meiliao.ui.bean.UserBean;
+import com.ziran.meiliao.ui.main.adapter.HomeRecommendAdapter;
+import com.ziran.meiliao.ui.priavteclasses.activity.SelectUserActivity;
 import com.ziran.meiliao.utils.MapUtils;
-import com.ziran.meiliao.utils.MyValueTempCache;
-import com.ziran.meiliao.utils.PrefUtils;
-import com.ziran.meiliao.widget.LocationUtils;
-import com.ziran.meiliao.widget.SlideSearchView;
-import com.zhy.autolayout.AutoFrameLayout;
-import com.zhy.autolayout.AutoLinearLayout;
+import com.ziran.meiliao.utils.NewCacheUtil;
 
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import rx.functions.Action1;
 
-import static com.ziran.meiliao.constant.ApiKey.PRACTICE_GETCHARTDATAV2;
+import static android.app.Activity.RESULT_OK;
+
 
 /**
  * 主界面
  */
 
-public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter, CommonModel> implements MainHomeContract.View {
+public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, CommonModel>
+        implements CommonContract.View<Result> {
+    private static final int REQUEST_CODE_B =5 ;
+    @Bind(R.id.tv)
+    TextView tv;
 
-    @Bind(R.id.rl_main_home_root)
-    CoordinatorLayout mRlRootView;
-    @Bind(R.id.scrolling_header)
-    AutoFrameLayout scrollingHeader;
-    @Bind(R.id.slideSearchView)
-    SlideSearchView mSearchView;
-    @Bind(R.id.iv_main_home_title_ba_message)
-    ImageView ivMessage;
-    @Bind(R.id.all_action)
-    AutoFrameLayout all_action;
-    @Bind(R.id.tv_know)
-    TextView tvKnow;
-    @Bind(R.id.all_js)
-    AutoLinearLayout allJs;
-    @Bind(R.id.ll_main_home_title_bar)
-    View llMainHomeTitleBar;
-    @Bind(R.id.max_num)
-    TextView maxNum;
-    @Bind(R.id.mid_num)
-    TextView midNum;
-    @Bind(R.id.arl_bg)
-    AutoRelativeLayout arlBg;
-    private ArrayList<Entity> list;
-    private String hotWord;
-    private int unReadCount;
-    private boolean flag;
-    private NewMainHomeHeadViewUtil newMainHomeHeadViewUtil;
-    private List<MusicEntry> mMusicList;
-    private String albumId;
-    private AlbumBean mAuthor;
-    private LocListener locListener;
-    private NewMainHomeAdapter newMainHomeAdapter;
-    private HomeAlbumBean homeAlbumBean;
-    private Gson gson;
-    private ArrayList homeList;
-    private static Context mContext;
 
+    private MainHomeHeadViewUtil mainHomeHeadViewUtil;
+    private UserSelectBean resultBean;
+    private LocationClient mLocationClient;
+    private NewCacheUtil newCacheUtil;
+    private List<UserBean.DataBean> records;
 
     @Override
-    public void showHomeData(HomeDataBean result) {
+    protected void initView() {
+        super.initView();
+        tv.setText(MyAPP.getmUserBean().getRegion());
+        mLocationClient = new LocationClient(getActivity().getApplicationContext());
+        //声明LocationClient类
+        mLocationClient.registerLocationListener(myListener);
+        mLocationClient.start();
+        mainHomeHeadViewUtil = new MainHomeHeadViewUtil(iRecyclerView);
+        newCacheUtil = new NewCacheUtil(getContext());
+        View headView = mainHomeHeadViewUtil.getHeadView();
+        ViewTreeObserver observer = headView.getViewTreeObserver();
 
-    }
-
-
-    @Override
-    public void showUnReadCount(StringDataBean result) {
-        unReadCount = result.getIntData();
-        ivMessage.setImageResource(unReadCount > 0 ? R.mipmap.index_nav_messages : R.mipmap.index_nav_message);
-    }
-
-    @Override
-    public void showAuthor(AlbumBean result) {
-        mAuthor = result;
-        mAuthor.setAlbumId(albumId);
-        MyValueTempCache.get().put(AppConstant.DOWN_ALBUM, mAuthor);
-    }
-
-    @Override
-    public void showChartData(PractiveChartBean.DataBean result) {
-        List<PractiveChartBean.DataBean.ChartDataBean> chartData = result.getChartData();
-    }
-
-
-    public void startPlayer(int musicId, int id, AlbumBean albumBean, Context mContext, List<MusicEntry> mMusicList) {
-        MusicEntry musicEntry = new MusicEntry();
-        musicEntry.setMusicId(musicId);
-        if(mMusicList!=null&&mMusicList.size()>0){
-            for(int i=0;i<mMusicList.size();i++){
-                if(mMusicList.get(i).getMusicId()==musicId){
-                    MyValueTempCache.setCurrentPlayMusicEntry(mMusicList.get(i));
-                }
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                headView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                int height = headView.getMeasuredHeight();
+                ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) loadedTip.getLayoutParams();
+                p.setMargins(0, mainHomeHeadViewUtil.getHeadView().getHeight()+200, 0,0);
+                loadedTip.setLayoutParams(p);
+                loadedTip.setbg();
             }
-            if(MyValueTempCache.getCurrentData()==null){
-                ToastUitl.showShort("暂无该音频");
-               return;
-            }
-        }
-        MyValueTempCache.get().put(AppConstant.SPKey.PLAY_DATA,mMusicList);
+        } );
+        getData();
     }
 
-    @Override
-    public void showNewHomeData(NewHomeDataBean result) {
-        NewHomeDataBean.DataBean   data = result.getData();
-        String albumBeanString = getSaveAlbumData(data.getRecAlbum());
-        if(mMusicList==null){
-            albumId= data.getRecAlbum().getAlbumId() + "";
-            if(!albumBeanString.equals("")){
-                albumId= homeAlbumBean.getAlbumId();
-            }
-            mPresenter.getAuthorData(ApiKey.GET_AUTHOR_DATA, MapUtils.getAlbumData(albumId, 1));
-        }
-        hotWord = data.getHotWord();
-        if (EmptyUtils.isNotEmpty(data.getHotAlbum())) {
-            homeList.add(HeadData.create(HeadData.Type.ALBUM, result.getData().getHotAlbumWord(), flag));
-            HotAlbumBean hotAlbumBean = new HotAlbumBean();
-            hotAlbumBean.setHotAlbum(data.getHotAlbum());
-            homeList.add(hotAlbumBean);
-        }
-        RecActivityBean recActivityBean = new RecActivityBean();
-        recActivityBean.setBeans(data.getRecActivity());
-        if(data.getRecActivity().size()>0){
-            homeList.add(recActivityBean);
-        }
-        MeiliaoConfig.setHotWord(hotWord);
-        if (EmptyUtils.isNotEmpty(hotWord)) {
-            mSearchView.setText(hotWord);
-        }
-        if (EmptyUtils.isNotEmpty(data.getPractice())) {
-            homeList.add(HeadData.create(HeadData.Type.BOOTCAMP, "训练营", flag));
-            BootCampBean bootCampBean = new BootCampBean();
-            bootCampBean.setBeans(data.getPractice());
-            homeList.add(bootCampBean);
-        }
-        if (EmptyUtils.isNotEmpty(data.getActivity())) {
-            homeList.add(HeadData.create(HeadData.Type.COURSE, "课程", flag));
-            CourseGZLBean courseGZLBean = new CourseGZLBean();
-            courseGZLBean.setActivity(data.getActivity());
-            homeList.add(courseGZLBean);
-        }
-        if (EmptyUtils.isNotEmpty(data.getSubscription())) {
-            homeList.add(HeadData.create(HeadData.Type.ZHUANLAN, "专栏", flag));
-            ZhuanLanBean zhuanLanBean = new ZhuanLanBean();
-            zhuanLanBean.setSubscription(data.getSubscription());
-            homeList.add(zhuanLanBean);
-        }
-        updateData(homeList); //显示item数据
-}
 
-    private String getSaveAlbumData(NewHomeDataBean.DataBean.RecAlbumBean data) {
-        String albumBeanString = PrefUtils.getString("albumBean", "",getContext());
-        if(!albumBeanString.equals("")){
-            homeAlbumBean =gson.fromJson(albumBeanString, HomeAlbumBean.class);
-        }else{
+
+    private void getData() {
+        List banner = newCacheUtil.getDataList("banner", HomeBannerBean.DataBean.class);
+        if(banner==null){
+            Map<String, String> defMap = MapUtils.getDefMap(true);
+            defMap.put("type", "1");
+            mPresenter.getData(ApiKey.ADMIN_EXHIBITION_LIST, defMap, HomeBannerBean.class);
+        }else {
+            mainHomeHeadViewUtil.setData(banner);
         }
-        return albumBeanString;
-    }
-
-    @Override
-    public void updateCC(NewHomeDataBean.DataBean.RecAlbumBean result) {
-                    getSaveAlbumData(result);
-    }
-
-    @Override
-    public void showMusicList(List<MusicEntry> musicEntries) {
-    }
-
-    @Override
-    public void showNewMusicList(List<MusicEntry> musicEntries) {
-        mMusicList=musicEntries;
+        List menu = newCacheUtil.getDataList("menu", HomeMenuBean.DataBean.class);
+        if(menu==null){
+            Map<String, String> defMap1 = MapUtils.getDefMap(true);
+            defMap1.put("type", "1");
+            mPresenter.getData(ApiKey.ADMIN_APPMENU_PAGE, defMap1, HomeMenuBean.class);
+        }else {
+            mainHomeHeadViewUtil.setMenuData(menu);
+        }
     }
 
 
@@ -244,269 +119,134 @@ public class NewMainHomeFragment extends CommonRefreshFragment<MainHomePresenter
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        showQuitPopWindow();
-    }
-
-
-    private void showQuitPopWindow() {
-        boolean isFisrtHome = PrefUtils.getBoolean("isFisrtHome", false, getContext());
-        if(!isFisrtHome){
-            mRlRootView.setEnabled(false);
-            all_action.setVisibility(View.VISIBLE);
-            all_action.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View view, MotionEvent motionEvent) {
-                    return true;
-                }
-            });
-            PrefUtils.putBoolean("isFisrtHome", true, getContext());
-        }
-    }
-
-    //轮播图点击监听
-    @Override
-    public void onViewPagerItemClick(View clickView, int position, String url) {
-        PicsBean picsBean = (PicsBean) adViewpagerUtil.getDatas().get(position);
-        if ("zhibo".equals(picsBean.getType())) {
-            if (!CheckUtil.check(getContext(), getView())) return;
-        } else if ("history".equals(picsBean.getType())) {
-        } else if ("h5".equals(picsBean.getType())) {
-            ActisData dataBean = new ActisData();
-            dataBean.setPicture(picsBean.getPicture());
-            dataBean.setUrl(picsBean.getLink());
-            dataBean.setSignup(picsBean.getLink());
-            dataBean.setShareTitle(picsBean.getShareTitle());
-            dataBean.setShareDescript(picsBean.getShareDescript());
-            dataBean.setId(Integer.parseInt(picsBean.getId()));
-            dataBean.setIsCollect(picsBean.isCollect());
-            GongZuoFangActivity.startAction(getContext(), dataBean);
-        }
-    }
-
-    @Override
-    protected void initView() {
-        super.initView();
-         mContext = getContext();
-        FileUtil.createFileFolder(MeiliaoConfig.setPhone(SPUtils.getString("phone")), mContext);
-        try {
-        //初始数据
-            iRecyclerView.setFocusableInTouchMode(false);
-            iRecyclerView.setFocusable(false);
-            iRecyclerView.setHasFixedSize(true);
-             gson=new Gson();
-        initHeadData();
-        mRxManager.on(AppConstant.RXTag.MAIN_HOME_MORE_CLICK, new Action1<HeadData>() {
-            @Override
-            public void call(HeadData headData) {
-            }
-        });
-
-        mSearchView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-//大会内容窗口
-        mRxManager.on(AppConstant.RXTag.CONFERENCE_GET_CONFERENCE, new Action1<Boolean>() {
-            @Override
-            public void call(Boolean s) {
-                OkHttpClientManager.postAsync(ApiKey.CONFERENCE_GET_CONFERENCE, MapUtils.getDefMapSp(true), new NewRequestCallBack<TempActivityBean>(TempActivityBean.class) {
-                    @Override
-                    protected void onSuccess(TempActivityBean result) {
-                        if (EmptyUtils.isNotEmpty(result.getData())) {
-                            if (EmptyUtils.isNotEmpty(result.getData().getShareUrl())) {
-                                String shareUrl = PrefUtils.getString("shareUrl", "", mContext);
-                                if(shareUrl.equals("")){
-                                    showZndh(result.getData());
-                                }
-                                PrefUtils.putString("shareUrl",result.getData().getShareUrl(),mContext);
-                                return;
-                            }
-                        }
-                        RxManagerUtil.post(AppConstant.RXTag.GET_GAIN_SPREAD, true);
-                    }
-                    @Override
-                    public void onError(String msg, int code) {
-                        RxManagerUtil.post(AppConstant.RXTag.GET_GAIN_SPREAD, true);
-                    }
-                });
-            }
-        });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mRxManager.on(AppConstant.RXTag.MPS_COMPLETION, new Action1<String>() {
-
-            @Override
-            public void call(String aBoolean) {
-            if(aBoolean.equals("next")){
-                String albumBeanString = PrefUtils.getString("albumBean", "", getContext());
-                    homeAlbumBean =gson.fromJson(albumBeanString, HomeAlbumBean.class);
-            }
-            }
-        });
-    }
-
-    private void update() {
-        homeList  = new ArrayList();
-        Map<String, String> defMap = MapUtils.getDefMapSp(true);
-        String locations = LocationUtils.getInstance().getLocations(getContext());
-        if(locations.equals("0,0")){
-            defMap.put("address","");
-        }else{
-            defMap.put("address",locations);
-        }
-        defMap.put("platform","安卓");
-        defMap.put("cellphone",android.os.Build.BRAND+android.os.Build.MODEL);
-        defMap.put("version", DeviceUtil.getVersionCode(getContext()));
-        defMap.put("page",page+"");
-        defMap.put("portVersion", MeiliaoConfig.portVersion);
-        mPresenter.getNewHomeData(defMap);
-        getChartData();
-        mPresenter.getUnReadCount(MapUtils.getDefMapSp(true));
-
-    }
-    private void getChartData() {
-        Map<String, String> chartMap = MapUtils.getDefMapSp(true);
-        chartMap.put("type","0");
-        mPresenter.getChartData(PRACTICE_GETCHARTDATAV2, chartMap);
-    }
 
     @Override
     public CommonRecycleViewAdapter getAdapter() {
-         newMainHomeAdapter = new NewMainHomeAdapter(getContext(), getActivity(),new NewMainHomeAdapter.NewMainHomeMultiItemType(),mRxManager);
-        newMainHomeAdapter.setItemClickListener(new NewMainHomeAdapter.ItemClickListener() {
-            @Override
-            public void itemClick(int id) {
-                switch (id){
-                    case R.id.all_yxs:
-                        break;
-                    case R.id.all_zztj:
-                        break;
-                }
-            }
-        });
-        return newMainHomeAdapter;
+        iRecyclerView.setLoadMoreEnabled(true);
+
+        return new HomeRecommendAdapter(getContext(),-1);
     }
+
     @Override
     protected void loadData() {
-        update();
-    }
-    /**
-     * 将经纬度转换成中文地址
-     *
-     * @param location
-     * @return
-     */
-    private String getLocationAddress(Location location) {
-        String add = "";
-        Geocoder geoCoder = new Geocoder(getContext(), Locale.CHINESE);
-        try {
-            List<Address> addresses = geoCoder.getFromLocation(
-                    location.getLatitude(), location.getLongitude(),
-                    1);
-            Address address = addresses.get(0);
-                add = address.getAddressLine(0) + address.getAddressLine(1);
-        } catch (IOException e) {
-            add = "";
-            e.printStackTrace();
-        }
-        return add;
+            refresh(resultBean);
     }
 
-    /**
-     * 获取位置后监听
-     */
-    private class LocListener implements LocationListener {
-        @Override
-        public void onLocationChanged(Location location) {
-            String locationAddress = getLocationAddress(location);
-            //TODO:当前地址为：locationAddress="北京市海淀区华奥饭店公司写字间中关村创业大街"
-        }
 
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-
-        }
-    }
-    private void initHeadData() {
-        list = new ArrayList<>();
-        locListener = new LocListener();
-        String[] array = getResources().getStringArray(R.array.home_main);
-        for (int i = 0; i < array.length; i++) {
-            Entity entity = new Entity();
-            entity.title = array[i];
-            List<Entity.InnerEntity> innerEntities = new ArrayList<>();
-            for (int j = 1; j < 11; j++) {
-                innerEntities.add(new Entity.InnerEntity(("Inner Title" + i + " - " + j), j % 3 == 0 ? R.mipmap.ic_launcher : R.mipmap.ic_launcher));
+    private void refresh(UserSelectBean bean) {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("id", MyAPP.getUserId());
+        if(bean!=null){
+            page=1;
+            if(bean.getObjective()!=null){
+                defMap.put("objective",bean.getObjective());
             }
-            entity.innerEntities = innerEntities;
-            list.add(entity);
+            if(bean.getFigure()!=null){
+                defMap.put("shape",bean.getFigure());
+            }
+            if(bean.getConstellation()!=null){
+                defMap.put("constellation",bean.getConstellation());
+            }
+
+            defMap.put("startHeight",bean.getLeftHeight());
+            defMap.put("startAge",bean.getLeftAge());
+            defMap.put("endHeight",bean.getRightHeight());
+            defMap.put("endAge",bean.getRightAge());
+            if(bean.getOnline().equals("1")){
+                defMap.put("status",bean.getOnline());
+            }
+            defMap.put("sex",bean.getSex());
         }
-    }
-    public void startActivity(Class clz) {
-        if (CheckUtil.check(getContext())) {
-            Intent intent = new Intent(getContext(), clz);
-             startActivity(intent);
-         }
+        defMap.put("size","20");
+        defMap.put("current",page+"");
+        mPresenter.getData(ApiKey.ADMIN_USER_RECOMMEND, defMap, HomeRecommendBean.class);
     }
 
-    //点击item监听
     @Override
-    public void onItemClick(ViewGroup parent, View view, Object bean, int position) {
-        if (!CheckUtil.check(getContext(), getView())) return;
-        int itemViewType = mAdapter.getItemViewType(position);
-        switch (itemViewType) {
-            case HeadData.Type.TOP_OTHER:
-                break;
-            case HeadData.Type.GONGZUOFANG_TOP:
-                break;
-            case HeadData.Type.GONGZUOFANG_LEFT:
-                ActisData actisData = EmptyUtils.parseObject(bean);
-                break;
-            case HeadData.Type.ZHIBO:
-                ZhiBoData zhiBoData = EmptyUtils.parseObject(bean);
-                break;
-            case HeadData.Type.ZHUANLAN:
-                break;
-        }
-    }
-
-    private ImageView floatView;
-
-    private void showZndh(final TempActivityBean.DataBean result) {
-    }
-    //button点击监听
-    @OnClick({ R.id.iv_main_home_title_ba_message,R.id.tv_know,R.id.all_js})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-
-            case R.id.iv_main_home_title_ba_message:
-                //跳转到消息详情页面
-                if (CheckUtil.check(getContext(), view)) {
-                    MessageActivity.startAction(getContext(), unReadCount);
-                    ivMessage.setImageResource(R.mipmap.index_nav_message);
+    public void returnData(Result result) {
+        if (result instanceof HomeBannerBean) {
+            List<HomeBannerBean.DataBean> data = ((HomeBannerBean) result).getData();
+            if(data!=null&&data.size()>0){
+                mainHomeHeadViewUtil.setData(data);
+                newCacheUtil.saveBannerBean(data);
+            }
+        }else if(result instanceof HomeRecommendBean){
+            records = ((HomeRecommendBean) result).getData().getRecords();
+            if(records.size()==0){
+//                setEmptyMsg("暂无内容", R.mipmap.ic_empty_nocontent);
+                refresh(null);
+            }else {
+                if(resultBean==null&&records.size()>3){
+                    UserBean.DataBean dataBean = MyAPP.getmUserBean();
+                    records.add(3,dataBean);
                 }
+                updateData(records);
+            }
+        }else if(result instanceof HomeMenuBean){
+            List<HomeMenuBean.DataBean> records = ((HomeMenuBean) result).getData();
+            mainHomeHeadViewUtil.setMenuData(records);
+            newCacheUtil.saveMenuBean(records);
+        }
+
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_B:
+                if (resultCode == RESULT_OK) {
+                     resultBean =data.getParcelableExtra("USER_INFO");
+                    page=1;
+                    onRefreshBy(false);
+                }
+            default:
                 break;
-            case R.id.tv_know:
-                all_action.setVisibility(View.GONE);
-                mRlRootView.setEnabled(true);
-                break;
-            case R.id.all_js:
+        }
+
+
+    }
+
+    //点击监听
+    @OnClick({R.id.all_sx})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.all_sx:
+                Intent intent = new Intent(getContext(), SelectUserActivity.class);
+                if(resultBean!=null){
+                    intent.putExtra("resultBean",resultBean);
+                }
+                startActivityForResult(intent,REQUEST_CODE_B);
                 break;
         }
     }
+
+    @Override
+    public void showLoading(String title) {
+        loadedTip.setVisibility(View.GONE);
+//        super.showLoading(title);
+    }
+
+    /**
+     * 定位SDK监听函数
+     *
+     * @author
+     */
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+           String longitude = location.getLongitude() + "";
+           String  latitude = location.getLatitude() + "";
+            MeiliaoConfig.setLongitude(longitude);
+            MeiliaoConfig.setLatitude(latitude);
+
+        }
+    }
+
+
+    public BDLocationListener myListener = new MyLocationListener();
+
 }

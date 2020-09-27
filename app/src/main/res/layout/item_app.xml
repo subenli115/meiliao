@@ -7,7 +7,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:paddingRight="11dp"
         android:paddingLeft="11dp"
         >
@@ -15,7 +16,6 @@
         <ImageView
             android:id="@+id/iv_icon"
             android:layout_width="60dp"
-            android:layout_centerHorizontal="true"
             android:layout_height="60dp"
             />
 

@@ -168,6 +168,24 @@ public class WechatListDataBean extends Result {
             private int clickNum;
             private String delFlag;
             private String createTime;
+            private String videoId;
+            private String duration;
+
+            public String getDuration() {
+                return duration;
+            }
+
+            public void setDuration(String duration) {
+                this.duration = duration;
+            }
+
+            public String getVideoId() {
+                return videoId;
+            }
+
+            public void setVideoId(String videoId) {
+                this.videoId = videoId;
+            }
 
             public String getId() {
                 return id;

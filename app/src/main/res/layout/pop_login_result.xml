@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+
+    android:gravity="center"
+    android:background="@color/transparent_helf"
+    >
+
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/rl_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/ll"
+    android:layout_width="600px"
+ android:gravity="center_horizontal"
+    android:paddingBottom="86px"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/normal_bg_white60"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoFrameLayout
+    android:layout_width="wrap_content"
+    android:layout_marginTop="78px"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_dj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="冻结"
+        android:textSize="44px"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+</com.zhy.autolayout.AutoFrameLayout>
+
+<com.zhy.autolayout.AutoLinearLayout
+android:gravity="center_horizontal"
+    android:layout_marginLeft="61px"
+    android:layout_marginRight="61px"
+    android:layout_width="match_parent"
+    android:layout_marginTop="56px"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_update_version_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="账户违规，已被冻结3天"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_qd"
+
+        android:layout_width="300px"
+        android:layout_marginBottom="36px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39px"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:text="确定"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:textSize="30px"
+        android:gravity="center"
+        android:background="@drawable/normal_bg_bule_px"
+        />
+<TextView
+    android:id="@+id/tv_qx"
+    android:textSize="30px"
+
+    android:textColor="#808080"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="申述"
+    />
+
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

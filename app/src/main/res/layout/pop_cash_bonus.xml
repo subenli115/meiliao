@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="欢迎使用每聊APP"
+        android:text="新用户奖励"
         android:textSize="44px"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/black"
@@ -52,13 +52,14 @@
 <com.zhy.autolayout.AutoLinearLayout
 android:gravity="center_horizontal"
     android:layout_width="match_parent"
+    android:layout_marginTop="40px"
     android:layout_height="wrap_content">
     <TextView
 
         android:id="@+id/tv_update_version_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="送您"
+        android:text="恭喜获得"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="30px"
@@ -66,11 +67,11 @@ android:gravity="center_horizontal"
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3"
+        android:text="2000"
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
         android:textColor="#F81C1C"
-        android:textSize="72px"
+        android:textSize="46px"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -84,7 +85,7 @@ android:gravity="center_horizontal"
     <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="红包，可提现"
+    android:text="ML币"
     android:layout_marginLeft="4dp"
     android:textColor="@color/black"
     android:textSize="30px"
@@ -100,7 +101,7 @@ android:gravity="center_horizontal"
         android:layout_marginTop="65px"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
-        android:text="确定"
+        android:text="开心收下"
         android:paddingTop="20px"
         android:paddingBottom="20px"
         android:textSize="30px"

@@ -12,6 +12,8 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 
+import com.umeng.message.MsgConstant;
+import com.umeng.message.PushAgent;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.baseapp.AppManager;
@@ -69,7 +71,7 @@ public class UMengKit {
         UMShareAPI.get(context).setShareConfig(config);
 
 //        final PushAgent mPushAgent = PushAgent.getInstance(context);
-//        //注册推送服务 每次调用register都会回调该接口
+        //注册推送服务 每次调用register都会回调该接口
 //        mPushAgent.register(new IUmengRegisterCallback() {
 //            @Override
 //            public void onSuccess(String deviceToken) {
@@ -84,54 +86,54 @@ public class UMengKit {
 //        });
         //是否开启log日志打印(true 打印 ,FALSe 不打印 默认为true)
         //处理各种事件
-        @SuppressLint("HandlerLeak") final Handler handler = new Handler() {
-            @Override
-            public void handleMessage(Message message) {
-                Map map = StringUtils.getUrlParams(message.obj.toString());
-                switch (message.what) {
-                    case 1:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        //专栏
-                        String specialID = (String) map.get("specialID");
-                        String isBuy = (String) map.get("isBuy");
-//                        ZhuanLanDetailActivity.startAction(context,specialID,isBuy,subscriptionBean.getHtmlLink(),mActivity,9,subscriptionBean.getSubscriptionNum());
-                        break;
-                    case 7:
+//        @SuppressLint("HandlerLeak") final Handler handler = new Handler() {
+//            @Override
+//            public void handleMessage(Message message) {
+//                Map map = StringUtils.getUrlParams(message.obj.toString());
+//                switch (message.what) {
+//                    case 1:
+//                        break;
+//                    case 4:
+//                        break;
+//                    case 5:
+//                        break;
+//                    case 6:
+//                        //专栏
+//                        String specialID = (String) map.get("specialID");
+//                        String isBuy = (String) map.get("isBuy");
+////                        ZhuanLanDetailActivity.startAction(context,specialID,isBuy,subscriptionBean.getHtmlLink(),mActivity,9,subscriptionBean.getSubscriptionNum());
+//                        break;
+//                    case 7:
+//
+//                        break;
+//                    case 8:
+////                        ActisData actisData = new ActisData();
+////                        actisData.setUrl(message.obj.toString());
+//////                        actisData.setActivityId(bean.getActivityId()+"");
+////                        Intent intent = new Intent(context, GongZuoFangActivity.class);
+////                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                        intent.putExtra("recId",recId);
+////                        context.startActivity(intent);
+////                        GongZuoFangActivity.startAction(context,actisData);  //工作坊活动详情页面
+//                        break;
+//                }
+//            }
+//        };
 
-                        break;
-                    case 8:
-//                        ActisData actisData = new ActisData();
-//                        actisData.setUrl(message.obj.toString());
-////                        actisData.setActivityId(bean.getActivityId()+"");
-//                        Intent intent = new Intent(context, GongZuoFangActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        intent.putExtra("recId",recId);
-//                        context.startActivity(intent);
-//                        GongZuoFangActivity.startAction(context,actisData);  //工作坊活动详情页面
-                        break;
-                }
-            }
-        };
-
-        //注册收到消息的事件处理
-        RxManagerUtil.on(AppConstant.RXTag.UMENG_MSG, new Action1<UMessage>() {
-            @Override
-            public void call(UMessage uMessage) {
-                if (oldMessage != null) {
-                    UTrack.getInstance(MyAPP.getContext()).setClearPrevMessage(true);
-                    UTrack.getInstance(MyAPP.getContext()).trackMsgDismissed(oldMessage);
-                }
-                if ( ! handlerEvent(handler, uMessage.extra, uMessage.after_open)){
-                    showNotification(uMessage);
-                }
-            }
-        });
-//        //sdk开启通知声音
+//        //注册收到消息的事件处理
+//        RxManagerUtil.on(AppConstant.RXTag.UMENG_MSG, new Action1<UMessage>() {
+//            @Override
+//            public void call(UMessage uMessage) {
+//                if (oldMessage != null) {
+//                    UTrack.getInstance(MyAPP.getContext()).setClearPrevMessage(true);
+//                    UTrack.getInstance(MyAPP.getContext()).trackMsgDismissed(oldMessage);
+//                }
+//                if ( ! handlerEvent(handler, uMessage.extra, uMessage.after_open)){
+//                    showNotification(uMessage);
+//                }
+//            }
+//        });
+        //sdk开启通知声音
 //        mPushAgent.setNotificationPlaySound(MsgConstant.NOTIFICATION_PLAY_SDK_ENABLE);
 //        UmengMessageHandler messageHandler = new UmengMessageHandler() {
 //            @Override
@@ -175,12 +177,12 @@ public class UMengKit {
 //
 //
 //        };
-//
+
 //        mPushAgent.setNotificationClickHandler(notificationClickHandler);
 //
 //        mPushAgent.setDisplayNotificationNumber(3);
-        //友盟分享的初始化
-        UMShareAPI.get(context);
+//        //友盟分享的初始化
+//        UMShareAPI.get(context);
     }
 
     private static void senMessageForInto(String url, Handler handler, int i) {

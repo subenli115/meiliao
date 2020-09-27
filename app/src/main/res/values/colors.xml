@@ -17,6 +17,11 @@
     <color name="textColor_black_half2">#fffffc2d</color>
     <color name="textColor_black_half3">#ffc1d9ff</color>
 
+
+    <color name="home_tab_selected">#303233</color>
+    <color name="home_tab_unselected">#A2A2A2</color>
+
+
     <color name="background">@color/transparent30</color>
     <color name="textColor_teshe6">#6FE100</color>
     <color name="textColor_teshe7">#FFCD00</color>
@@ -27,6 +32,7 @@
     <color name="textColor_DDDDDD">#DDDDDD</color>
     <color name="color_grey_cccccc">#f7f7f7</color>
     <color name="cf2f2f2">#f2f2f2</color>
+    <color name="bga_pp_eighteen_maskColor">#00000000</color>
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
@@ -43,8 +49,8 @@
     <color name="white">#FFFFFF</color>
     <color name="jmui_chat_detail_split_line_color">#d3d3d3</color>
     <color name="menu_item_back_pres_color">#459BFF</color>
-    <color name="action_bar_txt_color">#999999</color>
-    <color name="actionbar_pres_color">#2C2C2C</color>
+    <color name="action_bar_txt_color">#B8CDE6</color>
+    <color name="actionbar_pres_color">#2C8AF5</color>
     <color name="conv_list_split_line_color">#d6d6d6</color>
     <color name="network_disconnected_bg_color">#ffdfe0</color>
     <color name="all_members_bg_color">#f0f1f3</color>
@@ -150,7 +156,7 @@
     <color name="red_btn_text_70">#EAACAF</color>
 
     <color name="white_btn_press">#D2D2D2</color>
-
+    <color name="bule_name">#2E84E6</color>
     <color name="white_btn_text_press">#888888</color>
     <color name="white_btn_text_normal">#2C2C2C</color>
 

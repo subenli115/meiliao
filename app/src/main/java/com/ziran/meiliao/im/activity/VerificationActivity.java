@@ -6,7 +6,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,22 +20,13 @@ import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
 
-import com.bytedance.sdk.openadsdk.AdSlot;
-import com.bytedance.sdk.openadsdk.TTAdConstant;
-import com.bytedance.sdk.openadsdk.TTAdManager;
-import com.bytedance.sdk.openadsdk.TTAdNative;
-import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
-import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.ziran.meiliao.R;
-import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.app.TTAdManagerHolder;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
-import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.database.FriendRecommendEntry;
 import com.ziran.meiliao.im.database.UserEntry;
@@ -48,7 +38,6 @@ import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.UserAccountBean;
 import com.ziran.meiliao.ui.settings.activity.RechargeActivity;
 import com.ziran.meiliao.utils.MapUtils;
-import com.ziran.meiliao.utils.Utils;
 
 import java.util.Map;
 
@@ -66,10 +55,8 @@ public class VerificationActivity extends BaseActivity implements View.OnClickLi
     private String mTargetAppKey;
     private int gold;
     private boolean mHasShowDownloadActive = false;
-    private TTRewardVideoAd mttRewardVideoAd;
     private View contentView;
     private AutoRelativeLayout autoRelativeLayout;
-    private TTAdNative mTTAdNative;
     private VerificationActivity activity;
     private View contentView1;
 
@@ -88,7 +75,6 @@ public class VerificationActivity extends BaseActivity implements View.OnClickLi
                 NewRequestCallBack<UserAccountBean>(UserAccountBean.class) {
                     @Override
                     public void onSuccess(UserAccountBean result) {
-                        gold = MyAPP.saveMoney(result);
                     }
 
                     @Override
@@ -139,7 +125,6 @@ public class VerificationActivity extends BaseActivity implements View.OnClickLi
 
                     @Override
                     public void onSuccess(UserAccountBean bean) {
-                         gold = MyAPP.saveMoney(bean);
                     }
 
                     @Override
@@ -221,7 +206,6 @@ public class VerificationActivity extends BaseActivity implements View.OnClickLi
                 }
                 autoRelativeLayout.setVisibility(View.VISIBLE);
                 popupWindow.dismiss();
-                loadAd(MeiliaoConfig.AdvertisementId, TTAdConstant.VERTICAL);
             }
         });
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
@@ -290,162 +274,6 @@ public class VerificationActivity extends BaseActivity implements View.OnClickLi
 
 
 
-    private void initVideo() {
-        //step1:初始化sdk
-        TTAdManager ttAdManager = TTAdManagerHolder.get();
-        //step2:(可选，强烈建议在合适的时机调用):申请部分权限，如read_phone_state,防止获取不了imei时候，下载类广告没有填充的问题。
-        TTAdManagerHolder.get().requestPermissionIfNecessary(this);
-        //step3:创建TTAdNative对象,用于调用广告请求接口
-        mTTAdNative = ttAdManager.createAdNative(getApplicationContext());
-    }
-    private void loadAd(final String codeId, int orientation) {
-        //step4:创建广告请求参数AdSlot,具体参数含义参考文档
-        AdSlot adSlot;
-        if (true) {
-            //个性化模板广告需要传入期望广告view的宽、高，单位dp，
-            adSlot = new AdSlot.Builder()
-                    .setCodeId(codeId)
-                    .setSupportDeepLink(true)
-                    .setRewardName("金币") //奖励的名称
-                    .setRewardAmount(50)  //奖励的数量
-                    //模板广告需要设置期望个性化模板广告的大小,单位dp,激励视频场景，只要设置的值大于0即可
-                    .setExpressViewAcceptedSize(500,500)
-                    .setUserID("user123")//用户id,必传参数
-                    .setMediaExtra("media_extra") //附加参数，可选
-                    .setOrientation(orientation) //必填参数，期望视频的播放方向：TTAdConstant.HORIZONTAL 或 TTAdConstant.VERTICAL
-                    .build();
-        } else {
-            //模板广告需要设置期望个性化模板广告的大小,单位dp,代码位是否属于个性化模板广告，请在穿山甲平台查看
-            adSlot = new AdSlot.Builder()
-                    .setCodeId(codeId)
-                    .setSupportDeepLink(true)
-                    .setRewardName("金币") //奖励的名称
-                    .setRewardAmount(50)  //奖励的数量
-                    .setUserID("user123")//用户id,必传参数
-                    .setMediaExtra("media_extra") //附加参数，可选
-                    .setOrientation(orientation) //必填参数，期望视频的播放方向：TTAdConstant.HORIZONTAL 或 TTAdConstant.VERTICAL
-                    .build();
-        }
-
-
-        //step5:请求广告
-        mTTAdNative.loadRewardVideoAd(adSlot, new TTAdNative.RewardVideoAdListener() {
-            @Override
-            public void onError(int code, String message) {
-            }
-
-            //视频广告加载后，视频资源缓存到本地的回调，在此回调后，播放本地视频，流畅不阻塞。
-            @Override
-            public void onRewardVideoCached() {
-                if (mttRewardVideoAd != null) {
-                    //step6:在获取到广告后展示,强烈建议在onRewardVideoCached回调后，展示广告，提升播放体验
-                    //该方法直接展示广告
-//                    mttRewardVideoAd.showRewardVideoAd(RewardVideoActivity.this);
-
-                    //展示广告，并传入广告展示的场景
-                    mttRewardVideoAd.showRewardVideoAd(VerificationActivity.this, TTAdConstant.RitScenes.CUSTOMIZE_SCENES, "scenes_test");
-                    mttRewardVideoAd = null;
-                } else {
-                    ToastUitl.showShort("请先加载广告");
-                }
-            }
-
-            //视频广告的素材加载完毕，比如视频url等，在此回调后，可以播放在线视频，网络不好可能出现加载缓冲，影响体验。
-            @Override
-            public void onRewardVideoAdLoad(TTRewardVideoAd ad) {
-
-                mttRewardVideoAd = ad;
-                mttRewardVideoAd.setRewardAdInteractionListener(new TTRewardVideoAd.RewardAdInteractionListener() {
-
-                    @Override
-                    public void onAdShow() {
-                    }
-
-                    @Override
-                    public void onAdVideoBarClick() {
-                    }
-
-                    @Override
-                    public void onAdClose() {
-                    }
-
-                    //视频播放完成回调
-                    @Override
-                    public void onVideoComplete() {
-                    }
-
-                    @Override
-                    public void onVideoError() {
-                    }
-
-                    //视频播放完成后，奖励验证回调，rewardVerify：是否有效，rewardAmount：奖励梳理，rewardName：奖励名称
-                    @Override
-                    public void onRewardVerify(boolean rewardVerify, int rewardAmount, String rewardName) {
-                        putGoldResult();
-                    }
-
-                    @Override
-                    public void onSkippedVideo() {
-                    }
-                });
-                mttRewardVideoAd.setDownloadListener(new TTAppDownloadListener() {
-                    @Override
-                    public void onIdle() {
-                        mHasShowDownloadActive = false;
-                    }
-
-                    @Override
-                    public void onDownloadActive(long totalBytes, long currBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadActive==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
-
-                        if (!mHasShowDownloadActive) {
-                            mHasShowDownloadActive = true;
-                        }
-                    }
-
-                    @Override
-                    public void onDownloadPaused(long totalBytes, long currBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadPaused===totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
-                    }
-
-                    @Override
-                    public void onDownloadFailed(long totalBytes, long currBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadFailed==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
-                    }
-
-                    @Override
-                    public void onDownloadFinished(long totalBytes, String fileName, String appName) {
-                        Log.d("DML", "onDownloadFinished==totalBytes=" + totalBytes + ",fileName=" + fileName + ",appName=" + appName);
-                    }
-
-                    @Override
-                    public void onInstalled(String fileName, String appName) {
-                        Log.d("DML", "onInstalled==" + ",fileName=" + fileName + ",appName=" + appName);
-
-                    }
-                });
-            }
-        });
-    }
-    private void putGoldResult() {
-        Map<String, String> defMap = MapUtils.getDefMap(true);
-        defMap.put("reward","50");
-        defMap.put("userId",MyAPP.getUserId());
-        OkHttpClientManager.putAsyncAddHead(ApiKey.ACCOUNT_ADVERTISEMENTRECORD_RECEIVE, defMap, new
-                NewRequestCallBack<UserAccountBean>(UserAccountBean.class) {
-                    @Override
-                    public void onSuccess(UserAccountBean result) {
-                        showPopWindow();
-                        if(result!=null){
-                            gold = MyAPP.saveMoney(result);
-                        }
-                    }
-
-                    @Override
-                    public void onError(String msg, int code) {
-                    }
-                });
-    }
 
     private void showPopWindow() {
         // 一个自定义的布局，作为显示的内容
@@ -550,7 +378,6 @@ public class VerificationActivity extends BaseActivity implements View.OnClickLi
         autoRelativeLayout = (AutoRelativeLayout) findViewById(R.id.arl);
         autoRelativeLayout.setOnClickListener(this);
         mEt_reason = (EditText) findViewById(R.id.et_reason);
-        initVideo();
        activity=this;
         mMyInfo = JMessageClient.getMyInfo();
         mTargetAppKey = mMyInfo.getAppKey();

@@ -282,7 +282,7 @@ public class InputUserInfoActivity extends BaseActivity {
                 if(cameraScalePath.equals("")){
                     ToastUitl.showShort("请上传头像");
                     return;
-                }else if(nickName.length()<=2 ){
+                }else if(nickName.length()==0 ){
                     ToastUitl.showShort("请填写正确昵称");
                     return;
                 }else if(age.equals("") ){
@@ -587,9 +587,9 @@ public class InputUserInfoActivity extends BaseActivity {
         //是否隐藏底部容器，默认显示
         options.setHideBottomControls(true);
         //设置toolbar颜色
-        options.setToolbarColor(ActivityCompat.getColor(activity, com.yuyh.library.imgsel.R.color.black));
-        //设置状态栏颜色
-        options.setStatusBarColor(ActivityCompat.getColor(activity, com.yuyh.library.imgsel.R.color.black));
+//        options.setToolbarColor(ActivityCompat.getColor(activity, com.yuyh.library.imgsel.R.color.black));
+//        //设置状态栏颜色
+//        options.setStatusBarColor(ActivityCompat.getColor(activity, com.yuyh.library.imgsel.R.color.black));
         //是否能调整裁剪框
         options.setFreeStyleCropEnabled(true);
         //UCrop配置

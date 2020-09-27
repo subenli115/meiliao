@@ -1095,4 +1095,191 @@ public interface ApiKey {
      */
     String ADMIN_USERFOLLOW_PAGEBYUSERID= "admin/userfollow/pageByUserId";
 
+
+    /**
+     * 获取上传地址和凭证
+     */
+    String ADMIN_TOOL_CREATEUPLOADVIDEO= "admin/tool/createUploadVideo";
+
+
+    /**
+     * 刷新视频上传凭证
+     */
+    String ADMIN_TOOL_REFRESH= "admin/tool/refreshUploadVideoResponse";
+
+    /**
+     * 获取视频播放凭证
+     */
+    String ADMIN_TOOL_GETVIDEOPLAYAUTH= "admin/tool/getVideoPlayAuth";
+
+    /**
+     * 根据时间排序的动态推荐
+     */
+    String ADMIN_SPACE_SPACERECOMMENDCREATETIME= "admin/space/spaceRecommendCreateTime";
+
+    /**
+     * 获取视频播放信息
+     */
+    String ADMIN_TOOL_GETPLAYINFO= "admin/tool/getPlayInfo";
+
+    /**
+     * 获取发过动态的用户=关注推荐
+     */
+    String ADMIN_USER_DYNAMIC= "admin/user/dynamic";
+
+    /**
+     * 广告分类查询全部
+     */
+    String ADMIN_EXHIBITION_LIST= "admin/exhibition/list";
+
+    /**
+     * 首页推荐
+     */
+    String ADMIN_USER_RECOMMEND= "admin/user/recommend";
+
+
+    /**
+     * 菜单查询
+     */
+    String ADMIN_APPMENU_PAGE= "admin/appmenu/pageByType";
+
+
+    /**
+     * 查询访问过自己主页的访客列表
+     */
+    String ADMIN_VISITOR_PAGEBYID= "admin/visitor/pageById";
+
+    /**
+     * 分页查询标记喜欢自己的用户列表
+     */
+    String ADMIN_USERSIGN_PAGEBYID= "admin/usersign/pageById";
+
+    /**
+     * 分页查询用户选择标记标签
+     */
+    String ADMIN_USERTABLE_GETPAGE= "admin/usertable/getPage";
+
+    /**
+     * 分页查询兴趣标签
+     */
+    String ADMIN_LABEL_GETPAGE= "admin/label/getPage";
+
+    /**
+     * 新增用户标签
+     */
+    String ADMIN_USERTABLE_ADD= "admin/usertable/add";
+
+    /**
+     * 根据用户名搜索用户信息
+     */
+    String ADMIN_USER_SEARCH= "admin/user/search";
+
+    /**
+     * 查询标记我和访问我的未读数量
+     */
+    String ADMIN_VISITOR_VISIORNUM= "admin/visitor/visitorNum";
+
+    /**
+     * 根据消息类型分页查询
+     */
+    String ADMIN_NEWSNOTICE_PAGE= "admin/newsnotice/page";
+
+
+    /**
+     * 分类查询所有类型消息和未读数量
+     */
+    String ADMIN_NEWSNOTICE_LIST= "admin/newsnotice/list";
+
+    /**
+     * 真人匹配
+     */
+    String ADMIN_USER_REALPEOPLE= "admin/user/realPeople";
+
+    /**
+     * 附近的人
+     */
+    String ADMIN_USER_NEARBY= "admin/user/nearby";
+
+    /**
+     * 分页查询用户所获礼物列表
+     */
+    String ADMIN_GIFTBYRECEIVEUSERID= "admin/giftrecord/getGiftByReceiveUserId";
+
+    /**
+     * 点赞
+     */
+    String ADMIN_USERCLICK_ADD= "admin/userclick/add";
+
+    /**
+     * 解除黑名单
+     */
+    String ADMIN_BLACKLIST_DELETE= "admin/blacklist/delete";
+
+    /**
+     * 添加黑名单
+     */
+    String ADMIN_BLACKLIST_ADD= "admin/blacklist/add";
+
+    /**
+     * 通过两个用户id查询用户亲密度
+     */
+    String ADMIN_INTIMACY_INFO= "admin/intimacy/info";
+
+
+    /**
+     * 用户关注用户的动态推荐
+     */
+    String ADMIN_SPACE_FOLLOWSPACE= "admin/space/followSpace";
+
+
+    /**
+     * 新增用户评论
+     */
+    String ADMIN_COMMENT_ADD= "admin/comment/add";
+
+
+    /**
+     * 用户评论
+     */
+    String ADMIN_COMMENT_PAGE= "admin/comment/page";
+
+    /**
+     * 动态详情
+     */
+    String ADMIN_SPACE_GETBYID= "admin/space/getById";
+
+    /**
+     * 分页查询动态接收礼物
+     */
+    String ADMIN_GIFTRECORD_GETGIFTBYID= "admin/giftrecord/getGiftById";
+
+    /**
+     * 删除评论
+     */
+    String ADMIN_COMMENT_DELETE= "admin/comment/delete";
+
+    /**
+     * 增加亲密度
+     */
+    String ADMIN_INTIMACY_ADD= "admin/intimacy/add";
+
+    /**
+     * 查询冻结
+0     */
+    String ADMIN_USER_GETFROZEN= "admin/user/getFrozen";
+
+    /**
+     * 判断文本内容是否有违规信息im
+     */
+    String ADMIN_TOOL_IMSECURITY= "admin/tool/IMSecurity";
+
+    /**
+     * 判断文本内容是否有违规信息
+     */
+    String ADMIN_TOOL_TESTSECURITY= "admin/tool/testSecurity";
+
+
+
+
+
 }

@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/iv"
-        android:layout_width="63dp"
+        android:layout_width="72dp"
         android:scaleType="fitXY"
-        android:layout_height="63dp"
-        android:src="@mipmap/info_photo_circle"
+        android:layout_height="72.5dp"
+        android:src="@mipmap/icon_look_more"
         />
 
 </LinearLayout>

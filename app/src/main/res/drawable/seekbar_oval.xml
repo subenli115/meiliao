@@ -12,7 +12,7 @@
         >
         <size android:width="30px"
             android:height="30px"/>
-        <solid android:color="#4dffffff" />
+        <solid android:color="#459BFF" />
         <stroke
             android:width="12px"
             android:color="@color/white" />

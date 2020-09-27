@@ -2,7 +2,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-
              android:orientation="vertical">
 
     <RelativeLayout
@@ -11,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="6dp"
-        android:background="@drawable/normal_bg_gray_fa"
+        android:background="@drawable/normal_bg_white_vertical"
 
         >
 
@@ -49,10 +48,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="17dp"
-                android:background="@drawable/normal_bg_red"
-                android:paddingTop="3dp"
+                android:background="@drawable/normal_bg_orange_44"
+                android:paddingTop="4dp"
                 android:gravity="center"
-                android:paddingBottom="3dp"
+                android:paddingBottom="4dp"
                 android:text="￥2008"
                 android:textColor="@color/white"
                 android:textSize="12sp"

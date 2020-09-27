@@ -87,7 +87,7 @@ public class MyActivityActivity extends BaseActivity {
         contentView = LayoutInflater.from(getBaseContext()).inflate(R.layout.pop_logout, null);
         contentView.getLocationOnScreen(location);
         final PopupWindow popupWindow = new PopupWindow(contentView,
-                AutoLinearLayout.LayoutParams.WRAP_CONTENT, AutoLinearLayout.LayoutParams.WRAP_CONTENT, true);
+                AutoLinearLayout.LayoutParams.MATCH_PARENT, AutoLinearLayout.LayoutParams.MATCH_PARENT, true);
 
         popupWindow.setTouchable(true);
         popupWindow.setOutsideTouchable(true);// 设置同意在外点击消失
@@ -170,12 +170,6 @@ public class MyActivityActivity extends BaseActivity {
             case R.id.tv_me_main_new_lsgy:
                 String greenUrl = MeiliaoConfig.getGreenUrl();
                 UserAgreementWebActivity.startAction(mContext, greenUrl, "绿色公约");
-                break;
-            case R.id.tv_me_main_new_report:
-                ReportSelectActivity.startAction();
-                break;
-            case R.id.tv_me_main_new_follow:
-                MyFollowActivity.startAction(mContext);
                 break;
 
             case R.id.tv_logut:

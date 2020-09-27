@@ -87,6 +87,7 @@
     <ImageView
         android:id="@+id/iv_real_name"
         android:layout_width="40dp"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_toRightOf="@+id/card_user_name"

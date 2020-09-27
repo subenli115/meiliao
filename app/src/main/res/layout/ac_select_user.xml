@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zhy="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back1"
+            android:padding="20px"
+            android:layout_marginTop="10px"
+            android:layout_marginBottom="10px"
+            />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all_status"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/tv_qd"
+            android:layout_centerVertical="true"
+            android:paddingRight="21px"
+            android:layout_marginRight="16px"
+            android:paddingLeft="21px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/normal_bg_gray_ff"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25px"
+                android:layout_height="25px"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/icon_reset" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6px"
+                android:paddingTop="9px"
+                android:textSize="30px"
+                android:paddingBottom="9px"
+                android:text="重置"
+                android:textColor="#403D4D" />
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+        <TextView
+            android:id="@+id/tv_qd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="24px"
+            android:background="@drawable/normal_bg_bule"
+            android:paddingLeft="31px"
+            android:paddingTop="8px"
+            android:paddingRight="31px"
+            android:paddingBottom="8px"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="30px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.ziran.meiliao.widget.ObservableScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/ntb"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="性别"
+        android:textStyle="bold"
+        android:layout_marginTop="30px"
+        android:textSize="30px"
+        android:layout_marginLeft="24px"
+        android:textColor="@color/black"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="24px"
+        android:layout_marginTop="36px"
+        android:layout_marginRight="75px"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_sex_woman"
+            android:layout_width="210px"
+            android:layout_height="80px"
+            android:layout_marginLeft="30px"
+            android:layout_toRightOf="@+id/iv_sex_man"
+            android:src="@mipmap/icon_woman_noselect"
+
+            />
+
+        <ImageView
+            android:id="@+id/iv_sex_man"
+            android:layout_width="210px"
+            android:layout_height="80px"
+            android:src="@mipmap/icon_man_noselect"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        style="@style/hor_match_line"
+        android:layout_marginTop="30px"
+        android:layout_alignParentBottom="true"/>
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="在线"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        android:layout_marginTop="40px"
+        android:layout_marginBottom="40px"
+        android:layout_marginLeft="24px"
+        />
+
+    <com.ziran.meiliao.widget.SwitchButton
+        android:id="@+id/sb_switch"
+        android:layout_width="50dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="8dp"
+        app:sb_checked="true"
+        android:layout_marginRight="40px"
+        app:sb_uncheck_color="#EBEBEB"
+        android:layout_centerVertical="true"
+        app:sb_show_indicator="false"
+        app:sb_checked_color="#459BFF"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"/>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="30px"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="年龄"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="30px"
+            android:layout_marginLeft="24px"
+            />
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="18-99 岁"
+            android:layout_marginRight="40px"
+            android:layout_alignParentRight="true"
+            android:textSize="24px"
+
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.jaygoo.widget.RangeSeekBar
+        android:id="@+id/sb_range_age"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="25px"
+        android:layout_marginRight="25px"
+        android:layout_marginTop="24px"
+        app:rsb_thumb_width="45dp"
+        app:rsb_thumb_height="45dp"
+        app:rsb_progress_default_color="#F0F7FF"
+        android:layout_height="wrap_content"
+        app:rsb_mode="range"
+
+        app:rsb_thumb_drawable="@mipmap/icon_seekbar_oval"
+        app:rsb_progress_color="#63BBFF"
+        app:rsb_tick_mark_gravity="center"
+        app:rsb_tick_mark_mode="number"
+        />
+    <View
+        android:id="@+id/view_item_group_bottom_line"
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"/>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="30px"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身高"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="30px"
+            android:layout_marginLeft="24px"
+            />
+        <TextView
+            android:id="@+id/tv_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="140-230 cm"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="40px"
+            android:layout_alignParentRight="true"
+            android:textSize="24px"
+
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.jaygoo.widget.RangeSeekBar
+        android:id="@+id/sb_range_height"
+        android:layout_width="match_parent"
+        android:layout_marginTop="24px"
+        android:layout_marginLeft="25px"
+        android:layout_marginRight="25px"
+        android:layout_height="wrap_content"
+        app:rsb_mode="range"
+        app:rsb_thumb_drawable="@mipmap/icon_seekbar_oval"
+        app:rsb_progress_color="#63BBFF"
+        app:rsb_thumb_width="45dp"
+        app:rsb_thumb_height="45dp"
+        app:rsb_progress_default_color="#F0F7FF"
+        app:rsb_tick_mark_gravity="center"
+        app:rsb_tick_mark_mode="number"
+        app:rsb_tick_mark_text_margin="20dp"
+        />
+
+    <View
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="体型"
+        android:textStyle="bold"
+        android:layout_marginTop="30px"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        android:layout_marginLeft="24px"
+        />
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/tfl_shape"
+        app:max_select="1"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="24px"
+        android:layout_below="@+id/ntb_title"
+        android:layout_height="wrap_content"
+        />
+
+    <View
+        android:layout_marginTop="30px"
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="交友目的"
+        android:layout_marginTop="30px"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        android:layout_marginLeft="24px"
+        />
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/tfl_objective"
+        app:max_select="1"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="24px"
+        android:layout_below="@+id/ntb_title"
+        android:layout_height="wrap_content"
+        />
+    <View
+        android:layout_marginTop="30px"
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="星座"
+        android:textStyle="bold"
+        android:layout_marginTop="30px"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        android:layout_marginLeft="24px"
+        />
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/tfl_constellation"
+        app:max_select="1"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="24px"
+        android:layout_marginTop="30px"
+        android:layout_below="@+id/ntb_title"
+        android:layout_height="wrap_content"
+        />
+    <View
+        android:layout_marginTop="30px"
+        style="@style/hor_match_line"
+        android:layout_alignParentBottom="true"/>
+</com.zhy.autolayout.AutoLinearLayout>
+    </com.ziran.meiliao.widget.ObservableScrollView>
+</com.zhy.autolayout.AutoLinearLayout>

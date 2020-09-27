@@ -104,6 +104,7 @@ public class SetRealNameActivity extends BaseActivity {
                 }else {
                     ntb.setTitleText("身份认证");
                     if(MyAPP.getmUserBean().getIdCard()==null||MyAPP.getmUserBean().getIdCard().equals("")){
+
                     }else {
                         etName.setEnabled(false);
                         etId.setEnabled(false);
@@ -152,6 +153,7 @@ public class SetRealNameActivity extends BaseActivity {
         Map<String, String> defMap = MapUtils.getDefMap(true);
         defMap.put("id", MyAPP.getUserId());
         defMap.put("idCard",etId.getText().toString());
+        defMap.put("autoType","1");
         defMap.put("realName",etName.getText().toString());
         OkHttpClientManager.putAsyncAddHead(ApiKey.ADMIN_USER_AUTHENTICATION, defMap, new
                 NewRequestCallBack<StringDataBean>(StringDataBean.class) {
@@ -187,6 +189,7 @@ public class SetRealNameActivity extends BaseActivity {
                         Intent intent = new Intent();
                         setResult(Activity.RESULT_OK, intent);
                         // RESULT_OK就是一个默认值，=-1，它说OK就OK吧
+                        ToastUitl.showShort("设置成功");
                         finish();
                     }
                     @Override
@@ -207,7 +210,6 @@ public class SetRealNameActivity extends BaseActivity {
                 NewRequestCallBack<StringDataV2Bean>(StringDataV2Bean.class) {
                     @Override
                     public void onSuccess(StringDataV2Bean result) {
-
                         Intent intent = new Intent();
                         setResult(Activity.RESULT_OK, intent);
                         // RESULT_OK就是一个默认值，=-1，它说OK就OK吧

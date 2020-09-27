@@ -2,39 +2,42 @@ package com.ziran.meiliao.ui.main.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
-import com.chuanglan.shanyan_sdk.OneKeyLoginManager;
-import com.chuanglan.shanyan_sdk.listener.OneKeyLoginListener;
-import com.chuanglan.shanyan_sdk.listener.OpenLoginAuthListener;
-import com.google.gson.Gson;
-import com.zhy.autolayout.AutoLinearLayout;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.umeng.socialize.UMShareAPI;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.base.BaseActivity;
-import com.ziran.meiliao.common.commonutils.ToastUitl;
+import com.ziran.meiliao.common.commonutils.ArrayUtils;
 import com.ziran.meiliao.common.compressorutils.FileUtil;
-import com.ziran.meiliao.entry.LoginBean;
-import com.ziran.meiliao.ui.bean.StringDataV2Bean;
-import com.ziran.meiliao.ui.bean.CheckPhoneBean;
-import com.ziran.meiliao.ui.bean.TagCheckBean;
-import com.ziran.meiliao.ui.bean.TokenBean;
-import com.ziran.meiliao.ui.bean.UserBean;
-import com.ziran.meiliao.ui.main.contract.LoginContract;
-import com.ziran.meiliao.ui.main.model.LoginModel;
-import com.ziran.meiliao.ui.main.presenter.LoginPresenter;
-import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
+import com.ziran.meiliao.constant.AppConstant;
+import com.ziran.meiliao.im.activity.ReleaseWechatActivity;
+import com.ziran.meiliao.im.activity.fragment.MeFragment;
+import com.ziran.meiliao.im.activity.fragment.NewMeFragment;
+import com.ziran.meiliao.ui.base.PermissionActivity;
+import com.ziran.meiliao.ui.bean.AdvertBean;
+import com.ziran.meiliao.ui.bean.TabEntity;
+import com.ziran.meiliao.ui.main.fragment.CommunityFragment;
+import com.ziran.meiliao.ui.main.fragment.MessageFragment;
+import com.ziran.meiliao.ui.main.fragment.NewMainHomeFragment;
 import com.ziran.meiliao.utils.ExitUtil;
-import com.ziran.meiliao.utils.MapUtils;
+import com.ziran.meiliao.widget.CustomClickListener;
 
-import java.util.Map;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 
@@ -45,16 +48,22 @@ import butterknife.Bind;
  * Created by xsf
  * on 2016.09.15:32
  */
-public class MainNewActivity extends BaseActivity<LoginPresenter, LoginModel> implements LoginContract.View {
+public class MainNewActivity extends BaseActivity {
 
+    private static final int REQUEST_CODE_A = 2;
 
-    private MainNewActivity activity;
-    private Intent intent;
-    private TokenBean bean;
-    private View contentView;
-
-    @Bind(R.id.main)
-    AutoLinearLayout rlBg;
+    @Bind(R.id.iv_fb)
+    ImageView ivFb;
+    @Bind(R.id.tab_layout)
+    CommonTabLayout tabLayout;
+    private String[] mTitles;
+    private int[] mIconUnselectIds = {R.mipmap.tab_home_norm,R.mipmap.tab_community_norm,R.mipmap.tab_release,R.mipmap.tab_msg_norm, R.mipmap.tab_me_norm};
+    private int[] mIconSelectIds = {R.mipmap.tab_home_pre,R.mipmap.tab_community_pre,R.mipmap.tab_release,R.mipmap.tab_msg_pre, R.mipmap.tab_me_pre};
+    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private NewMainHomeFragment mMainHomeFragment;
+    private CommunityFragment communityFragment;
+    private NewMeFragment mMeFragment;
+    private MessageFragment messageFragment;
 
     @Override
     public int getLayoutId() {
@@ -63,25 +72,14 @@ public class MainNewActivity extends BaseActivity<LoginPresenter, LoginModel> im
 
     @Override
     public void initPresenter() {
-        mPresenter.setVM(this, mModel);
+
     }
+
 
     @Override
     public void initView() {
-        activity = this;
-//        OneKeyLoginManager.getInstance().setAuthThemeConfig(ConfigUtils.getCJSConfig(getApplicationContext(),activity));
-        openLoginActivity();
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
+        //初始化菜单
+        initTab();
     }
 
 
@@ -90,85 +88,144 @@ public class MainNewActivity extends BaseActivity<LoginPresenter, LoginModel> im
         return false;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("skip")) {
+            AdvertBean.DataBean bean = intent.getParcelableExtra("skip");
+           // tag：1 众筹；tag：2 团建；tag：3 课程库（忽略） ；tag：4 专辑；tag：5 专栏；tag：6 工作坊。
+            Bundle bundle = new Bundle();
+            bundle .putString(AppConstant.ExtraKey.FROM_ID,bean.getId());
+
+        }
+        super.onCreate(savedInstanceState);
+        MyAPP.setIsLogout(false);
+        //初始化frament
+        initFragment(savedInstanceState);
+
+        //获取权限
+    }
+
+
+    /**
+     * 初始化tab
+     */
+    private void initTab() {
+        mTitles = ArrayUtils.getArray(this, R.array.main_bottom_tabs_new);
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+        }
+        ivFb.setOnClickListener(new CustomClickListener() {
+            @Override
+            protected void onSingleClick() {
+                ReleaseWechatActivity.startAction(REQUEST_CODE_A);
+            }
+
+            @Override
+            protected void onFastClick() {
+                //连续点击
+            }
+        });
+        tabLayout.setTabData(mTabEntities);
+        //点击监听
+        tabLayout.getIconView(2).getRootView().setEnabled(false);
+        tabLayout.getIconView(2).getRootView().setClickable(false);
+        tabLayout.getIconView(2).getRootView().setFocusable(false);
+        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                SwitchTo(position);
+            }
+
+
+            @Override
+            public void onTabReselect(int position) {
+            }
+        });
+    }
+
+
+    /**
+     * 初始化碎片
+     */
+    private void initFragment(Bundle savedInstanceState) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        int currentTabPosition = 0;
+        if (savedInstanceState != null) {
+            mMainHomeFragment = (NewMainHomeFragment) getSupportFragmentManager().findFragmentByTag("MainHomeFragment");
+            communityFragment = (CommunityFragment) getSupportFragmentManager().findFragmentByTag("CommunityFragment");
+            messageFragment = (MessageFragment) getSupportFragmentManager().findFragmentByTag("MessageFragment");
+            mMeFragment = (NewMeFragment) getSupportFragmentManager().findFragmentByTag("MeFragment");
+            currentTabPosition = savedInstanceState.getInt(AppConstant.HOME_CURRENT_TAB_POSITION);
+        } else {
+
+            mMainHomeFragment = new NewMainHomeFragment();
+            transaction.add(R.id.fl_body, mMainHomeFragment, "MainHomeFragment");
+            communityFragment = new CommunityFragment();
+            transaction.add(R.id.fl_body, communityFragment, "CommunityFragment");
+            messageFragment = new MessageFragment();
+            transaction.add(R.id.fl_body, messageFragment, "MessageFragment");
+            mMeFragment = new NewMeFragment();
+            transaction.add(R.id.fl_body, mMeFragment, "MeFragment");
+        }
+        transaction.commit();
+        SwitchTo(currentTabPosition);
+        tabLayout.setCurrentTab(currentTabPosition);
+    }
+    /**
+     * 切换
+     */
+    private void SwitchTo(int position) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        switch (position) {
+            //减压馆
+            case 0:
+                transaction.hide(messageFragment);
+                transaction.hide(mMeFragment);
+                transaction.hide(communityFragment);
+                transaction.show(mMainHomeFragment);
+                transaction.commitAllowingStateLoss();
+                break;
+            //私家课
+            case 1:
+                transaction.hide(messageFragment);
+                transaction.hide(mMainHomeFragment);
+                transaction.hide(mMeFragment);
+                transaction.show(communityFragment);
+                transaction.commitAllowingStateLoss();
+                break;
+
+            case 3:
+                transaction.hide(communityFragment);
+                transaction.hide(mMeFragment);
+                transaction.hide(mMainHomeFragment);
+                transaction.show(messageFragment);
+                transaction.commitAllowingStateLoss();
+                break;
+
+            case 4:
+                transaction.hide(messageFragment);
+                transaction.hide(communityFragment);
+                transaction.hide(mMainHomeFragment);
+                transaction.show(mMeFragment);
+                transaction.commitAllowingStateLoss();
+                break;
+        }
+    }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         //奔溃前保存位置
-    }
-
-    private void showPopWindow() {
-        // 一个自定义的布局，作为显示的内容
-        int[] location = new int[2];
-        contentView = LayoutInflater.from(mContext).inflate(R.layout.pop_user_privacy, null);
-        contentView.getLocationOnScreen(location);
-        final PopupWindow popupWindow = new PopupWindow(contentView,
-                AutoLinearLayout.LayoutParams.MATCH_PARENT, AutoLinearLayout.LayoutParams.MATCH_PARENT, true);
-
-        popupWindow.setTouchable(true);
-        popupWindow.setOutsideTouchable(true);// 设置同意在外点击消失
-        popupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        // 如果不设置PopupWindow的背景，有些版本就会出现一个问题：无论是点击外部区域还是Back键都无法dismiss弹框
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
-        popupWindow.showAtLocation(rlBg, Gravity.CENTER, 0, 0);
-        TextView qd = contentView.findViewById(R.id.tv_qd);
-        TextView close = contentView.findViewById(R.id.tv_close);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ExitUtil.exit(mContext);
-            }
-        });
-        qd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popupWindow.dismiss();
-
-            }
-        });
+        if (tabLayout != null) {
+            outState.putInt(AppConstant.HOME_CURRENT_TAB_POSITION, tabLayout.getCurrentTab());
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-    }
-
-    private void openLoginActivity() {
-        //拉授权页方法
-        intent = new Intent();
-        OneKeyLoginManager.getInstance().openLoginAuth(false, new OpenLoginAuthListener() {
-            @Override
-            public void getOpenLoginAuthStatus(int code, String result) {
-                if (1000 == code) {
-                    //拉起授权页成功
-                    intent.setClass(mContext, PrivatePopActivity.class);
-                    startActivity(intent);
-                } else {
-                    //拉起授权页失败
-                    intent.putExtra("Connected", "false");
-                    intent.setClass(mContext, IntputCodeActivity.class);
-                    startActivity(intent);
-                }
-            }
-        }, new OneKeyLoginListener() {
-            @Override
-            public void getOneKeyLoginStatus(int code, String result) {
-                if (1011 == code) {
-                    Log.e("VVV", "用户点击授权页返回： _code==" + code + "   _result==" + result);
-                    return;
-                } else if (1000 == code) {
-                    Log.e("VVV", "用户点击登录获取token成功： _code==" + code + "   _result==" + result);
-                    Map<String, String> defMap = MapUtils.getDefMap(false);
-                    Gson gson = new Gson();
-                    bean = gson.fromJson(result, TokenBean.class);
-                    defMap.put("token", bean.getToken());
-                    mPresenter.postCheckLoginPhone(defMap);
-                } else {
-                    Log.e("VVV", "用户点击登录获取token失败： _code==" + code + "   _result==" + result);
-                }
-            }
-        });
     }
 
     @Override
@@ -180,12 +237,14 @@ public class MainNewActivity extends BaseActivity<LoginPresenter, LoginModel> im
     @Override
     protected void onDestroy() {
         FileUtil.deleteGlideCache();
+        UMShareAPI.get(this).release();
         super.onDestroy();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -198,52 +257,5 @@ public class MainNewActivity extends BaseActivity<LoginPresenter, LoginModel> im
         });
     }
 
-    @Override
-    public void returnLoginData(LoginBean registerBean) {
-    }
 
-    @Override
-    public void returnBindPhoneData(LoginBean registerBean) {
-
-    }
-
-    @Override
-    public void returnLoginCode(StringDataV2Bean registerBean) {
-
-    }
-
-    @Override
-    public void returnBindCode(LoginBean registerBean) {
-
-    }
-
-    @Override
-    public void returnPartyLogin(LoginBean registerBean) {
-
-    }
-
-    @Override
-    public void showPwdLogin(LoginBean result) {
-
-    }
-
-    @Override
-    public void showUserInfo(UserBean result) {
-
-    }
-
-    @Override
-    public void showLoginCheck(CheckPhoneBean result) {
-        login(result);
-    }
-
-    @Override
-    public void showCheckSaveData(TagCheckBean data) {
-
-    }
-
-    private void login(CheckPhoneBean result) {
-        Map<String, String> loginMap = MapUtils.getLoginMap(result.getData().getMobile(), result.getData().getMobileCode(), null);
-        mPresenter.postLoginRequest(loginMap);
-    }
 }

@@ -231,6 +231,7 @@ public class ViewHolderHelper extends RecyclerView.ViewHolder {
 
     public ViewHolderHelper setBackgroundColorNew(int viewId, int color) {
         View view = getView(viewId);
+
         view.setBackgroundColor(view.getResources().getColor(color));
         return this;
     }

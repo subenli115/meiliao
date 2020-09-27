@@ -61,7 +61,7 @@ public abstract class CommonRefreshFragment<T extends BasePresenter, E extends B
     /**
      * 默认每次加载返回条数为15条
      */
-    private   int mLoadCount = 150;
+    private   int mLoadCount = 15;
     /**
      * 基类适配器
      */
@@ -158,11 +158,9 @@ public abstract class CommonRefreshFragment<T extends BasePresenter, E extends B
 
 
 
-    public void setBackColor(int color){
+    public View getBg(){
         View view = ViewUtil.getView(rootView, R.id.rootFrame);
-        if (view!=null){
-            view.setBackgroundColor(color);
-        }
+      return  view;
     }
     /**
      * 获取RecyclerView的布局管理器
@@ -198,13 +196,12 @@ public abstract class CommonRefreshFragment<T extends BasePresenter, E extends B
      */
     @Override
     public void onRefresh () {
-
         onRefreshBy(true);
     }
 
 
 
-    protected void onRefreshBy(boolean refresh) {
+    public void onRefreshBy(boolean refresh) {
         if (mAdapter != null) {
             mAdapter.getPageBean().setRefresh(true);
             mAdapter.clear();

@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -70,6 +71,7 @@ public class ConversationListFragment extends BaseFragment {
     private NetworkReceiver mReceiver;
     private MenuItemController mMenuController;
     protected boolean isCreate = false;
+    private View numTv;
 
 
     @Override
@@ -91,7 +93,7 @@ public class ConversationListFragment extends BaseFragment {
         mThread.start();
         mBackgroundHandler = new BackgroundHandler(mThread.getLooper());
         mMenuView = getActivity().getLayoutInflater().inflate(R.layout.drop_down_menu, null);
-        mConvListController = new ConversationListController(mConvListView, this, mWidth,loadedTip);
+        mConvListController = new ConversationListController(mConvListView, this, mWidth,loadedTip,numTv);
         mConvListView.setListener(mConvListController);
         mConvListView.setItemListeners(mConvListController);
         mConvListView.setLongClickListener(mConvListController);
@@ -122,6 +124,13 @@ public class ConversationListFragment extends BaseFragment {
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         mContext.registerReceiver(mReceiver, filter);
+    }
+
+    public void setView(TextView numTv) {
+        if(mConvListView!=null){
+            mConvListView.setView(numTv);
+        }
+        this.numTv=numTv;
     }
 
     //监听网络状态的广播
@@ -162,7 +171,7 @@ public class ConversationListFragment extends BaseFragment {
      * 收到消息
      */
     public void onEvent(MessageEvent event) {
-        mConvListView.setUnReadMsg(JMessageClient.getAllUnReadMsgCount());
+        mConvListView.setUnReadMsg(JMessageClient.getAllUnReadMsgCount(),numTv);
         Message msg = event.getMessage();
         if (msg.getTargetType() == ConversationType.group) {
             long groupId = ((GroupInfo) msg.getTargetInfo()).getGroupID();
@@ -329,7 +338,7 @@ public class ConversationListFragment extends BaseFragment {
         if (JGApplication.delConversation != null) {
             mConvListController.delConversation();
         }
-        mConvListController.initConvListAdapter();
+        mConvListController.initConvListAdapter(numTv);
     }
 
     public void dismissPopWindow() {

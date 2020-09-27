@@ -3,20 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_marginLeft="30px"
-    android:layout_marginTop="99px"
     android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/tv_dt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="收到的礼物"
-        android:textSize="40px"
-        android:layout_centerVertical="true"
-        android:textStyle="bold"
-        android:layout_gravity="center_vertical"
-        android:textColor="@color/black"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:background="#F7F8FA"
         />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="40px"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tv_dt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收到的礼物"
+            android:textSize="36px"
+            android:background="@drawable/shape_text_line"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            />
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="29px"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_arrow_gray"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
     <com.ziran.meiliao.widget.MyGridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
@@ -25,6 +49,9 @@
         android:layout_below="@+id/tv_title"
         android:numColumns="4"
         android:horizontalSpacing="8dp"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginBottom="118px"
         android:verticalSpacing="5dp"
         android:listSelector="@android:color/transparent"
         android:scrollbars="none"

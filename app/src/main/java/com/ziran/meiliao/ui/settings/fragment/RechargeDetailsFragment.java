@@ -16,7 +16,6 @@ import com.ziran.meiliao.utils.MapUtils;
 
 import java.util.Map;
 
-import butterknife.OnClick;
 
 public class RechargeDetailsFragment extends CommonRefreshFragment<CommonPresenter, CommonModel>
         implements CommonContract.View<BillDetailsBean> {

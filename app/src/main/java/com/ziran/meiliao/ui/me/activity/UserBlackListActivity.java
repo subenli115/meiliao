@@ -11,13 +11,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.base.BaseActivity;
 import com.ziran.meiliao.common.commonwidget.LoadingTip;
 import com.ziran.meiliao.common.commonwidget.NormalTitleBar;
+import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
+import com.ziran.meiliao.constant.ApiKey;
+import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.utils.ToastUtil;
+import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.me.adapter.BlackListAdapter;
 import com.ziran.meiliao.ui.settings.activity.BindPhoneActivity;
+import com.ziran.meiliao.utils.MapUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -87,12 +93,12 @@ public class UserBlackListActivity extends BaseActivity {
                             @Override
                             public void gotResult(int responseCode, String responseMessage) {
                                 if (responseCode == 0) {
+                                    delete(list.get(position).getUserName());
                                     list.remove(position);
                                     mAdapter.updateData(list, mContext);
                                     tvNum.setText("已拉黑人数 " + list.size());
                                     if(list.size()==0){
                                         loadedTip.setEmptyMsg("什么都没有~",R.mipmap.load_empty_bg);
-
                                     }
                                 } else {
                                     ToastUtil.shortToast(mContext, "移除失败");
@@ -108,6 +114,23 @@ public class UserBlackListActivity extends BaseActivity {
             }
         });
         ntb.setTitleText("黑名单");
+    }
+
+    private void delete(String userName) {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("targetUserId",""+userName);
+        defMap.put("userId",""+ MyAPP.getUserId());
+        OkHttpClientManager.putAsyncAddHead(ApiKey.ADMIN_BLACKLIST_DELETE, defMap, new NewRequestCallBack<StringDataV2Bean>(StringDataV2Bean.class) {
+            @Override
+            protected void onSuccess(StringDataV2Bean result) {
+
+            }
+
+            @Override
+            public void onError(String msg, int code) {
+                super.onError(msg, code);
+            }
+        });
     }
 
 }

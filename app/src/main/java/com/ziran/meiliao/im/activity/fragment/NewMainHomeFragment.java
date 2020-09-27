@@ -31,11 +31,17 @@ import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.activity.ChatActivity;
+import com.ziran.meiliao.im.activity.CommonActivity;
 import com.ziran.meiliao.im.activity.OtherUserHomeActivity;
 import com.ziran.meiliao.im.activity.RecommedPreviewActivity;
+import com.ziran.meiliao.im.adapter.UserSpaceAdapter;
 import com.ziran.meiliao.im.application.JGApplication;
+import com.ziran.meiliao.ui.bean.CommonListBean;
+import com.ziran.meiliao.ui.bean.MeSpaceBean;
 import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.RecommendUserBean;
+import com.ziran.meiliao.ui.main.util.NewMainHomeHeadViewUtil;
+import com.ziran.meiliao.ui.priavteclasses.activity.UserHomeActivity;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.Utils;
 import com.ziran.meiliao.widget.CardAdapter;
@@ -47,6 +53,8 @@ import java.util.List;
 import java.util.Map;
 
 import rx.functions.Action1;
+
+import static com.ziran.meiliao.constant.ApiKey.ADMIN_USERSIGN_PAGEBYID;
 
 
 /**
@@ -66,7 +74,10 @@ public class NewMainHomeFragment extends BaseFragment {
     private ACache mCache;
     private Gson g;
     private TextView tvPreview;
-
+    private AutoRelativeLayout arlLike;
+    private AutoRelativeLayout arl;
+    private static final int LIKE_LIST = 1;
+    private ImageView back;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +89,16 @@ public class NewMainHomeFragment extends BaseFragment {
         mRootView = layoutInflater.inflate(R.layout.fragment_main_home_im,
                 (ViewGroup) getActivity().findViewById(R.id.main_view), false);
         mRxManager = new RxManager();
+        back = (ImageView)mRootView.findViewById(R.id.iv_back);
+        arlLike = (AutoRelativeLayout)mRootView.findViewById(R.id.arl_like);
+        arl = (AutoRelativeLayout)mRootView.findViewById(R.id.arl);
          tvPreview = (TextView)mRootView.findViewById(R.id.tv_preview);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
         mRxManager.on("updateCard", new Action1<String>() {
             @Override
             public void call(String balance) {
@@ -180,7 +200,8 @@ public class NewMainHomeFragment extends BaseFragment {
     }
 
     private void initView() {
-       getRecommendUserData();
+        getLikes();
+        getRecommendUserData();
         tvPreview.setOnClickListener(view -> {
             RecommedPreviewActivity.startAction();
         });
@@ -197,14 +218,51 @@ public class NewMainHomeFragment extends BaseFragment {
             @Override
             public void onCardVanish(int isShowing, int flyType) {
                 userSign(flyType);
-                Log.e("isShowingisShowing",isShowing+"        "+dataList.size());
-                if (isShowing+8  == dataList.size()) {
+                if (isShowing+8  >= dataList.size()) {
                     getRecommendUserData();
                 }
             }
         };
         slidePanel.setCardSwitchListener(cardSwitchListener);
         slidePanel.setAdapter(adapter);
+    }
+
+    private void getLikes() {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("userId",MyAPP.getUserId());
+        OkHttpClientManager.getAsyncMore(ApiKey.ADMIN_USERSIGN_PAGEBYID,defMap, new
+                NewRequestCallBack<CommonListBean>(CommonListBean.class) {
+                    @Override
+                    public void onSuccess(CommonListBean result) {
+                        List<CommonListBean.DataBean.RecordsBean> records = result.getData().getRecords();
+                        if(records.size()==0){
+                            arl.setVisibility(View.GONE);
+                        }else {
+                            arl.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    if (Utils.isFastDoubleClick()) {
+                                        return;
+                                    } else {
+                                        CommonActivity.startAction(getContext(),LIKE_LIST,MyAPP.getUserId());
+                                    }
+                                }
+                            });
+                            for(int i=0;i<records.size();i++){
+                                if(arlLike.getChildAt(i)!=null&&i<3){
+                                    ImageView v =(ImageView) arlLike.getChildAt(i);
+                                    v.setVisibility(View.VISIBLE);
+                                    Glide.with(getContext()).load(records.get(i).getAvatar()).error(R.drawable.jmui_head_icon).into(v);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+
+                    }
+                });
     }
 
     private void userSign(int flyType) {
@@ -291,7 +349,7 @@ public class NewMainHomeFragment extends BaseFragment {
                         return;
                     } else {
                         //弹出Toast或者Dialog
-                        OtherUserHomeActivity.startAction(dataList.get(index).getId());
+                       UserHomeActivity.startAction(dataList.get(index).getId());
                     }
                 }
             });
@@ -334,7 +392,7 @@ public class NewMainHomeFragment extends BaseFragment {
 
     class ViewHolder {
         ImageView imageView, ivReal;
-        TextView userNameTv, userSexTv, userAgeTv, userRegionTv;
+        TextView userNameTv, userSexTv, userAgeTv, userRegionTv,tvReal;
 
         public ViewHolder(View view) {
             imageView = (ImageView) view.findViewById(R.id.card_image_view);
@@ -343,6 +401,7 @@ public class NewMainHomeFragment extends BaseFragment {
             userAgeTv = (TextView) view.findViewById(R.id.tv_age);
             userRegionTv = (TextView) view.findViewById(R.id.tv_region);
             ivReal = (ImageView) view.findViewById(R.id.iv_real_name);
+            tvReal = (TextView) view.findViewById(R.id.tv_real);
         }
 
         public void bindData(RecommendUserBean.DataBean itemData) {
@@ -357,6 +416,10 @@ public class NewMainHomeFragment extends BaseFragment {
                 userSexTv.setText("男");
             } else {
                 userSexTv.setText("女");
+            }
+            if(itemData.getIsReal()==null||itemData.getIsReal().equals("0")){
+                tvReal.setVisibility(View.GONE);
+
             }
         }
     }

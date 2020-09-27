@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:background="#F7F8FA"
+        />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="40px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tv_dt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基本信息"
+            android:textSize="36px"
+            android:background="@drawable/shape_text_line"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            />
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="29px"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_arrow_gray"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/flowlayout"
+        zhy:max_select="0"
+        android:layout_marginTop="40px"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/ntb_title"
+        android:layout_marginBottom="40px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_height="wrap_content"
+
+        >
+    </com.zhy.view.flowlayout.TagFlowLayout>
+</com.zhy.autolayout.AutoLinearLayout>

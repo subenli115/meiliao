@@ -115,6 +115,8 @@ public class MyFollowBean extends Result {
              * followNickname : null
              * avatar : http://zrwlmeiliao.oss-accelerate.aliyuncs.com/b5fef00585f44283ad3799bd400d88a1.png
              * introduce :
+             *
+             *
              * createTime : 2020-07-03 11:30:07
              */
 
@@ -126,6 +128,16 @@ public class MyFollowBean extends Result {
             private String avatar;
             private String introduce;
             private String createTime;
+
+            public String getRealName() {
+                return realName;
+            }
+
+            public void setRealName(String realName) {
+                this.realName = realName;
+            }
+
+            private String realName;
 
             public int getId() {
                 return id;

@@ -1,4 +1,4 @@
-include ':app', ':library:umeng', ':emoji', ':reclib-testemoticons', ':library:photoPicker'
+include ':app', ':library:umeng', ':emoji', ':reclib-testemoticons', ':library:photoPicker', ':staggerdrv', ':picture_library', ':ucrop'
 include ':library:common'
 include ':library:selectordialog'
 include ':library:Pushlib'

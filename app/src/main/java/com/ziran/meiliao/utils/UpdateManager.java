@@ -87,7 +87,7 @@ public class UpdateManager {
         final String currentVersion = DeviceUtil.getVersionName(mContext);
         Map<String, String> defMap = MapUtils.getDefMap(false);
         defMap.put("isNew", "0");
-        defMap.put("type", "1");
+        defMap.put("type", "2");
         OkHttpClientManager.getAsync(ApiKey.ADMIN_APPVERSION_APPVERSION, defMap, new NewRequestCallBack<VersionNewBean>(VersionNewBean.class) {
             @Override
             public void onSuccess(final VersionNewBean result) {
@@ -105,20 +105,23 @@ public class UpdateManager {
 
     private void showCheckVersionResult(final VersionNewBean result) {
         LoadingDialog.cancelDialogForLoading();
-        if (CheckUtil.compareVersion(BuildConfig.VERSION_NAME,result.getData().getAppVersion())==-1&& !SPUtils.getString("isVersionRemind").equals(result.getData().getAppVersion())) {
-            // 显示提示对话框
-            HandlerUtil.runMain(new Runnable() {
-                @Override
-                public void run() {
-                    MeiliaoConfig.setLastVersion(result.getData().getAppVersion());
-                    showNoticeDialog(result.getData().getAppVersion(),result.getData().getAddress(), result.getData().getUpdateContent(),result.getData().getIsUpdate());
+        if(result.getData()!=null){
+
+            if (CheckUtil.compareVersion(BuildConfig.VERSION_NAME,result.getData().getAppVersion())==-1&& !SPUtils.getString("isVersionRemind").equals(result.getData().getAppVersion())) {
+                // 显示提示对话框
+                HandlerUtil.runMain(new Runnable() {
+                    @Override
+                    public void run() {
+                        MeiliaoConfig.setLastVersion(result.getData().getAppVersion());
+                        showNoticeDialog(result.getData().getAppVersion(),result.getData().getAddress(), result.getData().getUpdateContent(),result.getData().getIsUpdate());
+                    }
+                }, 200);
+            } else {
+                RxManagerUtil.post(AppConstant.RXTag.CONFERENCE_GET_CONFERENCE, true);
+                if (needToast) {
+                    needToast = false;
+                    ToastUitl.showShort("已经是最新版本!");
                 }
-            }, 200);
-        } else {
-            RxManagerUtil.post(AppConstant.RXTag.CONFERENCE_GET_CONFERENCE, true);
-            if (needToast) {
-                needToast = false;
-                ToastUitl.showShort("已经是最新版本!");
             }
         }
     }

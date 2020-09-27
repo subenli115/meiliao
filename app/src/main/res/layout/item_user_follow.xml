@@ -22,14 +22,25 @@
     android:id="@+id/tv_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingRight="10px"
     android:layout_marginLeft="21px"
-    android:text="sdfdf"
     android:textColor="@color/black"
     android:textStyle="bold"
     android:textSize="32px"
     android:layout_alignTop="@+id/iv_head"
     android:layout_toRightOf="@+id/iv_head"
     />
+    <ImageView
+        android:id="@+id/iv_real_name"
+        android:layout_toRightOf="@+id/tv_name"
+        android:visibility="gone"
+        android:layout_width="28px"
+        android:layout_marginTop="5px"
+        android:layout_alignTop="@+id/tv_name"
+        android:layout_height="32px"
+        android:src="@mipmap/icon_real_name"
+        />
+
 <TextView
     android:id="@+id/tv_sign"
     android:layout_alignLeft="@+id/tv_name"
@@ -37,9 +48,30 @@
     android:layout_marginTop="15px"
     android:layout_below="@+id/tv_name"
     android:layout_height="wrap_content"
-    android:text="dddd"
+    android:maxLines="1"
+    android:ellipsize="end"
+    android:maxEms="11"
     android:textColor="#808080"
+
     android:textSize="26px"
     />
 
+
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="移除粉丝"
+        android:background="@drawable/normal_black_0"
+        android:textSize="26px"
+        android:textColor="#292832"
+        android:paddingLeft="15px"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="15px"
+        android:paddingBottom="10px"
+        android:layout_marginRight="30px"
+        android:paddingTop="10px"
+
+        />
 </com.zhy.autolayout.AutoRelativeLayout>

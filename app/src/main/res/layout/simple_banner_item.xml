@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ziran.meiliao.widget.RoundImageView
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        app:leftBottom_corner_radius="15dp"
+        app:leftTop_corner_radius="15dp"
+        app:rightBottom_corner_radius="15dp"
+        app:rightTop_corner_radius="15dp"
+        app:roun_type="round"
+        android:layout_height="match_parent"
+        >
+    </com.ziran.meiliao.widget.RoundImageView>
+</com.zhy.autolayout.AutoLinearLayout>

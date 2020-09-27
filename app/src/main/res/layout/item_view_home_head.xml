@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <com.freegeek.android.materialbanner.MaterialBanner
+        android:id="@+id/material_banner"
+        android:layout_below="@+id/tv_main"
+        android:layout_width="match_parent"
+        android:layout_marginTop="39px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        app:match="true"
+        android:layout_height="234px"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_marginTop="30px"
+        android:layout_width="wrap_content"
+        app:layout_auto_basewidth="height|marginTop|marginBottom"
+        android:layout_marginBottom="30px"
+        android:layout_below="@+id/material_banner"
+        android:layout_height="160px"
+        />
+    <com.ziran.meiliao.ui.main.util.PageIndicatorView
+        android:id="@+id/indicator"
+        android:layout_below="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_more"
+        android:paddingTop="50px"
+        android:layout_below="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:background="#F7F8FA"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="猜你喜欢"
+            android:textSize="36px"
+            android:layout_marginLeft="31px"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/all_more"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="11px"
+            android:layout_marginTop="2px"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_item_main_home_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="更多"
+                android:textColor="@color/black"
+                android:textSize="24px" />
+            <ImageView
+                android:layout_width="8px"
+                android:layout_marginLeft="11px"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:layout_alignBottom="@+id/tv_item_main_home_more"
+                android:layout_height="14px"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/icon_more_right"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

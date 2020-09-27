@@ -3,22 +3,34 @@ package com.ziran.meiliao.ui.main.presenter;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.chuanglan.shanyan_sdk.OneKeyLoginManager;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
+import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
+import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.entry.LoginBean;
 import com.ziran.meiliao.envet.NewRequestCallBack;
-import com.ziran.meiliao.im.activity.BaseActivity;
 import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.bean.CheckPhoneBean;
 import com.ziran.meiliao.ui.bean.TagCheckBean;
 import com.ziran.meiliao.ui.bean.UserBean;
-import com.ziran.meiliao.ui.main.activity.SplashActivity;
 import com.ziran.meiliao.ui.main.contract.LoginContract;
 import com.ziran.meiliao.ui.settings.activity.IntputCodeActivity;
+import com.ziran.meiliao.utils.MapUtils;
 
 import java.util.Map;
+
+import static com.ziran.meiliao.constant.ApiKey.ADMIN_USER_GETFROZEN;
 
 
 /**
@@ -27,6 +39,8 @@ import java.util.Map;
  * on 2016.09.12:01
  */
 public class LoginPresenter extends LoginContract.Presenter {
+
+    private View contentView;
 
     @Override
     public void postLoginRequest(Map<String, String> map) {
@@ -101,9 +115,49 @@ public class LoginPresenter extends LoginContract.Presenter {
 
             @Override
             public void onError(String msg, int code) {
-                ToastUitl.showShort("用户名不存在或者密码错误");
+                    ToastUitl.showShort(msg);
             }
         });
+    }
+    private void showPopWindow() {
+        // 一个自定义的布局，作为显示的内容
+        int[] location = new int[2];
+
+        contentView = LayoutInflater.from(mContext).inflate(R.layout.pop_login_result, null);
+        contentView.getLocationOnScreen(location);
+        final PopupWindow popupWindow = new PopupWindow(contentView,
+                AutoLinearLayout.LayoutParams.MATCH_PARENT, AutoLinearLayout.LayoutParams.MATCH_PARENT, true);
+
+        popupWindow.setTouchable(true);
+        popupWindow.setOutsideTouchable(true);// 设置同意在外点击消失
+        popupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        // 如果不设置PopupWindow的背景，有些版本就会出现一个问题：无论是点击外部区域还是Back键都无法dismiss弹框
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
+//        popupWindow.showAtLocation(llBg, Gravity.CENTER, 0, 0);
+        TextView qd = contentView.findViewById(R.id.tv_qd);
+        TextView qx = contentView.findViewById(R.id.tv_qx);
+        qd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyAPP.logout(mContext);
+                popupWindow.dismiss();
+
+            }
+        });
+        qx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+
+            }
+        });
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+            }
+        });
+
     }
 
     @Override
@@ -119,14 +173,14 @@ public class LoginPresenter extends LoginContract.Presenter {
 
             @Override
             public void onError(String msg, int code) {
-                if(code==1001){
-                    Intent intent = new Intent(mContext,IntputCodeActivity.class);
-                    intent.putExtra("Connected", "false");
-                    mContext.startActivity(intent);
+             if(code==500){
+                    ToastUitl.showShort(msg);
                 }
+
             }
         });
     }
+
 
     @Override
     public void postCheckLoginPhone(Map<String, String> map) {

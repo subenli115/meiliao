@@ -55,8 +55,15 @@ public class LoadingDialog {
      * 关闭加载对话框
      */
     public static void cancelDialogForLoading() {
-        if(mLoadingDialog != null) {
-            mLoadingDialog.cancel();
+        try {
+            if ((mLoadingDialog != null) && mLoadingDialog.isShowing()) {
+                mLoadingDialog.cancel();
+            }
+        } catch (Exception e) {
+
+        } finally {
+            mLoadingDialog = null;
         }
+
     }
 }
