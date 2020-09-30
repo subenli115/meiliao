@@ -150,11 +150,12 @@ public class DynamicAllAudioOneFragment extends CommonRefreshFragment<CommonPres
     @Override
     protected void initView() {
         spaceId = getIntentExtra(getActivity().getIntent(), "spaceId");
-         newCacheUtil = new NewCacheUtil(getContext());
-        getCommentList();
+        refresh();
         super.initView();
-        list = new ArrayList();
+        newCacheUtil = new NewCacheUtil(getContext());
+        getCommentList();
         getUserMoney();
+        list = new ArrayList();
         initEmoticonsKeyBoardBar();
         aliyunVodPlayer = AliPlayerFactory.createAliPlayer(getActivity().getApplicationContext());
          bean = (SpaceDetailBean.DataBean) newCacheUtil.getDataBean("spacedeatil" + spaceId, SpaceDetailBean.DataBean.class);
@@ -272,7 +273,6 @@ public class DynamicAllAudioOneFragment extends CommonRefreshFragment<CommonPres
     private void refresh() {
         Map<String, String> defMap = MapUtils.getDefMap(true);
         defMap.put("id",spaceId);
-        defMap.put("userId", MyAPP.getUserId());
         defMap.put("latitude",MeiliaoConfig.getLatitude());
         defMap.put("longitude", MeiliaoConfig.getLongitude());
         mPresenter.getData(ADMIN_SPACE_GETBYID,defMap, SpaceDetailBean.class);

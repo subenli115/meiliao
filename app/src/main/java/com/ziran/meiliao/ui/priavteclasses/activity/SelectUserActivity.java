@@ -95,6 +95,8 @@ public class SelectUserActivity extends CommonHttpActivity<CommonPresenter, Comm
     public void reset(UserSelectBean userSelectBean){
         if(userSelectBean==null){
             int sex = MyAPP.getmUserBean().getSex();
+            sbAge.setProgress(18,99);
+            sbHeight.setProgress(140,230);
             if(sex==1){
                 ivMan.setImageResource(R.mipmap.icon_man_select);
                 ivMan.setSelected(true);
@@ -108,12 +110,10 @@ public class SelectUserActivity extends CommonHttpActivity<CommonPresenter, Comm
             }
             tvAge.setText("18-99 岁");
             tvHeight.setText("140-230 cm");
-                tflObjective.getAdapter().setSelectedList(new HashSet<>());
-                tflConstellation.getAdapter().setSelectedList(new HashSet<>());
-                tflShape.getAdapter().setSelectedList(new HashSet<>());
+            tflObjective.getAdapter().setSelectedList(new HashSet<>());
+            tflConstellation.getAdapter().setSelectedList(new HashSet<>());
+            tflShape.getAdapter().setSelectedList(new HashSet<>());
             sbSwitch.setChecked(true);
-            sbAge.setProgress(18,99);
-            sbHeight.setProgress(140,230);
         }else {
             if(userSelectBean.getOnline().equals("0")){
                 sbSwitch.setChecked(true);
@@ -167,6 +167,8 @@ public class SelectUserActivity extends CommonHttpActivity<CommonPresenter, Comm
         datas = new ArrayList<>();
         sbAge.setRange(18,99);
         sbHeight.setRange(140,230);
+        sbAge.setProgress(18,99);
+        sbHeight.setProgress(140,230);
         mPresenter.getDataOneHead(ADMIN_DICT_TYPE,"objective", MyAPP.getAccessToken(), ReportListBean.class);
         mPresenter.getDataOneHead(ADMIN_DICT_TYPE,"constellation", MyAPP.getAccessToken(), ReportListBean.class);
         mPresenter.getDataOneHead(ADMIN_DICT_TYPE,"figure", MyAPP.getAccessToken(), ReportListBean.class);
@@ -299,9 +301,7 @@ public class SelectUserActivity extends CommonHttpActivity<CommonPresenter, Comm
                 list3.addAll(datas);
                 initAdapter(type,list3);
             }
-            if(tflObjective.getAdapter()!=null&&tflConstellation.getAdapter()!=null&&tflShape.getAdapter()!=null){
                 reset(userSelectBean);
-            }
         }
 
 

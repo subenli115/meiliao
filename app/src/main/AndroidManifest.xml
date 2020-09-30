@@ -160,6 +160,10 @@
         <activity android:name="com.ziran.meiliao.ui.me.activity.SelectTagFlowActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"/>
+        <activity android:name="com.ziran.meiliao.ui.me.activity.SetCancellationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
         <activity android:name="com.ziran.meiliao.ui.me.activity.HobbySelectActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"/>
@@ -825,19 +829,19 @@ android.net.conn.CONNECTIVITY_CHANGE"/><!--网络状态改变广播-->
             android:name="com.activeandroid.content.ContentProvider"
             android:authorities="${applicationId}"
         android:exported="false"/>
-        <!--<provider-->
-            <!--android:name="com.bytedance.sdk.openadsdk.TTFileProvider"-->
-            <!--android:authorities="${applicationId}.TTFileProvider"-->
-            <!--android:exported="false"-->
-            <!--android:grantUriPermissions="true">-->
-            <!--<meta-data-->
-                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-                <!--android:resource="@xml/file_paths" />-->
-        <!--</provider>-->
-        <!--<provider-->
-            <!--android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"-->
-            <!--android:authorities="${applicationId}.TTMultiProvider"-->
-            <!--android:exported="false" />-->
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
         <meta-data android:name="JPUSH_APPKEY" android:value="4489647e39f201bd3c1304ca" /> <!--  </>值来自开发者平台取得的AppKey-->
     </application>

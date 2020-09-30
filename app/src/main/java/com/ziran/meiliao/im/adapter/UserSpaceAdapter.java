@@ -74,18 +74,8 @@ public class UserSpaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         spaceList = space;
         mUserBean = dataBean;
         mInfoLists = infoLists;
-//        if (mGiftBean == null) {
             mGiftBean = giftBean;
-//        } else {
-//            mGiftBean.clear();
-//            mGiftBean.addAll(giftBean);
-//        }
-//        if (mSelectBeans == null) {
             mSelectBeans = selectBeans;
-//        } else {
-//            mSelectBeans.clear();
-//            mSelectBeans.addAll(selectBeans);
-//        }
                 notifyDataSetChanged();
     }
 
@@ -295,7 +285,9 @@ public class UserSpaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             vh.itemView.setOnClickListener(new OnNoDoubleClickListener() {
                 @Override
                 protected void onNoDoubleClick(View v) {
-                    WechatActivity.startAction(mContext,mUserBean.getId(), mIsSelf);
+                    if(mUserBean!=null){
+                        WechatActivity.startAction(mContext,mUserBean.getId(), mIsSelf);
+                    }
                 }
             });
         }
@@ -341,7 +333,6 @@ public class UserSpaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             if(split!=null){
                  strings = Arrays.asList(split);
                  if(strings.get(0).equals("")){
-                     Log.e("fffffffffff","55 "+mSelectBeans.get(position).getName());
                      vh.itemView.setVisibility(View.GONE);
                  }
             }else {
@@ -349,7 +340,6 @@ public class UserSpaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     strings=new ArrayList<>();
                     strings.add(selectBean.getText());
                 }else {
-                    Log.e("fffffffffff","44"+mSelectBeans.get(position).getName());
                     vh.itemView.setVisibility(View.GONE);
                 }
             }

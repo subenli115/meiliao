@@ -83,6 +83,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="380px"
         app:roun_type="round"
+        android:scaleType="centerCrop"
         app:layout_auto_baseheight="width"
         android:src="@mipmap/ic_real_person_upload"
         app:corner_radius="25dp"

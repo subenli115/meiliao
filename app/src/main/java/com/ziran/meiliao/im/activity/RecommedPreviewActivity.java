@@ -159,7 +159,7 @@ public class RecommedPreviewActivity extends BaseActivity {
                     }
                     @Override
                     public void onError(String msg, int code) {
-                        ToastUitl.showShort("验证码错误");
+                        ToastUitl.showShort(msg);
                     }
                 });
     }

@@ -51,6 +51,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,7 @@ import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.android.api.options.MessageSendingOptions;
 import cn.jpush.im.api.BasicCallback;
+import rx.functions.Action1;
 
 import com.zhy.autolayout.AutoLinearLayout;
 import com.ziran.meiliao.R;
@@ -133,6 +135,7 @@ import com.ziran.meiliao.ui.settings.activity.RechargeActivity;
 import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.NewCacheUtil;
 import com.ziran.meiliao.widget.BannerUtil;
+import com.ziran.meiliao.widget.TTadUtil;
 
 import static com.ziran.meiliao.constant.ApiKey.ADMIN_GIFTRECORD_CHAT;
 import static com.ziran.meiliao.constant.ApiKey.ADMIN_INTIMACY_ADD;
@@ -220,6 +223,7 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
     private TextView tvHint;
     private LinearLayout llStatus;
     private ImageView ivStatusHint;
+    private TTadUtil tTadUtil;
 
 
     @Override
@@ -280,7 +284,15 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
         newCacheUtil = new NewCacheUtil(mContext);
         ButterKnife.bind(this);
         initView();
-
+        tTadUtil = new TTadUtil(this,mChatView,mRxManager);
+        mRxManager.on(AppConstant.RXTag.UPDATE_ACCOUNT, new Action1<UserAccountBean>() {
+            @Override
+            public void call(UserAccountBean mUserAccountBean) {
+                UserAccountBean.DataBean data = mUserAccountBean.getData();
+                gold = MyAPP.saveMoney(mUserAccountBean)+"";
+                gridView.setBalance(gold,mTargetId,null);
+            }
+        });
         initData();
         //来自聊天室
     }
@@ -477,28 +489,6 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
         super.onDestroy();
     }
 
-    private void putGoldResult() {
-        Map<String, String> defMap = MapUtils.getDefMap(true);
-        defMap.put("reward","50");
-        defMap.put("userId",MyAPP.getUserId());
-        OkHttpClientManager.putAsyncAddHead(ApiKey.ACCOUNT_ADVERTISEMENTRECORD_RECEIVE, defMap, new
-                NewRequestCallBack<UserAccountBean>(UserAccountBean.class) {
-                    @Override
-                    public void onSuccess(UserAccountBean result) {
-                        showPopWindow();
-                        if(result!=null){
-                            int gold = MyAPP.saveMoney(result);
-                            mRxManager.post(AppConstant.RXTag.UPDATE_USER, gold+"");
-                        }
-                    }
-
-                    @Override
-                    public void onError(String msg, int code) {
-                        ToastUitl.showShort(msg);
-                    }
-                });
-    }
-
 
     private void showPopNoMoneyWindow() {
         // 一个自定义的布局，作为显示的内容
@@ -520,6 +510,9 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
         popupWindow.showAtLocation(mChatView, Gravity.CENTER, 0, 0);
         TextView tvRecharge = contentView.findViewById(R.id.tv_recharge);
         TextView tvReceive = contentView.findViewById(R.id.tv_receive);
+        if(MeiliaoConfig.getNewOpen()){
+            tvReceive.setVisibility(View.VISIBLE);
+        }
 //        setBackgroundAlpha(0.5f);
         tvRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -534,32 +527,7 @@ public class ChatActivity extends BaseActivity implements FuncLayout.OnFuncKeyBo
                 if (isFastLoadAdDoubleClick()) {
                     return;
                 }
-                popupWindow.dismiss();
-
-            }
-        });
-    }
-    private void showPopWindow() {
-        // 一个自定义的布局，作为显示的内容
-        int[] location = new int[2];
-        contentView = LayoutInflater.from(getBaseContext()).inflate(R.layout.pop_get_money_im, null);
-        contentView.getLocationOnScreen(location);
-        final PopupWindow popupWindow = new PopupWindow(contentView,
-                AutoLinearLayout.LayoutParams.MATCH_PARENT, AutoLinearLayout.LayoutParams.MATCH_PARENT, true);
-        popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
-        popupWindow.setTouchable(true);
-        popupWindow.setOutsideTouchable(true);// 设置同意在外点击消失
-        popupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        // 如果不设置PopupWindow的背景，有些版本就会出现一个问题：无论是点击外部区域还是Back键都无法dismiss弹框
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
-        popupWindow.showAtLocation(mChatView, Gravity.CENTER, 0, 0);
-        TextView qd = contentView.findViewById(R.id.tv_qd);
-//        setBackgroundAlpha(0.5f);
-        qd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                tTadUtil.showVideoAd();
                 popupWindow.dismiss();
 
             }

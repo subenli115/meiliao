@@ -8,13 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.zxing.common.StringUtils;
 import com.squareup.picasso.Picasso;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
+import com.ziran.meiliao.common.commonutils.TimeUtil;
 import com.ziran.meiliao.common.commonwidget.OnNoDoubleClickListener;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.ViewHolderHelper;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.MultiItemRecycleViewAdapter;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.MultiItemTypeSupport;
+import com.ziran.meiliao.im.pickerimage.utils.StringUtil;
 import com.ziran.meiliao.ui.bean.BillDetailsBean;
 import com.ziran.meiliao.ui.bean.HomeRecommendBean;
 import com.ziran.meiliao.ui.bean.UserBean;
@@ -90,13 +93,19 @@ public class HomeRecommendAdapter extends MultiItemRecycleViewAdapter<UserBean.D
                     }
                 }
             }else {
+                holder.setVisible(R.id.tv_other,true);
                 if(itemData.getStatus().equals("0")){
                     holder.setText(R.id.tv_other,"在线");
-                    holder.setVisible(R.id.tv_other,true);
                     holder.setTextColor(R.id.tv_other,R.color.textColor_dynamic5);
                     holder.setBackgroundRes(R.id.tv_other,R.drawable.normal_bg_green_4d);
                 }else {
-                    holder.setVisible(R.id.tv_other,false);
+                    if(StringUtil.isEmpty(itemData.getLeaveTime())){
+                        holder.setText(R.id.tv_other,"1小时前");
+                    }else {
+                        holder.setText(R.id.tv_other,TimeUtil.convertToShowStr1(itemData.getLeaveTime()));
+                    }
+                    holder.setBackgroundRes(R.id.tv_other,R.drawable.normal_bg_gray_f0);
+                    holder.setTextColor(R.id.tv_other,R.color.textColor_dynamic6);
                 }
             }
         }
@@ -110,6 +119,8 @@ public class HomeRecommendAdapter extends MultiItemRecycleViewAdapter<UserBean.D
             }
             holder.setVisible(R.id.iv_real_name,false);
             holder.setVisible(R.id.iv_real_person,false);
+        }else {
+            holder.setVisible(R.id.tv_real,true);
         }
         if(itemData.getSex() == 2){
             holder.setImageResource(R.id.iv_age,R.mipmap.icon_home_sex_woman);

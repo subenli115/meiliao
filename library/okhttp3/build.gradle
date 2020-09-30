@@ -25,6 +25,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api rootProject.ext.dependencies.appcompatV7
 //    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'cn.yc:ToolLib:1.2.0'
     implementation 'com.google.code.gson:gson:2.8.4'
     api  rootProject.ext.dependencies.okhttp3logging
     api  rootProject.ext.dependencies.okhttp3io

@@ -63,12 +63,22 @@ public class MeiliaoConfig {
     private static boolean isBuy;
     public static String shareUrl;
     public static String pic;
+    public static boolean newOpen;
     private static String mdownUrl;
     private static Bundle bundle;
     private static String url = "";
     private static String agreementUrl = "http://39.98.216.174/userservice.html";
     private static String privacyUrl = "http://39.98.216.174/privacy.html";
     private static String greenUrl = "http://39.98.216.174/green.html";
+
+
+    public static boolean getNewOpen() {
+        return newOpen;
+    }
+
+    public static void setNewOpen(boolean newOpen) {
+        MeiliaoConfig. newOpen = newOpen;
+    }
 
     public static String getLatitude() {
         return latitude;

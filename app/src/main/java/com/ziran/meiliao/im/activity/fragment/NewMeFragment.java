@@ -23,6 +23,7 @@ import com.yuyh.library.imgsel.ImgSelConfig;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.compressorutils.FileUtil;
@@ -50,6 +51,7 @@ import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.Utils;
 import com.ziran.meiliao.widget.GlideCircleTransform;
 import com.ziran.meiliao.widget.ItemGroupView;
+import com.ziran.meiliao.widget.TTadUtil;
 import com.ziran.meiliao.widget.pupop.UpdatePopupWindow;
 
 import java.io.File;
@@ -110,6 +112,7 @@ public class NewMeFragment extends CommonHttpFragment<CommonPresenter, CommonMod
     private View contentView;
     private VisitorBean.DataBean visitorBean;
     private UpdatePopupWindow pop;
+    private TTadUtil tTadUtil;
 
 
     @Override
@@ -122,7 +125,6 @@ public class NewMeFragment extends CommonHttpFragment<CommonPresenter, CommonMod
         mPresenter.setVM(this, mModel);
     }
 
-
     //全屏并且隐藏状态栏
     private void hideStatusBar() {
         WindowManager.LayoutParams attrs = getActivity().getWindow().getAttributes();
@@ -131,6 +133,7 @@ public class NewMeFragment extends CommonHttpFragment<CommonPresenter, CommonMod
     }
     @Override
     protected void initView() {
+        tTadUtil = new TTadUtil(getActivity(),clBg,mRxManager);
         initData();
         mRxManager.on(AppConstant.RXTag.UPDATE_USER, new Action1<String>() {
             @Override
@@ -150,10 +153,21 @@ public class NewMeFragment extends CommonHttpFragment<CommonPresenter, CommonMod
         if(dataBean.getIntroduce()!=null){
             tvSign.setText(dataBean.getIntroduce());
         }
+        if(MeiliaoConfig.getNewOpen()){
+            ivGetMoney.setVisibility(View.VISIBLE);
+        }
         Glide.with(getContext()).load(dataBean.getAvatar()).into(ivHead);
         if(dataBean.getIsReal()!=null&&dataBean.getIsReal().equals("1")) {
             ivRealPerson.setVisibility(View.VISIBLE);
         }
+        mRxManager.on(AppConstant.RXTag.UPDATE_ACCOUNT, new Action1<UserAccountBean>() {
+            @Override
+            public void call(UserAccountBean mUserAccountBean) {
+                UserAccountBean.DataBean data = mUserAccountBean.getData();
+                tvMoney.setText(new DecimalFormat("#,###").format(data.getRecharge()));
+                tvProfit.setText( new DecimalFormat("#,###").format(data.getCurrency()));
+            }
+        });
     }
 
     @Override
@@ -182,31 +196,6 @@ public class NewMeFragment extends CommonHttpFragment<CommonPresenter, CommonMod
                 tvVisits.setRigthText("+"+visitorBean.getVisitor());
             }
         }
-    }
-    private void showPopWindow() {
-        // 一个自定义的布局，作为显示的内容
-        int[] location = new int[2];
-        contentView = LayoutInflater.from(getContext()).inflate(R.layout.pop_get_money_im, null);
-        contentView.getLocationOnScreen(location);
-        final PopupWindow popupWindow = new PopupWindow(contentView,
-                AutoLinearLayout.LayoutParams.MATCH_PARENT, AutoLinearLayout.LayoutParams.MATCH_PARENT, true);
-
-        popupWindow.setTouchable(true);
-        popupWindow.setOutsideTouchable(true);// 设置同意在外点击消失
-        popupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        // 如果不设置PopupWindow的背景，有些版本就会出现一个问题：无论是点击外部区域还是Back键都无法dismiss弹框
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
-        popupWindow.showAtLocation(clBg, Gravity.CENTER, 0, 0);
-        TextView qd = contentView.findViewById(R.id.tv_qd);
-//        setBackgroundAlpha(0.5f);
-        qd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popupWindow.dismiss();
-
-            }
-        });
     }
 
     /**
@@ -278,7 +267,7 @@ public class NewMeFragment extends CommonHttpFragment<CommonPresenter, CommonMod
                     }
                     @Override
                     public void onError(String msg, int code) {
-                        ToastUitl.showShort("验证码错误");
+                        ToastUitl.showShort(msg);
                     }
                 });
     }
@@ -325,6 +314,7 @@ public class NewMeFragment extends CommonHttpFragment<CommonPresenter, CommonMod
         }else {
         switch (view.getId()) {
             case R.id.iv_get_money:
+                tTadUtil.showVideoAd();
                 break;
             case R.id.tv_me_main_new_visiter:
                 CommonActivity.startAction(getContext(),VISIT_LIST,MyAPP.getUserId());

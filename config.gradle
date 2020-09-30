@@ -58,8 +58,8 @@ ext {
 
             //retrofit和rxjava
             retrofit              : 'com.squareup.retrofit2:retrofit:2.0.0-beta3',
-            okhttp3logging        : 'com.squareup.okhttp3:okhttp:3.5.0',
-            okhttp3io             : 'com.squareup.okio:okio:1.11.0',
+            okhttp3logging        : 'com.squareup.okhttp3:okhttp:4.9.0',
+            okhttp3io             : 'com.squareup.okio:okio:2.6.0',
             //   okhttp3logging      :   'com.squareup.okhttp3:logging-interceptor:3.1.2'  ,
 //            rxjava                : 'io.reactivex.rxjava2:rxjava:2.0.7',
 //            rxandroid             : 'io.reactivex.rxjava2:rxandroid:2.0.1',

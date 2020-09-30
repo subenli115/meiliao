@@ -1278,8 +1278,15 @@ public interface ApiKey {
      */
     String ADMIN_TOOL_TESTSECURITY= "admin/tool/testSecurity";
 
+    /**
+     * 根据条件查询开关信息
+     */
+    String ADMIN_SWITCH_GETSYSSWITCH= "admin/switch/getSysSwitch";
 
-
+    /**
+     * 注销用户
+     */
+    String ADMIN_USER_CANCELLATION= "admin/user/cancellation";
 
 
 }

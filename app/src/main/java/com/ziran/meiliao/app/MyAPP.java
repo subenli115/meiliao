@@ -21,6 +21,10 @@ import com.chuanglan.shanyan_sdk.OneKeyLoginManager;
 import com.chuanglan.shanyan_sdk.listener.InitListener;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
+import com.yc.toollib.crash.CrashHandler;
+import com.yc.toollib.crash.CrashListener;
+import com.yc.toollib.crash.CrashToolUtils;
+import com.yc.toollib.network.utils.NetworkTool;
 import com.ziran.meiliao.BuildConfig;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.baseapp.AppManager;
@@ -35,6 +39,7 @@ import com.ziran.meiliao.common.okhttp.OkHttpClientManager;
 import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.constant.AppConstant;
+import com.ziran.meiliao.constant.TTAdManagerHolder;
 import com.ziran.meiliao.dao.UserInfoDao;
 import com.ziran.meiliao.db.DbCore;
 import com.ziran.meiliao.entry.LoginBean;
@@ -70,6 +75,7 @@ import com.umeng.socialize.PlatformConfig;
 
 
 import java.io.File;
+import java.security.Security;
 import java.util.Map;
 
 import cn.bingoogolapple.photopicker.imageloader.BGAImage;
@@ -183,10 +189,35 @@ public class MyAPP extends BaseApplication {
         initIm();
         JPushInterface.setDebugMode(false); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);     		// 初始化 JPush
+        TTAdManagerHolder.init(this);
         mMediaPlayer=MediaPlayer.create(this, R.raw.music);
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
+//        NetworkTool.getInstance().init(this);
+//        NetworkTool.getInstance().setFloat(this);
+//        CrashHandler.getInstance().init(this, new CrashListener() {
+//            /**
+//             * 重启app
+//             */
+//            @Override
+//            public void againStartApp() {
+//                CrashToolUtils.reStartApp1(MyAPP.this,1000);
+//                //CrashToolUtils.reStartApp2(App.this,1000, MainActivity.class);
+//                //CrashToolUtils.reStartApp3(AppManager.getAppManager().currentActivity());
+//            }
+//
+//            /**
+//             * 自定义上传crash，支持开发者上传自己捕获的crash数据
+//             * @param ex                        ex
+//             */
+//            @Override
+//            public void recordException(Throwable ex) {
+//                //自定义上传crash，支持开发者上传自己捕获的crash数据
+//                //StatService.recordException(getApplication(), ex);
+//            }
+//        });
     }
+
 
 
     private void initIm() {

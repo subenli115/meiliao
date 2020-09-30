@@ -2,23 +2,16 @@ package com.ziran.meiliao.ui.main.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.fragment.app.FragmentTransaction;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.luck.picture.lib.entity.LocalMedia;
 import com.umeng.socialize.UMShareAPI;
+import com.yc.toollib.network.utils.NetworkTool;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.base.BaseActivity;
@@ -26,9 +19,7 @@ import com.ziran.meiliao.common.commonutils.ArrayUtils;
 import com.ziran.meiliao.common.compressorutils.FileUtil;
 import com.ziran.meiliao.constant.AppConstant;
 import com.ziran.meiliao.im.activity.ReleaseWechatActivity;
-import com.ziran.meiliao.im.activity.fragment.MeFragment;
 import com.ziran.meiliao.im.activity.fragment.NewMeFragment;
-import com.ziran.meiliao.ui.base.PermissionActivity;
 import com.ziran.meiliao.ui.bean.AdvertBean;
 import com.ziran.meiliao.ui.bean.TabEntity;
 import com.ziran.meiliao.ui.main.fragment.CommunityFragment;
@@ -118,7 +109,8 @@ public class MainNewActivity extends BaseActivity {
         ivFb.setOnClickListener(new CustomClickListener() {
             @Override
             protected void onSingleClick() {
-                ReleaseWechatActivity.startAction(REQUEST_CODE_A);
+                NetworkTool.getInstance().setFloat(getApplication());
+//                ReleaseWechatActivity.startAction(REQUEST_CODE_A);
             }
 
             @Override

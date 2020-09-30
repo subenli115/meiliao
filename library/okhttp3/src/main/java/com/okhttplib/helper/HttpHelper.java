@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.security.Security;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -104,15 +105,16 @@ class HttpHelper extends BaseHelper {
         final HttpInfo info = helper.getHttpInfo();
         final CallbackOk callback = helper.getCallback();
         Request request = helper.getRequest();
+
         if (null == callback)
             throw new NullPointerException("CallbackOk is null!");
-        String url = info.getUrl();
-        Log.e("doRequestAsyncurl", url);
+        final String url = info.getUrl();
         if (!checkUrl(url)) {
             //主线程回调
             Message msg = new CallbackMessage(OkMainHandler.RESPONSE_CALLBACK,
                     callback,
                     retInfo(info, HttpInfo.CheckURL))
+
                     .build();
             OkMainHandler.getInstance().sendMessage(msg);
             return;
@@ -121,6 +123,7 @@ class HttpHelper extends BaseHelper {
         BaseActivityLifecycleCallbacks.putCall(requestTag, call);
         call.enqueue(new Callback() {
             @Override
+
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
                 //主线程回调
@@ -135,7 +138,6 @@ class HttpHelper extends BaseHelper {
 
             @Override
             public void onResponse(Call call, Response res) throws IOException {
-                Log.e("onResponse",""+res.code()+"      "+res.message());
                 //主线程回调
                 Message msg = new CallbackMessage(OkMainHandler.RESPONSE_CALLBACK,
                         callback,
@@ -187,9 +189,9 @@ class HttpHelper extends BaseHelper {
                 Gson gson = new GsonBuilder().create();
                 String content = gson.toJson(info.getParams());
                 RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8")
+
                         , content);
                 requestBuilder.url(url).post(requestBody);
-                Log.e("signUserId", "signUserId");
             } else {
                 requestBuilder.url(url).post(builder.build());
             }
@@ -214,7 +216,6 @@ class HttpHelper extends BaseHelper {
                     params.append(logInfo);
                 }
 
-                Log.e("OkHttpClientManagerLog", params.toString());
             }
             requestBuilder.url(params.toString()).get();
         } else if (method == RequestMethod.PUT) {
@@ -231,7 +232,6 @@ class HttpHelper extends BaseHelper {
 
             requestBuilder.url(url).delete();
         }
-
         addHeadsToRequest(info, requestBuilder);
         request = requestBuilder.build();
         return request;

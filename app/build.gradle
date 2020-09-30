@@ -165,6 +165,7 @@ dependencies {
     //融云聊天室
     //    compile project(':library:zxingScan')//二维码扫码
     //二维码扫码
+    implementation 'cn.yc:ToolLib:1.2.0'
     implementation project(':library:citypicker')
     implementation 'com.iqiyi.xcrash:xcrash-android-lib:2.4.9'
     annotationProcessor rootProject.ext.dependencies.butterknife

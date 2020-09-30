@@ -44,7 +44,7 @@ public class OkHttpClientManager {
     private static String BASE_URL;
 
     private static final String OK_BASE_URL = "http://api.ziran518.com:9999/";
-    private static final String TEST_BASE_URL = "http://192.168.1.3:9999/";
+    private static final String TEST_BASE_URL = "http://192.168.1.4:9999/";
 //    private static final String TEST_BASE_URL = "http://39.98.156.53:9999/";
 
 
@@ -186,6 +186,7 @@ public class OkHttpClientManager {
         } else {
             headString = "Basic YXBwOmFwcA==";
         }
+        params.remove("accessToken");
         OkHttpUtil.getDefault().doGetAsync(HttpInfo.Builder().setUrl(BASE_URL + url).addParams(params).addHead("Authorization", headString).build(), new CallbackOk() {
             @Override
             public void onResponse(HttpInfo info) throws IOException {
@@ -442,29 +443,6 @@ public class OkHttpClientManager {
         }
     }
 
-    //执行上传文件操作
-    public static void postContentAndFile(String url, Map<String, String> map, String filePath, final OkHttpClientManager.ResultCallback
-            callback) {
-        try {
-            if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
-                getInstance().sendFailedStringCallback(null, new NetworkErrorException(BaseApplication.getAppResources().getString(R
-                        .string.network_error)), callback);
-                return;
-            }
-
-            HttpInfo info = HttpInfo.Builder().setUrl(BASE_URL + url).addParams(map).addUploadFile("file", filePath, new ProgressCallback
-                    () {
-                @Override
-                public void onResponseMain(String filePath, HttpInfo info) {
-                    doResult(info, callback);
-                }
-            }).build();
-            OkHttpUtil.getDefault().doUploadFileAsync(info);
-            LogUtils.logd("map : " + map.toString() + filePath);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * @param url

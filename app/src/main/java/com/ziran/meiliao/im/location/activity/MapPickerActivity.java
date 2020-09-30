@@ -295,7 +295,6 @@ public class MapPickerActivity extends AppCompatActivity implements AdapterView.
                     @Override
                     public void onSnapshotReady(Bitmap bitmap) {
                         if (null != bitmap && null != conv) {
-                            Log.e("cccccccccccc","334");
                             String fileName = UUID.randomUUID().toString();
                             String path = BitmapLoader.saveBitmapToLocal(bitmap, fileName);
                             Intent intent = new Intent();
@@ -308,7 +307,6 @@ public class MapPickerActivity extends AppCompatActivity implements AdapterView.
                             setResult(JGApplication.RESULT_CODE_SEND_LOCATION, intent);
                             finish();
                         } else {
-                            Log.e("cccccccccccccc","656");
                             Toast.makeText(context, context.getString(R.string.send_location_error),
                                     Toast.LENGTH_SHORT).show();
                         }

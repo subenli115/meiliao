@@ -142,6 +142,16 @@ public class UserBean extends Result {
         private String more;
         private String voiceDuration;
         private String videoCover;
+        private String leaveTime;
+
+
+        public String getLeaveTime() {
+            return leaveTime;
+        }
+
+        public void setLeaveTime(String leaveTime) {
+            this.leaveTime = leaveTime;
+        }
 
         public String getRealImg() {
             return realImg;
@@ -354,7 +364,8 @@ public class UserBean extends Result {
 
         public String getRegion() {
             if(region.length()>3){
-                return region.substring(0,3);
+                String[] split = region.split("-");
+                return split[0];
             }else {
                 return region;
             }

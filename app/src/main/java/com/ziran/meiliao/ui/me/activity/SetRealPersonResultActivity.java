@@ -110,14 +110,5 @@ public class SetRealPersonResultActivity extends BaseActivity {
 
 
 
-//    private void updateButton() {
-//        if (etId.&&cameraScalePath.length()>0) {
-//            tvQd.setBackgroundResource(R.drawable.normal_bg_bule);
-//        } else {
-//            tvQd.setBackgroundResource(R.drawable.normal_bg_bule50);
-//        }
-//    }
-
-
 
 }

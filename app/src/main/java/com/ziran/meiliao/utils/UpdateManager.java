@@ -67,6 +67,7 @@ public class UpdateManager {
      * 检测软件更新
      */
     public void checkUpdate(boolean needCheck, boolean needToast) {
+
         this.needToast = needToast;
         if (NetWorkUtils.isNetConnected(MyAPP.getContext()) && needCheck) {
             isUpdate();

@@ -30,6 +30,7 @@ import cn.jpush.android.api.JPushInterface;
 
 import com.zhy.autolayout.AutoLinearLayout;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.common.baseapp.AppManager;
 import com.ziran.meiliao.common.commonutils.ToastUitl;
@@ -39,11 +40,16 @@ import com.ziran.meiliao.constant.ApiKey;
 import com.ziran.meiliao.envet.NewRequestCallBack;
 import com.ziran.meiliao.im.controller.MainController;
 import com.ziran.meiliao.im.view.MainView;
+import com.ziran.meiliao.ui.bean.AdvertisementBean;
+import com.ziran.meiliao.ui.bean.StringDataBean;
+import com.ziran.meiliao.ui.bean.StringDataV2Bean;
 import com.ziran.meiliao.ui.me.activity.YouthModelActivity;
 import com.ziran.meiliao.utils.HandlerUtil;
+import com.ziran.meiliao.utils.MapUtils;
 import com.ziran.meiliao.utils.UpdateManager;
 
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends FragmentActivity {
     private MainController mMainController;
@@ -85,6 +91,7 @@ public class MainActivity extends FragmentActivity {
             public void run() {
                 //最新版本检查
                 new UpdateManager(getBaseContext()).checkUpdate();
+                sysSwitch();
                 // 请求是否有赠送推广音频数据
             }
         });
@@ -108,20 +115,24 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-//    private void registerReward() {
-//        OkHttpClientManager.getAsyncHead(ApiKey.ADMIN_USER_REGISTERRE, MyAPP.getUserId(),MyAPP.getAccessToken(), new
-//                NewRequestCallBack<Result>(Result.class) {
-//                    @Override
-//                    public void onSuccess(Result result) {
-//                        showPopWindow();
-//                    }
-//
-//                    @Override
-//                    public void onError(String msg, int code) {
-//                        ToastUitl.showShort(msg);
-//                    }
-//                });
-//    }
+    private void sysSwitch() {
+        Map<String, String> defMap = MapUtils.getDefMap(true);
+        defMap.put("sign","advertisement");
+        OkHttpClientManager.getAsyncMore(ApiKey.ADMIN_SWITCH_GETSYSSWITCH, defMap,new
+                NewRequestCallBack<AdvertisementBean>(AdvertisementBean.class) {
+                    @Override
+                    public void onSuccess(AdvertisementBean result) {
+                        String data = result.getData().getStatus();
+                        if(data.equals("0")){
+                            MeiliaoConfig.setNewOpen(true);
+                        }
+                    }
+
+                    @Override
+                    public void onError(String msg, int code) {
+                    }
+                });
+    }
     public static void startAction( String type) {
         Activity activity = AppManager.getAppManager().currentActivity();
         Intent intent = new Intent(activity, MainActivity.class);

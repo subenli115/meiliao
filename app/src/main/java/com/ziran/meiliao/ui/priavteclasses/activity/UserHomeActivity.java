@@ -450,7 +450,7 @@ public class UserHomeActivity extends  CommonHttpActivity<CommonPresenter, Commo
     @Override
     public void onPause() {
         if(aliyunVodPlayer!=null){
-            aliyunVodPlayer.stop();
+            newMainHomeHeadViewUtil.onPause();
         }
         super.onPause();
     }

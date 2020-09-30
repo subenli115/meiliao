@@ -840,7 +840,52 @@ public class TimeUtil {
         return result;
     }
 
+    /**
+     * 将传入Date值转换为想要显示的字符串
+     * @param value 只允许java.util.Date 或 String 类型,其他类型不处理
+     * @return  几秒前，几分钟前，几小时前，几天前，几个月前，几年前，很久以前（10年前）
+     */
+    public static String convertToShowStr1(String value) {
+        Date time = toDate(value);
+        String result = null;
+        result = convertDateToShowStr1(time);
+        return result;
+    }
 
+
+
+    /**
+     * 转换日期到指定格式方便查看的描述说明
+     * @param date
+     * @return 几秒前，几分钟前，几小时前，几天前，几个月前，几年前，很久以前（10年前）,如果出现之后的时间，则提示：未知
+     */
+    private static String convertDateToShowStr1(Date date) {
+        String showStr = "";
+        long yearSeconds = 31536000L;//365 * 24 * 60 * 60;
+        long monthSeconds = 2592000L;//30 * 24 * 60 * 60;
+        long daySeconds = 86400L;//24 * 60 * 60;
+        long hourSeconds = 3600L;//60 * 60;
+        long minuteSeconds = 60L;
+
+
+        long time = (new Date().getTime() - date.getTime()) / 1000;
+        if (time / yearSeconds > 0) {
+            showStr = "1个月前";
+        } else if (time / monthSeconds > 0) {
+            showStr = "1个月前";
+        } else if (time / daySeconds > 0) {
+            if(time / daySeconds>7){
+                showStr = time / daySeconds/7+"周前";
+            }else {
+                showStr = time / daySeconds+"天前";
+            }
+        } else if (time / hourSeconds > 0) {
+            showStr = time / hourSeconds + "小时前";
+        }else {
+            showStr = "1小时前";
+        }
+        return showStr;
+    }
 
 
 
@@ -880,8 +925,6 @@ public class TimeUtil {
         } else if (time > 0) {
             showStr = "刚刚";
         }
-
-
         return showStr;
     }
 
@@ -1021,23 +1064,24 @@ public class TimeUtil {
         return age;
     }
 
-    /**
-     * 友好显示时间差
-     *
-     * @param diff 毫秒
-     * @return
-     */
-    public static String getFriendTimeOffer(long diff) {
-        int day = (int) (diff / (24 * 60 * 60 * 1000));
-        if (day > 0) return day + "天";
-        int time = (int) (diff / (60 * 60 * 1000));
-        if (time > 0) return time + "小时";
-        int min = (int) (diff / (60 * 1000));
-        if (min > 0) return min + "分钟";
-        int sec = (int) diff / 1000;
-        if (sec > 0) return sec + "秒";
-        return "1秒";
-    }
+//    /**
+//     * 友好显示时间差
+//     *
+//     * @param diff 毫秒
+//     * @return
+//     */
+//    public static String getFriendTimeOffer(String value) {
+//        String result = null;
+//        int day = (int) (time / (24 * 60 * 60 * 1000));
+//        if (day > 0) return day + "天";
+//        int time = (int) (diff / (60 * 60 * 1000));
+//        if (time > 0) return time + "小时";
+//        int min = (int) (diff / (60 * 1000));
+//        if (min > 0) return min + "分钟";
+//        int sec = (int) diff / 1000;
+//        if (sec > 0) return sec + "秒";
+//        return "1秒";
+//    }
 
 
     public static String getTimeFormLong(long time) {

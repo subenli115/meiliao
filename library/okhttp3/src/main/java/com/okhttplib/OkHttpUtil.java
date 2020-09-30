@@ -143,6 +143,7 @@ public class OkHttpUtil implements OkHttpUtilInterface{
                 .requestMethod(RequestMethod.PUT)
                 .callbackOk(callback)
                 .helperInfo(packageHelperInfo())
+
                 .build()
                 .doRequestAsync();
     }
@@ -189,9 +190,13 @@ public class OkHttpUtil implements OkHttpUtilInterface{
                 .httpInfo(info)
                 .requestMethod(RequestMethod.GET)
                 .callbackOk(callback)
+                //主要是处理拦截请求，响应等信息
                 .helperInfo(packageHelperInfo())
                 .build()
+
                 .doRequestAsync();
+
+
     }
 
     /**
@@ -495,18 +500,18 @@ public class OkHttpUtil implements OkHttpUtilInterface{
             }else{
                 setCachedDir(Environment.getExternalStorageDirectory());
             }
-            setConnectTimeout(50);
-            setReadTimeout(50);
-            setWriteTimeout(50);
+            setConnectTimeout(3);
+            setReadTimeout(3);
+            setWriteTimeout(3);
             setRetryOnConnectionFailure(true);
             setCacheSurvivalTime(0);
             setCacheType(CACHE_THEN_NETWORK);
-            setCacheLevel(FIRST_LEVEL);
+            setCacheLevel(SECOND_LEVEL);
             setNetworkInterceptors(null);
             setInterceptors(null);
             setResultInterceptors(null);
             setExceptionInterceptors(null);
-            setShowHttpLog(false);
+            setShowHttpLog(true);
             setShowLifecycleLog(false);
             setDownloadFileDir(Environment.getExternalStorageDirectory().getPath()+"/okHttp_download/");
         }

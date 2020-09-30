@@ -290,11 +290,9 @@ public class MainHomeHeadViewV2Util {
                             //正在播放
                             voiceWaveView4.stop();
                             aliyunVodPlayer.pause();
-                        }else if(state==4||state==6){
+                        }else if(state==2||state==4||state==6||state==5){
                             aliyunVodPlayer.start();
                             voiceWaveView4.start();
-                        }else if(state==5){
-                            aliyunVodPlayer.prepare();
                         }
                     }
                 });
@@ -347,6 +345,7 @@ public class MainHomeHeadViewV2Util {
                 vidAuth.setRegion("cn-shanghai");
                 //设置播放源
                 aliyunVodPlayer.setDataSource(vidAuth);
+                aliyunVodPlayer.prepare();
 
             }
             @Override
@@ -360,26 +359,14 @@ public class MainHomeHeadViewV2Util {
                 if(infoBean.getCode()== InfoCode.CurrentPosition){
                     long extraValue = infoBean.getExtraValue();
                     tvTime.setText(TimeUtil.getTimeFormLong(extraValue));
-                    List<TrackInfo> trackInfos = aliyunVodPlayer.getMediaInfo().getTrackInfos();
-                    for(int i=0;i<trackInfos.size();i++){
-                        Log.e("trackInfos",""+trackInfos.get(i));
-                    }
                 }
-            }
-        });
-        aliyunVodPlayer.setOnPreparedListener(new IPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared() {
-                //准备成功事件
-                aliyunVodPlayer.start();
-                voiceWaveView4.start();
             }
         });
         aliyunVodPlayer.setOnCompletionListener(new IPlayer.OnCompletionListener() {
             @Override
             public void onCompletion() {
                 voiceWaveView4.stop();
-                aliyunVodPlayer.stop();
+                aliyunVodPlayer.prepare();
                 tvTime.setText(dataBean.getVoiceDuration());
             }
         });
@@ -388,9 +375,14 @@ public class MainHomeHeadViewV2Util {
             public void onStateChanged(int newState) {
                 //播放器状态改变事件
                 state=newState;
+                Log.e("onStateChanged",""+state);
             }
         });
     }
 
+    public void onPause(){
+        aliyunVodPlayer.stop();
+        voiceWaveView4.stop();
+    }
 
 }

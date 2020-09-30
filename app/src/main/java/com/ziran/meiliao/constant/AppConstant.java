@@ -13,7 +13,6 @@ public interface AppConstant {
 
     String URL = "http://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512405681970&di=8224522cd94a416d9af9dc0be1b97a3a" +
             "&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fa1%2F105%2Fd%2F40.jpg";
-//    String URL = "http://pic30.nipic.com/20130624/7447430_170433987002_2.jpg";
 
 
     /**
@@ -41,38 +40,6 @@ public interface AppConstant {
     String KEY_MUSIC = "music";
 
 
-    /**
-     * 缓存在数据库中的首页减压馆推荐的id
-     */
-    long CACHE_PAGE_MAIN_JYG_RECOMMEND = 100L;
-    /**
-     * 缓存在数据库中的首页减压馆分类栏目的id
-     */
-    long CACHE_PAGE_MAIN_JYG_CATEGORY = 1000L;
-    /**
-     * 缓存在数据库中的首页减压馆分类栏目详情的id
-     */
-    long CACHE_PAGE_MAIN_JYG_CATEGORY_DETAIL = 10000L;
-    /**
-     * 缓存在数据库中的首页数据库直播的id
-     */
-    long CACHE_PAGE_MAIN_SJK_ZHIBO = 110L;
-    /**
-     * 缓存在数据库中的首页我的界面预告的id
-     */
-    long CACHE_PAGE_MAIN_ME_TRAILER = 130L;
-    /**
-     * 缓存在数据库中的首页数据库活动的id
-     */
-    long CACHE_PAGE_MAIN_SJK_ACT = 120L;
-    /**
-     * 缓存在数据库中的历史课程列表的id
-     */
-    long CACHE_PAGE_HISTORY_COURSE = 140L;
-    /**
-     * 缓存在数据库中的官方消息的id
-     */
-    long CACHE_PAGE_ME_MESSAGE = 245L;
     /**
      * 当前是否是练习中状态
      */
@@ -137,9 +104,6 @@ public interface AppConstant {
          * 设置当前播放视频的路径
          */
         String VIDEO_PATH = "viedoPath";
-        /**
-         * 设置当前播放视频的路径
-         */
         String UPDATE_TITLE = "updataTitle";
         String UPDATE_MEMBER="updataMember";
         String UPDATE_COLLECT = "updateCollect";
@@ -159,6 +123,7 @@ public interface AppConstant {
         String ON_WEB_PAY = "onWebPay";
         String EDIT_USER_INFO = "EDIT_USER_INFO";
         String UPDATE_USER = "UPDATE_USER";
+        String UPDATE_ACCOUNT = "UPDATE_ACCOUNT";
         String UPDATE_OTHERUSER = "UPDATE_OTHERUSER";
         String NETWORK_CHANGE_STATE = "netWorkState";
 

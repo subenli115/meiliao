@@ -181,9 +181,9 @@
 </com.zhy.autolayout.AutoRelativeLayout>
     <ImageView
         android:id="@+id/iv_get_money"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="164px"
+        android:visibility="gone"
         android:layout_below="@+id/arl_top"
         android:layout_marginTop="20px"
         android:background="@mipmap/icon_get_gold"

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ziran.meiliao.common.commonwidget.NormalTitleBar
+        android:id="@+id/ntb_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ntb_tv_left="showAndFinish"
+        />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注销账号重要提醒"
+            android:layout_marginLeft="76px"
+            android:textStyle="bold"
+            android:layout_below="@+id/ntb_title"
+            android:textColor="@color/black"
+            android:textSize="56px"
+            />
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/all_content"
+    android:layout_width="wrap_content"
+    android:layout_marginRight="65px"
+    android:layout_below="@+id/tv_title"
+    android:orientation="vertical"
+    android:layout_marginLeft="76px"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.账号无任何资产或主动放弃资产"
+        android:textSize="30px"
+        android:textStyle="bold"
+        android:layout_marginTop="76px"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:textSize="26px"
+        android:text="账户资产包括但不限于该账户的充值的ML币和收益的ML币等相关内容。"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2.账号信息将被删除，账户将不可找回"
+        android:textSize="30px"
+        android:textStyle="bold"
+        android:layout_marginTop="76px"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:textSize="26px"
+        android:text="账号注销后，相关信息和作品等会被删除，且无法恢复。为了保护您的合法权益，在注销账号前，请您自行备份拟注销账号相关的信息和数据。
+账号注销后，你在平台的所有关系将被终止并删除，且无法恢复。账号注销后，会在所有的设备上登出并且账号绑定手机、微信、QQ等相关信息将被清除，账号将无法登陆及找回账号。"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.自注销完成日起该身份证无法在本平台再次进行绑定和认证。"
+        android:textSize="30px"
+        android:textStyle="bold"
+        android:layout_marginTop="76px"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:id="@+id/tv_zx"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/normal_bg_black"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/all_content"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="14dp"
+        android:layout_marginBottom="10dp"
+        android:text="申请注销"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="15sp" />
+
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

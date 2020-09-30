@@ -27,6 +27,8 @@ import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.main.activity.UserAgreementWebActivity;
 import com.ziran.meiliao.ui.settings.activity.RechargeActivity;
 import com.ziran.meiliao.utils.DeviceUtil;
+import com.ziran.meiliao.utils.HandlerUtil;
+import com.ziran.meiliao.utils.UpdateManager;
 import com.ziran.meiliao.utils.Utils;
 import com.ziran.meiliao.widget.ItemGroupView;
 
@@ -157,7 +159,7 @@ public class MyActivityActivity extends BaseActivity {
                 YouthModelActivity.startAction();
                 break;
             case R.id.tv_me_main_new_version:
-                ToastUitl.showShort( "当前版本"+DeviceUtil.getVersionName(this));
+                updateVersion(view);
                 break;
             case R.id.tv_me_main_new_privacy:
                 String privacyUrl = MeiliaoConfig.getPrivacyUrl();
@@ -178,7 +180,16 @@ public class MyActivityActivity extends BaseActivity {
                 break;
         }
     }
-
+    private void updateVersion(final View view) {
+        new UpdateManager(this).checkUpdate(true, true);
+        HandlerUtil.runMain(new Runnable() {
+            @Override
+            public void run() {
+                view.setEnabled(true);
+            }
+        }, 3000);
+        view.setEnabled(false);
+    }
 
 
 }

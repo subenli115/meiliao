@@ -61,7 +61,7 @@ import static com.ziran.meiliao.constant.ApiKey.ADMIN_USERSIGN_PAGEBYID;
  * 找朋友 on 2017/2/20.
  */
 
-public class NewMainHomeFragment extends BaseFragment {
+public class PairFragment extends BaseFragment {
     private FragmentActivity mContext;
     private View mRootView;
     private AutoRelativeLayout arlBg;

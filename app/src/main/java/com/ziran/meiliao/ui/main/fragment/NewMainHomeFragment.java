@@ -1,8 +1,6 @@
 package com.ziran.meiliao.ui.main.fragment;
 
 import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -10,14 +8,12 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.alibaba.fastjson.JSONArray;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.app.MeiliaoConfig;
 import com.ziran.meiliao.app.MyAPP;
-import com.ziran.meiliao.common.commonutils.ToastUitl;
 import com.ziran.meiliao.common.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
 import com.ziran.meiliao.common.okhttp.Result;
 import com.ziran.meiliao.constant.ApiKey;
@@ -62,6 +58,7 @@ public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, 
     private LocationClient mLocationClient;
     private NewCacheUtil newCacheUtil;
     private List<UserBean.DataBean> records;
+    private boolean isLoading;
 
     @Override
     protected void initView() {
@@ -76,11 +73,11 @@ public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, 
         View headView = mainHomeHeadViewUtil.getHeadView();
         ViewTreeObserver observer = headView.getViewTreeObserver();
 
-        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+                observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 headView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                int height = headView.getMeasuredHeight();
                 ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) loadedTip.getLayoutParams();
                 p.setMargins(0, mainHomeHeadViewUtil.getHeadView().getHeight()+200, 0,0);
                 loadedTip.setLayoutParams(p);
@@ -123,7 +120,7 @@ public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, 
     @Override
     public CommonRecycleViewAdapter getAdapter() {
         iRecyclerView.setLoadMoreEnabled(true);
-
+        loadedTip.setEmptyMsg("什么都没有~",R.mipmap.load_empty_bg);
         return new HomeRecommendAdapter(getContext(),-1);
     }
 
@@ -137,7 +134,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, 
         Map<String, String> defMap = MapUtils.getDefMap(true);
         defMap.put("id", MyAPP.getUserId());
         if(bean!=null){
-            page=1;
             if(bean.getObjective()!=null){
                 defMap.put("objective",bean.getObjective());
             }
@@ -172,9 +168,9 @@ public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, 
             }
         }else if(result instanceof HomeRecommendBean){
             records = ((HomeRecommendBean) result).getData().getRecords();
-            if(records.size()==0){
-//                setEmptyMsg("暂无内容", R.mipmap.ic_empty_nocontent);
-                refresh(null);
+            if(records.size()==0&&isLoading==false){
+                loadedTip.setEmptyMsg("什么都没有~",R.mipmap.load_empty_bg);
+                updateData(records);
             }else {
                 if(resultBean==null&&records.size()>3){
                     UserBean.DataBean dataBean = MyAPP.getmUserBean();
@@ -187,18 +183,25 @@ public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, 
             mainHomeHeadViewUtil.setMenuData(records);
             newCacheUtil.saveMenuBean(records);
         }
-
     }
 
+    @Override
+    public void onLoadMore(View loadMoreView) {
+        super.onLoadMore(loadMoreView);
+        isLoading=true;
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         switch (requestCode) {
             case REQUEST_CODE_B:
                 if (resultCode == RESULT_OK) {
-                     resultBean =data.getParcelableExtra("USER_INFO");
+                    resultBean =data.getParcelableExtra("USER_INFO");
                     page=1;
+                    isLoading=false;
                     onRefreshBy(false);
+                    loadedTip.setVisibility(View.VISIBLE);
+
                 }
             default:
                 break;
@@ -219,12 +222,6 @@ public class NewMainHomeFragment extends CommonRefreshFragment<CommonPresenter, 
                 startActivityForResult(intent,REQUEST_CODE_B);
                 break;
         }
-    }
-
-    @Override
-    public void showLoading(String title) {
-        loadedTip.setVisibility(View.GONE);
-//        super.showLoading(title);
     }
 
     /**

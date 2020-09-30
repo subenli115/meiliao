@@ -8,7 +8,10 @@ import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.yc.toollib.network.ui.NetRequestActivity;
+import com.yc.toollib.network.utils.NetworkTool;
 import com.ziran.meiliao.R;
+import com.ziran.meiliao.app.MyAPP;
 import com.ziran.meiliao.im.activity.MainActivity;
 import com.ziran.meiliao.im.activity.ReleaseWechatActivity;
 import com.ziran.meiliao.im.activity.fragment.NewMeFragment;
@@ -73,6 +76,7 @@ public class MainController implements View.OnClickListener, ViewPager.OnPageCha
                     break;
                 case R.id.iv_fb:
                     ReleaseWechatActivity.startAction(REQUEST_CODE_A);
+//                    NetRequestActivity.start(mContext);
                     break;
             }
     }

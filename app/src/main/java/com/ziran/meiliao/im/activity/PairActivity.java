@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.ziran.meiliao.R;
 import com.ziran.meiliao.common.base.BaseActivity;
-import com.ziran.meiliao.im.activity.fragment.CommonFragment;
-import com.ziran.meiliao.im.activity.fragment.NewMainHomeFragment;
+import com.ziran.meiliao.im.activity.fragment.PairFragment;
 
 /**
  * 统一列表
@@ -36,7 +35,7 @@ public class PairActivity extends BaseActivity {
     }
     @Override
     public void initView() {
-        initFragment(new NewMainHomeFragment());
+        initFragment(new PairFragment());
     }
 
 }

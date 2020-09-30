@@ -94,7 +94,7 @@ public class EditUserInfoSafeActivity extends BaseActivity {
 
     //点击监听
     @OnClick({R.id.tv_me_main_new_realname, R.id.tv_me_main_new_phone, R.id.tv_me_main_new_pwd, R.id.tv_me_main_new_wechat, R.id
-            .tv_me_main_new_qq,R.id.tv_me_main_new_realperson})
+            .tv_me_main_new_qq,R.id.tv_me_main_new_realperson,R.id.tv_me_main_new_cancellation})
     public void onClick(View view) {
 //        if (!MyAPP.isLogin(mContext)) { //如果没有登录则跳转到登录界面
 //            return;
@@ -130,6 +130,9 @@ public class EditUserInfoSafeActivity extends BaseActivity {
                 }else {
                     SetRealPersonResultActivity.startAction();
                 }
+                break;
+            case R.id.tv_me_main_new_cancellation:
+                SetCancellationActivity.startAction();
                 break;
         }
     }

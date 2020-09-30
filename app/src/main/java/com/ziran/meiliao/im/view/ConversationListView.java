@@ -130,9 +130,7 @@ public class ConversationListView {
                         }
                     } else {
                         mAllUnReadMsg.setVisibility(View.GONE);
-                        Log.e("ccccccccccc","12");
                         if(numTv!=null){
-                            Log.e("ccccccccccc","21");
                             numTv.setVisibility(View.GONE);
                         }
                     }
