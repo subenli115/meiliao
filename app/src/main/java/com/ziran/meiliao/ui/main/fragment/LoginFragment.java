@@ -43,7 +43,6 @@ import com.ziran.meiliao.ui.bean.TagCheckBean;
 import com.ziran.meiliao.ui.bean.UserBean;
 import com.ziran.meiliao.ui.main.activity.LoginActivity;
 import com.ziran.meiliao.ui.main.activity.MainActivity;
-import com.ziran.meiliao.ui.main.activity.RegionActivity;
 import com.ziran.meiliao.ui.main.contract.LoginContract;
 import com.ziran.meiliao.ui.main.model.LoginModel;
 import com.ziran.meiliao.ui.main.presenter.LoginPresenter;
@@ -144,7 +143,6 @@ public class LoginFragment extends CommonHttpFragment<LoginPresenter, LoginModel
         mPhoneCodeView.setTvAreaCodeClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                getActivity().startActivityForResult(new Intent(getContext(), RegionActivity.class), 100);
             }
         });
         smsCodeView.setOnEditActionListener(mOnEditorActionListener, "登录", EditorInfo.IME_ACTION_SEND);
@@ -385,7 +383,6 @@ public class LoginFragment extends CommonHttpFragment<LoginPresenter, LoginModel
         phoneCodeView.setTvAreaCodeClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                getActivity().startActivityForResult(new Intent(getContext(), RegionActivity.class), 100);
             }
         });
         tvBind.setOnClickListener(new View.OnClickListener() {

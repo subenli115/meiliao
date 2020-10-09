@@ -89,7 +89,7 @@ public class RecommendFollowDynamicFragment extends CommonHttpFragment<CommonPre
     private void loadData(int page) {
         Map<String, String> defMap = MapUtils.getDefMap(true);
         defMap.put("current",page+"");
-        defMap.put("size","50");
+        defMap.put("size","10");
         defMap.put("userId", MyAPP.getUserId());
         mPresenter.getData(ApiKey.ADMIN_SPACE_FOLLOWSPACE,defMap, SpaceRecommendBean.class);
     }

@@ -1,6 +1,5 @@
 package com.ziran.meiliao.ui.bean;
 
-import com.google.gson.annotations.SerializedName;
 import com.ziran.meiliao.common.okhttp.Result;
 
 public class AdvertisementBean extends Result {
